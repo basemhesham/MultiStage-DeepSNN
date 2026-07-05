@@ -94,8 +94,7 @@ module top_controller #(
     endfunction
 
     wire stage1_last   = (stage1_pos == stage1_valid_positions(fragment_counter) - 1);
-    wire stage2_last   = (stage2_
-    frame_idx == STAGE2_FRAMES - 1) &&
+    wire stage2_last   = (stage2_frame_idx == STAGE2_FRAMES - 1) &&
                          (conv2_filter     == STAGE2_FILTERS - 1);
     wire stage3_last   = (conv3_filter     == STAGE3_FILTERS - 1);
     wire fragment_last = (fragment_counter == FRAGMENTS_MAX - 1);
