@@ -1,6 +1,6 @@
 // =====================================================================================
 // Module name : LIF
-// Purpose     : Leaky Integrate-and-Fire spiking neuron — final stage of each Shaaban
+// Purpose     : Leaky Integrate-and-Fire spiking neuron â€” final stage of each Shaaban
 //               unit (Bias+ReLU -> BatchNorm -> MaxPool -> LIF). Integrates the pooled
 //               convolution result into a membrane potential, applies a fixed decay
 //               (beta = 0.5) every cycle, and fires a spike whenever the membrane
@@ -23,7 +23,7 @@ module LIF #(
     input  wire logic clk,
     input  wire logic arst_n,
     input  wire logic signed [DATA_WIDTH-1:0] in_pool,
-    output wire logic spike
+    output logic spike
 );
 
     // --------------------------------------------------------------
