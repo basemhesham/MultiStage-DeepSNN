@@ -28,13 +28,15 @@
 //   corr[6]: pool[18,19,20]= tree9[30], tree9[31], tree10[30]
 //   corr[7]: pool[21,22,23]= tree10[31],tree11[30],tree11[31]
 //
-// BIT WIDTHS
-//   Input:  DATA_WIDTH bits (18) signed
-//   Raw sum: DATA_WIDTH+2 bits (20) signed — 3 terms need 2 extra bits
-//   Output: DATA_WIDTH bits (18) signed — truncate LSB (right-shift 1)
-//           This matches the normalization applied to L1 taps inside the tree.
-//
-// COMBINATIONAL — no clock, no state.
+// Written by  : Unknown (original author not recorded)
+// Revised by  : Mohamed Hussein
+// Date        : July 5, 2026
+// Notes  BIT WIDTHS
+//              Input:  DATA_WIDTH bits (18) signed
+//              Raw sum: DATA_WIDTH+2 bits (20) signed — 3 terms need 2 extra bits
+//              Output: DATA_WIDTH bits (18) signed — truncate LSB (right-shift 1)
+//              This matches the normalization applied to L1 taps inside the tree.
+// Last edit   : July 6, 2026
 // =============================================================================
 
 module ext_sum_correction #(
@@ -43,7 +45,7 @@ module ext_sum_correction #(
     parameter int DATA_WIDTH   = 18     // signed fixed-point
 )(
     // 12 trees × 32 MAC products (full array passed in; module only reads [30] and [31])
-    input logic signed [DATA_WIDTH-1:0] mac_in [0:N_TREES-1][0:31],
+    input logic signed [DATA_WIDTH-1:0] mac_in [0:N_TREES-1][30:31],
 
     // 8 corrected partial sums, truncated to DATA_WIDTH
     output logic signed [DATA_WIDTH-1:0] corr_out [0:N_CORRECTION-1]
