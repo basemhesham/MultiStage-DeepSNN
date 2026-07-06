@@ -43,7 +43,7 @@ module ext_sum_correction #(
     parameter int DATA_WIDTH   = 18     // signed fixed-point
 )(
     // 12 trees × 32 MAC products (full array passed in; module only reads [30] and [31])
-    input logic signed [DATA_WIDTH-1:0] mac_in [N_TREES-1:0][31:0],
+    input logic signed [DATA_WIDTH-1:0] mac_in [0:N_TREES-1][0:31],
 
     // 8 corrected partial sums, truncated to DATA_WIDTH
     output logic signed [DATA_WIDTH-1:0] corr_out [0:N_CORRECTION-1]
