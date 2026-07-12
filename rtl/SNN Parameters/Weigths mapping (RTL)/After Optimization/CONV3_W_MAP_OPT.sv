@@ -1,9 +1,28 @@
+//===========================================================
+// File        : CONV3_W_MAP_OPT.sv
+// Purpose     : Assigns values to the 3x3 filter(128 filters)
+// Used in     : top_weight_mapper.sv
+//===========================================================
+// Written by  : 
+// Editor      : Boutros George Sabri
+// Last edit   : 2026-7-7
+//===========================================================
+
+
+//================================
+//Importing package that contains hardcoded filter values
+//================================
+
 import conv3_pkg::*;
  module CONV3_W_MAP_OPT (
-  input  logic [6:0]  filter,
-  output logic [17:0] conv9_in [3456]
+  input  logic [6:0]  filter, //filter selector
+  output logic [17:0] conv9_in [3456] //output 3x3 convolution filter
  );
  
+//============================
+//Always block that has a large case statement that defines the 128 filter values
+//============================
+
 always@(*)begin
 case (filter)
   0: begin

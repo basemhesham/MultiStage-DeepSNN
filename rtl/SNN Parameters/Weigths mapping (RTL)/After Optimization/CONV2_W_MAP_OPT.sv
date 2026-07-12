@@ -1,10 +1,21 @@
+//===========================================================
+// File        : CONV2_W_MAP_OPT.sv
+// Purpose     : Assigns values to the 3x3 filter(64 filters)
+// Used in     : top_weight_mapper.sv
+//===========================================================
+// Written by  : 
+// Editor      : Boutros George Sabri
+// Last edit   : 2026-7-7
+//===========================================================
 module CONV2_W_MAP_OPT (
-  input  logic [5:0]  filter,
-  output logic [17:0] conv9_in [3456]
+  input  logic [5:0]  filter, //filter selector
+  output logic [17:0] conv9_in [3456] //output 3x3 convolution filter
  );
 
+//================================
+//Hardcoded filter values
+//================================
 
-// Unique weights for CONV2 LUT mapping
 localparam logic signed [17:0] UNIQUE_CONV2_WEIGHTS [362] = '{
     18'b000000000000000000, 18'b000000000000000001, 18'b000000000000000010, 18'b000000000000000011, 18'b000000000000000100,
     18'b000000000000000101, 18'b000000000000000110, 18'b000000000000000111, 18'b000000000000001000, 18'b000000000000001001,
@@ -80,6 +91,10 @@ localparam logic signed [17:0] UNIQUE_CONV2_WEIGHTS [362] = '{
     18'b111111111111111001, 18'b111111111111111010, 18'b111111111111111011, 18'b111111111111111100, 18'b111111111111111101,
     18'b111111111111111110, 18'b111111111111111111
 };
+
+//============================
+//Always block that has a large case statement that defines the 64 filter values
+//============================
 
 always @(*) begin
 case (filter)

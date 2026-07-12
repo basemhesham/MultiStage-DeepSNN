@@ -1,6 +1,21 @@
+//===========================================================
+// File        : CONV1_W_MAP_OPT.sv
+// Purpose     : Assigns values to the 3x3 filter(32 filters), to be transformed into 5x5 in top module
+// Used in     : top_weight_mapper.sv
+//===========================================================
+// Written by  : 
+// Editor      : Boutros George Sabri
+// Last edit   : 2026-7-7
+//===========================================================
+
+
+//================================
+//Importing package that contains hardcoded filter values
+//================================
+
 import conv1_pkg::*;
  module CONV1_W_MAP_OPT (
- 	output logic [17:0] conv9_in [3456]
+ 	output logic [17:0] conv9_in [3456] //output 3x3 convolution filter
  );
 
  // Compiled Assignment Logic
