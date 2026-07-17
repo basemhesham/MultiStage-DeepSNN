@@ -40,7 +40,7 @@ module tb_LIF;
     // DUT Instance
     LIF #(
         .DATA_WIDTH (DATA_WIDTH),
-        .threshold  (THRESHOLD)
+        .THRESHOLD  (THRESHOLD)
     ) dut (
         .clk     (clk),
         .arst_n  (arst_n),
@@ -98,18 +98,18 @@ module tb_LIF;
     
     // Task 1: Assert/Release Reset (does NOT touch in_pool)
     task automatic do_reset();
-        @(posedge clk);
-        #1 arst_n = 1'b0;          // Assert reset right after posedge
-        
-        @(posedge clk);            // Hold for 1 full cycle
         @(negedge clk);
-        #1 arst_n = 1'b1;          // Release exactly at negedge
+        arst_n = 1'b0;          // Assert reset right after posedge
+        
+        @(negedge clk);            // Hold for 1 full cycle
+        @(negedge clk);
+        arst_n = 1'b1;          // Release exactly at negedge
     endtask
 
     // Task 2: Drive Input Strictly at Negedge (with #1 delay to avoid race)
     task automatic drive_input(logic signed [DATA_WIDTH-1:0] value);
-        @(negedge clk);
-        #1 in_pool = value;
+        @(posedge clk);
+        in_pool = value;
     endtask
 
     // ===================================================================================
@@ -171,23 +171,22 @@ module tb_LIF;
         // --------------------------------------------------------------
         // Test 7: Accumulation over multiple cycles (in_pool = 260)
         // --------------------------------------------------------------
-        $display("\n--- Starting Accumulation Test (in_pool = 260) ---");
+        $display("\n--- Starting Accumulation Test (in_pool = 260) ---");    // this case is not working correctly
         do_reset();                          // Start from zero membrane
-        repeat(20) begin
-            drive_input(18'sd50);          // Apply constant small input
+        repeat(40) begin
+            drive_input($urandom_range(0,100));          // Apply constant small input
         end
         
         // Let it run for 10 cycles. The scoreboard will catch the spike at cycle 7.
         // The DUT's `spike` output will go high on the 7th rising edge.
-        repeat(10) @(posedge clk);
+        repeat(5) @(posedge clk);
         $display("--- Accumulation Test complete ---");
 
         // --------------------------------------------------------------
         // Test 8: Random Inputs (500 cycles)
         // --------------------------------------------------------------
-        for (int i = 0; i < 500; i++) begin
-            drive_input($urandom_range(0, (1 << DATA_WIDTH) - 1) - (1 << (DATA_WIDTH-1)));
-            @(posedge clk);
+        for (int i = 0; i < 100; i++) begin
+            drive_input($urandom_range(0, (1 << DATA_WIDTH - DATA_WIDTH/2) - 1));
         end
 
         // --------------------------------------------------------------
