@@ -15,6 +15,11 @@ module conv_adder_shaaban_top_test;
 
     integer fin;
     integer fout;
+    integer fd_shb; // Added for shb_bus logging
+
+    // Arrays to hold the python mapped hex files directly (flattened)
+    logic signed [DATA_WIDTH-1:0] flat_pixels  [0:3455];
+    logic signed [DATA_WIDTH-1:0] flat_weights [0:3455];
 
     //==========================================================================
     // DUT Signals
@@ -63,6 +68,10 @@ module conv_adder_shaaban_top_test;
         .shaaban_spike_bus(shaaban_spike_bus)
     );
 
+    // We no longer manually calculate shb_out from mac_to_connect.
+    // Instead, we will log the actual shb_conv_bus coming out of the
+    // adder_tree_shaaban_connect module via hierarchical reference.
+
     //==========================================================================
     // Clock
     //==========================================================================
@@ -106,72 +115,19 @@ module conv_adder_shaaban_top_test;
 
     //--------------------------------------------------------
 
-    task random_pixels();
-    begin
-        $fwrite(fin,"PIXELS\n");
-
-        for(tree=0;tree<N_TREES;tree++)
-            for(neuron=0;neuron<N_SHAABAN;neuron++)
-                for(tap=0;tap<9;tap++) begin
-
-                    pixels_mapped[tree][neuron][tap] =
-                        $urandom_range(-50,50);
-
-                    $fwrite(fin,"%0d ",
-                        pixels_mapped[tree][neuron][tap]);
-
-                end
-
-        $fwrite(fin,"\n");
-
-    end
+    task map_flat_arrays();
+        integer idx;
+        begin
+            idx = 0;
+            for(tree=0;tree<N_TREES;tree++)
+                for(neuron=0;neuron<N_SHAABAN;neuron++)
+                    for(tap=0;tap<9;tap++) begin
+                        pixels_mapped [tree][neuron][tap] = flat_pixels[idx];
+                        weights_mapped[tree][neuron][tap] = flat_weights[idx];
+                        idx = idx + 1;
+                    end
+        end
     endtask
-
-    //--------------------------------------------------------
-
-    task random_weights();
-    begin
-
-        $fwrite(fin,"CONV_WEIGHTS\n");
-
-        for(tree=0;tree<N_TREES;tree++)
-            for(neuron=0;neuron<N_SHAABAN;neuron++)
-                for(tap=0;tap<9;tap++) begin
-
-                    weights_mapped[tree][neuron][tap] =
-                        $urandom_range(-5,5);
-
-                    $fwrite(fin,"%0d ",
-                        weights_mapped[tree][neuron][tap]);
-
-                end
-
-        $fwrite(fin,"\n");
-
-    end
-    endtask
-
-    // //--------------------------------------------------------
-
-    // task constant_pixels(input integer value);
-    //     begin
-    //         for(tree=0;tree<N_TREES;tree++)
-    //             for(neuron=0;neuron<N_SHAABAN;neuron++)
-    //                 for(tap=0;tap<9;tap++)
-    //                     pixels_mapped[tree][neuron][tap] = value;
-    //     end
-    // endtask
-
-    //--------------------------------------------------------
-
-    // task constant_weights(input integer value);
-    //     begin
-    //         for(tree=0;tree<N_TREES;tree++)
-    //             for(neuron=0;neuron<N_SHAABAN;neuron++)
-    //                 for(tap=0;tap<9;tap++)
-    //                     weights_mapped[tree][neuron][tap] = value;
-    //     end
-    // endtask
 
     //--------------------------------------------------------
 
@@ -201,6 +157,11 @@ module conv_adder_shaaban_top_test;
 
         fin  = $fopen("inputs.txt","w");
         fout = $fopen("rtl_output.txt","w");
+        fd_shb = $fopen("shb_bus_output.txt","w"); // Open new output file
+
+        // Load the python-generated mapped arrays directly
+        $readmemh("mapped_pixels.hex", flat_pixels);
+        $readmemh("mapped_weights.hex", flat_weights);
 
         if(fin==0) begin
             $display("ERROR opening inputs.txt");
@@ -209,6 +170,11 @@ module conv_adder_shaaban_top_test;
 
         if(fout==0) begin
             $display("ERROR opening rtl_output.txt");
+            $finish;
+        end
+        
+        if(fd_shb==0) begin
+            $display("ERROR opening shb_bus_output.txt");
             $finish;
         end
 
@@ -240,89 +206,47 @@ module conv_adder_shaaban_top_test;
         rst = 1;
 
         //--------------------------------------------------
-        // Test 1
-        //--------------------------------------------------
-        // @(negedge clk);
-
-        // src_sel = 0;
-
-        // constant_pixels(10);
-        // constant_weights(2);
-
-        // repeat(20) @(negedge clk);
-
-        // display_results();
-
-        //--------------------------------------------------
-        // Test 2
-        //--------------------------------------------------
-        // @(negedge clk);
-
-        // src_sel = 1;
-
-        // constant_pixels(30);
-        // constant_weights(5);
-
-        // repeat(20) @(negedge clk);
-
-        // display_results();
-
-        //--------------------------------------------------
-        // Test 3
-        //--------------------------------------------------
-        // @(negedge clk);
-
-        // src_sel = 0;
-
-        // random_pixels();
-        // constant_weights(1);
-
-        // repeat(20) @(negedge clk);
-
-        // display_results();
-
-        //--------------------------------------------------
-        // Test 4
+        // Targeted Datapath Test
         //--------------------------------------------------
         @(negedge clk);
 
         src_sel = 0;
 
-        repeat(1) begin
-            random_pixels();
-            random_weights();
+        begin
+            clear_inputs();
+            
+            // Map the arrays generated by python directly into the DUT
+            map_flat_arrays();
+            
+            // Wait for combinational logic and 1 clock cycle for any pipelining
             @(negedge clk);
-            // $fwrite(fout,"SPIKE_OUT\n");
-            // $fwrite(fout,"%032b\n",spike_out);
-
-            $fwrite(fout,"SPIKE_BUS\n");
-            for(int i=0;i<N_SHAABAN;i++)
-                $fwrite(fout,"%b ",shaaban_spike_bus[i]);
-
-            $fwrite(fout,"\n");
+            
+            $fwrite(fd_shb, "--- SHB BUS OUTPUT (4 inputs per Shaaban Unit) ---\n");
+            // Log the output of the adder tree router for all 32 Shaaban units.
+            // Using hierarchical reference to read the output of u_shaaban_adder_tree.u_connect
+            for(int s = 0; s < N_SHAABAN; s++) begin
+                // The bus is packed: [(INPUTS_PER_SHB*DATA_WIDTH)-1:0]
+                // We unpack it here for easy reading
+                logic signed [DATA_WIDTH-1:0] val3, val2, val1, val0;
+                
+                val0 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][0*DATA_WIDTH +: DATA_WIDTH];
+                val1 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][1*DATA_WIDTH +: DATA_WIDTH];
+                val2 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][2*DATA_WIDTH +: DATA_WIDTH];
+                val3 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][3*DATA_WIDTH +: DATA_WIDTH];
+                
+                $fwrite(fd_shb, "Shaaban[%02d] | In3:%0d In2:%0d In1:%0d In0:%0d\n", 
+                        s, val3, val2, val1, val0);
+            end
         end
 
-
+        // Wait for pipeline to flush
+        repeat(5) @(negedge clk);
 
         display_results();
-
-        //--------------------------------------------------
-        // Random Regression
-        //--------------------------------------------------
-        // repeat(100) begin
-
-        //     @(negedge clk);
-
-        //     src_sel = $urandom_range(0,1);
-
-        //     random_pixels();
-        //     random_weights();
-
-        // end
-
-        // repeat(20) @(negedge clk);
-
-        // display_results();
+        
+        $fclose(fin);
+        $fclose(fout);
+        $fclose(fd_shb); // Close the log file
 
         $finish;
 
