@@ -1,0 +1,33 @@
+--- SHB BUS OUTPUT (4 inputs per Shaaban Unit) ---
+Shaaban[ 0] | In3:0 In2:1 In1:0 In0:0
+Shaaban[ 1] | In3:-10 In2:-10 In1:-11 In0:-10
+Shaaban[ 2] | In3:12 In2:12 In1:12 In0:11
+Shaaban[ 3] | In3:-9 In2:-9 In1:-7 In0:-5
+Shaaban[ 4] | In3:9 In2:9 In1:8 In0:8
+Shaaban[ 5] | In3:8 In2:8 In1:8 In0:8
+Shaaban[ 6] | In3:-14 In2:-14 In1:-14 In0:-15
+Shaaban[ 7] | In3:-1 In2:0 In1:-1 In0:-1
+Shaaban[ 8] | In3:-16 In2:-16 In1:-16 In0:-16
+Shaaban[ 9] | In3:-3 In2:-1 In1:-2 In0:-2
+Shaaban[10] | In3:3 In2:3 In1:2 In0:3
+Shaaban[11] | In3:-2 In2:-2 In1:-1 In0:-2
+Shaaban[12] | In3:-2 In2:-2 In1:-2 In0:-2
+Shaaban[13] | In3:-15 In2:-15 In1:-15 In0:-15
+Shaaban[14] | In3:8 In2:8 In1:8 In0:7
+Shaaban[15] | In3:-9 In2:-8 In1:-8 In0:-7
+Shaaban[16] | In3:-4 In2:-4 In1:-3 In0:-4
+Shaaban[17] | In3:-19 In2:-20 In1:-19 In0:-20
+Shaaban[18] | In3:-1 In2:0 In1:0 In0:0
+Shaaban[19] | In3:-1 In2:-1 In1:-2 In0:-2
+Shaaban[20] | In3:-19 In2:-19 In1:-18 In0:-18
+Shaaban[21] | In3:9 In2:9 In1:10 In0:11
+Shaaban[22] | In3:13 In2:13 In1:12 In0:13
+Shaaban[23] | In3:-25 In2:-24 In1:-20 In0:-19
+Shaaban[24] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[25] | In3:-8 In2:-8 In1:-8 In0:-8
+Shaaban[26] | In3:12 In2:11 In1:11 In0:12
+Shaaban[27] | In3:4 In2:5 In1:3 In0:4
+Shaaban[28] | In3:-16 In2:-17 In1:-17 In0:-17
+Shaaban[29] | In3:-8 In2:-8 In1:-10 In0:-10
+Shaaban[30] | In3:-9 In2:-10 In1:-9 In0:-8
+Shaaban[31] | In3:11 In2:10 In1:10 In0:10
