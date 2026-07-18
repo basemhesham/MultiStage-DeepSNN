@@ -1,5 +1,3 @@
-import random
-
 PIXEL_W = 18
 
 def to_hex_18bit(val):
@@ -9,21 +7,14 @@ def to_hex_18bit(val):
     return f"{val:05x}"
 
 def generate_raw_inputs():
-    print("Generating raw dummy input files...")
+    print("Generating raw ascending pixel file...")
     
-    # 1. Generate 384 pixels
+    # Generate 384 pixels in ascending order (0 to 383)
     with open("in_mem_384.hex", "w") as f_pix:
-        for _ in range(384):
-            val = random.randint(-50, 50)
-            f_pix.write(to_hex_18bit(val) + "\n")
+        for i in range(384):
+            f_pix.write(to_hex_18bit(i) + "\n")
             
-    # 2. Generate 3456 weights
-    with open("stage1_weights_3456.hex", "w") as f_wt:
-        for _ in range(3456):
-            val = random.randint(-5, 5)
-            f_wt.write(to_hex_18bit(val) + "\n")
-            
-    print("Success! Created 'in_mem_384.hex' and 'stage1_weights_3456.hex'.")
+    print("Success! Created 'in_mem_384.hex' with values 0 to 383.")
 
 if __name__ == "__main__":
     generate_raw_inputs()
