@@ -77,30 +77,25 @@ package bn_parameters_pkg;
 
 endpackage
 
+`timescale 1ns/1ps
+
 import bn_parameters_pkg::*;
 
 module conv_adder_shaaban_top_test;
 
-    //==========================================================================
-    // Parameters
-    //==========================================================================
     parameter DATA_WIDTH     = 18;
     parameter N_SHAABAN      = 32;
     parameter MAC_OUT_W      = 40;
     parameter INPUTS_PER_SHB = 4;
     parameter N_TREES        = 12;
 
-    integer fin;
-    integer fout;
-    integer fd_shb; // Added for shb_bus logging
+    integer fd_shb; 
 
-    // Arrays to hold the python mapped hex files directly (flattened)
-    logic signed [DATA_WIDTH-1:0] flat_pixels  [0:3455];
+    // Massive array for 100 cycles of 3456 pixels (345,600 values total)
+    logic signed [DATA_WIDTH-1:0] flat_pixels  [0:345599];
+    // Weights stay fixed for all 100 cycles (only 3456 values)
     logic signed [DATA_WIDTH-1:0] flat_weights [0:3455];
 
-    //==========================================================================
-    // DUT Signals
-    //==========================================================================
     logic clk;
     logic rst;
     logic [1:0] src_sel;
@@ -109,20 +104,12 @@ module conv_adder_shaaban_top_test;
     logic signed [DATA_WIDTH-1:0] mult_weight_param [0:N_SHAABAN-1];
     logic signed [DATA_WIDTH-1:0] add_weight_param  [0:N_SHAABAN-1];
 
-    logic signed [DATA_WIDTH-1:0] pixels_mapped
-        [0:N_TREES-1][0:N_SHAABAN-1][0:8];
-
-    logic signed [DATA_WIDTH-1:0] weights_mapped
-        [0:N_TREES-1][0:N_SHAABAN-1][0:8];
+    logic signed [DATA_WIDTH-1:0] pixels_mapped  [0:N_TREES-1][0:N_SHAABAN-1][0:8];
+    logic signed [DATA_WIDTH-1:0] weights_mapped [0:N_TREES-1][0:N_SHAABAN-1][0:8];
 
     logic [N_SHAABAN-1:0] spike_out;
+    logic [0:N_SHAABAN-1] shaaban_spike_bus [0:N_SHAABAN-1];
 
-    logic [0:N_SHAABAN-1] shaaban_spike_bus
-        [0:N_SHAABAN-1];
-
-    //==========================================================================
-    // DUT
-    //==========================================================================
     conv_Adder_shaaban_top #(
         .DATA_WIDTH(DATA_WIDTH),
         .N_SHAABAN(N_SHAABAN),
@@ -145,26 +132,10 @@ module conv_adder_shaaban_top_test;
         .shaaban_spike_bus(shaaban_spike_bus)
     );
 
-    // We no longer manually calculate shb_out from mac_to_connect.
-    // Instead, we will log the actual shb_conv_bus coming out of the
-    // adder_tree_shaaban_connect module via hierarchical reference.
-
-    //==========================================================================
-    // Clock
-    //==========================================================================
     initial clk = 0;
     always #5 clk = ~clk;
 
-    //==========================================================================
-    // Loop Variables
-    //==========================================================================
-    integer tree;
-    integer neuron;
-    integer tap;
-
-    //==========================================================================
-    // Tasks
-    //==========================================================================
+    integer tree, neuron, tap;
 
     task load_bn_parameters();
         integer i;
@@ -177,169 +148,86 @@ module conv_adder_shaaban_top_test;
         end
     endtask
 
-    //--------------------------------------------------------
-
-    task clear_inputs();
-        begin
-            for(tree=0;tree<N_TREES;tree++)
-                for(neuron=0;neuron<N_SHAABAN;neuron++)
-                    for(tap=0;tap<9;tap++) begin
-                        pixels_mapped [tree][neuron][tap] = '0;
-                        weights_mapped[tree][neuron][tap] = '0;
-                    end
-        end
-    endtask
-
-    //--------------------------------------------------------
-
-    task map_flat_arrays();
+    task map_weights_once();
         integer idx;
         begin
             idx = 0;
             for(tree=0;tree<N_TREES;tree++)
                 for(neuron=0;neuron<N_SHAABAN;neuron++)
                     for(tap=0;tap<9;tap++) begin
-                        pixels_mapped [tree][neuron][tap] = flat_pixels[idx];
                         weights_mapped[tree][neuron][tap] = flat_weights[idx];
                         idx = idx + 1;
                     end
         end
     endtask
 
-    //--------------------------------------------------------
-
-    task display_results();
-        integer i;
+    task load_pixels_for_cycle(input int cycle_offset);
+        integer idx;
         begin
-
-            $display("");
-            $display("======================================================");
-            $display("Time      = %0t",$time);
-            $display("Stage     = %0d",src_sel);
-            $display("Spike Out = %h",spike_out);
-
-            for(i=0;i<N_SHAABAN;i++)
-                $display("Neuron[%0d] = %b",i,shaaban_spike_bus[i]);
-
-            $display("======================================================");
-            $display("");
-
+            idx = cycle_offset;
+            for(tree=0;tree<N_TREES;tree++)
+                for(neuron=0;neuron<N_SHAABAN;neuron++)
+                    for(tap=0;tap<9;tap++) begin
+                        pixels_mapped[tree][neuron][tap] = flat_pixels[idx];
+                        idx = idx + 1;
+                    end
         end
     endtask
 
-    //==========================================================================
-    // Stimulus
-    //==========================================================================
     initial begin
+        fd_shb = $fopen("shb_bus_output.txt","w");
 
-        fin  = $fopen("inputs.txt","w");
-        fout = $fopen("rtl_output.txt","w");
-        fd_shb = $fopen("shb_bus_output.txt","w"); // Open new output file
-
-        // Load the python-generated mapped arrays directly
-        $readmemh("mapped_pixels.hex", flat_pixels);
+        // Load files generated by the python script
+        $readmemh("mapped_pixels_100_cycles.hex", flat_pixels);
         $readmemh("mapped_weights.hex", flat_weights);
-
-        if(fin==0) begin
-            $display("ERROR opening inputs.txt");
-            $finish;
-        end
-
-        if(fout==0) begin
-            $display("ERROR opening rtl_output.txt");
-            $finish;
-        end
         
         if(fd_shb==0) begin
             $display("ERROR opening shb_bus_output.txt");
             $finish;
         end
 
-        rst     = 0;
+        rst = 0;
         src_sel = 0;
-
-        clear_inputs();
         load_bn_parameters();
+        
+        // Weights stay fixed for all 100 cycles
+        map_weights_once();
 
-        $fwrite(fin,"BN_WEIGHTS\n");
-
-        for(int i=0;i<N_SHAABAN;i++)
-            $fwrite(fin,"%0d ",mult_weight_param[i]);
-
-        $fwrite(fin,"\n");
-
-        $fwrite(fin,"BN_BIAS\n");
-
-        for(int i=0;i<N_SHAABAN;i++)
-            $fwrite(fin,"%0d ",add_weight_param[i]);
-
-        $fwrite(fin,"\n");
-
-        //--------------------------------------------------
-        // Reset
-        //--------------------------------------------------
+        // Reset Sequence
         repeat(5) @(negedge clk);
-
         rst = 1;
-
-        //--------------------------------------------------
-        // Targeted Datapath Test
-        //--------------------------------------------------
         @(negedge clk);
 
-        src_sel = 0;
-
+        // Run 100 Cycles
+        $fwrite(fd_shb, "--- RTL MODEL OUTPUT (100 Cycles) ---\n\n");
         begin
-            clear_inputs();
-            
-            // Map the arrays generated by python directly into the DUT
-            map_flat_arrays();
-            
-            // Wait for combinational logic and 1 clock cycle for any pipelining
-            @(negedge clk);
-            
-            $fwrite(fd_shb, "--- SHB BUS OUTPUT (4 inputs per Shaaban Unit) ---\n");
-            // Log the output of the adder tree router for all 32 Shaaban units.
-            // Using hierarchical reference to read the output of u_shaaban_adder_tree.u_connect
-            for(int s = 0; s < N_SHAABAN; s++) begin
-                // The bus is packed: [(INPUTS_PER_SHB*DATA_WIDTH)-1:0]
-                // We unpack it here for easy reading
-                logic signed [DATA_WIDTH-1:0] val3, val2, val1, val0;
+            int offset = 0;
+            for(int cycle = 0; cycle < 100; cycle++) begin
                 
-                val0 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][0*DATA_WIDTH +: DATA_WIDTH];
-                val1 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][1*DATA_WIDTH +: DATA_WIDTH];
-                val2 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][2*DATA_WIDTH +: DATA_WIDTH];
-                val3 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][3*DATA_WIDTH +: DATA_WIDTH];
+                // Load the exact 3456 pixels for THIS clock cycle
+                load_pixels_for_cycle(offset);
+                offset = offset + 3456;
                 
-                $fwrite(fd_shb, "Shaaban[%02d] | In3:%0d In2:%0d In1:%0d In0:%0d\n", 
-                        s, val3, val2, val1, val0);
+                // Wait for the combinational logic to propagate
+                @(negedge clk);
+                
+                // Log the output
+                $fwrite(fd_shb, "--- Cycle %03d ---\n", cycle);
+                for(int s = 0; s < N_SHAABAN; s++) begin
+                    logic signed [DATA_WIDTH-1:0] val3, val2, val1, val0;
+                    val0 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][0*DATA_WIDTH +: DATA_WIDTH];
+                    val1 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][1*DATA_WIDTH +: DATA_WIDTH];
+                    val2 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][2*DATA_WIDTH +: DATA_WIDTH];
+                    val3 = dut.u_shaaban_adder_tree.u_connect.shb_conv_bus[s][3*DATA_WIDTH +: DATA_WIDTH];
+                    
+                    $fwrite(fd_shb, "Shaaban[%02d] | In3:%0d In2:%0d In1:%0d In0:%0d\n", s, val3, val2, val1, val0);
+                end
+                $fwrite(fd_shb, "\n");
             end
         end
 
-        // Wait for pipeline to flush
         repeat(5) @(negedge clk);
-
-        display_results();
-        
-        $fclose(fin);
-        $fclose(fout);
-        $fclose(fd_shb); // Close the log file
-
+        $fclose(fd_shb);
         $finish;
-
     end
-
-    //==========================================================================
-    // Monitor
-    //==========================================================================
-    initial begin
-
-        $monitor("[%0t] rst=%0b src_sel=%0b spike_out=%h",
-                 $time,
-                 rst,
-                 src_sel,
-                 spike_out);
-
-    end
-
 endmodule
