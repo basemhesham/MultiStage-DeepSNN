@@ -38,15 +38,15 @@ module conv_Adder_shaaban_top #(
     //-------------------------------------------------------------------------
     // Shaaban Parameters
     //-------------------------------------------------------------------------
-    input  logic signed [DATA_WIDTH-1:0] conv_bias_param   [0:N_SHAABAN-1], // Usually zero
-    input  logic signed [DATA_WIDTH-1:0] mult_weight_param [0:N_SHAABAN-1],
-    input  logic signed [DATA_WIDTH-1:0] add_weight_param  [0:N_SHAABAN-1],
+    input  wire logic signed [DATA_WIDTH-1:0] conv_bias_param   [0:N_SHAABAN-1], // Usually zero
+    input  wire logic signed [DATA_WIDTH-1:0] mult_weight_param [0:N_SHAABAN-1],
+    input  wire logic signed [DATA_WIDTH-1:0] add_weight_param  [0:N_SHAABAN-1],
 
     //-------------------------------------------------------------------------
     // Convolution Inputs
     //-------------------------------------------------------------------------
-    input  logic signed [DATA_WIDTH-1:0] pixels_mapped  [0:N_TREES-1][0:N_SHAABAN-1][0:8],
-    input  logic signed [DATA_WIDTH-1:0] weights_mapped [0:N_TREES-1][0:N_SHAABAN-1][0:8],
+    input  wire logic signed [DATA_WIDTH-1:0] pixels_mapped  [0:N_TREES-1][0:N_SHAABAN-1][0:8],
+    input  wire logic signed [DATA_WIDTH-1:0] weights_mapped [0:N_TREES-1][0:N_SHAABAN-1][0:8],
 
     //-------------------------------------------------------------------------
     // Outputs

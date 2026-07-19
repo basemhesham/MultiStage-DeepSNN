@@ -53,16 +53,16 @@ module shaaban_adder_tree_top #(
     
     // Convolution Inputs
     // 12 adder trees × 32 MAC products per tree
-    input  logic signed [DATA_WIDTH-1:0] mac_in [0:N_TREES-1][0:31],
+    input  wire logic signed [DATA_WIDTH-1:0] mac_in [0:N_TREES-1][0:31],
 
     // Shaaban Parameters
-    input  logic signed [DATA_WIDTH-1:0] conv_bias_param   [0:N_SHAABAN-1], // always 0
-    input  logic signed [DATA_WIDTH-1:0] mult_weight_param [0:N_SHAABAN-1],
-    input  logic signed [DATA_WIDTH-1:0] add_weight_param  [0:N_SHAABAN-1],
+    input  wire logic signed [DATA_WIDTH-1:0] conv_bias_param   [0:N_SHAABAN-1], // always 0
+    input  wire logic signed [DATA_WIDTH-1:0] mult_weight_param [0:N_SHAABAN-1],
+    input  wire logic signed [DATA_WIDTH-1:0] add_weight_param  [0:N_SHAABAN-1],
 
     // Outputs
-    output logic [31:0] spike_out,                       // Final spike outputs
-    output logic [0:31] shaaban_spike_bus [0:N_SHAABAN-1]// Individual Shaaban spike buses
+    output wire logic [31:0] spike_out,                       // Final spike outputs
+    output wire logic [0:31] shaaban_spike_bus [0:N_SHAABAN-1]// Individual Shaaban spike buses
 );
 
     // Internal Signals

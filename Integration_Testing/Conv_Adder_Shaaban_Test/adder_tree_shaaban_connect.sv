@@ -55,7 +55,7 @@ module adder_tree_shaaban_connect #(
     input  logic [1:0]  src_sel,   // 00=Stage1  01=Stage2  10=Stage3
 
     // 12 trees × 32 MAC products from Convolution Array
-    input  logic signed [DATA_WIDTH-1:0] mac_in [0:N_TREES-1][0:31],
+    input  wire logic signed [DATA_WIDTH-1:0] mac_in [0:N_TREES-1][0:31],
 
     // Output bus to the 32 Shaaban Units (each carries 4 inputs)
     output logic signed [(INPUTS_PER_SHB*DATA_WIDTH)-1:0] shb_conv_bus [0:N_SHAABAN-1]
@@ -163,7 +163,7 @@ module adder_tree_shaaban_connect #(
             logic signed [(INPUTS_PER_SHB*DATA_WIDTH)-1:0] src_s1, src_s2, src_s3;
 
             for (p = 0; p < INPUTS_PER_SHB; p++) begin : map_sources
-                // Stage 1: 10 Taps + Correction
+                // Stage 1: 10 Taps + Correction 
                 assign src_s1[p*DATA_WIDTH +: DATA_WIDTH] = flat_s1[s * INPUTS_PER_SHB + p];
                 
                 // Stage 2: Tree Finals
