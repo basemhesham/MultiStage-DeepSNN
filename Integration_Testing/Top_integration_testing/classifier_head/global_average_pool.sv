@@ -16,6 +16,16 @@
 // For SAMPLE_COUNT=169, FRAC_BITS=9, RECIP_SHIFT=24 this has been verified
 // to exactly match the original integer division for every possible
 // accum value (0..SAMPLE_COUNT).
+//
+// *** PORT-DECLARATION FIX ***: inputs are now declared `input wire logic`
+// instead of plain `input logic`, matching the convention used elsewhere in
+// this codebase (fc2_layer, mapping_controller, etc). `wire` makes explicit
+// that these ports are driven externally by continuous assignment/net
+// connections, never procedurally assigned from inside this module.
+// Outputs (`pool_out`, `done`, `busy`) are left as plain `output logic`
+// since they are driven with non-blocking assignments inside the
+// always_ff block below — declaring them `wire` would be incorrect, since
+// `wire` cannot be the target of a procedural (`<=`) assignment.
 //------------------------------------------------------------------------------
 module global_average_pool #(
     parameter int DATA_WIDTH   = 18,   // Width of output data
@@ -29,17 +39,17 @@ module global_average_pool #(
     // SAMPLE_COUNT changes and re-verify.
     parameter int RECIP_SHIFT  = 24
 )(
-    input  logic                         clk,
-    input  logic                         rst_n,
-    input  logic                         clear,
+    input  wire logic                        clk,
+    input  wire logic                        rst_n,
+    input  wire logic                        clear,
 
     // Incoming spike stream
-    input  logic                         sample_valid,
-    input  logic [$clog2(CHANNELS)-1:0]  sample_channel,
-    input  logic                         sample_spike,
+    input  wire logic                        sample_valid,
+    input  wire logic [$clog2(CHANNELS)-1:0] sample_channel,
+    input  wire logic                        sample_spike,
 
     // Starts the averaging process
-    input  logic                         start,
+    input  wire logic                        start,
 
     // GAP output for every channel
     output logic signed [DATA_WIDTH-1:0] pool_out [0:CHANNELS-1],
@@ -58,8 +68,9 @@ module global_average_pool #(
     // Precomputed reciprocal constant: round(2^RECIP_SHIFT / SAMPLE_COUNT).
     // This division is on compile-time constants only -> constant-folded by
     // the tool at elaboration, it does NOT synthesize into a hardware divider.
-    localparam longint unsigned RECIP_CONST =
-        ((longint'(1) << RECIP_SHIFT) + (SAMPLE_COUNT / 2)) / SAMPLE_COUNT;
+    
+    localparam int unsigned RECIP_CONST =
+        (((1 << RECIP_SHIFT) + (SAMPLE_COUNT / 2)) / SAMPLE_COUNT);
 
     // Width of the multiply-shift product
     localparam int MULT_W = CALC_W + RECIP_SHIFT + 1;
@@ -98,7 +109,7 @@ module global_average_pool #(
 
         // Multiply by the precomputed reciprocal (single-cycle multiplier,
         // no divider in hardware)
-        recip_product = scaled_count * RECIP_CONST;
+        recip_product = 60'(scaled_count * RECIP_CONST);
 
         // Shift back down to remove the reciprocal scaling
         average_value = recip_product[CALC_W + RECIP_SHIFT - 1 -: CALC_W];

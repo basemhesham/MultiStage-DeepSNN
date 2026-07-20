@@ -1,8 +1,26 @@
 // Generated SystemVerilog mapping logic
+//===========================================================
+// File        : frame_input_mapping.sv
+// Purpose     : Maps flat frame input (in[]) to 12 output windows
+//               (conv[12][9]), each holding a 3x3 im2col-style patch,
+//               selected based on the current frame offset.
+// Used in     : CNN Accelerator top-level (frame/window mapping stage)
+//===========================================================
+// Written by  : 
+// Editor      : Manar Abdo
+// Last edit   : 2026-07-07
+//===========================================================
 module frame_input_mapping (
-    input logic [2:0] frame,
-    input logic in [40],
-    output logic  conv [12][9]
+
+    //=======================================================
+    // Inputs
+    //=======================================================
+    input wire logic [2:0] frame,
+    input wire logic       in [40],
+    //=======================================================
+    // Outputs
+    //=======================================================
+    output     logic       conv [12][9]
 );
 
 always_comb begin
