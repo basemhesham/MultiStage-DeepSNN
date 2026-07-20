@@ -39,27 +39,27 @@ module bias_bn_params #(
 (* keep_hierarchy = "yes" *)
     generate
         if (1) begin : bn1_weight_table
-            `include "BN1_WEIGHTS.sv"
+            `include "../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN1_WEIGHTS.sv"
         end
 
         if (1) begin : bn1_bias_table
-            `include "BN1_BIAS.sv"
+            `include "../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN1_BIAS.sv"
         end
 
         if (1) begin : bn2_weight_table
-            `include "BN2_WEIGHTS.sv"
+            `include "../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN2_WEIGHTS.sv"
         end
 
         if (1) begin : bn2_bias_table
-            `include "BN2_BIAS.sv"
+            `include "../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN2_BIAS.sv"
         end
 
         if (1) begin : bn3_weight_table
-            `include "BN3_WEIGHTS.sv"
+            `include "../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN3_WEIGHTS.sv"
         end
 
         if (1) begin : bn3_bias_table
-            `include "BN3_BIAS.sv"
+            `include "../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN3_BIAS.sv"
         end
     endgenerate
 
