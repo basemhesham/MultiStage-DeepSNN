@@ -1,7 +1,7 @@
 import conv3_pkg::*;
  module CONV3_W_MAP_OPT (
   input  logic [6:0]  filter,
-  output logic [17:0] conv9_in [3456]
+  output logic signed [17:0] conv9_in [3456]
  );
  
 always@(*)begin
