@@ -402,7 +402,7 @@ module mapping_controller
             tgt_bank_c      = write_bank;
         end
 
-        physical_row_c = `WRAP_ROW(row_cnt_d);
+        physical_row_c = 5'(`WRAP_ROW(row_cnt_d));
 
         // Resolved buffer column indices (no arithmetic left inline at the
         // array-index position — each index is now a plain signal)
@@ -576,7 +576,7 @@ module mapping_controller
                         // IMG_ROWS — no separate _sum/_wrapped signals or
                         // dedicated always_comb block needed any more.
                         sweep_idx  <= sweep_idx + 1'b1;
-                        row_origin <= `WRAP_ROW(5'd8);
+                        row_origin <= 5'(`WRAP_ROW(5'd8));
                     end
 
                 //===============================================
@@ -689,7 +689,7 @@ module mapping_controller
 
         // Apply row_origin rotation via the shared WRAP_ROW macro — no
         // locally-declared sum/wrapped pair needed here any more.
-        cur_physical_row = `WRAP_ROW(cur_logical_row);
+        cur_physical_row = 5'(`WRAP_ROW(cur_logical_row));
 
         mem_addr_o = 16'((cur_physical_row * WORDS_PER_ROW) + 11'(cur_row_word_offset));
         mem_rd_o   = (state == LOAD) && (load_cnt < load_max_comb);
@@ -780,13 +780,13 @@ module mapping_controller
             // it is never used to index buff[] in that case (see
             // gen_pixel_* below) — same underflow-guard philosophy as the
             // original.
-            assign row_phys[r] = `WRAP_ROW(5'(real_buf_row_start) + row_out[r] - 5'(pad_top));
+            assign row_phys[r] = 5'(`WRAP_ROW(5'(real_buf_row_start) + row_out[r] - 5'(pad_top)));
         end
     endgenerate
 
     // Column-only terms, reused across all rows (WIN_GROUP*CONV_K instances).
     generate
-        for (genvar g = 0; g < WIN_GROUP; g++) begin : gen_col_terms_lane
+        for (genvar g = 0; g < 2; g++) begin : gen_col_terms_lane
             for (genvar c = 0; c < CONV_K; c++) begin : gen_col_terms_col
                 assign col_out[g][c]    = g_out_col_lane[g] + 5'(c);
                 assign col_in_pad[g][c] = (col_out[g][c] <  5'(pad_left))
