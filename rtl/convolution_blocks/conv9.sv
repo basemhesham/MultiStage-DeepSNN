@@ -27,10 +27,10 @@ module conv9 #(
     //-------------------------------------------------------------------
     // Port Declarations
     //-------------------------------------------------------------------
-    input  logic                      CLK                , // Clock signal
-    input  logic signed [PIXEL_W-1:0] P         [0:8]    , // Pixel operand taps (9-wide)
-    input  logic signed [PIXEL_W-1:0] Q         [0:8]    , // Coefficient taps (9-wide)
-    output logic signed [OUT_W-1:0]   Pixel_Out            // Truncated convolution result
+    input  wire logic                      CLK                , // Clock signal
+    input  wire logic signed [PIXEL_W-1:0] P         [0:8]    , // Pixel operand taps (9-wide)
+    input  wire logic signed [PIXEL_W-1:0] Q         [0:8]    , // Coefficient taps (9-wide)
+    output wire logic signed [OUT_W-1:0]   Pixel_Out            // Truncated convolution result
 );
 
     //-------------------------------------------------------------------
