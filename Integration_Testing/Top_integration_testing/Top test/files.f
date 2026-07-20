@@ -30,6 +30,9 @@
 ../adder_tree/adder_layer4.sv
 ../adder_tree/adder_tree_10_4_1_1.sv
 # ../Shabaan_Adder_connect/ext_sum_correction.sv
+../Shabaan_Adder_connect/order_correction.sv
+../Shabaan_Adder_connect/sum_correction.sv
+../Shabaan_Adder_connect/mapping_muxing.sv
 ../Shabaan_Adder_connect/adder_tree_shaaban_connect.sv
 ../Shabaan_Unit/Batch_Norm.v
 ../Shabaan_Unit/conv_bias_Relu.v
