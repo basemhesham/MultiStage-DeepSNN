@@ -1,1 +1,3 @@
-Top test/test/*
+Top test/*
+!Top test/run.do
+!Top test/files.f
