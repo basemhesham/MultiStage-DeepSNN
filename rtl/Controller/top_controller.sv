@@ -17,7 +17,7 @@ module top_controller #(
     output logic [2:0]    frame,//signal that defines which frame we are in(16 frames)
     output logic          stage_sel,//When asserted, it indicates that we are in a stage.
     output logic [5:0]    conv2_filter,//Which fitler in stage2 we are using
-    output logic [11:0]    conv3_filter,//which filter in stage3 we are using
+    output logic [6:0]    conv3_filter,//which filter in stage3 we are using
     output logic [5:0]    rd_mem_adderss,//read address from pixel memory
     output logic [5:0]    wr_mem_adderss,//write address to spike memory
     output logic          zero,//not used
@@ -202,18 +202,6 @@ module top_controller #(
             frag_row              <= '0;
             frag_col              <= '0;
             temporal_counter      <= '0;
-        end else if (rst) begin
-            cs                    <= IDLE;
-            stage1_pos            <= '0;
-            stage1_local_row_cnt  <= '0;
-            stage1_local_col_cnt  <= '0;
-            stage2_frame_idx      <= '0;
-            conv2_filter          <= '0;
-            conv3_filter          <= '0;
-            fragment_counter      <= '0;
-            frag_row              <= '0;
-            frag_col              <= '0;
-            temporal_counter      <= '0;
         end else begin
             cs <= ns;
 
@@ -305,9 +293,6 @@ module top_controller #(
         if (!arst_n) begin
             fetch_en_i    <= 1'b0;
             fetch_en_sent <= 1'b0;
-        end else if (rst) begin
-            fetch_en_i    <= 1'b0;
-            fetch_en_sent <= 1'b0;
         end else begin
             fetch_en_i <= 1'b0;
             if (cs == CLEAR_STAGE2_WORD && done_load_o && !fetch_en_sent) begin
@@ -371,7 +356,7 @@ module top_controller #(
                 rd_enable      = 1'b1;
                 rd_mem_adderss = 6'd1;
                 wr_mem_adderss = 6'd2;
-                mem_enable[conv3_filter] = 1'b1;
+                mem_enable[{5'd0,conv3_filter}] = 1'b1;
                 gap_valid      = temporal_last;
             end
 

@@ -9,10 +9,10 @@ module top_weight_mapper #(
     output logic signed [PIXEL_W-1:0] weights_mapped [0:11][0:31][0:8]
 );
 
-    logic [PIXEL_W-1:0] stage1_weights [3456];
-    logic [PIXEL_W-1:0] stage2_weights [3456];
-    logic [PIXEL_W-1:0] stage3_weights [3456];
-    logic [PIXEL_W-1:0] active_weights [3456];
+    logic signed [PIXEL_W-1:0] stage1_weights [3456];
+    logic signed [PIXEL_W-1:0] stage2_weights [3456];
+    logic signed [PIXEL_W-1:0] stage3_weights [3456];
+    logic signed [PIXEL_W-1:0] active_weights [3456];
 
     CONV1_W_MAP_OPT u_w1 (
         .conv9_in (stage1_weights)
