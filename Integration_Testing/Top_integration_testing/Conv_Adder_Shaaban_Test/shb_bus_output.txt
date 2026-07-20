@@ -1,0 +1,3402 @@
+--- RTL MODEL OUTPUT (100 Cycles) ---
+
+--- Cycle   0 ---
+Shaaban[ 0] | In3:2 In2:2 In1:2 In0:1
+Shaaban[ 1] | In3:-28 In2:-28 In1:-34 In0:-34
+Shaaban[ 2] | In3:51 In2:50 In1:48 In0:47
+Shaaban[ 3] | In3:-31 In2:-29 In1:-16 In0:-16
+Shaaban[ 4] | In3:40 In2:40 In1:41 In0:41
+Shaaban[ 5] | In3:37 In2:38 In1:39 In0:39
+Shaaban[ 6] | In3:-50 In2:-50 In1:-51 In0:-51
+Shaaban[ 7] | In3:7 In2:7 In1:8 In0:7
+Shaaban[ 8] | In3:-60 In2:-60 In1:-59 In0:-59
+Shaaban[ 9] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[10] | In3:9 In2:9 In1:9 In0:10
+Shaaban[11] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[12] | In3:-3 In2:-3 In1:-4 In0:-3
+Shaaban[13] | In3:-57 In2:-58 In1:-59 In0:-59
+Shaaban[14] | In3:30 In2:31 In1:30 In0:30
+Shaaban[15] | In3:-36 In2:-36 In1:-36 In0:-37
+Shaaban[16] | In3:-6 In2:-7 In1:-7 In0:-6
+Shaaban[17] | In3:-71 In2:-71 In1:-71 In0:-71
+Shaaban[18] | In3:2 In2:3 In1:3 In0:3
+Shaaban[19] | In3:-3 In2:-3 In1:-4 In0:-3
+Shaaban[20] | In3:-75 In2:-74 In1:-71 In0:-70
+Shaaban[21] | In3:44 In2:44 In1:48 In0:48
+Shaaban[22] | In3:54 In2:54 In1:54 In0:54
+Shaaban[23] | In3:-79 In2:-78 In1:-60 In0:-61
+Shaaban[24] | In3:-6 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-22 In2:-23 In1:-22 In0:-22
+Shaaban[26] | In3:47 In2:47 In1:47 In0:47
+Shaaban[27] | In3:13 In2:13 In1:11 In0:10
+Shaaban[28] | In3:-60 In2:-61 In1:-61 In0:-62
+Shaaban[29] | In3:-25 In2:-26 In1:-32 In0:-32
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:46 In2:46 In1:46 In0:46
+
+--- Cycle   1 ---
+Shaaban[ 0] | In3:1 In2:1 In1:1 In0:1
+Shaaban[ 1] | In3:-27 In2:-27 In1:-32 In0:-33
+Shaaban[ 2] | In3:51 In2:51 In1:49 In0:48
+Shaaban[ 3] | In3:-31 In2:-30 In1:-18 In0:-18
+Shaaban[ 4] | In3:41 In2:41 In1:40 In0:41
+Shaaban[ 5] | In3:38 In2:38 In1:38 In0:39
+Shaaban[ 6] | In3:-50 In2:-50 In1:-50 In0:-50
+Shaaban[ 7] | In3:7 In2:7 In1:8 In0:7
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-4 In2:-3 In1:-2 In0:-3
+Shaaban[10] | In3:9 In2:10 In1:11 In0:10
+Shaaban[11] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[12] | In3:-4 In2:-2 In1:-3 In0:-4
+Shaaban[13] | In3:-58 In2:-58 In1:-59 In0:-58
+Shaaban[14] | In3:30 In2:31 In1:30 In0:30
+Shaaban[15] | In3:-37 In2:-36 In1:-35 In0:-36
+Shaaban[16] | In3:-7 In2:-6 In1:-7 In0:-7
+Shaaban[17] | In3:-71 In2:-71 In1:-71 In0:-70
+Shaaban[18] | In3:2 In2:3 In1:3 In0:3
+Shaaban[19] | In3:-3 In2:-3 In1:-3 In0:-4
+Shaaban[20] | In3:-75 In2:-75 In1:-71 In0:-71
+Shaaban[21] | In3:44 In2:44 In1:48 In0:48
+Shaaban[22] | In3:54 In2:54 In1:55 In0:54
+Shaaban[23] | In3:-80 In2:-80 In1:-62 In0:-61
+Shaaban[24] | In3:-6 In2:-6 In1:-5 In0:-6
+Shaaban[25] | In3:-22 In2:-22 In1:-22 In0:-22
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:13 In2:12 In1:10 In0:10
+Shaaban[28] | In3:-60 In2:-61 In1:-61 In0:-62
+Shaaban[29] | In3:-25 In2:-26 In1:-31 In0:-31
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:46 In2:46 In1:46 In0:47
+
+--- Cycle   2 ---
+Shaaban[ 0] | In3:2 In2:2 In1:2 In0:1
+Shaaban[ 1] | In3:-27 In2:-27 In1:-32 In0:-32
+Shaaban[ 2] | In3:52 In2:51 In1:48 In0:48
+Shaaban[ 3] | In3:-32 In2:-31 In1:-18 In0:-18
+Shaaban[ 4] | In3:41 In2:41 In1:40 In0:40
+Shaaban[ 5] | In3:38 In2:38 In1:39 In0:38
+Shaaban[ 6] | In3:-49 In2:-50 In1:-51 In0:-51
+Shaaban[ 7] | In3:6 In2:7 In1:8 In0:8
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[10] | In3:10 In2:10 In1:10 In0:10
+Shaaban[11] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[12] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[13] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[14] | In3:31 In2:31 In1:30 In0:29
+Shaaban[15] | In3:-36 In2:-37 In1:-37 In0:-36
+Shaaban[16] | In3:-6 In2:-7 In1:-7 In0:-7
+Shaaban[17] | In3:-72 In2:-72 In1:-71 In0:-71
+Shaaban[18] | In3:3 In2:2 In1:3 In0:3
+Shaaban[19] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[20] | In3:-75 In2:-75 In1:-71 In0:-71
+Shaaban[21] | In3:44 In2:44 In1:47 In0:48
+Shaaban[22] | In3:53 In2:54 In1:54 In0:53
+Shaaban[23] | In3:-81 In2:-81 In1:-64 In0:-63
+Shaaban[24] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-22 In1:-22 In0:-22
+Shaaban[26] | In3:47 In2:47 In1:47 In0:47
+Shaaban[27] | In3:13 In2:12 In1:11 In0:11
+Shaaban[28] | In3:-61 In2:-61 In1:-61 In0:-62
+Shaaban[29] | In3:-25 In2:-26 In1:-30 In0:-31
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:46 In2:47 In1:47 In0:46
+
+--- Cycle   3 ---
+Shaaban[ 0] | In3:3 In2:1 In1:1 In0:1
+Shaaban[ 1] | In3:-26 In2:-26 In1:-31 In0:-32
+Shaaban[ 2] | In3:51 In2:51 In1:49 In0:49
+Shaaban[ 3] | In3:-34 In2:-33 In1:-20 In0:-18
+Shaaban[ 4] | In3:40 In2:41 In1:41 In0:40
+Shaaban[ 5] | In3:37 In2:38 In1:38 In0:39
+Shaaban[ 6] | In3:-50 In2:-50 In1:-50 In0:-50
+Shaaban[ 7] | In3:7 In2:6 In1:7 In0:8
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-3 In2:-3 In1:-3 In0:-2
+Shaaban[10] | In3:10 In2:10 In1:10 In0:10
+Shaaban[11] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[12] | In3:-3 In2:-3 In1:-4 In0:-3
+Shaaban[13] | In3:-58 In2:-58 In1:-57 In0:-57
+Shaaban[14] | In3:31 In2:30 In1:30 In0:30
+Shaaban[15] | In3:-37 In2:-36 In1:-36 In0:-36
+Shaaban[16] | In3:-7 In2:-7 In1:-7 In0:-6
+Shaaban[17] | In3:-71 In2:-71 In1:-70 In0:-71
+Shaaban[18] | In3:2 In2:2 In1:2 In0:3
+Shaaban[19] | In3:-3 In2:-3 In1:-4 In0:-3
+Shaaban[20] | In3:-76 In2:-76 In1:-71 In0:-72
+Shaaban[21] | In3:43 In2:43 In1:46 In0:46
+Shaaban[22] | In3:54 In2:53 In1:54 In0:54
+Shaaban[23] | In3:-83 In2:-82 In1:-65 In0:-65
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-22 In2:-22 In1:-22 In0:-22
+Shaaban[26] | In3:47 In2:47 In1:46 In0:47
+Shaaban[27] | In3:13 In2:14 In1:11 In0:11
+Shaaban[28] | In3:-61 In2:-61 In1:-62 In0:-62
+Shaaban[29] | In3:-25 In2:-24 In1:-30 In0:-31
+Shaaban[30] | In3:-25 In2:-25 In1:-26 In0:-25
+Shaaban[31] | In3:46 In2:46 In1:46 In0:46
+
+--- Cycle   4 ---
+Shaaban[ 0] | In3:2 In2:2 In1:2 In0:2
+Shaaban[ 1] | In3:-26 In2:-26 In1:-31 In0:-31
+Shaaban[ 2] | In3:52 In2:52 In1:49 In0:49
+Shaaban[ 3] | In3:-35 In2:-34 In1:-21 In0:-20
+Shaaban[ 4] | In3:40 In2:40 In1:41 In0:41
+Shaaban[ 5] | In3:38 In2:38 In1:38 In0:38
+Shaaban[ 6] | In3:-49 In2:-50 In1:-51 In0:-51
+Shaaban[ 7] | In3:7 In2:6 In1:7 In0:7
+Shaaban[ 8] | In3:-59 In2:-59 In1:-60 In0:-59
+Shaaban[ 9] | In3:-2 In2:-3 In1:-2 In0:-2
+Shaaban[10] | In3:10 In2:10 In1:10 In0:10
+Shaaban[11] | In3:-6 In2:-7 In1:-5 In0:-5
+Shaaban[12] | In3:-4 In2:-3 In1:-3 In0:-4
+Shaaban[13] | In3:-57 In2:-58 In1:-58 In0:-58
+Shaaban[14] | In3:31 In2:31 In1:30 In0:30
+Shaaban[15] | In3:-37 In2:-36 In1:-36 In0:-36
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-72 In2:-71 In1:-71 In0:-70
+Shaaban[18] | In3:2 In2:2 In1:3 In0:3
+Shaaban[19] | In3:-3 In2:-3 In1:-3 In0:-4
+Shaaban[20] | In3:-76 In2:-76 In1:-72 In0:-72
+Shaaban[21] | In3:43 In2:43 In1:45 In0:46
+Shaaban[22] | In3:54 In2:53 In1:54 In0:54
+Shaaban[23] | In3:-85 In2:-85 In1:-67 In0:-65
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-6
+Shaaban[25] | In3:-22 In2:-23 In1:-22 In0:-23
+Shaaban[26] | In3:48 In2:46 In1:47 In0:48
+Shaaban[27] | In3:14 In2:13 In1:11 In0:11
+Shaaban[28] | In3:-60 In2:-60 In1:-62 In0:-61
+Shaaban[29] | In3:-24 In2:-25 In1:-30 In0:-29
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-24
+Shaaban[31] | In3:45 In2:46 In1:46 In0:46
+
+--- Cycle   5 ---
+Shaaban[ 0] | In3:3 In2:2 In1:1 In0:1
+Shaaban[ 1] | In3:-25 In2:-26 In1:-31 In0:-31
+Shaaban[ 2] | In3:52 In2:52 In1:49 In0:50
+Shaaban[ 3] | In3:-36 In2:-36 In1:-23 In0:-21
+Shaaban[ 4] | In3:40 In2:40 In1:41 In0:41
+Shaaban[ 5] | In3:38 In2:38 In1:38 In0:37
+Shaaban[ 6] | In3:-50 In2:-50 In1:-50 In0:-51
+Shaaban[ 7] | In3:7 In2:6 In1:7 In0:7
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-60
+Shaaban[ 9] | In3:-3 In2:-3 In1:-3 In0:-2
+Shaaban[10] | In3:10 In2:9 In1:9 In0:10
+Shaaban[11] | In3:-7 In2:-6 In1:-5 In0:-6
+Shaaban[12] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[13] | In3:-57 In2:-58 In1:-57 In0:-58
+Shaaban[14] | In3:31 In2:31 In1:30 In0:30
+Shaaban[15] | In3:-36 In2:-36 In1:-36 In0:-37
+Shaaban[16] | In3:-7 In2:-6 In1:-7 In0:-8
+Shaaban[17] | In3:-71 In2:-72 In1:-71 In0:-71
+Shaaban[18] | In3:2 In2:2 In1:3 In0:2
+Shaaban[19] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[20] | In3:-77 In2:-76 In1:-72 In0:-72
+Shaaban[21] | In3:43 In2:43 In1:45 In0:45
+Shaaban[22] | In3:54 In2:53 In1:54 In0:54
+Shaaban[23] | In3:-87 In2:-86 In1:-69 In0:-68
+Shaaban[24] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[25] | In3:-22 In2:-22 In1:-22 In0:-22
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:14 In2:13 In1:12 In0:11
+Shaaban[28] | In3:-60 In2:-60 In1:-61 In0:-61
+Shaaban[29] | In3:-23 In2:-25 In1:-29 In0:-29
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:46 In2:46 In1:46 In0:47
+
+--- Cycle   6 ---
+Shaaban[ 0] | In3:2 In2:2 In1:1 In0:2
+Shaaban[ 1] | In3:-25 In2:-25 In1:-30 In0:-30
+Shaaban[ 2] | In3:53 In2:53 In1:49 In0:48
+Shaaban[ 3] | In3:-36 In2:-37 In1:-24 In0:-23
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:38 In2:38 In1:38 In0:38
+Shaaban[ 6] | In3:-49 In2:-51 In1:-51 In0:-50
+Shaaban[ 7] | In3:7 In2:6 In1:8 In0:7
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-4 In2:-3 In1:-3 In0:-3
+Shaaban[10] | In3:9 In2:10 In1:10 In0:10
+Shaaban[11] | In3:-6 In2:-7 In1:-6 In0:-5
+Shaaban[12] | In3:-3 In2:-3 In1:-4 In0:-3
+Shaaban[13] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[14] | In3:31 In2:31 In1:30 In0:30
+Shaaban[15] | In3:-36 In2:-37 In1:-37 In0:-36
+Shaaban[16] | In3:-7 In2:-7 In1:-7 In0:-7
+Shaaban[17] | In3:-71 In2:-71 In1:-70 In0:-72
+Shaaban[18] | In3:1 In2:2 In1:2 In0:2
+Shaaban[19] | In3:-3 In2:-3 In1:-4 In0:-4
+Shaaban[20] | In3:-77 In2:-76 In1:-73 In0:-72
+Shaaban[21] | In3:43 In2:43 In1:45 In0:45
+Shaaban[22] | In3:54 In2:53 In1:55 In0:54
+Shaaban[23] | In3:-88 In2:-87 In1:-70 In0:-69
+Shaaban[24] | In3:-6 In2:-5 In1:-6 In0:-5
+Shaaban[25] | In3:-23 In2:-22 In1:-22 In0:-22
+Shaaban[26] | In3:47 In2:47 In1:47 In0:47
+Shaaban[27] | In3:14 In2:14 In1:11 In0:11
+Shaaban[28] | In3:-60 In2:-60 In1:-61 In0:-61
+Shaaban[29] | In3:-24 In2:-23 In1:-29 In0:-29
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:46 In2:46 In1:46 In0:47
+
+--- Cycle   7 ---
+Shaaban[ 0] | In3:2 In2:2 In1:1 In0:2
+Shaaban[ 1] | In3:-25 In2:-25 In1:-30 In0:-30
+Shaaban[ 2] | In3:53 In2:52 In1:49 In0:49
+Shaaban[ 3] | In3:-38 In2:-37 In1:-24 In0:-24
+Shaaban[ 4] | In3:41 In2:41 In1:40 In0:40
+Shaaban[ 5] | In3:38 In2:38 In1:38 In0:38
+Shaaban[ 6] | In3:-50 In2:-50 In1:-50 In0:-50
+Shaaban[ 7] | In3:5 In2:6 In1:8 In0:7
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[10] | In3:9 In2:9 In1:10 In0:9
+Shaaban[11] | In3:-7 In2:-7 In1:-5 In0:-5
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-4
+Shaaban[13] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[14] | In3:31 In2:31 In1:30 In0:30
+Shaaban[15] | In3:-37 In2:-37 In1:-36 In0:-36
+Shaaban[16] | In3:-7 In2:-7 In1:-6 In0:-7
+Shaaban[17] | In3:-71 In2:-72 In1:-71 In0:-71
+Shaaban[18] | In3:2 In2:2 In1:2 In0:3
+Shaaban[19] | In3:-4 In2:-3 In1:-4 In0:-4
+Shaaban[20] | In3:-77 In2:-77 In1:-74 In0:-73
+Shaaban[21] | In3:43 In2:43 In1:45 In0:45
+Shaaban[22] | In3:54 In2:54 In1:55 In0:54
+Shaaban[23] | In3:-89 In2:-88 In1:-71 In0:-71
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[25] | In3:-22 In2:-22 In1:-22 In0:-22
+Shaaban[26] | In3:47 In2:47 In1:46 In0:47
+Shaaban[27] | In3:14 In2:14 In1:11 In0:12
+Shaaban[28] | In3:-61 In2:-60 In1:-61 In0:-61
+Shaaban[29] | In3:-24 In2:-23 In1:-28 In0:-29
+Shaaban[30] | In3:-24 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:46 In2:45 In1:46 In0:46
+
+--- Cycle   8 ---
+Shaaban[ 0] | In3:2 In2:2 In1:1 In0:2
+Shaaban[ 1] | In3:-23 In2:-23 In1:-29 In0:-30
+Shaaban[ 2] | In3:54 In2:53 In1:50 In0:49
+Shaaban[ 3] | In3:-39 In2:-39 In1:-25 In0:-25
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:38 In2:38 In1:38 In0:39
+Shaaban[ 6] | In3:-49 In2:-50 In1:-50 In0:-50
+Shaaban[ 7] | In3:5 In2:6 In1:8 In0:7
+Shaaban[ 8] | In3:-58 In2:-59 In1:-60 In0:-59
+Shaaban[ 9] | In3:-4 In2:-3 In1:-3 In0:-3
+Shaaban[10] | In3:10 In2:10 In1:10 In0:11
+Shaaban[11] | In3:-7 In2:-6 In1:-6 In0:-6
+Shaaban[12] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[13] | In3:-57 In2:-57 In1:-58 In0:-57
+Shaaban[14] | In3:30 In2:31 In1:30 In0:31
+Shaaban[15] | In3:-37 In2:-37 In1:-36 In0:-36
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-72 In2:-72 In1:-72 In0:-71
+Shaaban[18] | In3:3 In2:2 In1:3 In0:3
+Shaaban[19] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[20] | In3:-77 In2:-77 In1:-73 In0:-73
+Shaaban[21] | In3:42 In2:43 In1:45 In0:45
+Shaaban[22] | In3:53 In2:54 In1:54 In0:53
+Shaaban[23] | In3:-91 In2:-90 In1:-72 In0:-72
+Shaaban[24] | In3:-6 In2:-6 In1:-6 In0:-5
+Shaaban[25] | In3:-22 In2:-23 In1:-22 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:47 In0:47
+Shaaban[27] | In3:14 In2:14 In1:13 In0:12
+Shaaban[28] | In3:-61 In2:-60 In1:-62 In0:-60
+Shaaban[29] | In3:-22 In2:-22 In1:-28 In0:-28
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:46 In2:46 In1:46 In0:46
+
+--- Cycle   9 ---
+Shaaban[ 0] | In3:2 In2:2 In1:1 In0:2
+Shaaban[ 1] | In3:-23 In2:-23 In1:-29 In0:-29
+Shaaban[ 2] | In3:53 In2:53 In1:49 In0:50
+Shaaban[ 3] | In3:-41 In2:-40 In1:-26 In0:-26
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:38 In2:39 In1:38 In0:38
+Shaaban[ 6] | In3:-50 In2:-49 In1:-50 In0:-50
+Shaaban[ 7] | In3:5 In2:6 In1:7 In0:6
+Shaaban[ 8] | In3:-58 In2:-58 In1:-60 In0:-60
+Shaaban[ 9] | In3:-3 In2:-4 In1:-2 In0:-2
+Shaaban[10] | In3:10 In2:10 In1:10 In0:10
+Shaaban[11] | In3:-6 In2:-7 In1:-6 In0:-5
+Shaaban[12] | In3:-4 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-58 In2:-57 In1:-58 In0:-58
+Shaaban[14] | In3:30 In2:30 In1:31 In0:30
+Shaaban[15] | In3:-36 In2:-36 In1:-36 In0:-37
+Shaaban[16] | In3:-7 In2:-6 In1:-7 In0:-7
+Shaaban[17] | In3:-72 In2:-71 In1:-71 In0:-70
+Shaaban[18] | In3:2 In2:2 In1:3 In0:3
+Shaaban[19] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[20] | In3:-78 In2:-78 In1:-74 In0:-74
+Shaaban[21] | In3:42 In2:42 In1:44 In0:44
+Shaaban[22] | In3:53 In2:53 In1:54 In0:53
+Shaaban[23] | In3:-92 In2:-92 In1:-74 In0:-73
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-23 In2:-22 In1:-22 In0:-22
+Shaaban[26] | In3:47 In2:47 In1:47 In0:47
+Shaaban[27] | In3:15 In2:15 In1:12 In0:12
+Shaaban[28] | In3:-61 In2:-60 In1:-62 In0:-61
+Shaaban[29] | In3:-22 In2:-23 In1:-27 In0:-28
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:46 In2:46 In1:46 In0:46
+
+--- Cycle  10 ---
+Shaaban[ 0] | In3:2 In2:3 In1:2 In0:3
+Shaaban[ 1] | In3:-17 In2:-17 In1:-22 In0:-23
+Shaaban[ 2] | In3:58 In2:58 In1:55 In0:55
+Shaaban[ 3] | In3:-58 In2:-57 In1:-44 In0:-43
+Shaaban[ 4] | In3:40 In2:40 In1:39 In0:40
+Shaaban[ 5] | In3:38 In2:37 In1:38 In0:38
+Shaaban[ 6] | In3:-49 In2:-48 In1:-50 In0:-49
+Shaaban[ 7] | In3:4 In2:4 In1:6 In0:6
+Shaaban[ 8] | In3:-58 In2:-58 In1:-60 In0:-60
+Shaaban[ 9] | In3:-4 In2:-4 In1:-3 In0:-4
+Shaaban[10] | In3:9 In2:9 In1:9 In0:9
+Shaaban[11] | In3:-8 In2:-8 In1:-7 In0:-7
+Shaaban[12] | In3:-2 In2:-3 In1:-4 In0:-4
+Shaaban[13] | In3:-56 In2:-56 In1:-57 In0:-58
+Shaaban[14] | In3:32 In2:31 In1:30 In0:30
+Shaaban[15] | In3:-37 In2:-38 In1:-37 In0:-36
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-72 In2:-72 In1:-72 In0:-72
+Shaaban[18] | In3:1 In2:2 In1:2 In0:2
+Shaaban[19] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[20] | In3:-82 In2:-83 In1:-79 In0:-79
+Shaaban[21] | In3:38 In2:38 In1:40 In0:40
+Shaaban[22] | In3:53 In2:54 In1:54 In0:53
+Shaaban[23] | In3:-115 In2:-114 In1:-97 In0:-96
+Shaaban[24] | In3:-6 In2:-6 In1:-5 In0:-6
+Shaaban[25] | In3:-22 In2:-23 In1:-22 In0:-23
+Shaaban[26] | In3:47 In2:47 In1:47 In0:47
+Shaaban[27] | In3:17 In2:18 In1:15 In0:15
+Shaaban[28] | In3:-59 In2:-59 In1:-59 In0:-60
+Shaaban[29] | In3:-15 In2:-15 In1:-21 In0:-21
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:46 In2:46 In1:46 In0:46
+
+--- Cycle  11 ---
+Shaaban[ 0] | In3:3 In2:4 In1:3 In0:1
+Shaaban[ 1] | In3:-17 In2:-17 In1:-22 In0:-22
+Shaaban[ 2] | In3:59 In2:59 In1:55 In0:54
+Shaaban[ 3] | In3:-59 In2:-58 In1:-45 In0:-44
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:39
+Shaaban[ 5] | In3:38 In2:38 In1:37 In0:38
+Shaaban[ 6] | In3:-49 In2:-49 In1:-50 In0:-49
+Shaaban[ 7] | In3:4 In2:4 In1:5 In0:5
+Shaaban[ 8] | In3:-58 In2:-58 In1:-60 In0:-60
+Shaaban[ 9] | In3:-3 In2:-3 In1:-4 In0:-4
+Shaaban[10] | In3:9 In2:9 In1:9 In0:9
+Shaaban[11] | In3:-8 In2:-9 In1:-7 In0:-7
+Shaaban[12] | In3:-4 In2:-4 In1:-3 In0:-3
+Shaaban[13] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[14] | In3:31 In2:31 In1:30 In0:31
+Shaaban[15] | In3:-37 In2:-37 In1:-37 In0:-37
+Shaaban[16] | In3:-7 In2:-6 In1:-7 In0:-6
+Shaaban[17] | In3:-72 In2:-72 In1:-72 In0:-72
+Shaaban[18] | In3:1 In2:2 In1:2 In0:2
+Shaaban[19] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[20] | In3:-83 In2:-83 In1:-79 In0:-79
+Shaaban[21] | In3:38 In2:38 In1:40 In0:40
+Shaaban[22] | In3:53 In2:54 In1:54 In0:53
+Shaaban[23] | In3:-116 In2:-115 In1:-98 In0:-97
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-22
+Shaaban[26] | In3:47 In2:47 In1:47 In0:47
+Shaaban[27] | In3:18 In2:18 In1:15 In0:15
+Shaaban[28] | In3:-59 In2:-59 In1:-60 In0:-60
+Shaaban[29] | In3:-15 In2:-15 In1:-20 In0:-19
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:45 In2:46 In1:46 In0:46
+
+--- Cycle  12 ---
+Shaaban[ 0] | In3:3 In2:2 In1:2 In0:2
+Shaaban[ 1] | In3:-16 In2:-17 In1:-21 In0:-22
+Shaaban[ 2] | In3:59 In2:58 In1:55 In0:55
+Shaaban[ 3] | In3:-60 In2:-60 In1:-47 In0:-46
+Shaaban[ 4] | In3:40 In2:40 In1:41 In0:40
+Shaaban[ 5] | In3:38 In2:38 In1:38 In0:38
+Shaaban[ 6] | In3:-49 In2:-48 In1:-50 In0:-49
+Shaaban[ 7] | In3:4 In2:4 In1:5 In0:5
+Shaaban[ 8] | In3:-58 In2:-58 In1:-60 In0:-60
+Shaaban[ 9] | In3:-5 In2:-4 In1:-4 In0:-4
+Shaaban[10] | In3:8 In2:9 In1:10 In0:9
+Shaaban[11] | In3:-9 In2:-8 In1:-7 In0:-7
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-56 In2:-57 In1:-57 In0:-58
+Shaaban[14] | In3:31 In2:32 In1:30 In0:31
+Shaaban[15] | In3:-37 In2:-37 In1:-36 In0:-37
+Shaaban[16] | In3:-7 In2:-7 In1:-7 In0:-7
+Shaaban[17] | In3:-72 In2:-72 In1:-72 In0:-71
+Shaaban[18] | In3:2 In2:1 In1:2 In0:2
+Shaaban[19] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[20] | In3:-84 In2:-84 In1:-79 In0:-80
+Shaaban[21] | In3:37 In2:37 In1:39 In0:40
+Shaaban[22] | In3:53 In2:54 In1:54 In0:53
+Shaaban[23] | In3:-118 In2:-117 In1:-100 In0:-99
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-23 In2:-22 In1:-23 In0:-22
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:18 In2:17 In1:15 In0:15
+Shaaban[28] | In3:-59 In2:-59 In1:-60 In0:-60
+Shaaban[29] | In3:-14 In2:-14 In1:-20 In0:-20
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-25
+Shaaban[31] | In3:45 In2:46 In1:46 In0:45
+
+--- Cycle  13 ---
+Shaaban[ 0] | In3:3 In2:3 In1:3 In0:2
+Shaaban[ 1] | In3:-15 In2:-15 In1:-21 In0:-21
+Shaaban[ 2] | In3:60 In2:59 In1:56 In0:55
+Shaaban[ 3] | In3:-62 In2:-61 In1:-47 In0:-47
+Shaaban[ 4] | In3:40 In2:40 In1:41 In0:41
+Shaaban[ 5] | In3:37 In2:37 In1:38 In0:38
+Shaaban[ 6] | In3:-49 In2:-49 In1:-50 In0:-49
+Shaaban[ 7] | In3:4 In2:5 In1:5 In0:5
+Shaaban[ 8] | In3:-60 In2:-60 In1:-59 In0:-60
+Shaaban[ 9] | In3:-4 In2:-5 In1:-4 In0:-3
+Shaaban[10] | In3:10 In2:9 In1:10 In0:9
+Shaaban[11] | In3:-8 In2:-8 In1:-8 In0:-7
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-4
+Shaaban[13] | In3:-57 In2:-56 In1:-57 In0:-57
+Shaaban[14] | In3:31 In2:32 In1:31 In0:31
+Shaaban[15] | In3:-37 In2:-37 In1:-37 In0:-37
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-73 In2:-72 In1:-72 In0:-72
+Shaaban[18] | In3:1 In2:1 In1:1 In0:2
+Shaaban[19] | In3:-3 In2:-3 In1:-2 In0:-3
+Shaaban[20] | In3:-85 In2:-85 In1:-80 In0:-80
+Shaaban[21] | In3:37 In2:37 In1:39 In0:39
+Shaaban[22] | In3:53 In2:54 In1:53 In0:53
+Shaaban[23] | In3:-120 In2:-119 In1:-102 In0:-100
+Shaaban[24] | In3:-6 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-22 In2:-23 In1:-22 In0:-22
+Shaaban[26] | In3:47 In2:48 In1:46 In0:47
+Shaaban[27] | In3:18 In2:18 In1:16 In0:16
+Shaaban[28] | In3:-58 In2:-59 In1:-59 In0:-60
+Shaaban[29] | In3:-14 In2:-13 In1:-18 In0:-20
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:45 In2:46 In1:46 In0:45
+
+--- Cycle  14 ---
+Shaaban[ 0] | In3:3 In2:3 In1:3 In0:2
+Shaaban[ 1] | In3:-14 In2:-15 In1:-21 In0:-21
+Shaaban[ 2] | In3:60 In2:59 In1:55 In0:56
+Shaaban[ 3] | In3:-62 In2:-63 In1:-49 In0:-48
+Shaaban[ 4] | In3:40 In2:40 In1:41 In0:41
+Shaaban[ 5] | In3:37 In2:37 In1:38 In0:38
+Shaaban[ 6] | In3:-49 In2:-49 In1:-49 In0:-49
+Shaaban[ 7] | In3:4 In2:5 In1:5 In0:5
+Shaaban[ 8] | In3:-60 In2:-60 In1:-59 In0:-59
+Shaaban[ 9] | In3:-4 In2:-4 In1:-4 In0:-4
+Shaaban[10] | In3:9 In2:9 In1:9 In0:10
+Shaaban[11] | In3:-8 In2:-9 In1:-8 In0:-7
+Shaaban[12] | In3:-4 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-56 In2:-57 In1:-58 In0:-58
+Shaaban[14] | In3:32 In2:32 In1:31 In0:30
+Shaaban[15] | In3:-37 In2:-37 In1:-37 In0:-37
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-72 In2:-72 In1:-71 In0:-72
+Shaaban[18] | In3:1 In2:1 In1:2 In0:2
+Shaaban[19] | In3:-2 In2:-3 In1:-3 In0:-3
+Shaaban[20] | In3:-86 In2:-85 In1:-80 In0:-80
+Shaaban[21] | In3:37 In2:37 In1:39 In0:39
+Shaaban[22] | In3:53 In2:53 In1:53 In0:53
+Shaaban[23] | In3:-121 In2:-120 In1:-103 In0:-103
+Shaaban[24] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[25] | In3:-22 In2:-23 In1:-22 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:46 In0:47
+Shaaban[27] | In3:18 In2:18 In1:15 In0:16
+Shaaban[28] | In3:-58 In2:-59 In1:-59 In0:-60
+Shaaban[29] | In3:-14 In2:-14 In1:-19 In0:-19
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:46 In2:45 In1:46 In0:45
+
+--- Cycle  15 ---
+Shaaban[ 0] | In3:4 In2:3 In1:3 In0:2
+Shaaban[ 1] | In3:-14 In2:-14 In1:-19 In0:-20
+Shaaban[ 2] | In3:60 In2:60 In1:56 In0:56
+Shaaban[ 3] | In3:-63 In2:-63 In1:-49 In0:-50
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:41
+Shaaban[ 5] | In3:37 In2:37 In1:38 In0:38
+Shaaban[ 6] | In3:-49 In2:-49 In1:-49 In0:-50
+Shaaban[ 7] | In3:3 In2:5 In1:5 In0:6
+Shaaban[ 8] | In3:-60 In2:-60 In1:-59 In0:-59
+Shaaban[ 9] | In3:-5 In2:-4 In1:-3 In0:-4
+Shaaban[10] | In3:9 In2:9 In1:10 In0:9
+Shaaban[11] | In3:-9 In2:-9 In1:-7 In0:-8
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-57 In2:-56 In1:-57 In0:-57
+Shaaban[14] | In3:32 In2:31 In1:31 In0:30
+Shaaban[15] | In3:-38 In2:-37 In1:-37 In0:-37
+Shaaban[16] | In3:-6 In2:-6 In1:-7 In0:-7
+Shaaban[17] | In3:-73 In2:-72 In1:-72 In0:-71
+Shaaban[18] | In3:1 In2:1 In1:2 In0:1
+Shaaban[19] | In3:-3 In2:-2 In1:-3 In0:-3
+Shaaban[20] | In3:-86 In2:-85 In1:-81 In0:-80
+Shaaban[21] | In3:37 In2:37 In1:39 In0:39
+Shaaban[22] | In3:53 In2:53 In1:53 In0:53
+Shaaban[23] | In3:-123 In2:-122 In1:-104 In0:-104
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:47 In0:48
+Shaaban[27] | In3:18 In2:18 In1:16 In0:16
+Shaaban[28] | In3:-59 In2:-58 In1:-59 In0:-59
+Shaaban[29] | In3:-13 In2:-13 In1:-19 In0:-18
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:45 In2:46 In1:46 In0:46
+
+--- Cycle  16 ---
+Shaaban[ 0] | In3:3 In2:3 In1:3 In0:3
+Shaaban[ 1] | In3:-14 In2:-14 In1:-19 In0:-19
+Shaaban[ 2] | In3:60 In2:60 In1:56 In0:57
+Shaaban[ 3] | In3:-65 In2:-65 In1:-51 In0:-50
+Shaaban[ 4] | In3:41 In2:41 In1:40 In0:40
+Shaaban[ 5] | In3:38 In2:38 In1:37 In0:37
+Shaaban[ 6] | In3:-49 In2:-49 In1:-49 In0:-49
+Shaaban[ 7] | In3:3 In2:4 In1:4 In0:6
+Shaaban[ 8] | In3:-59 In2:-60 In1:-59 In0:-59
+Shaaban[ 9] | In3:-4 In2:-4 In1:-3 In0:-3
+Shaaban[10] | In3:9 In2:9 In1:9 In0:9
+Shaaban[11] | In3:-9 In2:-8 In1:-8 In0:-8
+Shaaban[12] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[13] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[14] | In3:32 In2:31 In1:30 In0:31
+Shaaban[15] | In3:-38 In2:-37 In1:-37 In0:-36
+Shaaban[16] | In3:-7 In2:-7 In1:-7 In0:-7
+Shaaban[17] | In3:-72 In2:-72 In1:-72 In0:-72
+Shaaban[18] | In3:0 In2:1 In1:1 In0:1
+Shaaban[19] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[20] | In3:-86 In2:-86 In1:-81 In0:-81
+Shaaban[21] | In3:37 In2:37 In1:39 In0:39
+Shaaban[22] | In3:53 In2:53 In1:53 In0:53
+Shaaban[23] | In3:-123 In2:-124 In1:-106 In0:-105
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-23 In2:-22 In1:-23 In0:-22
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:19 In2:18 In1:17 In0:16
+Shaaban[28] | In3:-59 In2:-58 In1:-60 In0:-59
+Shaaban[29] | In3:-13 In2:-13 In1:-17 In0:-19
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:46 In2:45 In1:45 In0:46
+
+--- Cycle  17 ---
+Shaaban[ 0] | In3:4 In2:3 In1:2 In0:2
+Shaaban[ 1] | In3:-13 In2:-13 In1:-18 In0:-19
+Shaaban[ 2] | In3:61 In2:61 In1:57 In0:57
+Shaaban[ 3] | In3:-66 In2:-65 In1:-52 In0:-52
+Shaaban[ 4] | In3:40 In2:41 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:37 In1:38 In0:37
+Shaaban[ 6] | In3:-48 In2:-49 In1:-49 In0:-50
+Shaaban[ 7] | In3:4 In2:4 In1:4 In0:5
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-4 In2:-4 In1:-5 In0:-4
+Shaaban[10] | In3:8 In2:9 In1:9 In0:9
+Shaaban[11] | In3:-8 In2:-9 In1:-8 In0:-7
+Shaaban[12] | In3:-3 In2:-3 In1:-4 In0:-3
+Shaaban[13] | In3:-57 In2:-56 In1:-56 In0:-57
+Shaaban[14] | In3:31 In2:32 In1:31 In0:31
+Shaaban[15] | In3:-37 In2:-37 In1:-37 In0:-37
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-72 In2:-72 In1:-71 In0:-73
+Shaaban[18] | In3:1 In2:1 In1:1 In0:2
+Shaaban[19] | In3:-1 In2:-2 In1:-2 In0:-2
+Shaaban[20] | In3:-86 In2:-86 In1:-81 In0:-81
+Shaaban[21] | In3:36 In2:37 In1:39 In0:39
+Shaaban[22] | In3:53 In2:53 In1:54 In0:53
+Shaaban[23] | In3:-125 In2:-124 In1:-108 In0:-107
+Shaaban[24] | In3:-6 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-23 In2:-23 In1:-22 In0:-22
+Shaaban[26] | In3:47 In2:47 In1:47 In0:47
+Shaaban[27] | In3:19 In2:18 In1:16 In0:17
+Shaaban[28] | In3:-59 In2:-58 In1:-60 In0:-59
+Shaaban[29] | In3:-12 In2:-12 In1:-17 In0:-18
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:45 In2:45 In1:46 In0:46
+
+--- Cycle  18 ---
+Shaaban[ 0] | In3:2 In2:3 In1:2 In0:3
+Shaaban[ 1] | In3:-13 In2:-13 In1:-18 In0:-18
+Shaaban[ 2] | In3:61 In2:60 In1:57 In0:57
+Shaaban[ 3] | In3:-68 In2:-66 In1:-53 In0:-53
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:38 In2:37 In1:37 In0:38
+Shaaban[ 6] | In3:-48 In2:-49 In1:-49 In0:-49
+Shaaban[ 7] | In3:4 In2:4 In1:4 In0:5
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-3 In2:-4 In1:-4 In0:-4
+Shaaban[10] | In3:9 In2:9 In1:10 In0:9
+Shaaban[11] | In3:-9 In2:-9 In1:-7 In0:-8
+Shaaban[12] | In3:-4 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-56 In2:-57 In1:-57 In0:-56
+Shaaban[14] | In3:31 In2:32 In1:31 In0:31
+Shaaban[15] | In3:-37 In2:-37 In1:-36 In0:-37
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-72 In2:-73 In1:-71 In0:-72
+Shaaban[18] | In3:2 In2:0 In1:2 In0:1
+Shaaban[19] | In3:-2 In2:-2 In1:-2 In0:-2
+Shaaban[20] | In3:-87 In2:-87 In1:-81 In0:-82
+Shaaban[21] | In3:35 In2:35 In1:38 In0:39
+Shaaban[22] | In3:53 In2:54 In1:54 In0:53
+Shaaban[23] | In3:-128 In2:-126 In1:-108 In0:-107
+Shaaban[24] | In3:-5 In2:-6 In1:-5 In0:-6
+Shaaban[25] | In3:-22 In2:-23 In1:-22 In0:-23
+Shaaban[26] | In3:47 In2:47 In1:46 In0:47
+Shaaban[27] | In3:18 In2:19 In1:16 In0:16
+Shaaban[28] | In3:-58 In2:-58 In1:-60 In0:-59
+Shaaban[29] | In3:-11 In2:-12 In1:-18 In0:-17
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:46 In2:46 In1:46 In0:45
+
+--- Cycle  19 ---
+Shaaban[ 0] | In3:3 In2:4 In1:3 In0:2
+Shaaban[ 1] | In3:-12 In2:-12 In1:-17 In0:-18
+Shaaban[ 2] | In3:62 In2:61 In1:58 In0:57
+Shaaban[ 3] | In3:-69 In2:-68 In1:-55 In0:-54
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:38 In2:38 In1:37 In0:37
+Shaaban[ 6] | In3:-48 In2:-49 In1:-48 In0:-50
+Shaaban[ 7] | In3:4 In2:4 In1:5 In0:5
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-5 In2:-5 In1:-4 In0:-4
+Shaaban[10] | In3:9 In2:9 In1:9 In0:10
+Shaaban[11] | In3:-9 In2:-8 In1:-8 In0:-8
+Shaaban[12] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[13] | In3:-55 In2:-56 In1:-56 In0:-57
+Shaaban[14] | In3:32 In2:32 In1:31 In0:31
+Shaaban[15] | In3:-37 In2:-38 In1:-38 In0:-36
+Shaaban[16] | In3:-6 In2:-6 In1:-7 In0:-6
+Shaaban[17] | In3:-72 In2:-73 In1:-73 In0:-72
+Shaaban[18] | In3:1 In2:1 In1:2 In0:2
+Shaaban[19] | In3:-2 In2:-2 In1:-3 In0:-2
+Shaaban[20] | In3:-87 In2:-86 In1:-82 In0:-82
+Shaaban[21] | In3:34 In2:34 In1:38 In0:38
+Shaaban[22] | In3:52 In2:54 In1:53 In0:52
+Shaaban[23] | In3:-129 In2:-128 In1:-111 In0:-110
+Shaaban[24] | In3:-5 In2:-6 In1:-6 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:47 In0:47
+Shaaban[27] | In3:20 In2:19 In1:17 In0:17
+Shaaban[28] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[29] | In3:-11 In2:-12 In1:-17 In0:-16
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-25
+Shaaban[31] | In3:45 In2:45 In1:46 In0:46
+
+--- Cycle  20 ---
+Shaaban[ 0] | In3:4 In2:4 In1:3 In0:4
+Shaaban[ 1] | In3:-6 In2:-6 In1:-11 In0:-12
+Shaaban[ 2] | In3:66 In2:66 In1:62 In0:62
+Shaaban[ 3] | In3:-86 In2:-86 In1:-71 In0:-71
+Shaaban[ 4] | In3:40 In2:40 In1:39 In0:39
+Shaaban[ 5] | In3:37 In2:37 In1:37 In0:37
+Shaaban[ 6] | In3:-47 In2:-48 In1:-49 In0:-49
+Shaaban[ 7] | In3:2 In2:3 In1:3 In0:4
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-5 In2:-5 In1:-5 In0:-4
+Shaaban[10] | In3:8 In2:8 In1:8 In0:9
+Shaaban[11] | In3:-11 In2:-10 In1:-9 In0:-10
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-55 In2:-55 In1:-56 In0:-56
+Shaaban[14] | In3:32 In2:31 In1:32 In0:32
+Shaaban[15] | In3:-38 In2:-37 In1:-37 In0:-37
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-73 In2:-72 In1:-72 In0:-72
+Shaaban[18] | In3:0 In2:1 In1:1 In0:1
+Shaaban[19] | In3:-2 In2:-1 In1:-2 In0:-2
+Shaaban[20] | In3:-92 In2:-92 In1:-88 In0:-88
+Shaaban[21] | In3:32 In2:32 In1:34 In0:34
+Shaaban[22] | In3:52 In2:53 In1:53 In0:53
+Shaaban[23] | In3:-150 In2:-150 In1:-133 In0:-132
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-22 In0:-23
+Shaaban[26] | In3:47 In2:47 In1:46 In0:47
+Shaaban[27] | In3:21 In2:22 In1:20 In0:20
+Shaaban[28] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[29] | In3:-5 In2:-4 In1:-9 In0:-10
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:45 In2:46 In1:46 In0:45
+
+--- Cycle  21 ---
+Shaaban[ 0] | In3:4 In2:4 In1:3 In0:4
+Shaaban[ 1] | In3:-5 In2:-6 In1:-11 In0:-11
+Shaaban[ 2] | In3:66 In2:66 In1:62 In0:63
+Shaaban[ 3] | In3:-87 In2:-87 In1:-73 In0:-73
+Shaaban[ 4] | In3:40 In2:40 In1:39 In0:39
+Shaaban[ 5] | In3:37 In2:37 In1:38 In0:37
+Shaaban[ 6] | In3:-48 In2:-48 In1:-48 In0:-48
+Shaaban[ 7] | In3:3 In2:3 In1:3 In0:4
+Shaaban[ 8] | In3:-59 In2:-59 In1:-58 In0:-59
+Shaaban[ 9] | In3:-5 In2:-5 In1:-4 In0:-5
+Shaaban[10] | In3:8 In2:9 In1:9 In0:9
+Shaaban[11] | In3:-10 In2:-10 In1:-10 In0:-9
+Shaaban[12] | In3:-3 In2:-4 In1:-2 In0:-3
+Shaaban[13] | In3:-56 In2:-55 In1:-56 In0:-56
+Shaaban[14] | In3:32 In2:32 In1:33 In0:32
+Shaaban[15] | In3:-38 In2:-37 In1:-37 In0:-37
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-73 In2:-73 In1:-72 In0:-73
+Shaaban[18] | In3:0 In2:1 In1:1 In0:1
+Shaaban[19] | In3:-2 In2:-2 In1:-3 In0:-2
+Shaaban[20] | In3:-92 In2:-93 In1:-88 In0:-88
+Shaaban[21] | In3:31 In2:32 In1:34 In0:34
+Shaaban[22] | In3:52 In2:53 In1:53 In0:53
+Shaaban[23] | In3:-153 In2:-151 In1:-134 In0:-134
+Shaaban[24] | In3:-5 In2:-6 In1:-6 In0:-6
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:47 In0:47
+Shaaban[27] | In3:22 In2:23 In1:19 In0:20
+Shaaban[28] | In3:-56 In2:-57 In1:-58 In0:-58
+Shaaban[29] | In3:-4 In2:-4 In1:-9 In0:-10
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:45 In2:45 In1:45 In0:45
+
+--- Cycle  22 ---
+Shaaban[ 0] | In3:4 In2:4 In1:3 In0:4
+Shaaban[ 1] | In3:-5 In2:-5 In1:-10 In0:-10
+Shaaban[ 2] | In3:67 In2:67 In1:63 In0:63
+Shaaban[ 3] | In3:-88 In2:-88 In1:-74 In0:-74
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:37 In1:37 In0:37
+Shaaban[ 6] | In3:-47 In2:-48 In1:-49 In0:-49
+Shaaban[ 7] | In3:3 In2:2 In1:3 In0:4
+Shaaban[ 8] | In3:-59 In2:-59 In1:-58 In0:-58
+Shaaban[ 9] | In3:-5 In2:-6 In1:-4 In0:-4
+Shaaban[10] | In3:8 In2:8 In1:8 In0:8
+Shaaban[11] | In3:-10 In2:-11 In1:-9 In0:-9
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-55 In2:-55 In1:-56 In0:-55
+Shaaban[14] | In3:32 In2:32 In1:32 In0:32
+Shaaban[15] | In3:-37 In2:-38 In1:-38 In0:-38
+Shaaban[16] | In3:-7 In2:-7 In1:-7 In0:-7
+Shaaban[17] | In3:-73 In2:-73 In1:-73 In0:-73
+Shaaban[18] | In3:1 In2:0 In1:1 In0:0
+Shaaban[19] | In3:-2 In2:-2 In1:-2 In0:-2
+Shaaban[20] | In3:-93 In2:-92 In1:-89 In0:-89
+Shaaban[21] | In3:31 In2:31 In1:33 In0:33
+Shaaban[22] | In3:52 In2:53 In1:53 In0:53
+Shaaban[23] | In3:-155 In2:-154 In1:-136 In0:-136
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-22
+Shaaban[26] | In3:46 In2:47 In1:47 In0:47
+Shaaban[27] | In3:23 In2:22 In1:20 In0:20
+Shaaban[28] | In3:-56 In2:-57 In1:-57 In0:-58
+Shaaban[29] | In3:-3 In2:-3 In1:-9 In0:-9
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:44 In2:45 In1:46 In0:45
+
+--- Cycle  23 ---
+Shaaban[ 0] | In3:4 In2:4 In1:4 In0:3
+Shaaban[ 1] | In3:-4 In2:-5 In1:-10 In0:-10
+Shaaban[ 2] | In3:67 In2:67 In1:63 In0:63
+Shaaban[ 3] | In3:-89 In2:-89 In1:-75 In0:-76
+Shaaban[ 4] | In3:39 In2:39 In1:41 In0:41
+Shaaban[ 5] | In3:37 In2:38 In1:37 In0:37
+Shaaban[ 6] | In3:-48 In2:-48 In1:-48 In0:-48
+Shaaban[ 7] | In3:2 In2:2 In1:3 In0:4
+Shaaban[ 8] | In3:-59 In2:-59 In1:-58 In0:-58
+Shaaban[ 9] | In3:-5 In2:-5 In1:-6 In0:-4
+Shaaban[10] | In3:8 In2:8 In1:9 In0:9
+Shaaban[11] | In3:-11 In2:-10 In1:-9 In0:-10
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-56 In2:-55 In1:-56 In0:-56
+Shaaban[14] | In3:32 In2:32 In1:32 In0:32
+Shaaban[15] | In3:-37 In2:-38 In1:-38 In0:-37
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-73 In2:-73 In1:-72 In0:-72
+Shaaban[18] | In3:0 In2:0 In1:0 In0:1
+Shaaban[19] | In3:-2 In2:-1 In1:-2 In0:-2
+Shaaban[20] | In3:-93 In2:-93 In1:-89 In0:-88
+Shaaban[21] | In3:30 In2:31 In1:33 In0:33
+Shaaban[22] | In3:52 In2:53 In1:53 In0:53
+Shaaban[23] | In3:-155 In2:-156 In1:-138 In0:-137
+Shaaban[24] | In3:-5 In2:-6 In1:-5 In0:-6
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:48 In0:46
+Shaaban[27] | In3:22 In2:22 In1:21 In0:19
+Shaaban[28] | In3:-57 In2:-58 In1:-57 In0:-58
+Shaaban[29] | In3:-3 In2:-4 In1:-8 In0:-9
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:46 In2:45 In1:45 In0:45
+
+--- Cycle  24 ---
+Shaaban[ 0] | In3:5 In2:3 In1:3 In0:3
+Shaaban[ 1] | In3:-4 In2:-4 In1:-9 In0:-9
+Shaaban[ 2] | In3:68 In2:67 In1:64 In0:63
+Shaaban[ 3] | In3:-91 In2:-89 In1:-76 In0:-76
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:41
+Shaaban[ 5] | In3:37 In2:37 In1:38 In0:37
+Shaaban[ 6] | In3:-47 In2:-49 In1:-49 In0:-48
+Shaaban[ 7] | In3:2 In2:1 In1:3 In0:4
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[10] | In3:9 In2:9 In1:9 In0:9
+Shaaban[11] | In3:-11 In2:-10 In1:-10 In0:-10
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-55 In2:-55 In1:-56 In0:-56
+Shaaban[14] | In3:32 In2:32 In1:31 In0:33
+Shaaban[15] | In3:-38 In2:-38 In1:-37 In0:-37
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-73 In2:-73 In1:-73 In0:-73
+Shaaban[18] | In3:0 In2:0 In1:1 In0:1
+Shaaban[19] | In3:-1 In2:-2 In1:-3 In0:-2
+Shaaban[20] | In3:-94 In2:-93 In1:-90 In0:-89
+Shaaban[21] | In3:30 In2:30 In1:33 In0:33
+Shaaban[22] | In3:52 In2:53 In1:52 In0:53
+Shaaban[23] | In3:-157 In2:-156 In1:-140 In0:-139
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:48 In1:46 In0:47
+Shaaban[27] | In3:23 In2:24 In1:20 In0:21
+Shaaban[28] | In3:-57 In2:-57 In1:-58 In0:-59
+Shaaban[29] | In3:-2 In2:-3 In1:-8 In0:-8
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:45 In2:44 In1:45 In0:46
+
+--- Cycle  25 ---
+Shaaban[ 0] | In3:4 In2:4 In1:4 In0:4
+Shaaban[ 1] | In3:-4 In2:-4 In1:-9 In0:-9
+Shaaban[ 2] | In3:68 In2:67 In1:63 In0:64
+Shaaban[ 3] | In3:-92 In2:-91 In1:-78 In0:-76
+Shaaban[ 4] | In3:41 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:37 In1:37 In0:38
+Shaaban[ 6] | In3:-48 In2:-48 In1:-48 In0:-48
+Shaaban[ 7] | In3:2 In2:1 In1:3 In0:3
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[10] | In3:9 In2:8 In1:9 In0:9
+Shaaban[11] | In3:-10 In2:-11 In1:-10 In0:-9
+Shaaban[12] | In3:-4 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-56 In2:-55 In1:-56 In0:-56
+Shaaban[14] | In3:32 In2:33 In1:32 In0:31
+Shaaban[15] | In3:-38 In2:-38 In1:-37 In0:-38
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-73 In2:-73 In1:-72 In0:-73
+Shaaban[18] | In3:0 In2:0 In1:1 In0:0
+Shaaban[19] | In3:-1 In2:-1 In1:-1 In0:-2
+Shaaban[20] | In3:-93 In2:-94 In1:-89 In0:-89
+Shaaban[21] | In3:30 In2:30 In1:33 In0:33
+Shaaban[22] | In3:53 In2:52 In1:52 In0:53
+Shaaban[23] | In3:-159 In2:-158 In1:-140 In0:-139
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:46 In0:47
+Shaaban[27] | In3:23 In2:23 In1:20 In0:21
+Shaaban[28] | In3:-57 In2:-56 In1:-58 In0:-57
+Shaaban[29] | In3:-2 In2:-2 In1:-8 In0:-7
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:46 In2:45 In1:45 In0:45
+
+--- Cycle  26 ---
+Shaaban[ 0] | In3:5 In2:3 In1:3 In0:3
+Shaaban[ 1] | In3:-3 In2:-3 In1:-8 In0:-9
+Shaaban[ 2] | In3:68 In2:68 In1:64 In0:64
+Shaaban[ 3] | In3:-93 In2:-92 In1:-79 In0:-78
+Shaaban[ 4] | In3:40 In2:41 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:37 In1:37 In0:37
+Shaaban[ 6] | In3:-47 In2:-48 In1:-49 In0:-48
+Shaaban[ 7] | In3:2 In2:2 In1:3 In0:3
+Shaaban[ 8] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[ 9] | In3:-6 In2:-6 In1:-4 In0:-5
+Shaaban[10] | In3:8 In2:9 In1:9 In0:9
+Shaaban[11] | In3:-11 In2:-11 In1:-9 In0:-10
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-55 In2:-56 In1:-57 In0:-56
+Shaaban[14] | In3:32 In2:32 In1:32 In0:31
+Shaaban[15] | In3:-37 In2:-38 In1:-37 In0:-38
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-74 In2:-73 In1:-73 In0:-72
+Shaaban[18] | In3:-1 In2:0 In1:0 In0:0
+Shaaban[19] | In3:-1 In2:-1 In1:-1 In0:-1
+Shaaban[20] | In3:-94 In2:-94 In1:-90 In0:-90
+Shaaban[21] | In3:29 In2:30 In1:33 In0:33
+Shaaban[22] | In3:53 In2:52 In1:52 In0:53
+Shaaban[23] | In3:-160 In2:-159 In1:-142 In0:-141
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-6
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-22
+Shaaban[26] | In3:47 In2:46 In1:47 In0:47
+Shaaban[27] | In3:23 In2:23 In1:21 In0:20
+Shaaban[28] | In3:-56 In2:-56 In1:-58 In0:-57
+Shaaban[29] | In3:-2 In2:-2 In1:-7 In0:-7
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:45 In2:44 In1:44 In0:46
+
+--- Cycle  27 ---
+Shaaban[ 0] | In3:4 In2:4 In1:4 In0:4
+Shaaban[ 1] | In3:-2 In2:-3 In1:-8 In0:-8
+Shaaban[ 2] | In3:68 In2:68 In1:64 In0:65
+Shaaban[ 3] | In3:-94 In2:-94 In1:-81 In0:-79
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:36 In2:36 In1:38 In0:38
+Shaaban[ 6] | In3:-48 In2:-47 In1:-48 In0:-48
+Shaaban[ 7] | In3:2 In2:2 In1:3 In0:3
+Shaaban[ 8] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[ 9] | In3:-5 In2:-6 In1:-5 In0:-5
+Shaaban[10] | In3:8 In2:8 In1:8 In0:8
+Shaaban[11] | In3:-11 In2:-11 In1:-10 In0:-10
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-4
+Shaaban[13] | In3:-55 In2:-55 In1:-56 In0:-56
+Shaaban[14] | In3:33 In2:32 In1:32 In0:31
+Shaaban[15] | In3:-38 In2:-38 In1:-37 In0:-37
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-73 In2:-73 In1:-73 In0:-72
+Shaaban[18] | In3:0 In2:0 In1:0 In0:1
+Shaaban[19] | In3:-1 In2:-1 In1:-2 In0:-2
+Shaaban[20] | In3:-94 In2:-95 In1:-90 In0:-91
+Shaaban[21] | In3:28 In2:28 In1:32 In0:33
+Shaaban[22] | In3:53 In2:52 In1:52 In0:53
+Shaaban[23] | In3:-162 In2:-161 In1:-143 In0:-143
+Shaaban[24] | In3:-5 In2:-6 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:46 In0:46
+Shaaban[27] | In3:24 In2:22 In1:21 In0:21
+Shaaban[28] | In3:-56 In2:-56 In1:-57 In0:-57
+Shaaban[29] | In3:-1 In2:0 In1:-7 In0:-7
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:45 In2:46 In1:46 In0:45
+
+--- Cycle  28 ---
+Shaaban[ 0] | In3:5 In2:4 In1:3 In0:3
+Shaaban[ 1] | In3:-1 In2:-1 In1:-7 In0:-8
+Shaaban[ 2] | In3:68 In2:69 In1:65 In0:65
+Shaaban[ 3] | In3:-94 In2:-94 In1:-82 In0:-81
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:37 In1:37 In0:38
+Shaaban[ 6] | In3:-48 In2:-48 In1:-49 In0:-48
+Shaaban[ 7] | In3:2 In2:2 In1:3 In0:3
+Shaaban[ 8] | In3:-58 In2:-58 In1:-60 In0:-60
+Shaaban[ 9] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[10] | In3:8 In2:8 In1:8 In0:9
+Shaaban[11] | In3:-11 In2:-11 In1:-10 In0:-9
+Shaaban[12] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[13] | In3:-56 In2:-56 In1:-56 In0:-56
+Shaaban[14] | In3:33 In2:32 In1:31 In0:32
+Shaaban[15] | In3:-38 In2:-38 In1:-38 In0:-38
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-73 In2:-72 In1:-72 In0:-74
+Shaaban[18] | In3:0 In2:-1 In1:0 In0:0
+Shaaban[19] | In3:-2 In2:-1 In1:-1 In0:-2
+Shaaban[20] | In3:-95 In2:-94 In1:-91 In0:-91
+Shaaban[21] | In3:28 In2:28 In1:32 In0:32
+Shaaban[22] | In3:53 In2:52 In1:53 In0:53
+Shaaban[23] | In3:-163 In2:-163 In1:-145 In0:-145
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:47 In0:47
+Shaaban[27] | In3:23 In2:23 In1:21 In0:22
+Shaaban[28] | In3:-57 In2:-56 In1:-57 In0:-57
+Shaaban[29] | In3:-1 In2:-1 In1:-6 In0:-7
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:45 In2:45 In1:45 In0:45
+
+--- Cycle  29 ---
+Shaaban[ 0] | In3:4 In2:4 In1:3 In0:4
+Shaaban[ 1] | In3:-1 In2:-1 In1:-7 In0:-7
+Shaaban[ 2] | In3:69 In2:69 In1:65 In0:65
+Shaaban[ 3] | In3:-96 In2:-96 In1:-82 In0:-81
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:39
+Shaaban[ 5] | In3:37 In2:37 In1:37 In0:36
+Shaaban[ 6] | In3:-48 In2:-47 In1:-49 In0:-48
+Shaaban[ 7] | In3:1 In2:1 In1:3 In0:4
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-6 In2:-6 In1:-4 In0:-4
+Shaaban[10] | In3:8 In2:8 In1:9 In0:8
+Shaaban[11] | In3:-11 In2:-11 In1:-11 In0:-10
+Shaaban[12] | In3:-3 In2:-3 In1:-4 In0:-2
+Shaaban[13] | In3:-55 In2:-55 In1:-56 In0:-56
+Shaaban[14] | In3:32 In2:33 In1:31 In0:32
+Shaaban[15] | In3:-38 In2:-37 In1:-37 In0:-38
+Shaaban[16] | In3:-6 In2:-6 In1:-5 In0:-6
+Shaaban[17] | In3:-73 In2:-74 In1:-72 In0:-73
+Shaaban[18] | In3:0 In2:0 In1:1 In0:1
+Shaaban[19] | In3:-1 In2:-2 In1:-1 In0:-1
+Shaaban[20] | In3:-95 In2:-95 In1:-91 In0:-91
+Shaaban[21] | In3:28 In2:28 In1:32 In0:32
+Shaaban[22] | In3:53 In2:53 In1:53 In0:53
+Shaaban[23] | In3:-165 In2:-164 In1:-147 In0:-146
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:46 In0:47
+Shaaban[27] | In3:23 In2:24 In1:20 In0:21
+Shaaban[28] | In3:-57 In2:-57 In1:-58 In0:-57
+Shaaban[29] | In3:0 In2:-1 In1:-6 In0:-5
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:45 In2:45 In1:46 In0:45
+
+--- Cycle  30 ---
+Shaaban[ 0] | In3:5 In2:5 In1:4 In0:4
+Shaaban[ 1] | In3:5 In2:4 In1:-1 In0:-1
+Shaaban[ 2] | In3:74 In2:73 In1:70 In0:70
+Shaaban[ 3] | In3:-113 In2:-112 In1:-100 In0:-100
+Shaaban[ 4] | In3:40 In2:40 In1:39 In0:39
+Shaaban[ 5] | In3:36 In2:37 In1:37 In0:37
+Shaaban[ 6] | In3:-47 In2:-46 In1:-48 In0:-47
+Shaaban[ 7] | In3:1 In2:1 In1:2 In0:1
+Shaaban[ 8] | In3:-59 In2:-59 In1:-58 In0:-58
+Shaaban[ 9] | In3:-7 In2:-7 In1:-6 In0:-6
+Shaaban[10] | In3:8 In2:8 In1:8 In0:8
+Shaaban[11] | In3:-12 In2:-13 In1:-11 In0:-11
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-55 In2:-55 In1:-56 In0:-55
+Shaaban[14] | In3:33 In2:34 In1:33 In0:33
+Shaaban[15] | In3:-38 In2:-39 In1:-39 In0:-38
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-74 In2:-74 In1:-74 In0:-73
+Shaaban[18] | In3:-1 In2:0 In1:0 In0:0
+Shaaban[19] | In3:-1 In2:-1 In1:-1 In0:-2
+Shaaban[20] | In3:-100 In2:-100 In1:-96 In0:-96
+Shaaban[21] | In3:24 In2:25 In1:28 In0:28
+Shaaban[22] | In3:52 In2:51 In1:53 In0:52
+Shaaban[23] | In3:-187 In2:-186 In1:-169 In0:-168
+Shaaban[24] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[25] | In3:-24 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:26 In2:26 In1:24 In0:24
+Shaaban[28] | In3:-54 In2:-55 In1:-55 In0:-56
+Shaaban[29] | In3:6 In2:6 In1:2 In0:1
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:45 In2:45 In1:45 In0:45
+
+--- Cycle  31 ---
+Shaaban[ 0] | In3:4 In2:5 In1:4 In0:5
+Shaaban[ 1] | In3:5 In2:5 In1:0 In0:0
+Shaaban[ 2] | In3:74 In2:74 In1:70 In0:70
+Shaaban[ 3] | In3:-115 In2:-114 In1:-101 In0:-100
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:39
+Shaaban[ 5] | In3:36 In2:36 In1:38 In0:37
+Shaaban[ 6] | In3:-47 In2:-47 In1:-47 In0:-47
+Shaaban[ 7] | In3:0 In2:0 In1:2 In0:1
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[10] | In3:8 In2:8 In1:8 In0:8
+Shaaban[11] | In3:-13 In2:-12 In1:-11 In0:-12
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-55 In2:-55 In1:-54 In0:-55
+Shaaban[14] | In3:33 In2:32 In1:33 In0:32
+Shaaban[15] | In3:-38 In2:-39 In1:-38 In0:-38
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-74 In2:-73 In1:-73 In0:-73
+Shaaban[18] | In3:-1 In2:0 In1:0 In0:0
+Shaaban[19] | In3:-1 In2:-2 In1:-1 In0:-1
+Shaaban[20] | In3:-101 In2:-100 In1:-97 In0:-97
+Shaaban[21] | In3:24 In2:24 In1:27 In0:27
+Shaaban[22] | In3:52 In2:52 In1:53 In0:52
+Shaaban[23] | In3:-189 In2:-188 In1:-172 In0:-171
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:47 In1:46 In0:47
+Shaaban[27] | In3:26 In2:27 In1:25 In0:24
+Shaaban[28] | In3:-55 In2:-56 In1:-55 In0:-56
+Shaaban[29] | In3:7 In2:8 In1:2 In0:1
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:44 In2:44 In1:45 In0:45
+
+--- Cycle  32 ---
+Shaaban[ 0] | In3:5 In2:6 In1:5 In0:4
+Shaaban[ 1] | In3:7 In2:5 In1:0 In0:0
+Shaaban[ 2] | In3:74 In2:74 In1:70 In0:71
+Shaaban[ 3] | In3:-116 In2:-115 In1:-102 In0:-101
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:36 In1:36 In0:36
+Shaaban[ 6] | In3:-47 In2:-47 In1:-47 In0:-47
+Shaaban[ 7] | In3:0 In2:0 In1:1 In0:0
+Shaaban[ 8] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[ 9] | In3:-7 In2:-6 In1:-6 In0:-6
+Shaaban[10] | In3:7 In2:8 In1:7 In0:8
+Shaaban[11] | In3:-12 In2:-12 In1:-12 In0:-11
+Shaaban[12] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[13] | In3:-55 In2:-55 In1:-55 In0:-54
+Shaaban[14] | In3:33 In2:32 In1:33 In0:33
+Shaaban[15] | In3:-39 In2:-38 In1:-38 In0:-38
+Shaaban[16] | In3:-7 In2:-5 In1:-6 In0:-6
+Shaaban[17] | In3:-74 In2:-74 In1:-73 In0:-73
+Shaaban[18] | In3:0 In2:-1 In1:0 In0:-1
+Shaaban[19] | In3:-1 In2:-1 In1:-2 In0:-2
+Shaaban[20] | In3:-101 In2:-100 In1:-97 In0:-96
+Shaaban[21] | In3:24 In2:24 In1:27 In0:27
+Shaaban[22] | In3:52 In2:52 In1:53 In0:52
+Shaaban[23] | In3:-191 In2:-190 In1:-172 In0:-171
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-23 In2:-24 In1:-23 In0:-24
+Shaaban[26] | In3:47 In2:46 In1:47 In0:47
+Shaaban[27] | In3:27 In2:27 In1:25 In0:25
+Shaaban[28] | In3:-55 In2:-55 In1:-56 In0:-57
+Shaaban[29] | In3:8 In2:7 In1:1 In0:2
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:46 In2:45 In1:45 In0:44
+
+--- Cycle  33 ---
+Shaaban[ 0] | In3:5 In2:5 In1:4 In0:5
+Shaaban[ 1] | In3:7 In2:7 In1:1 In0:1
+Shaaban[ 2] | In3:75 In2:75 In1:71 In0:71
+Shaaban[ 3] | In3:-118 In2:-116 In1:-103 In0:-102
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:37 In1:36 In0:36
+Shaaban[ 6] | In3:-47 In2:-47 In1:-47 In0:-48
+Shaaban[ 7] | In3:0 In2:0 In1:1 In0:1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[ 9] | In3:-6 In2:-7 In1:-5 In0:-5
+Shaaban[10] | In3:8 In2:8 In1:8 In0:8
+Shaaban[11] | In3:-13 In2:-13 In1:-12 In0:-11
+Shaaban[12] | In3:-2 In2:-3 In1:-4 In0:-3
+Shaaban[13] | In3:-53 In2:-55 In1:-55 In0:-55
+Shaaban[14] | In3:33 In2:33 In1:32 In0:33
+Shaaban[15] | In3:-39 In2:-38 In1:-38 In0:-38
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-7
+Shaaban[17] | In3:-74 In2:-73 In1:-74 In0:-74
+Shaaban[18] | In3:-1 In2:-1 In1:-1 In0:0
+Shaaban[19] | In3:0 In2:0 In1:-1 In0:-2
+Shaaban[20] | In3:-101 In2:-101 In1:-98 In0:-97
+Shaaban[21] | In3:23 In2:24 In1:27 In0:27
+Shaaban[22] | In3:52 In2:52 In1:53 In0:52
+Shaaban[23] | In3:-192 In2:-191 In1:-174 In0:-173
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-24 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:27 In2:27 In1:25 In0:24
+Shaaban[28] | In3:-55 In2:-55 In1:-56 In0:-56
+Shaaban[29] | In3:8 In2:7 In1:2 In0:3
+Shaaban[30] | In3:-24 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:45 In2:44 In1:44 In0:46
+
+--- Cycle  34 ---
+Shaaban[ 0] | In3:5 In2:6 In1:5 In0:4
+Shaaban[ 1] | In3:7 In2:7 In1:1 In0:1
+Shaaban[ 2] | In3:75 In2:75 In1:71 In0:71
+Shaaban[ 3] | In3:-119 In2:-118 In1:-105 In0:-104
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:36 In2:36 In1:37 In0:37
+Shaaban[ 6] | In3:-46 In2:-47 In1:-47 In0:-47
+Shaaban[ 7] | In3:1 In2:0 In1:1 In0:1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[ 9] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[10] | In3:7 In2:7 In1:8 In0:8
+Shaaban[11] | In3:-13 In2:-13 In1:-12 In0:-12
+Shaaban[12] | In3:-4 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-54 In2:-54 In1:-54 In0:-54
+Shaaban[14] | In3:32 In2:33 In1:33 In0:33
+Shaaban[15] | In3:-38 In2:-39 In1:-38 In0:-38
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-74 In2:-74 In1:-73 In0:-73
+Shaaban[18] | In3:-1 In2:-1 In1:-1 In0:0
+Shaaban[19] | In3:-1 In2:-1 In1:0 In0:0
+Shaaban[20] | In3:-101 In2:-102 In1:-97 In0:-97
+Shaaban[21] | In3:23 In2:23 In1:27 In0:27
+Shaaban[22] | In3:52 In2:52 In1:53 In0:52
+Shaaban[23] | In3:-193 In2:-192 In1:-175 In0:-175
+Shaaban[24] | In3:-5 In2:-6 In1:-5 In0:-6
+Shaaban[25] | In3:-24 In2:-23 In1:-24 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:27 In2:27 In1:25 In0:24
+Shaaban[28] | In3:-55 In2:-55 In1:-56 In0:-56
+Shaaban[29] | In3:8 In2:9 In1:3 In0:3
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:45 In2:45 In1:45 In0:45
+
+--- Cycle  35 ---
+Shaaban[ 0] | In3:5 In2:4 In1:4 In0:4
+Shaaban[ 1] | In3:8 In2:8 In1:3 In0:2
+Shaaban[ 2] | In3:75 In2:75 In1:72 In0:71
+Shaaban[ 3] | In3:-119 In2:-119 In1:-106 In0:-105
+Shaaban[ 4] | In3:41 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:37 In1:36 In0:37
+Shaaban[ 6] | In3:-46 In2:-47 In1:-47 In0:-48
+Shaaban[ 7] | In3:1 In2:0 In1:1 In0:1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[ 9] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[10] | In3:8 In2:8 In1:9 In0:8
+Shaaban[11] | In3:-13 In2:-13 In1:-12 In0:-12
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-3
+Shaaban[13] | In3:-54 In2:-54 In1:-55 In0:-55
+Shaaban[14] | In3:33 In2:33 In1:33 In0:33
+Shaaban[15] | In3:-39 In2:-38 In1:-38 In0:-38
+Shaaban[16] | In3:-6 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-74 In2:-74 In1:-73 In0:-74
+Shaaban[18] | In3:-1 In2:-1 In1:0 In0:-1
+Shaaban[19] | In3:0 In2:0 In1:-1 In0:-1
+Shaaban[20] | In3:-102 In2:-102 In1:-98 In0:-98
+Shaaban[21] | In3:23 In2:23 In1:27 In0:27
+Shaaban[22] | In3:52 In2:52 In1:52 In0:52
+Shaaban[23] | In3:-194 In2:-194 In1:-176 In0:-176
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:47 In1:46 In0:47
+Shaaban[27] | In3:28 In2:28 In1:25 In0:26
+Shaaban[28] | In3:-54 In2:-55 In1:-56 In0:-55
+Shaaban[29] | In3:8 In2:9 In1:4 In0:2
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:45 In2:44 In1:44 In0:45
+
+--- Cycle  36 ---
+Shaaban[ 0] | In3:5 In2:5 In1:5 In0:4
+Shaaban[ 1] | In3:8 In2:8 In1:3 In0:3
+Shaaban[ 2] | In3:76 In2:75 In1:72 In0:72
+Shaaban[ 3] | In3:-120 In2:-120 In1:-106 In0:-107
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:37 In1:37 In0:36
+Shaaban[ 6] | In3:-46 In2:-47 In1:-47 In0:-47
+Shaaban[ 7] | In3:0 In2:0 In1:1 In0:1
+Shaaban[ 8] | In3:-59 In2:-59 In1:-59 In0:-59
+Shaaban[ 9] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[10] | In3:8 In2:8 In1:8 In0:8
+Shaaban[11] | In3:-13 In2:-13 In1:-12 In0:-12
+Shaaban[12] | In3:-2 In2:-3 In1:-4 In0:-3
+Shaaban[13] | In3:-54 In2:-54 In1:-54 In0:-55
+Shaaban[14] | In3:33 In2:33 In1:33 In0:34
+Shaaban[15] | In3:-39 In2:-39 In1:-39 In0:-37
+Shaaban[16] | In3:-7 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-74 In2:-74 In1:-74 In0:-74
+Shaaban[18] | In3:-2 In2:-1 In1:-1 In0:-1
+Shaaban[19] | In3:-1 In2:0 In1:-1 In0:-1
+Shaaban[20] | In3:-102 In2:-103 In1:-98 In0:-98
+Shaaban[21] | In3:22 In2:23 In1:27 In0:27
+Shaaban[22] | In3:52 In2:51 In1:52 In0:52
+Shaaban[23] | In3:-197 In2:-196 In1:-179 In0:-177
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[25] | In3:-23 In2:-24 In1:-23 In0:-24
+Shaaban[26] | In3:46 In2:46 In1:46 In0:47
+Shaaban[27] | In3:27 In2:28 In1:26 In0:25
+Shaaban[28] | In3:-55 In2:-54 In1:-55 In0:-55
+Shaaban[29] | In3:10 In2:9 In1:4 In0:4
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:44 In2:44 In1:44 In0:45
+
+--- Cycle  37 ---
+Shaaban[ 0] | In3:5 In2:5 In1:5 In0:4
+Shaaban[ 1] | In3:9 In2:8 In1:3 In0:3
+Shaaban[ 2] | In3:75 In2:75 In1:72 In0:72
+Shaaban[ 3] | In3:-121 In2:-121 In1:-107 In0:-107
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:37 In1:37 In0:37
+Shaaban[ 6] | In3:-46 In2:-47 In1:-47 In0:-48
+Shaaban[ 7] | In3:0 In2:-1 In1:1 In0:1
+Shaaban[ 8] | In3:-59 In2:-59 In1:-58 In0:-58
+Shaaban[ 9] | In3:-7 In2:-7 In1:-7 In0:-6
+Shaaban[10] | In3:7 In2:8 In1:7 In0:8
+Shaaban[11] | In3:-13 In2:-13 In1:-12 In0:-12
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-54 In2:-54 In1:-55 In0:-55
+Shaaban[14] | In3:33 In2:34 In1:33 In0:33
+Shaaban[15] | In3:-38 In2:-38 In1:-38 In0:-39
+Shaaban[16] | In3:-6 In2:-7 In1:-7 In0:-6
+Shaaban[17] | In3:-74 In2:-74 In1:-74 In0:-73
+Shaaban[18] | In3:-1 In2:-1 In1:-1 In0:-1
+Shaaban[19] | In3:-1 In2:-1 In1:-1 In0:0
+Shaaban[20] | In3:-103 In2:-102 In1:-99 In0:-98
+Shaaban[21] | In3:22 In2:22 In1:26 In0:26
+Shaaban[22] | In3:52 In2:51 In1:52 In0:52
+Shaaban[23] | In3:-198 In2:-198 In1:-180 In0:-179
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-24 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:47 In0:47
+Shaaban[27] | In3:28 In2:28 In1:25 In0:25
+Shaaban[28] | In3:-55 In2:-55 In1:-56 In0:-55
+Shaaban[29] | In3:10 In2:9 In1:4 In0:4
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:44 In2:45 In1:45 In0:45
+
+--- Cycle  38 ---
+Shaaban[ 0] | In3:6 In2:5 In1:5 In0:5
+Shaaban[ 1] | In3:9 In2:9 In1:4 In0:4
+Shaaban[ 2] | In3:75 In2:75 In1:72 In0:72
+Shaaban[ 3] | In3:-123 In2:-123 In1:-109 In0:-108
+Shaaban[ 4] | In3:40 In2:40 In1:39 In0:40
+Shaaban[ 5] | In3:36 In2:36 In1:37 In0:37
+Shaaban[ 6] | In3:-47 In2:-47 In1:-47 In0:-47
+Shaaban[ 7] | In3:0 In2:-1 In1:1 In0:0
+Shaaban[ 8] | In3:-59 In2:-59 In1:-58 In0:-58
+Shaaban[ 9] | In3:-6 In2:-7 In1:-6 In0:-6
+Shaaban[10] | In3:8 In2:8 In1:8 In0:8
+Shaaban[11] | In3:-13 In2:-13 In1:-12 In0:-12
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-3
+Shaaban[13] | In3:-54 In2:-55 In1:-54 In0:-55
+Shaaban[14] | In3:33 In2:33 In1:34 In0:33
+Shaaban[15] | In3:-39 In2:-38 In1:-37 In0:-38
+Shaaban[16] | In3:-6 In2:-7 In1:-7 In0:-6
+Shaaban[17] | In3:-74 In2:-74 In1:-74 In0:-73
+Shaaban[18] | In3:-1 In2:-2 In1:-1 In0:-1
+Shaaban[19] | In3:0 In2:0 In1:-1 In0:-1
+Shaaban[20] | In3:-103 In2:-103 In1:-99 In0:-98
+Shaaban[21] | In3:22 In2:22 In1:26 In0:26
+Shaaban[22] | In3:52 In2:51 In1:52 In0:52
+Shaaban[23] | In3:-199 In2:-198 In1:-182 In0:-181
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-24 In2:-23 In1:-24 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:46 In0:46
+Shaaban[27] | In3:28 In2:27 In1:26 In0:26
+Shaaban[28] | In3:-55 In2:-54 In1:-56 In0:-56
+Shaaban[29] | In3:10 In2:10 In1:5 In0:5
+Shaaban[30] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:44 In2:45 In1:45 In0:45
+
+--- Cycle  39 ---
+Shaaban[ 0] | In3:5 In2:5 In1:5 In0:5
+Shaaban[ 1] | In3:10 In2:9 In1:4 In0:4
+Shaaban[ 2] | In3:75 In2:76 In1:73 In0:73
+Shaaban[ 3] | In3:-124 In2:-124 In1:-110 In0:-110
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:36 In2:36 In1:37 In0:37
+Shaaban[ 6] | In3:-46 In2:-47 In1:-48 In0:-47
+Shaaban[ 7] | In3:0 In2:0 In1:1 In0:0
+Shaaban[ 8] | In3:-58 In2:-59 In1:-58 In0:-58
+Shaaban[ 9] | In3:-7 In2:-7 In1:-6 In0:-6
+Shaaban[10] | In3:7 In2:7 In1:7 In0:8
+Shaaban[11] | In3:-14 In2:-13 In1:-12 In0:-12
+Shaaban[12] | In3:-2 In2:-3 In1:-4 In0:-3
+Shaaban[13] | In3:-54 In2:-54 In1:-55 In0:-55
+Shaaban[14] | In3:34 In2:33 In1:34 In0:33
+Shaaban[15] | In3:-38 In2:-39 In1:-39 In0:-39
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-74 In2:-73 In1:-73 In0:-74
+Shaaban[18] | In3:-1 In2:-2 In1:0 In0:0
+Shaaban[19] | In3:-1 In2:-1 In1:-1 In0:-1
+Shaaban[20] | In3:-103 In2:-103 In1:-100 In0:-99
+Shaaban[21] | In3:22 In2:22 In1:26 In0:26
+Shaaban[22] | In3:52 In2:51 In1:53 In0:52
+Shaaban[23] | In3:-201 In2:-200 In1:-182 In0:-182
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-23 In2:-23 In1:-23 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:47 In0:47
+Shaaban[27] | In3:28 In2:29 In1:26 In0:26
+Shaaban[28] | In3:-55 In2:-54 In1:-56 In0:-55
+Shaaban[29] | In3:11 In2:11 In1:5 In0:6
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:44 In2:44 In1:45 In0:44
+
+--- Cycle  40 ---
+Shaaban[ 0] | In3:5 In2:6 In1:5 In0:6
+Shaaban[ 1] | In3:16 In2:17 In1:11 In0:12
+Shaaban[ 2] | In3:81 In2:80 In1:77 In0:76
+Shaaban[ 3] | In3:-142 In2:-141 In1:-128 In0:-126
+Shaaban[ 4] | In3:39 In2:40 In1:40 In0:39
+Shaaban[ 5] | In3:36 In2:37 In1:36 In0:36
+Shaaban[ 6] | In3:-46 In2:-46 In1:-47 In0:-46
+Shaaban[ 7] | In3:-2 In2:-2 In1:-1 In0:-1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-7 In2:-7 In1:-7 In0:-6
+Shaaban[10] | In3:8 In2:7 In1:8 In0:7
+Shaaban[11] | In3:-14 In2:-15 In1:-14 In0:-13
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-54 In2:-54 In1:-55 In0:-54
+Shaaban[14] | In3:34 In2:34 In1:33 In0:34
+Shaaban[15] | In3:-39 In2:-39 In1:-39 In0:-38
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-75 In2:-75 In1:-74 In0:-74
+Shaaban[18] | In3:-2 In2:-1 In1:-1 In0:-1
+Shaaban[19] | In3:0 In2:-1 In1:-1 In0:-1
+Shaaban[20] | In3:-110 In2:-109 In1:-104 In0:-104
+Shaaban[21] | In3:18 In2:18 In1:21 In0:22
+Shaaban[22] | In3:51 In2:51 In1:51 In0:51
+Shaaban[23] | In3:-224 In2:-223 In1:-206 In0:-205
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-24 In2:-23 In1:-24 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:32 In2:31 In1:29 In0:29
+Shaaban[28] | In3:-53 In2:-54 In1:-54 In0:-55
+Shaaban[29] | In3:18 In2:17 In1:12 In0:12
+Shaaban[30] | In3:-24 In2:-23 In1:-24 In0:-25
+Shaaban[31] | In3:44 In2:44 In1:44 In0:45
+
+--- Cycle  41 ---
+Shaaban[ 0] | In3:6 In2:6 In1:5 In0:5
+Shaaban[ 1] | In3:16 In2:16 In1:11 In0:11
+Shaaban[ 2] | In3:81 In2:80 In1:77 In0:77
+Shaaban[ 3] | In3:-142 In2:-142 In1:-129 In0:-128
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:35 In2:36 In1:37 In0:37
+Shaaban[ 6] | In3:-46 In2:-46 In1:-46 In0:-45
+Shaaban[ 7] | In3:-2 In2:-2 In1:0 In0:-1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-7 In2:-7 In1:-8 In0:-7
+Shaaban[10] | In3:7 In2:8 In1:8 In0:8
+Shaaban[11] | In3:-15 In2:-15 In1:-13 In0:-14
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-53 In2:-53 In1:-54 In0:-54
+Shaaban[14] | In3:34 In2:35 In1:33 In0:34
+Shaaban[15] | In3:-39 In2:-39 In1:-38 In0:-39
+Shaaban[16] | In3:-6 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-74 In2:-75 In1:-75 In0:-74
+Shaaban[18] | In3:-2 In2:-1 In1:-1 In0:-1
+Shaaban[19] | In3:0 In2:1 In1:-1 In0:-1
+Shaaban[20] | In3:-110 In2:-109 In1:-105 In0:-104
+Shaaban[21] | In3:17 In2:17 In1:21 In0:21
+Shaaban[22] | In3:51 In2:51 In1:52 In0:51
+Shaaban[23] | In3:-225 In2:-224 In1:-207 In0:-207
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-24 In2:-24 In1:-23 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:46 In0:46
+Shaaban[27] | In3:31 In2:31 In1:29 In0:29
+Shaaban[28] | In3:-53 In2:-53 In1:-54 In0:-55
+Shaaban[29] | In3:18 In2:18 In1:12 In0:12
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:43 In2:45 In1:45 In0:44
+
+--- Cycle  42 ---
+Shaaban[ 0] | In3:6 In2:6 In1:5 In0:6
+Shaaban[ 1] | In3:17 In2:17 In1:12 In0:12
+Shaaban[ 2] | In3:82 In2:81 In1:77 In0:77
+Shaaban[ 3] | In3:-144 In2:-144 In1:-131 In0:-129
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:36 In2:36 In1:36 In0:37
+Shaaban[ 6] | In3:-45 In2:-47 In1:-47 In0:-46
+Shaaban[ 7] | In3:-2 In2:-2 In1:0 In0:-1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-8 In2:-7 In1:-7 In0:-7
+Shaaban[10] | In3:7 In2:7 In1:7 In0:7
+Shaaban[11] | In3:-15 In2:-14 In1:-14 In0:-14
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-2
+Shaaban[13] | In3:-54 In2:-54 In1:-54 In0:-54
+Shaaban[14] | In3:34 In2:35 In1:34 In0:33
+Shaaban[15] | In3:-39 In2:-40 In1:-39 In0:-39
+Shaaban[16] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[17] | In3:-75 In2:-74 In1:-74 In0:-74
+Shaaban[18] | In3:-1 In2:-2 In1:-1 In0:-2
+Shaaban[19] | In3:0 In2:0 In1:0 In0:0
+Shaaban[20] | In3:-110 In2:-110 In1:-105 In0:-105
+Shaaban[21] | In3:17 In2:17 In1:21 In0:21
+Shaaban[22] | In3:51 In2:52 In1:52 In0:52
+Shaaban[23] | In3:-226 In2:-226 In1:-208 In0:-208
+Shaaban[24] | In3:-6 In2:-5 In1:-4 In0:-6
+Shaaban[25] | In3:-23 In2:-24 In1:-23 In0:-24
+Shaaban[26] | In3:47 In2:46 In1:46 In0:47
+Shaaban[27] | In3:31 In2:31 In1:29 In0:29
+Shaaban[28] | In3:-53 In2:-53 In1:-54 In0:-54
+Shaaban[29] | In3:18 In2:18 In1:13 In0:12
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:45 In2:44 In1:44 In0:43
+
+--- Cycle  43 ---
+Shaaban[ 0] | In3:6 In2:6 In1:5 In0:6
+Shaaban[ 1] | In3:17 In2:17 In1:12 In0:12
+Shaaban[ 2] | In3:81 In2:81 In1:77 In0:78
+Shaaban[ 3] | In3:-144 In2:-145 In1:-131 In0:-131
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:36 In2:36 In1:37 In0:36
+Shaaban[ 6] | In3:-46 In2:-45 In1:-46 In0:-46
+Shaaban[ 7] | In3:-2 In2:-2 In1:0 In0:-1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[ 9] | In3:-8 In2:-8 In1:-7 In0:-7
+Shaaban[10] | In3:7 In2:7 In1:7 In0:8
+Shaaban[11] | In3:-15 In2:-15 In1:-14 In0:-13
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-4
+Shaaban[13] | In3:-53 In2:-53 In1:-54 In0:-55
+Shaaban[14] | In3:35 In2:34 In1:34 In0:33
+Shaaban[15] | In3:-38 In2:-39 In1:-39 In0:-39
+Shaaban[16] | In3:-6 In2:-7 In1:-6 In0:-6
+Shaaban[17] | In3:-75 In2:-75 In1:-74 In0:-74
+Shaaban[18] | In3:-2 In2:-2 In1:-2 In0:-1
+Shaaban[19] | In3:1 In2:0 In1:0 In0:0
+Shaaban[20] | In3:-110 In2:-110 In1:-105 In0:-105
+Shaaban[21] | In3:17 In2:17 In1:21 In0:21
+Shaaban[22] | In3:51 In2:52 In1:52 In0:52
+Shaaban[23] | In3:-228 In2:-227 In1:-210 In0:-209
+Shaaban[24] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[25] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[26] | In3:46 In2:46 In1:47 In0:47
+Shaaban[27] | In3:32 In2:32 In1:30 In0:30
+Shaaban[28] | In3:-52 In2:-53 In1:-54 In0:-54
+Shaaban[29] | In3:19 In2:18 In1:13 In0:14
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:44 In2:44 In1:44 In0:45
+
+--- Cycle  44 ---
+Shaaban[ 0] | In3:6 In2:7 In1:5 In0:6
+Shaaban[ 1] | In3:18 In2:18 In1:13 In0:12
+Shaaban[ 2] | In3:81 In2:82 In1:78 In0:78
+Shaaban[ 3] | In3:-146 In2:-146 In1:-131 In0:-132
+Shaaban[ 4] | In3:40 In2:40 In1:39 In0:39
+Shaaban[ 5] | In3:36 In2:35 In1:36 In0:37
+Shaaban[ 6] | In3:-45 In2:-46 In1:-47 In0:-46
+Shaaban[ 7] | In3:-3 In2:-1 In1:0 In0:-1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[ 9] | In3:-8 In2:-8 In1:-7 In0:-8
+Shaaban[10] | In3:6 In2:7 In1:7 In0:7
+Shaaban[11] | In3:-15 In2:-15 In1:-14 In0:-14
+Shaaban[12] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[13] | In3:-54 In2:-54 In1:-54 In0:-54
+Shaaban[14] | In3:35 In2:34 In1:34 In0:34
+Shaaban[15] | In3:-40 In2:-40 In1:-38 In0:-38
+Shaaban[16] | In3:-6 In2:-7 In1:-6 In0:-6
+Shaaban[17] | In3:-74 In2:-74 In1:-75 In0:-74
+Shaaban[18] | In3:-2 In2:-2 In1:-2 In0:-1
+Shaaban[19] | In3:0 In2:1 In1:0 In0:0
+Shaaban[20] | In3:-111 In2:-111 In1:-105 In0:-106
+Shaaban[21] | In3:17 In2:17 In1:21 In0:21
+Shaaban[22] | In3:51 In2:52 In1:52 In0:52
+Shaaban[23] | In3:-230 In2:-229 In1:-211 In0:-210
+Shaaban[24] | In3:-5 In2:-4 In1:-5 In0:-5
+Shaaban[25] | In3:-24 In2:-23 In1:-24 In0:-23
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:32 In2:32 In1:30 In0:29
+Shaaban[28] | In3:-53 In2:-54 In1:-53 In0:-54
+Shaaban[29] | In3:19 In2:19 In1:14 In0:13
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-25
+Shaaban[31] | In3:44 In2:44 In1:44 In0:44
+
+--- Cycle  45 ---
+Shaaban[ 0] | In3:6 In2:6 In1:6 In0:6
+Shaaban[ 1] | In3:18 In2:18 In1:13 In0:13
+Shaaban[ 2] | In3:82 In2:82 In1:78 In0:78
+Shaaban[ 3] | In3:-147 In2:-147 In1:-133 In0:-133
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:36 In2:36 In1:36 In0:36
+Shaaban[ 6] | In3:-46 In2:-45 In1:-46 In0:-46
+Shaaban[ 7] | In3:-3 In2:-2 In1:-1 In0:-1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-7 In2:-7 In1:-7 In0:-7
+Shaaban[10] | In3:7 In2:6 In1:8 In0:6
+Shaaban[11] | In3:-15 In2:-15 In1:-14 In0:-14
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-2
+Shaaban[13] | In3:-53 In2:-54 In1:-54 In0:-55
+Shaaban[14] | In3:35 In2:34 In1:33 In0:34
+Shaaban[15] | In3:-39 In2:-39 In1:-39 In0:-39
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-75 In2:-75 In1:-74 In0:-74
+Shaaban[18] | In3:-2 In2:-2 In1:-1 In0:-2
+Shaaban[19] | In3:0 In2:0 In1:-1 In0:0
+Shaaban[20] | In3:-111 In2:-111 In1:-106 In0:-106
+Shaaban[21] | In3:17 In2:17 In1:21 In0:21
+Shaaban[22] | In3:51 In2:52 In1:52 In0:52
+Shaaban[23] | In3:-231 In2:-230 In1:-214 In0:-212
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-24 In2:-24 In1:-23 In0:-24
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:32 In2:31 In1:30 In0:29
+Shaaban[28] | In3:-53 In2:-54 In1:-54 In0:-55
+Shaaban[29] | In3:19 In2:20 In1:15 In0:14
+Shaaban[30] | In3:-25 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:44 In2:44 In1:44 In0:45
+
+--- Cycle  46 ---
+Shaaban[ 0] | In3:6 In2:7 In1:6 In0:5
+Shaaban[ 1] | In3:19 In2:18 In1:13 In0:13
+Shaaban[ 2] | In3:82 In2:83 In1:79 In0:78
+Shaaban[ 3] | In3:-149 In2:-148 In1:-134 In0:-134
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:39
+Shaaban[ 5] | In3:36 In2:36 In1:36 In0:36
+Shaaban[ 6] | In3:-45 In2:-46 In1:-47 In0:-46
+Shaaban[ 7] | In3:-3 In2:-2 In1:-1 In0:-2
+Shaaban[ 8] | In3:-59 In2:-59 In1:-58 In0:-58
+Shaaban[ 9] | In3:-8 In2:-8 In1:-7 In0:-7
+Shaaban[10] | In3:7 In2:8 In1:8 In0:8
+Shaaban[11] | In3:-15 In2:-15 In1:-14 In0:-14
+Shaaban[12] | In3:-3 In2:-2 In1:-3 In0:-4
+Shaaban[13] | In3:-54 In2:-53 In1:-53 In0:-53
+Shaaban[14] | In3:34 In2:35 In1:34 In0:34
+Shaaban[15] | In3:-39 In2:-38 In1:-38 In0:-39
+Shaaban[16] | In3:-5 In2:-6 In1:-7 In0:-6
+Shaaban[17] | In3:-75 In2:-75 In1:-74 In0:-74
+Shaaban[18] | In3:-3 In2:-2 In1:-2 In0:-2
+Shaaban[19] | In3:0 In2:0 In1:0 In0:0
+Shaaban[20] | In3:-112 In2:-111 In1:-107 In0:-106
+Shaaban[21] | In3:16 In2:16 In1:20 In0:20
+Shaaban[22] | In3:51 In2:51 In1:51 In0:52
+Shaaban[23] | In3:-233 In2:-232 In1:-214 In0:-214
+Shaaban[24] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-24 In2:-24 In1:-23 In0:-24
+Shaaban[26] | In3:47 In2:47 In1:46 In0:47
+Shaaban[27] | In3:32 In2:33 In1:30 In0:30
+Shaaban[28] | In3:-53 In2:-52 In1:-54 In0:-54
+Shaaban[29] | In3:21 In2:20 In1:14 In0:15
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:44 In2:44 In1:45 In0:44
+
+--- Cycle  47 ---
+Shaaban[ 0] | In3:7 In2:5 In1:6 In0:5
+Shaaban[ 1] | In3:20 In2:20 In1:14 In0:14
+Shaaban[ 2] | In3:83 In2:82 In1:79 In0:78
+Shaaban[ 3] | In3:-150 In2:-149 In1:-136 In0:-136
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:36 In2:37 In1:36 In0:36
+Shaaban[ 6] | In3:-46 In2:-45 In1:-46 In0:-46
+Shaaban[ 7] | In3:-3 In2:-2 In1:-1 In0:-1
+Shaaban[ 8] | In3:-58 In2:-59 In1:-58 In0:-58
+Shaaban[ 9] | In3:-7 In2:-8 In1:-7 In0:-6
+Shaaban[10] | In3:7 In2:7 In1:7 In0:7
+Shaaban[11] | In3:-15 In2:-15 In1:-14 In0:-14
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-54 In2:-54 In1:-54 In0:-53
+Shaaban[14] | In3:35 In2:35 In1:34 In0:34
+Shaaban[15] | In3:-39 In2:-40 In1:-40 In0:-39
+Shaaban[16] | In3:-6 In2:-7 In1:-7 In0:-6
+Shaaban[17] | In3:-74 In2:-75 In1:-75 In0:-75
+Shaaban[18] | In3:-2 In2:-2 In1:-2 In0:-2
+Shaaban[19] | In3:0 In2:0 In1:0 In0:0
+Shaaban[20] | In3:-112 In2:-111 In1:-108 In0:-107
+Shaaban[21] | In3:16 In2:16 In1:19 In0:19
+Shaaban[22] | In3:51 In2:51 In1:51 In0:52
+Shaaban[23] | In3:-234 In2:-234 In1:-216 In0:-215
+Shaaban[24] | In3:-5 In2:-6 In1:-5 In0:-5
+Shaaban[25] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:32 In2:33 In1:30 In0:30
+Shaaban[28] | In3:-53 In2:-52 In1:-54 In0:-53
+Shaaban[29] | In3:21 In2:20 In1:15 In0:15
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:45 In1:45 In0:44
+
+--- Cycle  48 ---
+Shaaban[ 0] | In3:6 In2:6 In1:6 In0:6
+Shaaban[ 1] | In3:21 In2:20 In1:14 In0:14
+Shaaban[ 2] | In3:83 In2:83 In1:80 In0:79
+Shaaban[ 3] | In3:-150 In2:-150 In1:-137 In0:-137
+Shaaban[ 4] | In3:40 In2:40 In1:40 In0:39
+Shaaban[ 5] | In3:36 In2:36 In1:37 In0:36
+Shaaban[ 6] | In3:-46 In2:-46 In1:-46 In0:-46
+Shaaban[ 7] | In3:-2 In2:-2 In1:-2 In0:-1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-7 In2:-7 In1:-8 In0:-8
+Shaaban[10] | In3:7 In2:7 In1:7 In0:8
+Shaaban[11] | In3:-15 In2:-16 In1:-14 In0:-14
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-53 In2:-52 In1:-53 In0:-53
+Shaaban[14] | In3:34 In2:35 In1:34 In0:34
+Shaaban[15] | In3:-40 In2:-39 In1:-39 In0:-39
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-75 In2:-75 In1:-75 In0:-74
+Shaaban[18] | In3:-2 In2:-3 In1:-2 In0:-2
+Shaaban[19] | In3:0 In2:0 In1:-1 In0:-1
+Shaaban[20] | In3:-112 In2:-112 In1:-109 In0:-108
+Shaaban[21] | In3:16 In2:16 In1:19 In0:19
+Shaaban[22] | In3:51 In2:51 In1:51 In0:52
+Shaaban[23] | In3:-235 In2:-234 In1:-218 In0:-217
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-24 In1:-24 In0:-23
+Shaaban[26] | In3:47 In2:46 In1:46 In0:47
+Shaaban[27] | In3:33 In2:32 In1:30 In0:30
+Shaaban[28] | In3:-53 In2:-52 In1:-54 In0:-53
+Shaaban[29] | In3:21 In2:21 In1:16 In0:16
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-25
+Shaaban[31] | In3:44 In2:44 In1:44 In0:44
+
+--- Cycle  49 ---
+Shaaban[ 0] | In3:7 In2:6 In1:7 In0:5
+Shaaban[ 1] | In3:21 In2:21 In1:16 In0:15
+Shaaban[ 2] | In3:83 In2:83 In1:79 In0:79
+Shaaban[ 3] | In3:-152 In2:-151 In1:-139 In0:-137
+Shaaban[ 4] | In3:39 In2:40 In1:40 In0:40
+Shaaban[ 5] | In3:37 In2:36 In1:36 In0:36
+Shaaban[ 6] | In3:-46 In2:-45 In1:-46 In0:-46
+Shaaban[ 7] | In3:-2 In2:-2 In1:-2 In0:-1
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-9 In2:-8 In1:-7 In0:-8
+Shaaban[10] | In3:6 In2:7 In1:7 In0:7
+Shaaban[11] | In3:-16 In2:-15 In1:-14 In0:-14
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-53 In2:-53 In1:-54 In0:-53
+Shaaban[14] | In3:34 In2:33 In1:34 In0:34
+Shaaban[15] | In3:-40 In2:-39 In1:-39 In0:-38
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-75 In2:-75 In1:-75 In0:-74
+Shaaban[18] | In3:-2 In2:-3 In1:-2 In0:-2
+Shaaban[19] | In3:0 In2:0 In1:0 In0:0
+Shaaban[20] | In3:-112 In2:-112 In1:-108 In0:-108
+Shaaban[21] | In3:16 In2:16 In1:19 In0:19
+Shaaban[22] | In3:51 In2:51 In1:52 In0:52
+Shaaban[23] | In3:-237 In2:-236 In1:-218 In0:-218
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[25] | In3:-25 In2:-25 In1:-23 In0:-24
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:33 In2:32 In1:31 In0:30
+Shaaban[28] | In3:-53 In2:-52 In1:-53 In0:-53
+Shaaban[29] | In3:21 In2:22 In1:16 In0:15
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:44 In2:44 In1:45 In0:44
+
+--- Cycle  50 ---
+Shaaban[ 0] | In3:7 In2:7 In1:6 In0:6
+Shaaban[ 1] | In3:27 In2:27 In1:21 In0:22
+Shaaban[ 2] | In3:88 In2:88 In1:84 In0:85
+Shaaban[ 3] | In3:-170 In2:-169 In1:-155 In0:-155
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:36 In2:36 In1:36 In0:35
+Shaaban[ 6] | In3:-45 In2:-44 In1:-45 In0:-46
+Shaaban[ 7] | In3:-4 In2:-3 In1:-3 In0:-3
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-9 In2:-9 In1:-7 In0:-8
+Shaaban[10] | In3:7 In2:6 In1:8 In0:7
+Shaaban[11] | In3:-17 In2:-16 In1:-16 In0:-16
+Shaaban[12] | In3:-4 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-52 In2:-53 In1:-52 In0:-53
+Shaaban[14] | In3:35 In2:35 In1:34 In0:34
+Shaaban[15] | In3:-40 In2:-40 In1:-39 In0:-39
+Shaaban[16] | In3:-6 In2:-6 In1:-5 In0:-6
+Shaaban[17] | In3:-75 In2:-75 In1:-74 In0:-76
+Shaaban[18] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[19] | In3:1 In2:1 In1:0 In0:1
+Shaaban[20] | In3:-118 In2:-117 In1:-114 In0:-113
+Shaaban[21] | In3:11 In2:11 In1:15 In0:15
+Shaaban[22] | In3:52 In2:51 In1:50 In0:52
+Shaaban[23] | In3:-260 In2:-259 In1:-242 In0:-241
+Shaaban[24] | In3:-5 In2:-6 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-26 In1:-25 In0:-24
+Shaaban[26] | In3:45 In2:46 In1:47 In0:46
+Shaaban[27] | In3:36 In2:35 In1:34 In0:33
+Shaaban[28] | In3:-51 In2:-51 In1:-52 In0:-52
+Shaaban[29] | In3:29 In2:29 In1:23 In0:23
+Shaaban[30] | In3:-24 In2:-23 In1:-24 In0:-23
+Shaaban[31] | In3:43 In2:44 In1:44 In0:44
+
+--- Cycle  51 ---
+Shaaban[ 0] | In3:7 In2:7 In1:6 In0:7
+Shaaban[ 1] | In3:27 In2:27 In1:22 In0:21
+Shaaban[ 2] | In3:88 In2:89 In1:85 In0:84
+Shaaban[ 3] | In3:-170 In2:-170 In1:-157 In0:-156
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:36 In2:35 In1:36 In0:36
+Shaaban[ 6] | In3:-45 In2:-45 In1:-45 In0:-46
+Shaaban[ 7] | In3:-4 In2:-3 In1:-3 In0:-2
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-8 In2:-9 In1:-8 In0:-8
+Shaaban[10] | In3:7 In2:7 In1:7 In0:7
+Shaaban[11] | In3:-16 In2:-17 In1:-16 In0:-15
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-3
+Shaaban[13] | In3:-52 In2:-52 In1:-53 In0:-53
+Shaaban[14] | In3:35 In2:35 In1:34 In0:34
+Shaaban[15] | In3:-39 In2:-40 In1:-40 In0:-40
+Shaaban[16] | In3:-6 In2:-6 In1:-5 In0:-6
+Shaaban[17] | In3:-75 In2:-76 In1:-75 In0:-75
+Shaaban[18] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[19] | In3:1 In2:1 In1:1 In0:0
+Shaaban[20] | In3:-117 In2:-118 In1:-114 In0:-114
+Shaaban[21] | In3:11 In2:11 In1:15 In0:15
+Shaaban[22] | In3:51 In2:50 In1:50 In0:51
+Shaaban[23] | In3:-261 In2:-261 In1:-243 In0:-242
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:36 In2:36 In1:34 In0:33
+Shaaban[28] | In3:-50 In2:-51 In1:-52 In0:-52
+Shaaban[29] | In3:29 In2:28 In1:23 In0:23
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:44 In2:44 In1:44 In0:43
+
+--- Cycle  52 ---
+Shaaban[ 0] | In3:6 In2:7 In1:6 In0:7
+Shaaban[ 1] | In3:28 In2:28 In1:22 In0:22
+Shaaban[ 2] | In3:89 In2:88 In1:85 In0:84
+Shaaban[ 3] | In3:-171 In2:-171 In1:-157 In0:-157
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:40
+Shaaban[ 5] | In3:36 In2:36 In1:35 In0:36
+Shaaban[ 6] | In3:-44 In2:-45 In1:-45 In0:-45
+Shaaban[ 7] | In3:-4 In2:-4 In1:-3 In0:-2
+Shaaban[ 8] | In3:-58 In2:-58 In1:-57 In0:-58
+Shaaban[ 9] | In3:-9 In2:-8 In1:-8 In0:-8
+Shaaban[10] | In3:6 In2:6 In1:6 In0:7
+Shaaban[11] | In3:-17 In2:-17 In1:-15 In0:-16
+Shaaban[12] | In3:-2 In2:-3 In1:-4 In0:-3
+Shaaban[13] | In3:-52 In2:-53 In1:-53 In0:-53
+Shaaban[14] | In3:35 In2:35 In1:34 In0:35
+Shaaban[15] | In3:-41 In2:-39 In1:-39 In0:-39
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-75 In2:-76 In1:-76 In0:-75
+Shaaban[18] | In3:-4 In2:-3 In1:-2 In0:-3
+Shaaban[19] | In3:1 In2:0 In1:1 In0:1
+Shaaban[20] | In3:-118 In2:-118 In1:-114 In0:-114
+Shaaban[21] | In3:11 In2:11 In1:14 In0:15
+Shaaban[22] | In3:51 In2:50 In1:51 In0:51
+Shaaban[23] | In3:-262 In2:-261 In1:-245 In0:-244
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[26] | In3:46 In2:47 In1:46 In0:46
+Shaaban[27] | In3:36 In2:36 In1:33 In0:34
+Shaaban[28] | In3:-51 In2:-52 In1:-51 In0:-52
+Shaaban[29] | In3:29 In2:29 In1:24 In0:24
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:44 In2:44 In1:44 In0:44
+
+--- Cycle  53 ---
+Shaaban[ 0] | In3:7 In2:8 In1:7 In0:7
+Shaaban[ 1] | In3:29 In2:29 In1:23 In0:22
+Shaaban[ 2] | In3:89 In2:89 In1:86 In0:85
+Shaaban[ 3] | In3:-173 In2:-172 In1:-159 In0:-158
+Shaaban[ 4] | In3:40 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:36 In2:36 In1:36 In0:36
+Shaaban[ 6] | In3:-44 In2:-45 In1:-45 In0:-46
+Shaaban[ 7] | In3:-4 In2:-4 In1:-4 In0:-3
+Shaaban[ 8] | In3:-58 In2:-58 In1:-57 In0:-57
+Shaaban[ 9] | In3:-9 In2:-9 In1:-8 In0:-7
+Shaaban[10] | In3:7 In2:7 In1:7 In0:7
+Shaaban[11] | In3:-17 In2:-17 In1:-16 In0:-16
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-52 In2:-52 In1:-53 In0:-53
+Shaaban[14] | In3:35 In2:35 In1:34 In0:35
+Shaaban[15] | In3:-40 In2:-40 In1:-40 In0:-38
+Shaaban[16] | In3:-6 In2:-6 In1:-7 In0:-6
+Shaaban[17] | In3:-76 In2:-75 In1:-75 In0:-75
+Shaaban[18] | In3:-3 In2:-3 In1:-3 In0:-2
+Shaaban[19] | In3:1 In2:1 In1:0 In0:0
+Shaaban[20] | In3:-119 In2:-119 In1:-114 In0:-115
+Shaaban[21] | In3:11 In2:11 In1:14 In0:14
+Shaaban[22] | In3:51 In2:51 In1:51 In0:51
+Shaaban[23] | In3:-265 In2:-263 In1:-245 In0:-245
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[26] | In3:47 In2:46 In1:46 In0:47
+Shaaban[27] | In3:36 In2:36 In1:34 In0:34
+Shaaban[28] | In3:-51 In2:-52 In1:-52 In0:-53
+Shaaban[29] | In3:30 In2:30 In1:24 In0:24
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:44 In2:43 In1:44 In0:44
+
+--- Cycle  54 ---
+Shaaban[ 0] | In3:6 In2:7 In1:6 In0:7
+Shaaban[ 1] | In3:29 In2:29 In1:24 In0:23
+Shaaban[ 2] | In3:90 In2:89 In1:85 In0:85
+Shaaban[ 3] | In3:-174 In2:-173 In1:-160 In0:-160
+Shaaban[ 4] | In3:39 In2:40 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:36 In1:36 In0:36
+Shaaban[ 6] | In3:-44 In2:-45 In1:-45 In0:-45
+Shaaban[ 7] | In3:-4 In2:-4 In1:-4 In0:-3
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-9 In2:-8 In1:-9 In0:-8
+Shaaban[10] | In3:6 In2:6 In1:6 In0:7
+Shaaban[11] | In3:-18 In2:-17 In1:-16 In0:-16
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-3
+Shaaban[13] | In3:-53 In2:-52 In1:-53 In0:-53
+Shaaban[14] | In3:35 In2:36 In1:35 In0:34
+Shaaban[15] | In3:-39 In2:-39 In1:-39 In0:-40
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-76 In2:-76 In1:-75 In0:-75
+Shaaban[18] | In3:-3 In2:-4 In1:-3 In0:-3
+Shaaban[19] | In3:1 In2:1 In1:1 In0:0
+Shaaban[20] | In3:-119 In2:-118 In1:-115 In0:-115
+Shaaban[21] | In3:11 In2:11 In1:14 In0:14
+Shaaban[22] | In3:51 In2:51 In1:51 In0:51
+Shaaban[23] | In3:-266 In2:-266 In1:-248 In0:-247
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-25 In2:-26 In1:-25 In0:-25
+Shaaban[26] | In3:46 In2:46 In1:47 In0:46
+Shaaban[27] | In3:37 In2:37 In1:35 In0:34
+Shaaban[28] | In3:-51 In2:-51 In1:-52 In0:-53
+Shaaban[29] | In3:30 In2:30 In1:25 In0:24
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:44 In0:44
+
+--- Cycle  55 ---
+Shaaban[ 0] | In3:7 In2:8 In1:7 In0:7
+Shaaban[ 1] | In3:30 In2:29 In1:24 In0:24
+Shaaban[ 2] | In3:89 In2:90 In1:86 In0:86
+Shaaban[ 3] | In3:-176 In2:-175 In1:-161 In0:-160
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:37 In0:36
+Shaaban[ 6] | In3:-44 In2:-45 In1:-45 In0:-46
+Shaaban[ 7] | In3:-4 In2:-4 In1:-3 In0:-3
+Shaaban[ 8] | In3:-57 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-9 In2:-9 In1:-8 In0:-9
+Shaaban[10] | In3:6 In2:6 In1:7 In0:6
+Shaaban[11] | In3:-17 In2:-17 In1:-16 In0:-16
+Shaaban[12] | In3:-2 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-52 In2:-52 In1:-53 In0:-53
+Shaaban[14] | In3:36 In2:35 In1:35 In0:34
+Shaaban[15] | In3:-40 In2:-40 In1:-40 In0:-39
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-75 In2:-75 In1:-76 In0:-75
+Shaaban[18] | In3:-4 In2:-3 In1:-3 In0:-3
+Shaaban[19] | In3:1 In2:0 In1:1 In0:1
+Shaaban[20] | In3:-120 In2:-119 In1:-115 In0:-115
+Shaaban[21] | In3:10 In2:10 In1:13 In0:14
+Shaaban[22] | In3:51 In2:51 In1:51 In0:51
+Shaaban[23] | In3:-267 In2:-266 In1:-250 In0:-249
+Shaaban[24] | In3:-6 In2:-5 In1:-4 In0:-5
+Shaaban[25] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[26] | In3:46 In2:47 In1:46 In0:46
+Shaaban[27] | In3:37 In2:36 In1:34 In0:34
+Shaaban[28] | In3:-51 In2:-51 In1:-52 In0:-52
+Shaaban[29] | In3:31 In2:30 In1:25 In0:25
+Shaaban[30] | In3:-24 In2:-24 In1:-25 In0:-25
+Shaaban[31] | In3:44 In2:44 In1:44 In0:44
+
+--- Cycle  56 ---
+Shaaban[ 0] | In3:7 In2:7 In1:6 In0:7
+Shaaban[ 1] | In3:30 In2:30 In1:25 In0:25
+Shaaban[ 2] | In3:90 In2:90 In1:86 In0:86
+Shaaban[ 3] | In3:-176 In2:-176 In1:-163 In0:-162
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:36 In2:35 In1:36 In0:36
+Shaaban[ 6] | In3:-45 In2:-45 In1:-45 In0:-44
+Shaaban[ 7] | In3:-4 In2:-4 In1:-3 In0:-3
+Shaaban[ 8] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[ 9] | In3:-9 In2:-10 In1:-8 In0:-8
+Shaaban[10] | In3:6 In2:6 In1:7 In0:6
+Shaaban[11] | In3:-17 In2:-18 In1:-16 In0:-16
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-53 In2:-52 In1:-53 In0:-53
+Shaaban[14] | In3:36 In2:35 In1:34 In0:34
+Shaaban[15] | In3:-39 In2:-40 In1:-40 In0:-40
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-5
+Shaaban[17] | In3:-76 In2:-75 In1:-75 In0:-75
+Shaaban[18] | In3:-4 In2:-3 In1:-3 In0:-3
+Shaaban[19] | In3:1 In2:1 In1:0 In0:0
+Shaaban[20] | In3:-120 In2:-119 In1:-116 In0:-115
+Shaaban[21] | In3:10 In2:10 In1:13 In0:13
+Shaaban[22] | In3:52 In2:51 In1:50 In0:51
+Shaaban[23] | In3:-269 In2:-268 In1:-250 In0:-250
+Shaaban[24] | In3:-5 In2:-6 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[26] | In3:46 In2:46 In1:47 In0:46
+Shaaban[27] | In3:36 In2:36 In1:35 In0:35
+Shaaban[28] | In3:-51 In2:-50 In1:-52 In0:-51
+Shaaban[29] | In3:31 In2:31 In1:25 In0:25
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:44 In1:44 In0:44
+
+--- Cycle  57 ---
+Shaaban[ 0] | In3:7 In2:8 In1:7 In0:7
+Shaaban[ 1] | In3:31 In2:30 In1:25 In0:25
+Shaaban[ 2] | In3:90 In2:91 In1:87 In0:87
+Shaaban[ 3] | In3:-178 In2:-176 In1:-163 In0:-163
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:38
+Shaaban[ 5] | In3:36 In2:36 In1:35 In0:35
+Shaaban[ 6] | In3:-44 In2:-45 In1:-46 In0:-45
+Shaaban[ 7] | In3:-5 In2:-3 In1:-3 In0:-3
+Shaaban[ 8] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[ 9] | In3:-9 In2:-9 In1:-8 In0:-8
+Shaaban[10] | In3:6 In2:6 In1:6 In0:7
+Shaaban[11] | In3:-18 In2:-17 In1:-16 In0:-17
+Shaaban[12] | In3:-3 In2:-2 In1:-3 In0:-2
+Shaaban[13] | In3:-52 In2:-53 In1:-53 In0:-53
+Shaaban[14] | In3:35 In2:35 In1:34 In0:35
+Shaaban[15] | In3:-40 In2:-40 In1:-39 In0:-39
+Shaaban[16] | In3:-6 In2:-5 In1:-6 In0:-6
+Shaaban[17] | In3:-76 In2:-76 In1:-75 In0:-75
+Shaaban[18] | In3:-3 In2:-4 In1:-3 In0:-4
+Shaaban[19] | In3:0 In2:1 In1:0 In0:0
+Shaaban[20] | In3:-120 In2:-120 In1:-115 In0:-116
+Shaaban[21] | In3:10 In2:10 In1:13 In0:13
+Shaaban[22] | In3:51 In2:50 In1:50 In0:51
+Shaaban[23] | In3:-270 In2:-269 In1:-252 In0:-251
+Shaaban[24] | In3:-5 In2:-4 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[26] | In3:46 In2:47 In1:46 In0:47
+Shaaban[27] | In3:37 In2:38 In1:35 In0:35
+Shaaban[28] | In3:-51 In2:-50 In1:-52 In0:-51
+Shaaban[29] | In3:31 In2:31 In1:26 In0:27
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:44 In2:44 In1:44 In0:43
+
+--- Cycle  58 ---
+Shaaban[ 0] | In3:7 In2:7 In1:7 In0:6
+Shaaban[ 1] | In3:31 In2:31 In1:26 In0:26
+Shaaban[ 2] | In3:91 In2:90 In1:87 In0:86
+Shaaban[ 3] | In3:-178 In2:-178 In1:-165 In0:-164
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:35 In2:35 In1:36 In0:36
+Shaaban[ 6] | In3:-45 In2:-45 In1:-45 In0:-44
+Shaaban[ 7] | In3:-5 In2:-4 In1:-4 In0:-3
+Shaaban[ 8] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[ 9] | In3:-9 In2:-9 In1:-8 In0:-8
+Shaaban[10] | In3:7 In2:7 In1:7 In0:7
+Shaaban[11] | In3:-17 In2:-17 In1:-17 In0:-16
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-3
+Shaaban[13] | In3:-52 In2:-52 In1:-53 In0:-53
+Shaaban[14] | In3:35 In2:36 In1:35 In0:35
+Shaaban[15] | In3:-40 In2:-40 In1:-39 In0:-40
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-75 In2:-76 In1:-75 In0:-76
+Shaaban[18] | In3:-4 In2:-4 In1:-4 In0:-3
+Shaaban[19] | In3:1 In2:0 In1:0 In0:1
+Shaaban[20] | In3:-120 In2:-120 In1:-116 In0:-116
+Shaaban[21] | In3:10 In2:10 In1:13 In0:13
+Shaaban[22] | In3:51 In2:50 In1:50 In0:51
+Shaaban[23] | In3:-271 In2:-271 In1:-253 In0:-253
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-6
+Shaaban[25] | In3:-25 In2:-26 In1:-25 In0:-25
+Shaaban[26] | In3:46 In2:46 In1:47 In0:46
+Shaaban[27] | In3:38 In2:37 In1:35 In0:35
+Shaaban[28] | In3:-51 In2:-51 In1:-52 In0:-51
+Shaaban[29] | In3:32 In2:32 In1:27 In0:26
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:43 In0:44
+
+--- Cycle  59 ---
+Shaaban[ 0] | In3:7 In2:7 In1:7 In0:7
+Shaaban[ 1] | In3:31 In2:31 In1:26 In0:26
+Shaaban[ 2] | In3:91 In2:91 In1:88 In0:87
+Shaaban[ 3] | In3:-180 In2:-179 In1:-166 In0:-165
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:36 In2:36 In1:35 In0:36
+Shaaban[ 6] | In3:-44 In2:-44 In1:-46 In0:-45
+Shaaban[ 7] | In3:-5 In2:-4 In1:-4 In0:-4
+Shaaban[ 8] | In3:-58 In2:-58 In1:-59 In0:-59
+Shaaban[ 9] | In3:-9 In2:-8 In1:-8 In0:-8
+Shaaban[10] | In3:6 In2:6 In1:6 In0:6
+Shaaban[11] | In3:-17 In2:-18 In1:-17 In0:-16
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-2
+Shaaban[13] | In3:-52 In2:-53 In1:-54 In0:-53
+Shaaban[14] | In3:35 In2:36 In1:35 In0:35
+Shaaban[15] | In3:-40 In2:-40 In1:-39 In0:-40
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-5
+Shaaban[17] | In3:-75 In2:-76 In1:-76 In0:-75
+Shaaban[18] | In3:-4 In2:-4 In1:-4 In0:-3
+Shaaban[19] | In3:1 In2:1 In1:0 In0:0
+Shaaban[20] | In3:-121 In2:-121 In1:-116 In0:-117
+Shaaban[21] | In3:10 In2:10 In1:13 In0:13
+Shaaban[22] | In3:51 In2:50 In1:51 In0:51
+Shaaban[23] | In3:-273 In2:-273 In1:-255 In0:-254
+Shaaban[24] | In3:-6 In2:-5 In1:-4 In0:-5
+Shaaban[25] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[26] | In3:47 In2:47 In1:46 In0:47
+Shaaban[27] | In3:37 In2:37 In1:35 In0:34
+Shaaban[28] | In3:-51 In2:-51 In1:-52 In0:-52
+Shaaban[29] | In3:32 In2:33 In1:28 In0:26
+Shaaban[30] | In3:-24 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:44 In2:44 In1:44 In0:43
+
+--- Cycle  60 ---
+Shaaban[ 0] | In3:9 In2:7 In1:8 In0:7
+Shaaban[ 1] | In3:39 In2:39 In1:34 In0:33
+Shaaban[ 2] | In3:95 In2:96 In1:92 In0:92
+Shaaban[ 3] | In3:-197 In2:-196 In1:-183 In0:-183
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:35 In2:35 In1:36 In0:36
+Shaaban[ 6] | In3:-44 In2:-44 In1:-45 In0:-44
+Shaaban[ 7] | In3:-6 In2:-7 In1:-4 In0:-4
+Shaaban[ 8] | In3:-57 In2:-57 In1:-58 In0:-59
+Shaaban[ 9] | In3:-10 In2:-9 In1:-9 In0:-9
+Shaaban[10] | In3:6 In2:5 In1:6 In0:5
+Shaaban[11] | In3:-19 In2:-19 In1:-17 In0:-18
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-52 In2:-52 In1:-51 In0:-52
+Shaaban[14] | In3:36 In2:35 In1:36 In0:36
+Shaaban[15] | In3:-40 In2:-40 In1:-40 In0:-40
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-76 In2:-76 In1:-76 In0:-75
+Shaaban[18] | In3:-4 In2:-4 In1:-3 In0:-3
+Shaaban[19] | In3:1 In2:1 In1:2 In0:2
+Shaaban[20] | In3:-125 In2:-126 In1:-121 In0:-121
+Shaaban[21] | In3:5 In2:5 In1:8 In0:8
+Shaaban[22] | In3:51 In2:50 In1:51 In0:51
+Shaaban[23] | In3:-296 In2:-295 In1:-277 In0:-277
+Shaaban[24] | In3:-4 In2:-4 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-26 In1:-25 In0:-26
+Shaaban[26] | In3:47 In2:46 In1:46 In0:47
+Shaaban[27] | In3:40 In2:40 In1:38 In0:38
+Shaaban[28] | In3:-49 In2:-50 In1:-49 In0:-50
+Shaaban[29] | In3:40 In2:39 In1:33 In0:33
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:44 In2:43 In1:43 In0:43
+
+--- Cycle  61 ---
+Shaaban[ 0] | In3:8 In2:8 In1:8 In0:8
+Shaaban[ 1] | In3:38 In2:39 In1:33 In0:33
+Shaaban[ 2] | In3:96 In2:96 In1:92 In0:92
+Shaaban[ 3] | In3:-199 In2:-197 In1:-184 In0:-184
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:40
+Shaaban[ 5] | In3:35 In2:35 In1:35 In0:35
+Shaaban[ 6] | In3:-44 In2:-43 In1:-44 In0:-45
+Shaaban[ 7] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[ 8] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[ 9] | In3:-10 In2:-10 In1:-10 In0:-10
+Shaaban[10] | In3:6 In2:6 In1:7 In0:7
+Shaaban[11] | In3:-19 In2:-19 In1:-18 In0:-18
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-2
+Shaaban[13] | In3:-52 In2:-52 In1:-52 In0:-52
+Shaaban[14] | In3:36 In2:35 In1:36 In0:36
+Shaaban[15] | In3:-41 In2:-41 In1:-39 In0:-39
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-76 In2:-76 In1:-75 In0:-77
+Shaaban[18] | In3:-4 In2:-4 In1:-3 In0:-4
+Shaaban[19] | In3:2 In2:2 In1:1 In0:1
+Shaaban[20] | In3:-126 In2:-126 In1:-122 In0:-122
+Shaaban[21] | In3:5 In2:5 In1:8 In0:8
+Shaaban[22] | In3:51 In2:50 In1:50 In0:51
+Shaaban[23] | In3:-297 In2:-297 In1:-279 In0:-278
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-25 In0:-25
+Shaaban[26] | In3:45 In2:46 In1:47 In0:45
+Shaaban[27] | In3:40 In2:40 In1:39 In0:38
+Shaaban[28] | In3:-49 In2:-50 In1:-50 In0:-51
+Shaaban[29] | In3:40 In2:39 In1:34 In0:34
+Shaaban[30] | In3:-23 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:43 In0:44
+
+--- Cycle  62 ---
+Shaaban[ 0] | In3:9 In2:8 In1:8 In0:7
+Shaaban[ 1] | In3:39 In2:39 In1:34 In0:33
+Shaaban[ 2] | In3:96 In2:97 In1:93 In0:93
+Shaaban[ 3] | In3:-200 In2:-199 In1:-186 In0:-185
+Shaaban[ 4] | In3:40 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:35 In0:35
+Shaaban[ 6] | In3:-44 In2:-44 In1:-45 In0:-44
+Shaaban[ 7] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[ 8] | In3:-58 In2:-57 In1:-58 In0:-58
+Shaaban[ 9] | In3:-9 In2:-10 In1:-9 In0:-9
+Shaaban[10] | In3:6 In2:6 In1:6 In0:6
+Shaaban[11] | In3:-19 In2:-19 In1:-18 In0:-18
+Shaaban[12] | In3:-3 In2:-2 In1:-3 In0:-2
+Shaaban[13] | In3:-51 In2:-51 In1:-51 In0:-52
+Shaaban[14] | In3:35 In2:36 In1:36 In0:36
+Shaaban[15] | In3:-40 In2:-40 In1:-40 In0:-41
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-5
+Shaaban[17] | In3:-76 In2:-77 In1:-76 In0:-76
+Shaaban[18] | In3:-5 In2:-4 In1:-4 In0:-4
+Shaaban[19] | In3:1 In2:2 In1:1 In0:1
+Shaaban[20] | In3:-126 In2:-127 In1:-122 In0:-122
+Shaaban[21] | In3:5 In2:5 In1:8 In0:8
+Shaaban[22] | In3:50 In2:49 In1:50 In0:50
+Shaaban[23] | In3:-299 In2:-298 In1:-281 In0:-280
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-25 In1:-26 In0:-25
+Shaaban[26] | In3:46 In2:47 In1:47 In0:46
+Shaaban[27] | In3:41 In2:41 In1:38 In0:38
+Shaaban[28] | In3:-49 In2:-50 In1:-50 In0:-51
+Shaaban[29] | In3:40 In2:39 In1:35 In0:35
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:44 In2:43 In1:43 In0:44
+
+--- Cycle  63 ---
+Shaaban[ 0] | In3:7 In2:8 In1:7 In0:8
+Shaaban[ 1] | In3:39 In2:39 In1:34 In0:34
+Shaaban[ 2] | In3:97 In2:97 In1:93 In0:92
+Shaaban[ 3] | In3:-201 In2:-200 In1:-187 In0:-186
+Shaaban[ 4] | In3:39 In2:40 In1:39 In0:39
+Shaaban[ 5] | In3:36 In2:35 In1:35 In0:35
+Shaaban[ 6] | In3:-44 In2:-43 In1:-44 In0:-45
+Shaaban[ 7] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-10 In2:-10 In1:-9 In0:-9
+Shaaban[10] | In3:6 In2:6 In1:6 In0:7
+Shaaban[11] | In3:-19 In2:-19 In1:-19 In0:-18
+Shaaban[12] | In3:-2 In2:-3 In1:-2 In0:-3
+Shaaban[13] | In3:-51 In2:-51 In1:-52 In0:-51
+Shaaban[14] | In3:36 In2:36 In1:36 In0:36
+Shaaban[15] | In3:-40 In2:-40 In1:-40 In0:-40
+Shaaban[16] | In3:-6 In2:-5 In1:-6 In0:-5
+Shaaban[17] | In3:-76 In2:-77 In1:-76 In0:-76
+Shaaban[18] | In3:-4 In2:-4 In1:-4 In0:-3
+Shaaban[19] | In3:1 In2:1 In1:1 In0:2
+Shaaban[20] | In3:-127 In2:-126 In1:-123 In0:-123
+Shaaban[21] | In3:5 In2:5 In1:8 In0:8
+Shaaban[22] | In3:50 In2:49 In1:51 In0:50
+Shaaban[23] | In3:-301 In2:-300 In1:-282 In0:-282
+Shaaban[24] | In3:-5 In2:-6 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-25 In1:-25 In0:-25
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:41 In2:41 In1:38 In0:39
+Shaaban[28] | In3:-49 In2:-49 In1:-50 In0:-51
+Shaaban[29] | In3:40 In2:41 In1:35 In0:34
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:43 In2:42 In1:43 In0:44
+
+--- Cycle  64 ---
+Shaaban[ 0] | In3:8 In2:8 In1:8 In0:7
+Shaaban[ 1] | In3:40 In2:39 In1:34 In0:34
+Shaaban[ 2] | In3:97 In2:97 In1:94 In0:93
+Shaaban[ 3] | In3:-201 In2:-202 In1:-189 In0:-187
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:36 In1:35 In0:35
+Shaaban[ 6] | In3:-43 In2:-44 In1:-44 In0:-44
+Shaaban[ 7] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-10 In2:-10 In1:-9 In0:-9
+Shaaban[10] | In3:5 In2:6 In1:6 In0:6
+Shaaban[11] | In3:-19 In2:-20 In1:-18 In0:-18
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-51 In2:-51 In1:-52 In0:-52
+Shaaban[14] | In3:36 In2:36 In1:35 In0:36
+Shaaban[15] | In3:-40 In2:-41 In1:-41 In0:-40
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-76 In2:-76 In1:-76 In0:-76
+Shaaban[18] | In3:-4 In2:-5 In1:-4 In0:-4
+Shaaban[19] | In3:2 In2:2 In1:1 In0:1
+Shaaban[20] | In3:-127 In2:-127 In1:-123 In0:-122
+Shaaban[21] | In3:4 In2:5 In1:7 In0:8
+Shaaban[22] | In3:50 In2:50 In1:51 In0:50
+Shaaban[23] | In3:-302 In2:-301 In1:-284 In0:-283
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-25 In2:-26 In1:-25 In0:-26
+Shaaban[26] | In3:47 In2:46 In1:46 In0:47
+Shaaban[27] | In3:40 In2:41 In1:39 In0:38
+Shaaban[28] | In3:-49 In2:-49 In1:-50 In0:-50
+Shaaban[29] | In3:41 In2:41 In1:36 In0:36
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:44 In2:43 In1:44 In0:43
+
+--- Cycle  65 ---
+Shaaban[ 0] | In3:8 In2:8 In1:7 In0:8
+Shaaban[ 1] | In3:40 In2:40 In1:35 In0:35
+Shaaban[ 2] | In3:98 In2:97 In1:93 In0:93
+Shaaban[ 3] | In3:-202 In2:-202 In1:-189 In0:-189
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:36 In0:36
+Shaaban[ 6] | In3:-44 In2:-43 In1:-43 In0:-44
+Shaaban[ 7] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-9 In2:-9 In1:-9 In0:-9
+Shaaban[10] | In3:6 In2:5 In1:6 In0:5
+Shaaban[11] | In3:-20 In2:-19 In1:-18 In0:-19
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[13] | In3:-51 In2:-51 In1:-52 In0:-51
+Shaaban[14] | In3:36 In2:36 In1:35 In0:35
+Shaaban[15] | In3:-41 In2:-40 In1:-40 In0:-40
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-5
+Shaaban[17] | In3:-77 In2:-77 In1:-76 In0:-76
+Shaaban[18] | In3:-5 In2:-5 In1:-4 In0:-4
+Shaaban[19] | In3:1 In2:2 In1:1 In0:1
+Shaaban[20] | In3:-127 In2:-127 In1:-124 In0:-123
+Shaaban[21] | In3:4 In2:4 In1:7 In0:7
+Shaaban[22] | In3:50 In2:50 In1:51 In0:50
+Shaaban[23] | In3:-303 In2:-303 In1:-285 In0:-285
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-25
+Shaaban[26] | In3:46 In2:46 In1:47 In0:46
+Shaaban[27] | In3:42 In2:42 In1:39 In0:39
+Shaaban[28] | In3:-49 In2:-50 In1:-50 In0:-50
+Shaaban[29] | In3:42 In2:41 In1:36 In0:36
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:43 In0:44
+
+--- Cycle  66 ---
+Shaaban[ 0] | In3:8 In2:8 In1:8 In0:8
+Shaaban[ 1] | In3:41 In2:41 In1:35 In0:35
+Shaaban[ 2] | In3:97 In2:98 In1:94 In0:94
+Shaaban[ 3] | In3:-204 In2:-204 In1:-190 In0:-189
+Shaaban[ 4] | In3:39 In2:39 In1:38 In0:39
+Shaaban[ 5] | In3:35 In2:36 In1:35 In0:35
+Shaaban[ 6] | In3:-44 In2:-44 In1:-44 In0:-44
+Shaaban[ 7] | In3:-6 In2:-7 In1:-6 In0:-5
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-10 In2:-9 In1:-10 In0:-10
+Shaaban[10] | In3:5 In2:6 In1:5 In0:6
+Shaaban[11] | In3:-19 In2:-19 In1:-19 In0:-18
+Shaaban[12] | In3:-2 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-51 In2:-51 In1:-52 In0:-52
+Shaaban[14] | In3:36 In2:36 In1:35 In0:35
+Shaaban[15] | In3:-41 In2:-40 In1:-40 In0:-40
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-76 In2:-76 In1:-77 In0:-76
+Shaaban[18] | In3:-5 In2:-4 In1:-4 In0:-4
+Shaaban[19] | In3:1 In2:1 In1:1 In0:1
+Shaaban[20] | In3:-127 In2:-128 In1:-123 In0:-123
+Shaaban[21] | In3:3 In2:3 In1:7 In0:7
+Shaaban[22] | In3:50 In2:51 In1:51 In0:50
+Shaaban[23] | In3:-304 In2:-304 In1:-287 In0:-286
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-25 In1:-26 In0:-25
+Shaaban[26] | In3:46 In2:47 In1:46 In0:46
+Shaaban[27] | In3:42 In2:41 In1:39 In0:39
+Shaaban[28] | In3:-49 In2:-50 In1:-50 In0:-51
+Shaaban[29] | In3:42 In2:42 In1:37 In0:36
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:42 In2:44 In1:44 In0:43
+
+--- Cycle  67 ---
+Shaaban[ 0] | In3:8 In2:9 In1:8 In0:8
+Shaaban[ 1] | In3:42 In2:42 In1:36 In0:35
+Shaaban[ 2] | In3:98 In2:98 In1:94 In0:94
+Shaaban[ 3] | In3:-205 In2:-205 In1:-191 In0:-191
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:36 In0:35
+Shaaban[ 6] | In3:-43 In2:-43 In1:-44 In0:-44
+Shaaban[ 7] | In3:-6 In2:-7 In1:-6 In0:-6
+Shaaban[ 8] | In3:-58 In2:-58 In1:-58 In0:-58
+Shaaban[ 9] | In3:-10 In2:-11 In1:-9 In0:-9
+Shaaban[10] | In3:6 In2:5 In1:7 In0:5
+Shaaban[11] | In3:-19 In2:-20 In1:-18 In0:-18
+Shaaban[12] | In3:-4 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-51 In2:-51 In1:-51 In0:-51
+Shaaban[14] | In3:36 In2:36 In1:36 In0:35
+Shaaban[15] | In3:-40 In2:-41 In1:-40 In0:-40
+Shaaban[16] | In3:-6 In2:-5 In1:-6 In0:-5
+Shaaban[17] | In3:-77 In2:-76 In1:-76 In0:-75
+Shaaban[18] | In3:-5 In2:-5 In1:-4 In0:-5
+Shaaban[19] | In3:2 In2:1 In1:1 In0:1
+Shaaban[20] | In3:-128 In2:-128 In1:-124 In0:-124
+Shaaban[21] | In3:3 In2:3 In1:6 In0:7
+Shaaban[22] | In3:51 In2:51 In1:50 In0:51
+Shaaban[23] | In3:-306 In2:-305 In1:-288 In0:-287
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[25] | In3:-25 In2:-26 In1:-25 In0:-25
+Shaaban[26] | In3:46 In2:46 In1:47 In0:46
+Shaaban[27] | In3:41 In2:41 In1:40 In0:39
+Shaaban[28] | In3:-49 In2:-49 In1:-50 In0:-50
+Shaaban[29] | In3:43 In2:42 In1:37 In0:36
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:43 In0:43
+
+--- Cycle  68 ---
+Shaaban[ 0] | In3:8 In2:9 In1:8 In0:8
+Shaaban[ 1] | In3:42 In2:42 In1:37 In0:36
+Shaaban[ 2] | In3:98 In2:98 In1:95 In0:95
+Shaaban[ 3] | In3:-207 In2:-206 In1:-192 In0:-192
+Shaaban[ 4] | In3:38 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:34 In1:36 In0:36
+Shaaban[ 6] | In3:-43 In2:-44 In1:-44 In0:-44
+Shaaban[ 7] | In3:-6 In2:-7 In1:-5 In0:-6
+Shaaban[ 8] | In3:-58 In2:-58 In1:-57 In0:-57
+Shaaban[ 9] | In3:-10 In2:-10 In1:-10 In0:-10
+Shaaban[10] | In3:6 In2:6 In1:6 In0:7
+Shaaban[11] | In3:-20 In2:-19 In1:-18 In0:-19
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[13] | In3:-51 In2:-51 In1:-52 In0:-52
+Shaaban[14] | In3:37 In2:36 In1:35 In0:35
+Shaaban[15] | In3:-40 In2:-41 In1:-41 In0:-40
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-77 In2:-76 In1:-76 In0:-76
+Shaaban[18] | In3:-5 In2:-5 In1:-5 In0:-4
+Shaaban[19] | In3:2 In2:1 In1:1 In0:1
+Shaaban[20] | In3:-128 In2:-129 In1:-124 In0:-125
+Shaaban[21] | In3:3 In2:3 In1:6 In0:6
+Shaaban[22] | In3:50 In2:50 In1:50 In0:50
+Shaaban[23] | In3:-309 In2:-308 In1:-290 In0:-288
+Shaaban[24] | In3:-6 In2:-5 In1:-4 In0:-5
+Shaaban[25] | In3:-25 In2:-26 In1:-25 In0:-26
+Shaaban[26] | In3:46 In2:47 In1:46 In0:46
+Shaaban[27] | In3:42 In2:42 In1:39 In0:40
+Shaaban[28] | In3:-49 In2:-48 In1:-50 In0:-50
+Shaaban[29] | In3:43 In2:43 In1:37 In0:37
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:44 In0:43
+
+--- Cycle  69 ---
+Shaaban[ 0] | In3:8 In2:9 In1:8 In0:7
+Shaaban[ 1] | In3:43 In2:43 In1:38 In0:37
+Shaaban[ 2] | In3:99 In2:99 In1:95 In0:94
+Shaaban[ 3] | In3:-208 In2:-208 In1:-194 In0:-194
+Shaaban[ 4] | In3:38 In2:38 In1:40 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:34 In0:36
+Shaaban[ 6] | In3:-43 In2:-43 In1:-44 In0:-44
+Shaaban[ 7] | In3:-6 In2:-7 In1:-5 In0:-6
+Shaaban[ 8] | In3:-58 In2:-58 In1:-57 In0:-57
+Shaaban[ 9] | In3:-10 In2:-10 In1:-9 In0:-10
+Shaaban[10] | In3:5 In2:6 In1:6 In0:6
+Shaaban[11] | In3:-20 In2:-20 In1:-19 In0:-19
+Shaaban[12] | In3:-2 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-51 In2:-51 In1:-51 In0:-52
+Shaaban[14] | In3:36 In2:36 In1:35 In0:36
+Shaaban[15] | In3:-41 In2:-40 In1:-40 In0:-40
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-5
+Shaaban[17] | In3:-76 In2:-76 In1:-76 In0:-77
+Shaaban[18] | In3:-5 In2:-5 In1:-5 In0:-4
+Shaaban[19] | In3:2 In2:2 In1:2 In0:0
+Shaaban[20] | In3:-129 In2:-128 In1:-125 In0:-124
+Shaaban[21] | In3:3 In2:3 In1:6 In0:6
+Shaaban[22] | In3:50 In2:50 In1:50 In0:50
+Shaaban[23] | In3:-309 In2:-308 In1:-292 In0:-291
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-25
+Shaaban[26] | In3:46 In2:46 In1:47 In0:46
+Shaaban[27] | In3:42 In2:42 In1:40 In0:40
+Shaaban[28] | In3:-49 In2:-48 In1:-50 In0:-49
+Shaaban[29] | In3:43 In2:42 In1:38 In0:38
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:43 In0:43
+
+--- Cycle  70 ---
+Shaaban[ 0] | In3:9 In2:9 In1:9 In0:9
+Shaaban[ 1] | In3:49 In2:49 In1:44 In0:44
+Shaaban[ 2] | In3:103 In2:102 In1:100 In0:99
+Shaaban[ 3] | In3:-226 In2:-225 In1:-211 In0:-210
+Shaaban[ 4] | In3:39 In2:39 In1:40 In0:40
+Shaaban[ 5] | In3:35 In2:34 In1:35 In0:35
+Shaaban[ 6] | In3:-42 In2:-43 In1:-43 In0:-44
+Shaaban[ 7] | In3:-7 In2:-8 In1:-7 In0:-7
+Shaaban[ 8] | In3:-58 In2:-58 In1:-57 In0:-57
+Shaaban[ 9] | In3:-11 In2:-11 In1:-10 In0:-10
+Shaaban[10] | In3:5 In2:5 In1:6 In0:5
+Shaaban[11] | In3:-22 In2:-22 In1:-20 In0:-20
+Shaaban[12] | In3:-3 In2:-2 In1:-2 In0:-2
+Shaaban[13] | In3:-51 In2:-50 In1:-51 In0:-51
+Shaaban[14] | In3:36 In2:38 In1:37 In0:37
+Shaaban[15] | In3:-41 In2:-41 In1:-41 In0:-40
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-78 In2:-77 In1:-77 In0:-76
+Shaaban[18] | In3:-5 In2:-5 In1:-4 In0:-4
+Shaaban[19] | In3:2 In2:3 In1:2 In0:2
+Shaaban[20] | In3:-135 In2:-135 In1:-131 In0:-131
+Shaaban[21] | In3:-1 In2:-1 In1:2 In0:2
+Shaaban[22] | In3:50 In2:50 In1:50 In0:51
+Shaaban[23] | In3:-332 In2:-331 In1:-313 In0:-313
+Shaaban[24] | In3:-5 In2:-5 In1:-6 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-25 In0:-26
+Shaaban[26] | In3:46 In2:45 In1:46 In0:46
+Shaaban[27] | In3:45 In2:46 In1:42 In0:43
+Shaaban[28] | In3:-48 In2:-48 In1:-48 In0:-49
+Shaaban[29] | In3:50 In2:50 In1:44 In0:44
+Shaaban[30] | In3:-25 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:42 In1:43 In0:44
+
+--- Cycle  71 ---
+Shaaban[ 0] | In3:9 In2:9 In1:9 In0:8
+Shaaban[ 1] | In3:50 In2:50 In1:44 In0:44
+Shaaban[ 2] | In3:102 In2:103 In1:100 In0:100
+Shaaban[ 3] | In3:-226 In2:-226 In1:-213 In0:-212
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:35 In1:35 In0:35
+Shaaban[ 6] | In3:-43 In2:-43 In1:-43 In0:-44
+Shaaban[ 7] | In3:-7 In2:-8 In1:-7 In0:-7
+Shaaban[ 8] | In3:-57 In2:-58 In1:-57 In0:-57
+Shaaban[ 9] | In3:-10 In2:-11 In1:-11 In0:-9
+Shaaban[10] | In3:5 In2:5 In1:5 In0:5
+Shaaban[11] | In3:-22 In2:-22 In1:-20 In0:-20
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-3
+Shaaban[13] | In3:-50 In2:-51 In1:-52 In0:-51
+Shaaban[14] | In3:37 In2:36 In1:37 In0:36
+Shaaban[15] | In3:-40 In2:-41 In1:-41 In0:-41
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-5
+Shaaban[17] | In3:-77 In2:-77 In1:-77 In0:-76
+Shaaban[18] | In3:-5 In2:-5 In1:-4 In0:-5
+Shaaban[19] | In3:2 In2:2 In1:1 In0:2
+Shaaban[20] | In3:-135 In2:-135 In1:-131 In0:-131
+Shaaban[21] | In3:-2 In2:-1 In1:2 In0:2
+Shaaban[22] | In3:50 In2:50 In1:50 In0:51
+Shaaban[23] | In3:-334 In2:-333 In1:-316 In0:-314
+Shaaban[24] | In3:-5 In2:-5 In1:-4 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:47 In2:46 In1:46 In0:47
+Shaaban[27] | In3:44 In2:45 In1:43 In0:43
+Shaaban[28] | In3:-47 In2:-47 In1:-48 In0:-49
+Shaaban[29] | In3:50 In2:50 In1:45 In0:46
+Shaaban[30] | In3:-23 In2:-24 In1:-23 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:43 In0:43
+
+--- Cycle  72 ---
+Shaaban[ 0] | In3:9 In2:9 In1:9 In0:9
+Shaaban[ 1] | In3:50 In2:50 In1:44 In0:44
+Shaaban[ 2] | In3:103 In2:103 In1:100 In0:100
+Shaaban[ 3] | In3:-227 In2:-226 In1:-214 In0:-213
+Shaaban[ 4] | In3:40 In2:40 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:36 In0:36
+Shaaban[ 6] | In3:-42 In2:-43 In1:-43 In0:-44
+Shaaban[ 7] | In3:-7 In2:-8 In1:-7 In0:-7
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-11 In2:-10 In1:-11 In0:-11
+Shaaban[10] | In3:5 In2:4 In1:5 In0:6
+Shaaban[11] | In3:-22 In2:-22 In1:-20 In0:-20
+Shaaban[12] | In3:-3 In2:-3 In1:-3 In0:-2
+Shaaban[13] | In3:-51 In2:-50 In1:-51 In0:-51
+Shaaban[14] | In3:37 In2:36 In1:37 In0:36
+Shaaban[15] | In3:-41 In2:-41 In1:-41 In0:-40
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-77 In2:-77 In1:-76 In0:-77
+Shaaban[18] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[19] | In3:2 In2:2 In1:2 In0:2
+Shaaban[20] | In3:-136 In2:-135 In1:-132 In0:-131
+Shaaban[21] | In3:-2 In2:-2 In1:2 In0:2
+Shaaban[22] | In3:50 In2:50 In1:49 In0:51
+Shaaban[23] | In3:-335 In2:-335 In1:-317 In0:-317
+Shaaban[24] | In3:-5 In2:-6 In1:-5 In0:-4
+Shaaban[25] | In3:-26 In2:-25 In1:-26 In0:-25
+Shaaban[26] | In3:45 In2:46 In1:47 In0:45
+Shaaban[27] | In3:45 In2:45 In1:44 In0:42
+Shaaban[28] | In3:-47 In2:-47 In1:-48 In0:-48
+Shaaban[29] | In3:51 In2:51 In1:46 In0:45
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:42 In1:42 In0:44
+
+--- Cycle  73 ---
+Shaaban[ 0] | In3:9 In2:9 In1:9 In0:8
+Shaaban[ 1] | In3:51 In2:50 In1:45 In0:44
+Shaaban[ 2] | In3:103 In2:104 In1:101 In0:101
+Shaaban[ 3] | In3:-228 In2:-228 In1:-214 In0:-214
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:34 In0:35
+Shaaban[ 6] | In3:-43 In2:-43 In1:-43 In0:-43
+Shaaban[ 7] | In3:-8 In2:-9 In1:-6 In0:-7
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-12 In2:-12 In1:-10 In0:-11
+Shaaban[10] | In3:5 In2:6 In1:6 In0:6
+Shaaban[11] | In3:-23 In2:-22 In1:-21 In0:-22
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-2
+Shaaban[13] | In3:-51 In2:-51 In1:-52 In0:-51
+Shaaban[14] | In3:37 In2:36 In1:36 In0:37
+Shaaban[15] | In3:-41 In2:-41 In1:-41 In0:-41
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-77 In2:-77 In1:-77 In0:-77
+Shaaban[18] | In3:-5 In2:-5 In1:-5 In0:-4
+Shaaban[19] | In3:2 In2:2 In1:2 In0:2
+Shaaban[20] | In3:-136 In2:-136 In1:-132 In0:-131
+Shaaban[21] | In3:-3 In2:-2 In1:2 In0:2
+Shaaban[22] | In3:49 In2:49 In1:50 In0:50
+Shaaban[23] | In3:-336 In2:-336 In1:-319 In0:-318
+Shaaban[24] | In3:-4 In2:-4 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:47 In1:46 In0:46
+Shaaban[27] | In3:46 In2:45 In1:43 In0:43
+Shaaban[28] | In3:-47 In2:-48 In1:-48 In0:-48
+Shaaban[29] | In3:51 In2:52 In1:47 In0:45
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:43 In1:43 In0:43
+
+--- Cycle  74 ---
+Shaaban[ 0] | In3:9 In2:9 In1:8 In0:9
+Shaaban[ 1] | In3:51 In2:51 In1:46 In0:46
+Shaaban[ 2] | In3:104 In2:104 In1:101 In0:100
+Shaaban[ 3] | In3:-230 In2:-229 In1:-215 In0:-215
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:35 In0:34
+Shaaban[ 6] | In3:-42 In2:-43 In1:-43 In0:-43
+Shaaban[ 7] | In3:-8 In2:-9 In1:-7 In0:-8
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-11 In2:-11 In1:-10 In0:-10
+Shaaban[10] | In3:5 In2:5 In1:5 In0:5
+Shaaban[11] | In3:-22 In2:-22 In1:-22 In0:-21
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-3
+Shaaban[13] | In3:-50 In2:-50 In1:-50 In0:-52
+Shaaban[14] | In3:36 In2:37 In1:36 In0:37
+Shaaban[15] | In3:-41 In2:-41 In1:-40 In0:-41
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-5
+Shaaban[17] | In3:-77 In2:-78 In1:-77 In0:-77
+Shaaban[18] | In3:-5 In2:-6 In1:-5 In0:-5
+Shaaban[19] | In3:2 In2:2 In1:1 In0:1
+Shaaban[20] | In3:-136 In2:-136 In1:-133 In0:-132
+Shaaban[21] | In3:-3 In2:-3 In1:1 In0:1
+Shaaban[22] | In3:49 In2:50 In1:50 In0:50
+Shaaban[23] | In3:-338 In2:-337 In1:-320 In0:-319
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[25] | In3:-26 In2:-26 In1:-25 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:45 In2:46 In1:43 In0:43
+Shaaban[28] | In3:-47 In2:-48 In1:-48 In0:-49
+Shaaban[29] | In3:53 In2:51 In1:46 In0:46
+Shaaban[30] | In3:-25 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:43 In0:42
+
+--- Cycle  75 ---
+Shaaban[ 0] | In3:9 In2:9 In1:8 In0:9
+Shaaban[ 1] | In3:51 In2:51 In1:46 In0:46
+Shaaban[ 2] | In3:104 In2:104 In1:102 In0:101
+Shaaban[ 3] | In3:-231 In2:-231 In1:-217 In0:-216
+Shaaban[ 4] | In3:39 In2:39 In1:38 In0:39
+Shaaban[ 5] | In3:35 In2:34 In1:35 In0:35
+Shaaban[ 6] | In3:-43 In2:-43 In1:-44 In0:-43
+Shaaban[ 7] | In3:-8 In2:-8 In1:-7 In0:-8
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-11 In2:-11 In1:-11 In0:-11
+Shaaban[10] | In3:5 In2:6 In1:6 In0:5
+Shaaban[11] | In3:-23 In2:-23 In1:-21 In0:-21
+Shaaban[12] | In3:-2 In2:-3 In1:-3 In0:-2
+Shaaban[13] | In3:-51 In2:-51 In1:-50 In0:-50
+Shaaban[14] | In3:36 In2:37 In1:37 In0:37
+Shaaban[15] | In3:-41 In2:-42 In1:-40 In0:-41
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-5
+Shaaban[17] | In3:-77 In2:-77 In1:-76 In0:-77
+Shaaban[18] | In3:-6 In2:-6 In1:-5 In0:-5
+Shaaban[19] | In3:2 In2:2 In1:2 In0:2
+Shaaban[20] | In3:-136 In2:-137 In1:-132 In0:-132
+Shaaban[21] | In3:-3 In2:-3 In1:0 In0:0
+Shaaban[22] | In3:49 In2:50 In1:50 In0:50
+Shaaban[23] | In3:-340 In2:-339 In1:-321 In0:-320
+Shaaban[24] | In3:-6 In2:-5 In1:-4 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:45 In2:46 In1:44 In0:43
+Shaaban[28] | In3:-47 In2:-48 In1:-48 In0:-49
+Shaaban[29] | In3:53 In2:52 In1:46 In0:47
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:43 In1:43 In0:43
+
+--- Cycle  76 ---
+Shaaban[ 0] | In3:9 In2:10 In1:9 In0:9
+Shaaban[ 1] | In3:52 In2:52 In1:47 In0:46
+Shaaban[ 2] | In3:105 In2:104 In1:102 In0:101
+Shaaban[ 3] | In3:-232 In2:-231 In1:-218 In0:-218
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:34 In0:35
+Shaaban[ 6] | In3:-43 In2:-42 In1:-43 In0:-42
+Shaaban[ 7] | In3:-8 In2:-8 In1:-7 In0:-8
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-56
+Shaaban[ 9] | In3:-11 In2:-11 In1:-10 In0:-10
+Shaaban[10] | In3:5 In2:5 In1:5 In0:5
+Shaaban[11] | In3:-23 In2:-22 In1:-21 In0:-22
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-50 In2:-51 In1:-50 In0:-51
+Shaaban[14] | In3:37 In2:37 In1:37 In0:37
+Shaaban[15] | In3:-41 In2:-41 In1:-41 In0:-41
+Shaaban[16] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-78 In2:-77 In1:-77 In0:-77
+Shaaban[18] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[19] | In3:2 In2:2 In1:2 In0:2
+Shaaban[20] | In3:-137 In2:-137 In1:-133 In0:-133
+Shaaban[21] | In3:-3 In2:-3 In1:0 In0:0
+Shaaban[22] | In3:49 In2:50 In1:50 In0:50
+Shaaban[23] | In3:-341 In2:-339 In1:-323 In0:-322
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-25 In1:-26 In0:-25
+Shaaban[26] | In3:46 In2:46 In1:47 In0:46
+Shaaban[27] | In3:47 In2:46 In1:44 In0:44
+Shaaban[28] | In3:-47 In2:-48 In1:-48 In0:-49
+Shaaban[29] | In3:52 In2:52 In1:48 In0:48
+Shaaban[30] | In3:-24 In2:-25 In1:-25 In0:-25
+Shaaban[31] | In3:42 In2:43 In1:43 In0:42
+
+--- Cycle  77 ---
+Shaaban[ 0] | In3:10 In2:9 In1:8 In0:9
+Shaaban[ 1] | In3:52 In2:52 In1:47 In0:47
+Shaaban[ 2] | In3:105 In2:104 In1:101 In0:102
+Shaaban[ 3] | In3:-233 In2:-233 In1:-220 In0:-219
+Shaaban[ 4] | In3:38 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:35 In0:35
+Shaaban[ 6] | In3:-42 In2:-42 In1:-44 In0:-43
+Shaaban[ 7] | In3:-8 In2:-8 In1:-7 In0:-8
+Shaaban[ 8] | In3:-57 In2:-57 In1:-58 In0:-57
+Shaaban[ 9] | In3:-11 In2:-11 In1:-10 In0:-10
+Shaaban[10] | In3:5 In2:4 In1:5 In0:5
+Shaaban[11] | In3:-22 In2:-23 In1:-22 In0:-21
+Shaaban[12] | In3:-3 In2:-2 In1:-2 In0:-3
+Shaaban[13] | In3:-50 In2:-50 In1:-50 In0:-50
+Shaaban[14] | In3:37 In2:37 In1:37 In0:37
+Shaaban[15] | In3:-41 In2:-41 In1:-41 In0:-41
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-77 In2:-78 In1:-77 In0:-77
+Shaaban[18] | In3:-6 In2:-6 In1:-5 In0:-6
+Shaaban[19] | In3:3 In2:3 In1:1 In0:1
+Shaaban[20] | In3:-137 In2:-138 In1:-133 In0:-133
+Shaaban[21] | In3:-3 In2:-3 In1:0 In0:0
+Shaaban[22] | In3:49 In2:50 In1:50 In0:50
+Shaaban[23] | In3:-343 In2:-342 In1:-324 In0:-324
+Shaaban[24] | In3:-5 In2:-4 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:46 In2:46 In1:44 In0:43
+Shaaban[28] | In3:-47 In2:-46 In1:-48 In0:-47
+Shaaban[29] | In3:53 In2:54 In1:48 In0:47
+Shaaban[30] | In3:-24 In2:-23 In1:-24 In0:-23
+Shaaban[31] | In3:43 In2:43 In1:43 In0:43
+
+--- Cycle  78 ---
+Shaaban[ 0] | In3:9 In2:10 In1:9 In0:10
+Shaaban[ 1] | In3:53 In2:53 In1:48 In0:47
+Shaaban[ 2] | In3:105 In2:105 In1:101 In0:102
+Shaaban[ 3] | In3:-234 In2:-233 In1:-220 In0:-220
+Shaaban[ 4] | In3:38 In2:38 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:35 In0:35
+Shaaban[ 6] | In3:-43 In2:-42 In1:-43 In0:-42
+Shaaban[ 7] | In3:-9 In2:-8 In1:-7 In0:-7
+Shaaban[ 8] | In3:-56 In2:-57 In1:-58 In0:-58
+Shaaban[ 9] | In3:-11 In2:-11 In1:-11 In0:-11
+Shaaban[10] | In3:4 In2:5 In1:6 In0:5
+Shaaban[11] | In3:-23 In2:-23 In1:-21 In0:-22
+Shaaban[12] | In3:-2 In2:-3 In1:-3 In0:-2
+Shaaban[13] | In3:-49 In2:-50 In1:-51 In0:-51
+Shaaban[14] | In3:37 In2:36 In1:37 In0:37
+Shaaban[15] | In3:-42 In2:-41 In1:-41 In0:-40
+Shaaban[16] | In3:-6 In2:-6 In1:-6 In0:-6
+Shaaban[17] | In3:-78 In2:-77 In1:-77 In0:-76
+Shaaban[18] | In3:-6 In2:-6 In1:-6 In0:-5
+Shaaban[19] | In3:2 In2:3 In1:3 In0:2
+Shaaban[20] | In3:-138 In2:-137 In1:-134 In0:-133
+Shaaban[21] | In3:-3 In2:-3 In1:0 In0:0
+Shaaban[22] | In3:50 In2:50 In1:49 In0:51
+Shaaban[23] | In3:-344 In2:-344 In1:-326 In0:-325
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-25 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:47 In0:46
+Shaaban[27] | In3:46 In2:47 In1:44 In0:44
+Shaaban[28] | In3:-48 In2:-46 In1:-48 In0:-47
+Shaaban[29] | In3:54 In2:54 In1:48 In0:48
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:42 In1:43 In0:43
+
+--- Cycle  79 ---
+Shaaban[ 0] | In3:10 In2:9 In1:8 In0:9
+Shaaban[ 1] | In3:53 In2:53 In1:48 In0:48
+Shaaban[ 2] | In3:105 In2:105 In1:101 In0:102
+Shaaban[ 3] | In3:-236 In2:-235 In1:-221 In0:-220
+Shaaban[ 4] | In3:39 In2:38 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:36 In0:35
+Shaaban[ 6] | In3:-42 In2:-42 In1:-44 In0:-43
+Shaaban[ 7] | In3:-8 In2:-9 In1:-8 In0:-7
+Shaaban[ 8] | In3:-57 In2:-56 In1:-58 In0:-58
+Shaaban[ 9] | In3:-11 In2:-11 In1:-11 In0:-11
+Shaaban[10] | In3:5 In2:5 In1:5 In0:5
+Shaaban[11] | In3:-23 In2:-23 In1:-22 In0:-22
+Shaaban[12] | In3:-3 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-50 In2:-49 In1:-50 In0:-50
+Shaaban[14] | In3:37 In2:37 In1:38 In0:37
+Shaaban[15] | In3:-41 In2:-41 In1:-41 In0:-41
+Shaaban[16] | In3:-6 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-78 In2:-77 In1:-77 In0:-77
+Shaaban[18] | In3:-6 In2:-6 In1:-6 In0:-5
+Shaaban[19] | In3:3 In2:2 In1:2 In0:3
+Shaaban[20] | In3:-138 In2:-138 In1:-134 In0:-133
+Shaaban[21] | In3:-4 In2:-3 In1:0 In0:0
+Shaaban[22] | In3:49 In2:49 In1:49 In0:50
+Shaaban[23] | In3:-345 In2:-345 In1:-328 In0:-327
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:47 In1:46 In0:46
+Shaaban[27] | In3:46 In2:47 In1:44 In0:45
+Shaaban[28] | In3:-47 In2:-47 In1:-49 In0:-47
+Shaaban[29] | In3:55 In2:53 In1:49 In0:49
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:43 In1:43 In0:43
+
+--- Cycle  80 ---
+Shaaban[ 0] | In3:10 In2:10 In1:10 In0:9
+Shaaban[ 1] | In3:61 In2:60 In1:55 In0:55
+Shaaban[ 2] | In3:110 In2:110 In1:107 In0:106
+Shaaban[ 3] | In3:-252 In2:-252 In1:-239 In0:-239
+Shaaban[ 4] | In3:38 In2:38 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:35 In1:34 In0:34
+Shaaban[ 6] | In3:-42 In2:-42 In1:-43 In0:-42
+Shaaban[ 7] | In3:-10 In2:-9 In1:-9 In0:-9
+Shaaban[ 8] | In3:-57 In2:-56 In1:-58 In0:-57
+Shaaban[ 9] | In3:-12 In2:-12 In1:-11 In0:-11
+Shaaban[10] | In3:5 In2:4 In1:5 In0:4
+Shaaban[11] | In3:-25 In2:-24 In1:-23 In0:-23
+Shaaban[12] | In3:-3 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-49 In2:-49 In1:-50 In0:-50
+Shaaban[14] | In3:38 In2:38 In1:37 In0:37
+Shaaban[15] | In3:-41 In2:-41 In1:-41 In0:-41
+Shaaban[16] | In3:-5 In2:-5 In1:-6 In0:-5
+Shaaban[17] | In3:-77 In2:-78 In1:-78 In0:-78
+Shaaban[18] | In3:-6 In2:-6 In1:-6 In0:-5
+Shaaban[19] | In3:3 In2:3 In1:3 In0:2
+Shaaban[20] | In3:-143 In2:-143 In1:-139 In0:-139
+Shaaban[21] | In3:-8 In2:-8 In1:-4 In0:-4
+Shaaban[22] | In3:49 In2:49 In1:49 In0:49
+Shaaban[23] | In3:-368 In2:-368 In1:-351 In0:-349
+Shaaban[24] | In3:-4 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-27 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:47 In1:45 In0:46
+Shaaban[27] | In3:50 In2:49 In1:47 In0:48
+Shaaban[28] | In3:-47 In2:-45 In1:-47 In0:-46
+Shaaban[29] | In3:60 In2:61 In1:56 In0:55
+Shaaban[30] | In3:-24 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:42 In2:43 In1:43 In0:43
+
+--- Cycle  81 ---
+Shaaban[ 0] | In3:10 In2:9 In1:10 In0:9
+Shaaban[ 1] | In3:61 In2:61 In1:56 In0:56
+Shaaban[ 2] | In3:111 In2:110 In1:107 In0:106
+Shaaban[ 3] | In3:-254 In2:-254 In1:-239 In0:-239
+Shaaban[ 4] | In3:40 In2:40 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:35 In1:35 In0:34
+Shaaban[ 6] | In3:-42 In2:-41 In1:-42 In0:-43
+Shaaban[ 7] | In3:-11 In2:-10 In1:-9 In0:-9
+Shaaban[ 8] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[ 9] | In3:-12 In2:-12 In1:-12 In0:-11
+Shaaban[10] | In3:4 In2:4 In1:4 In0:5
+Shaaban[11] | In3:-24 In2:-24 In1:-23 In0:-23
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[13] | In3:-49 In2:-49 In1:-50 In0:-50
+Shaaban[14] | In3:38 In2:38 In1:37 In0:38
+Shaaban[15] | In3:-42 In2:-42 In1:-42 In0:-41
+Shaaban[16] | In3:-5 In2:-6 In1:-6 In0:-5
+Shaaban[17] | In3:-78 In2:-78 In1:-78 In0:-77
+Shaaban[18] | In3:-6 In2:-6 In1:-5 In0:-6
+Shaaban[19] | In3:3 In2:2 In1:3 In0:3
+Shaaban[20] | In3:-144 In2:-143 In1:-139 In0:-139
+Shaaban[21] | In3:-8 In2:-8 In1:-4 In0:-4
+Shaaban[22] | In3:50 In2:49 In1:50 In0:50
+Shaaban[23] | In3:-370 In2:-369 In1:-352 In0:-351
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-4
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:47 In2:45 In1:46 In0:46
+Shaaban[27] | In3:50 In2:50 In1:47 In0:48
+Shaaban[28] | In3:-46 In2:-46 In1:-46 In0:-46
+Shaaban[29] | In3:62 In2:61 In1:56 In0:55
+Shaaban[30] | In3:-23 In2:-25 In1:-23 In0:-24
+Shaaban[31] | In3:43 In2:42 In1:42 In0:42
+
+--- Cycle  82 ---
+Shaaban[ 0] | In3:10 In2:10 In1:10 In0:9
+Shaaban[ 1] | In3:61 In2:60 In1:55 In0:55
+Shaaban[ 2] | In3:111 In2:111 In1:107 In0:107
+Shaaban[ 3] | In3:-255 In2:-255 In1:-241 In0:-241
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:35 In0:35
+Shaaban[ 6] | In3:-42 In2:-42 In1:-42 In0:-42
+Shaaban[ 7] | In3:-11 In2:-10 In1:-10 In0:-9
+Shaaban[ 8] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[ 9] | In3:-12 In2:-12 In1:-11 In0:-11
+Shaaban[10] | In3:4 In2:4 In1:4 In0:4
+Shaaban[11] | In3:-24 In2:-25 In1:-24 In0:-23
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-49 In2:-49 In1:-50 In0:-50
+Shaaban[14] | In3:38 In2:39 In1:37 In0:37
+Shaaban[15] | In3:-42 In2:-41 In1:-41 In0:-42
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-79 In2:-78 In1:-78 In0:-77
+Shaaban[18] | In3:-7 In2:-6 In1:-6 In0:-6
+Shaaban[19] | In3:3 In2:3 In1:2 In0:2
+Shaaban[20] | In3:-144 In2:-143 In1:-140 In0:-139
+Shaaban[21] | In3:-8 In2:-8 In1:-5 In0:-4
+Shaaban[22] | In3:50 In2:49 In1:50 In0:50
+Shaaban[23] | In3:-372 In2:-371 In1:-353 In0:-352
+Shaaban[24] | In3:-4 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-27 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:50 In2:50 In1:48 In0:47
+Shaaban[28] | In3:-45 In2:-46 In1:-46 In0:-47
+Shaaban[29] | In3:62 In2:62 In1:56 In0:56
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:42 In1:42 In0:43
+
+--- Cycle  83 ---
+Shaaban[ 0] | In3:11 In2:10 In1:10 In0:9
+Shaaban[ 1] | In3:61 In2:61 In1:56 In0:56
+Shaaban[ 2] | In3:111 In2:111 In1:107 In0:107
+Shaaban[ 3] | In3:-257 In2:-255 In1:-242 In0:-242
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:34 In0:34
+Shaaban[ 6] | In3:-42 In2:-41 In1:-41 In0:-43
+Shaaban[ 7] | In3:-10 In2:-10 In1:-10 In0:-9
+Shaaban[ 8] | In3:-57 In2:-57 In1:-58 In0:-58
+Shaaban[ 9] | In3:-12 In2:-11 In1:-11 In0:-11
+Shaaban[10] | In3:5 In2:4 In1:5 In0:6
+Shaaban[11] | In3:-25 In2:-25 In1:-23 In0:-24
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-49 In2:-50 In1:-50 In0:-50
+Shaaban[14] | In3:38 In2:38 In1:38 In0:37
+Shaaban[15] | In3:-42 In2:-42 In1:-41 In0:-41
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-78 In2:-77 In1:-77 In0:-78
+Shaaban[18] | In3:-6 In2:-6 In1:-6 In0:-5
+Shaaban[19] | In3:2 In2:3 In1:2 In0:2
+Shaaban[20] | In3:-144 In2:-144 In1:-140 In0:-140
+Shaaban[21] | In3:-9 In2:-9 In1:-6 In0:-6
+Shaaban[22] | In3:50 In2:49 In1:49 In0:50
+Shaaban[23] | In3:-372 In2:-371 In1:-355 In0:-354
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:45 In2:46 In1:47 In0:45
+Shaaban[27] | In3:50 In2:50 In1:48 In0:47
+Shaaban[28] | In3:-45 In2:-46 In1:-46 In0:-47
+Shaaban[29] | In3:62 In2:61 In1:57 In0:57
+Shaaban[30] | In3:-24 In2:-23 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:43 In1:43 In0:42
+
+--- Cycle  84 ---
+Shaaban[ 0] | In3:10 In2:10 In1:10 In0:10
+Shaaban[ 1] | In3:61 In2:61 In1:56 In0:56
+Shaaban[ 2] | In3:111 In2:111 In1:107 In0:108
+Shaaban[ 3] | In3:-258 In2:-257 In1:-244 In0:-244
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:35 In0:35
+Shaaban[ 6] | In3:-43 In2:-42 In1:-42 In0:-42
+Shaaban[ 7] | In3:-10 In2:-10 In1:-10 In0:-9
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-12 In2:-12 In1:-11 In0:-12
+Shaaban[10] | In3:4 In2:5 In1:5 In0:5
+Shaaban[11] | In3:-25 In2:-24 In1:-24 In0:-24
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[13] | In3:-49 In2:-49 In1:-50 In0:-50
+Shaaban[14] | In3:39 In2:38 In1:38 In0:37
+Shaaban[15] | In3:-41 In2:-42 In1:-42 In0:-41
+Shaaban[16] | In3:-6 In2:-5 In1:-6 In0:-5
+Shaaban[17] | In3:-78 In2:-78 In1:-77 In0:-77
+Shaaban[18] | In3:-6 In2:-7 In1:-6 In0:-6
+Shaaban[19] | In3:2 In2:2 In1:2 In0:3
+Shaaban[20] | In3:-144 In2:-144 In1:-140 In0:-140
+Shaaban[21] | In3:-9 In2:-9 In1:-6 In0:-6
+Shaaban[22] | In3:49 In2:48 In1:50 In0:49
+Shaaban[23] | In3:-374 In2:-373 In1:-355 In0:-356
+Shaaban[24] | In3:-5 In2:-5 In1:-4 In0:-5
+Shaaban[25] | In3:-27 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:50 In2:50 In1:48 In0:48
+Shaaban[28] | In3:-45 In2:-46 In1:-46 In0:-47
+Shaaban[29] | In3:63 In2:63 In1:57 In0:57
+Shaaban[30] | In3:-24 In2:-24 In1:-25 In0:-24
+Shaaban[31] | In3:42 In2:42 In1:43 In0:43
+
+--- Cycle  85 ---
+Shaaban[ 0] | In3:11 In2:11 In1:10 In0:9
+Shaaban[ 1] | In3:63 In2:62 In1:57 In0:56
+Shaaban[ 2] | In3:112 In2:112 In1:108 In0:108
+Shaaban[ 3] | In3:-259 In2:-258 In1:-245 In0:-244
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:38
+Shaaban[ 5] | In3:34 In2:34 In1:35 In0:35
+Shaaban[ 6] | In3:-41 In2:-41 In1:-42 In0:-43
+Shaaban[ 7] | In3:-10 In2:-10 In1:-10 In0:-9
+Shaaban[ 8] | In3:-58 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-12 In2:-13 In1:-12 In0:-12
+Shaaban[10] | In3:5 In2:5 In1:5 In0:5
+Shaaban[11] | In3:-24 In2:-25 In1:-24 In0:-23
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-50 In2:-50 In1:-50 In0:-50
+Shaaban[14] | In3:39 In2:38 In1:37 In0:38
+Shaaban[15] | In3:-42 In2:-42 In1:-42 In0:-41
+Shaaban[16] | In3:-6 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-78 In2:-79 In1:-78 In0:-78
+Shaaban[18] | In3:-7 In2:-7 In1:-6 In0:-6
+Shaaban[19] | In3:4 In2:4 In1:2 In0:2
+Shaaban[20] | In3:-145 In2:-145 In1:-140 In0:-141
+Shaaban[21] | In3:-9 In2:-9 In1:-6 In0:-6
+Shaaban[22] | In3:49 In2:49 In1:50 In0:49
+Shaaban[23] | In3:-376 In2:-375 In1:-357 In0:-356
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-4
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:50 In2:51 In1:48 In0:48
+Shaaban[28] | In3:-45 In2:-45 In1:-46 In0:-47
+Shaaban[29] | In3:63 In2:63 In1:58 In0:58
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:42 In1:43 In0:42
+
+--- Cycle  86 ---
+Shaaban[ 0] | In3:10 In2:10 In1:9 In0:10
+Shaaban[ 1] | In3:63 In2:63 In1:57 In0:57
+Shaaban[ 2] | In3:112 In2:112 In1:108 In0:108
+Shaaban[ 3] | In3:-260 In2:-259 In1:-246 In0:-245
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:34 In0:34
+Shaaban[ 6] | In3:-42 In2:-42 In1:-42 In0:-42
+Shaaban[ 7] | In3:-11 In2:-10 In1:-9 In0:-9
+Shaaban[ 8] | In3:-57 In2:-58 In1:-57 In0:-57
+Shaaban[ 9] | In3:-12 In2:-12 In1:-12 In0:-12
+Shaaban[10] | In3:4 In2:4 In1:4 In0:5
+Shaaban[11] | In3:-25 In2:-25 In1:-23 In0:-24
+Shaaban[12] | In3:-2 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-49 In2:-49 In1:-50 In0:-50
+Shaaban[14] | In3:38 In2:38 In1:37 In0:38
+Shaaban[15] | In3:-42 In2:-41 In1:-41 In0:-41
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-78 In2:-78 In1:-77 In0:-78
+Shaaban[18] | In3:-7 In2:-6 In1:-6 In0:-6
+Shaaban[19] | In3:3 In2:4 In1:3 In0:3
+Shaaban[20] | In3:-145 In2:-144 In1:-141 In0:-141
+Shaaban[21] | In3:-9 In2:-9 In1:-6 In0:-6
+Shaaban[22] | In3:49 In2:49 In1:50 In0:49
+Shaaban[23] | In3:-377 In2:-377 In1:-360 In0:-359
+Shaaban[24] | In3:-5 In2:-4 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-27 In1:-26 In0:-27
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:50 In2:50 In1:49 In0:48
+Shaaban[28] | In3:-46 In2:-46 In1:-46 In0:-46
+Shaaban[29] | In3:64 In2:63 In1:59 In0:58
+Shaaban[30] | In3:-24 In2:-25 In1:-24 In0:-25
+Shaaban[31] | In3:42 In2:42 In1:42 In0:42
+
+--- Cycle  87 ---
+Shaaban[ 0] | In3:10 In2:11 In1:10 In0:10
+Shaaban[ 1] | In3:64 In2:64 In1:58 In0:57
+Shaaban[ 2] | In3:113 In2:112 In1:109 In0:108
+Shaaban[ 3] | In3:-261 In2:-260 In1:-247 In0:-246
+Shaaban[ 4] | In3:38 In2:38 In1:39 In0:39
+Shaaban[ 5] | In3:35 In2:34 In1:34 In0:34
+Shaaban[ 6] | In3:-41 In2:-41 In1:-42 In0:-42
+Shaaban[ 7] | In3:-11 In2:-11 In1:-10 In0:-9
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-13 In2:-13 In1:-11 In0:-11
+Shaaban[10] | In3:5 In2:4 In1:5 In0:4
+Shaaban[11] | In3:-25 In2:-24 In1:-24 In0:-24
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[13] | In3:-50 In2:-49 In1:-50 In0:-50
+Shaaban[14] | In3:38 In2:39 In1:38 In0:38
+Shaaban[15] | In3:-42 In2:-42 In1:-41 In0:-41
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-78 In2:-78 In1:-78 In0:-78
+Shaaban[18] | In3:-7 In2:-7 In1:-6 In0:-7
+Shaaban[19] | In3:3 In2:3 In1:3 In0:4
+Shaaban[20] | In3:-146 In2:-145 In1:-142 In0:-141
+Shaaban[21] | In3:-9 In2:-9 In1:-6 In0:-6
+Shaaban[22] | In3:49 In2:49 In1:50 In0:49
+Shaaban[23] | In3:-379 In2:-378 In1:-361 In0:-360
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[25] | In3:-27 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:51 In2:51 In1:49 In0:48
+Shaaban[28] | In3:-45 In2:-46 In1:-47 In0:-46
+Shaaban[29] | In3:64 In2:65 In1:59 In0:58
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-23
+Shaaban[31] | In3:43 In2:42 In1:42 In0:43
+
+--- Cycle  88 ---
+Shaaban[ 0] | In3:10 In2:10 In1:9 In0:10
+Shaaban[ 1] | In3:64 In2:64 In1:59 In0:59
+Shaaban[ 2] | In3:113 In2:112 In1:109 In0:109
+Shaaban[ 3] | In3:-262 In2:-262 In1:-249 In0:-247
+Shaaban[ 4] | In3:38 In2:38 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:35 In1:34 In0:34
+Shaaban[ 6] | In3:-41 In2:-42 In1:-42 In0:-42
+Shaaban[ 7] | In3:-11 In2:-10 In1:-10 In0:-10
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-12 In2:-12 In1:-12 In0:-11
+Shaaban[10] | In3:4 In2:4 In1:4 In0:5
+Shaaban[11] | In3:-25 In2:-25 In1:-24 In0:-23
+Shaaban[12] | In3:-2 In2:-2 In1:-2 In0:-3
+Shaaban[13] | In3:-49 In2:-49 In1:-50 In0:-50
+Shaaban[14] | In3:38 In2:39 In1:38 In0:38
+Shaaban[15] | In3:-41 In2:-42 In1:-42 In0:-42
+Shaaban[16] | In3:-6 In2:-4 In1:-5 In0:-5
+Shaaban[17] | In3:-78 In2:-79 In1:-78 In0:-78
+Shaaban[18] | In3:-7 In2:-7 In1:-7 In0:-6
+Shaaban[19] | In3:4 In2:4 In1:3 In0:3
+Shaaban[20] | In3:-146 In2:-145 In1:-142 In0:-141
+Shaaban[21] | In3:-10 In2:-9 In1:-6 In0:-6
+Shaaban[22] | In3:49 In2:49 In1:50 In0:49
+Shaaban[23] | In3:-380 In2:-379 In1:-362 In0:-361
+Shaaban[24] | In3:-6 In2:-5 In1:-4 In0:-4
+Shaaban[25] | In3:-27 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:51 In2:51 In1:48 In0:48
+Shaaban[28] | In3:-45 In2:-45 In1:-46 In0:-46
+Shaaban[29] | In3:65 In2:64 In1:59 In0:59
+Shaaban[30] | In3:-23 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:42 In1:42 In0:43
+
+--- Cycle  89 ---
+Shaaban[ 0] | In3:10 In2:11 In1:10 In0:10
+Shaaban[ 1] | In3:65 In2:64 In1:59 In0:59
+Shaaban[ 2] | In3:113 In2:113 In1:109 In0:109
+Shaaban[ 3] | In3:-263 In2:-263 In1:-249 In0:-249
+Shaaban[ 4] | In3:39 In2:39 In1:38 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:35 In0:34
+Shaaban[ 6] | In3:-41 In2:-41 In1:-42 In0:-42
+Shaaban[ 7] | In3:-11 In2:-10 In1:-10 In0:-10
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-12 In2:-12 In1:-11 In0:-12
+Shaaban[10] | In3:3 In2:4 In1:5 In0:4
+Shaaban[11] | In3:-25 In2:-25 In1:-24 In0:-24
+Shaaban[12] | In3:-2 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-50 In2:-49 In1:-49 In0:-49
+Shaaban[14] | In3:38 In2:37 In1:38 In0:37
+Shaaban[15] | In3:-42 In2:-42 In1:-41 In0:-41
+Shaaban[16] | In3:-6 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-79 In2:-78 In1:-78 In0:-77
+Shaaban[18] | In3:-7 In2:-7 In1:-7 In0:-6
+Shaaban[19] | In3:3 In2:3 In1:3 In0:3
+Shaaban[20] | In3:-146 In2:-146 In1:-142 In0:-142
+Shaaban[21] | In3:-10 In2:-10 In1:-8 In0:-8
+Shaaban[22] | In3:50 In2:49 In1:49 In0:50
+Shaaban[23] | In3:-382 In2:-381 In1:-364 In0:-363
+Shaaban[24] | In3:-4 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-26 In1:-26 In0:-26
+Shaaban[26] | In3:45 In2:46 In1:47 In0:45
+Shaaban[27] | In3:51 In2:51 In1:49 In0:49
+Shaaban[28] | In3:-45 In2:-45 In1:-46 In0:-46
+Shaaban[29] | In3:66 In2:65 In1:59 In0:60
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:43 In2:42 In1:42 In0:42
+
+--- Cycle  90 ---
+Shaaban[ 0] | In3:11 In2:11 In1:10 In0:11
+Shaaban[ 1] | In3:72 In2:71 In1:66 In0:66
+Shaaban[ 2] | In3:118 In2:118 In1:114 In0:114
+Shaaban[ 3] | In3:-281 In2:-280 In1:-267 In0:-266
+Shaaban[ 4] | In3:39 In2:38 In1:38 In0:38
+Shaaban[ 5] | In3:34 In2:34 In1:33 In0:33
+Shaaban[ 6] | In3:-40 In2:-41 In1:-41 In0:-42
+Shaaban[ 7] | In3:-12 In2:-12 In1:-11 In0:-11
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-14 In2:-13 In1:-13 In0:-13
+Shaaban[10] | In3:4 In2:4 In1:5 In0:4
+Shaaban[11] | In3:-26 In2:-27 In1:-25 In0:-25
+Shaaban[12] | In3:-3 In2:-1 In1:-2 In0:-3
+Shaaban[13] | In3:-48 In2:-49 In1:-49 In0:-49
+Shaaban[14] | In3:39 In2:39 In1:37 In0:38
+Shaaban[15] | In3:-42 In2:-42 In1:-42 In0:-43
+Shaaban[16] | In3:-6 In2:-5 In1:-6 In0:-4
+Shaaban[17] | In3:-79 In2:-78 In1:-78 In0:-79
+Shaaban[18] | In3:-7 In2:-7 In1:-7 In0:-6
+Shaaban[19] | In3:4 In2:4 In1:3 In0:3
+Shaaban[20] | In3:-151 In2:-151 In1:-147 In0:-147
+Shaaban[21] | In3:-14 In2:-14 In1:-11 In0:-11
+Shaaban[22] | In3:48 In2:49 In1:49 In0:48
+Shaaban[23] | In3:-404 In2:-403 In1:-387 In0:-386
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-27 In2:-26 In1:-27 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:47 In0:46
+Shaaban[27] | In3:54 In2:54 In1:51 In0:51
+Shaaban[28] | In3:-44 In2:-44 In1:-46 In0:-45
+Shaaban[29] | In3:71 In2:71 In1:67 In0:67
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:42 In1:42 In0:42
+
+--- Cycle  91 ---
+Shaaban[ 0] | In3:11 In2:12 In1:11 In0:10
+Shaaban[ 1] | In3:73 In2:72 In1:66 In0:66
+Shaaban[ 2] | In3:118 In2:118 In1:114 In0:114
+Shaaban[ 3] | In3:-282 In2:-281 In1:-268 In0:-267
+Shaaban[ 4] | In3:38 In2:39 In1:39 In0:38
+Shaaban[ 5] | In3:34 In2:34 In1:34 In0:34
+Shaaban[ 6] | In3:-41 In2:-41 In1:-41 In0:-41
+Shaaban[ 7] | In3:-12 In2:-12 In1:-11 In0:-11
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-13 In2:-14 In1:-12 In0:-12
+Shaaban[10] | In3:4 In2:4 In1:4 In0:4
+Shaaban[11] | In3:-27 In2:-26 In1:-25 In0:-26
+Shaaban[12] | In3:-2 In2:-3 In1:-2 In0:-2
+Shaaban[13] | In3:-48 In2:-49 In1:-48 In0:-48
+Shaaban[14] | In3:38 In2:39 In1:38 In0:38
+Shaaban[15] | In3:-42 In2:-42 In1:-42 In0:-42
+Shaaban[16] | In3:-6 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-78 In2:-79 In1:-78 In0:-79
+Shaaban[18] | In3:-7 In2:-7 In1:-6 In0:-7
+Shaaban[19] | In3:3 In2:4 In1:3 In0:3
+Shaaban[20] | In3:-152 In2:-151 In1:-148 In0:-147
+Shaaban[21] | In3:-14 In2:-14 In1:-11 In0:-11
+Shaaban[22] | In3:49 In2:49 In1:49 In0:49
+Shaaban[23] | In3:-406 In2:-405 In1:-387 In0:-388
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-27 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:45 In0:46
+Shaaban[27] | In3:55 In2:53 In1:52 In0:53
+Shaaban[28] | In3:-43 In2:-44 In1:-44 In0:-45
+Shaaban[29] | In3:72 In2:73 In1:67 In0:66
+Shaaban[30] | In3:-23 In2:-25 In1:-23 In0:-25
+Shaaban[31] | In3:42 In2:41 In1:41 In0:42
+
+--- Cycle  92 ---
+Shaaban[ 0] | In3:12 In2:10 In1:10 In0:10
+Shaaban[ 1] | In3:72 In2:73 In1:66 In0:67
+Shaaban[ 2] | In3:119 In2:118 In1:115 In0:114
+Shaaban[ 3] | In3:-284 In2:-283 In1:-270 In0:-268
+Shaaban[ 4] | In3:39 In2:38 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:34 In0:34
+Shaaban[ 6] | In3:-40 In2:-41 In1:-41 In0:-41
+Shaaban[ 7] | In3:-12 In2:-12 In1:-11 In0:-11
+Shaaban[ 8] | In3:-57 In2:-57 In1:-56 In0:-56
+Shaaban[ 9] | In3:-13 In2:-13 In1:-13 In0:-13
+Shaaban[10] | In3:4 In2:3 In1:4 In0:4
+Shaaban[11] | In3:-27 In2:-26 In1:-26 In0:-25
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-3
+Shaaban[13] | In3:-48 In2:-48 In1:-49 In0:-49
+Shaaban[14] | In3:39 In2:39 In1:38 In0:38
+Shaaban[15] | In3:-42 In2:-43 In1:-42 In0:-42
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-79 In2:-79 In1:-79 In0:-78
+Shaaban[18] | In3:-8 In2:-7 In1:-7 In0:-7
+Shaaban[19] | In3:3 In2:3 In1:3 In0:3
+Shaaban[20] | In3:-152 In2:-152 In1:-147 In0:-148
+Shaaban[21] | In3:-15 In2:-15 In1:-12 In0:-11
+Shaaban[22] | In3:49 In2:49 In1:49 In0:49
+Shaaban[23] | In3:-407 In2:-407 In1:-389 In0:-388
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-4
+Shaaban[25] | In3:-26 In2:-27 In1:-26 In0:-27
+Shaaban[26] | In3:47 In2:45 In1:46 In0:47
+Shaaban[27] | In3:54 In2:55 In1:52 In0:52
+Shaaban[28] | In3:-43 In2:-44 In1:-44 In0:-45
+Shaaban[29] | In3:73 In2:72 In1:67 In0:67
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:42 In1:43 In0:42
+
+--- Cycle  93 ---
+Shaaban[ 0] | In3:11 In2:11 In1:11 In0:11
+Shaaban[ 1] | In3:72 In2:72 In1:67 In0:67
+Shaaban[ 2] | In3:119 In2:118 In1:115 In0:115
+Shaaban[ 3] | In3:-284 In2:-283 In1:-271 In0:-270
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:34 In0:34
+Shaaban[ 6] | In3:-41 In2:-41 In1:-41 In0:-41
+Shaaban[ 7] | In3:-12 In2:-11 In1:-11 In0:-11
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-56
+Shaaban[ 9] | In3:-14 In2:-13 In1:-12 In0:-13
+Shaaban[10] | In3:3 In2:4 In1:4 In0:4
+Shaaban[11] | In3:-26 In2:-27 In1:-26 In0:-25
+Shaaban[12] | In3:-3 In2:-2 In1:-2 In0:-3
+Shaaban[13] | In3:-48 In2:-47 In1:-48 In0:-48
+Shaaban[14] | In3:39 In2:39 In1:38 In0:39
+Shaaban[15] | In3:-43 In2:-43 In1:-42 In0:-42
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-80 In2:-79 In1:-79 In0:-78
+Shaaban[18] | In3:-7 In2:-7 In1:-7 In0:-7
+Shaaban[19] | In3:5 In2:3 In1:3 In0:3
+Shaaban[20] | In3:-153 In2:-153 In1:-148 In0:-148
+Shaaban[21] | In3:-15 In2:-15 In1:-12 In0:-12
+Shaaban[22] | In3:49 In2:49 In1:49 In0:49
+Shaaban[23] | In3:-408 In2:-408 In1:-391 In0:-390
+Shaaban[24] | In3:-4 In2:-4 In1:-5 In0:-5
+Shaaban[25] | In3:-27 In2:-27 In1:-27 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:55 In2:55 In1:52 In0:52
+Shaaban[28] | In3:-43 In2:-43 In1:-44 In0:-45
+Shaaban[29] | In3:74 In2:72 In1:68 In0:68
+Shaaban[30] | In3:-24 In2:-23 In1:-24 In0:-23
+Shaaban[31] | In3:41 In2:42 In1:42 In0:42
+
+--- Cycle  94 ---
+Shaaban[ 0] | In3:12 In2:11 In1:11 In0:10
+Shaaban[ 1] | In3:73 In2:73 In1:68 In0:67
+Shaaban[ 2] | In3:120 In2:119 In1:115 In0:115
+Shaaban[ 3] | In3:-285 In2:-284 In1:-271 In0:-270
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:38
+Shaaban[ 5] | In3:35 In2:34 In1:34 In0:34
+Shaaban[ 6] | In3:-41 In2:-40 In1:-41 In0:-41
+Shaaban[ 7] | In3:-13 In2:-12 In1:-11 In0:-11
+Shaaban[ 8] | In3:-56 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-13 In2:-13 In1:-12 In0:-12
+Shaaban[10] | In3:4 In2:3 In1:4 In0:4
+Shaaban[11] | In3:-27 In2:-27 In1:-25 In0:-26
+Shaaban[12] | In3:-2 In2:-3 In1:-3 In0:-2
+Shaaban[13] | In3:-48 In2:-48 In1:-49 In0:-49
+Shaaban[14] | In3:39 In2:39 In1:38 In0:38
+Shaaban[15] | In3:-42 In2:-42 In1:-42 In0:-42
+Shaaban[16] | In3:-5 In2:-4 In1:-5 In0:-5
+Shaaban[17] | In3:-79 In2:-78 In1:-78 In0:-79
+Shaaban[18] | In3:-7 In2:-8 In1:-7 In0:-7
+Shaaban[19] | In3:4 In2:4 In1:4 In0:3
+Shaaban[20] | In3:-154 In2:-154 In1:-148 In0:-149
+Shaaban[21] | In3:-15 In2:-15 In1:-12 In0:-12
+Shaaban[22] | In3:49 In2:49 In1:48 In0:49
+Shaaban[23] | In3:-411 In2:-410 In1:-392 In0:-391
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-4
+Shaaban[25] | In3:-27 In2:-26 In1:-27 In0:-26
+Shaaban[26] | In3:45 In2:46 In1:46 In0:45
+Shaaban[27] | In3:55 In2:54 In1:53 In0:52
+Shaaban[28] | In3:-44 In2:-44 In1:-44 In0:-44
+Shaaban[29] | In3:73 In2:74 In1:68 In0:68
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:42 In1:42 In0:42
+
+--- Cycle  95 ---
+Shaaban[ 0] | In3:12 In2:11 In1:11 In0:11
+Shaaban[ 1] | In3:73 In2:73 In1:68 In0:68
+Shaaban[ 2] | In3:119 In2:119 In1:115 In0:116
+Shaaban[ 3] | In3:-286 In2:-286 In1:-273 In0:-272
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:33 In2:33 In1:34 In0:34
+Shaaban[ 6] | In3:-41 In2:-40 In1:-42 In0:-41
+Shaaban[ 7] | In3:-13 In2:-13 In1:-12 In0:-10
+Shaaban[ 8] | In3:-56 In2:-56 In1:-57 In0:-57
+Shaaban[ 9] | In3:-13 In2:-13 In1:-13 In0:-13
+Shaaban[10] | In3:4 In2:5 In1:4 In0:5
+Shaaban[11] | In3:-27 In2:-26 In1:-26 In0:-26
+Shaaban[12] | In3:-3 In2:-2 In1:-3 In0:-2
+Shaaban[13] | In3:-48 In2:-48 In1:-48 In0:-49
+Shaaban[14] | In3:39 In2:39 In1:39 In0:38
+Shaaban[15] | In3:-43 In2:-42 In1:-41 In0:-42
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-79 In2:-79 In1:-78 In0:-78
+Shaaban[18] | In3:-8 In2:-8 In1:-8 In0:-7
+Shaaban[19] | In3:4 In2:4 In1:3 In0:3
+Shaaban[20] | In3:-154 In2:-153 In1:-149 In0:-149
+Shaaban[21] | In3:-15 In2:-15 In1:-13 In0:-13
+Shaaban[22] | In3:48 In2:48 In1:49 In0:48
+Shaaban[23] | In3:-412 In2:-411 In1:-394 In0:-393
+Shaaban[24] | In3:-4 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-26 In2:-27 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:55 In2:55 In1:53 In0:53
+Shaaban[28] | In3:-43 In2:-44 In1:-45 In0:-45
+Shaaban[29] | In3:74 In2:74 In1:69 In0:68
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:41 In2:42 In1:42 In0:42
+
+--- Cycle  96 ---
+Shaaban[ 0] | In3:12 In2:11 In1:11 In0:11
+Shaaban[ 1] | In3:74 In2:73 In1:68 In0:68
+Shaaban[ 2] | In3:120 In2:120 In1:116 In0:116
+Shaaban[ 3] | In3:-288 In2:-287 In1:-273 In0:-273
+Shaaban[ 4] | In3:38 In2:38 In1:39 In0:39
+Shaaban[ 5] | In3:33 In2:33 In1:35 In0:35
+Shaaban[ 6] | In3:-41 In2:-40 In1:-41 In0:-41
+Shaaban[ 7] | In3:-13 In2:-13 In1:-12 In0:-11
+Shaaban[ 8] | In3:-57 In2:-56 In1:-57 In0:-57
+Shaaban[ 9] | In3:-12 In2:-13 In1:-13 In0:-13
+Shaaban[10] | In3:4 In2:4 In1:4 In0:4
+Shaaban[11] | In3:-27 In2:-27 In1:-26 In0:-25
+Shaaban[12] | In3:-2 In2:-2 In1:-2 In0:-3
+Shaaban[13] | In3:-48 In2:-48 In1:-49 In0:-48
+Shaaban[14] | In3:40 In2:39 In1:38 In0:38
+Shaaban[15] | In3:-42 In2:-43 In1:-43 In0:-43
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-5
+Shaaban[17] | In3:-79 In2:-79 In1:-79 In0:-79
+Shaaban[18] | In3:-8 In2:-7 In1:-7 In0:-7
+Shaaban[19] | In3:5 In2:4 In1:4 In0:4
+Shaaban[20] | In3:-155 In2:-154 In1:-149 In0:-149
+Shaaban[21] | In3:-15 In2:-15 In1:-13 In0:-13
+Shaaban[22] | In3:48 In2:49 In1:49 In0:48
+Shaaban[23] | In3:-414 In2:-413 In1:-395 In0:-395
+Shaaban[24] | In3:-5 In2:-5 In1:-5 In0:-4
+Shaaban[25] | In3:-26 In2:-27 In1:-26 In0:-27
+Shaaban[26] | In3:45 In2:46 In1:46 In0:45
+Shaaban[27] | In3:55 In2:55 In1:52 In0:53
+Shaaban[28] | In3:-43 In2:-44 In1:-44 In0:-45
+Shaaban[29] | In3:75 In2:75 In1:69 In0:69
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-25
+Shaaban[31] | In3:43 In2:42 In1:42 In0:41
+
+--- Cycle  97 ---
+Shaaban[ 0] | In3:12 In2:11 In1:10 In0:11
+Shaaban[ 1] | In3:74 In2:74 In1:69 In0:69
+Shaaban[ 2] | In3:120 In2:120 In1:116 In0:117
+Shaaban[ 3] | In3:-289 In2:-289 In1:-275 In0:-275
+Shaaban[ 4] | In3:38 In2:38 In1:39 In0:39
+Shaaban[ 5] | In3:34 In2:34 In1:34 In0:34
+Shaaban[ 6] | In3:-41 In2:-40 In1:-42 In0:-41
+Shaaban[ 7] | In3:-12 In2:-13 In1:-12 In0:-11
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-14 In2:-14 In1:-13 In0:-13
+Shaaban[10] | In3:4 In2:3 In1:4 In0:4
+Shaaban[11] | In3:-27 In2:-27 In1:-25 In0:-26
+Shaaban[12] | In3:-2 In2:-3 In1:-3 In0:-3
+Shaaban[13] | In3:-48 In2:-48 In1:-49 In0:-49
+Shaaban[14] | In3:39 In2:39 In1:38 In0:38
+Shaaban[15] | In3:-42 In2:-42 In1:-42 In0:-42
+Shaaban[16] | In3:-5 In2:-5 In1:-4 In0:-5
+Shaaban[17] | In3:-79 In2:-79 In1:-78 In0:-79
+Shaaban[18] | In3:-8 In2:-8 In1:-7 In0:-8
+Shaaban[19] | In3:4 In2:4 In1:4 In0:4
+Shaaban[20] | In3:-154 In2:-154 In1:-150 In0:-149
+Shaaban[21] | In3:-15 In2:-15 In1:-13 In0:-13
+Shaaban[22] | In3:48 In2:49 In1:49 In0:48
+Shaaban[23] | In3:-414 In2:-414 In1:-397 In0:-396
+Shaaban[24] | In3:-4 In2:-5 In1:-4 In0:-5
+Shaaban[25] | In3:-27 In2:-27 In1:-27 In0:-27
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:55 In2:55 In1:54 In0:53
+Shaaban[28] | In3:-43 In2:-44 In1:-44 In0:-45
+Shaaban[29] | In3:75 In2:74 In1:70 In0:69
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:41 In1:41 In0:43
+
+--- Cycle  98 ---
+Shaaban[ 0] | In3:11 In2:11 In1:10 In0:11
+Shaaban[ 1] | In3:75 In2:74 In1:69 In0:69
+Shaaban[ 2] | In3:121 In2:120 In1:117 In0:116
+Shaaban[ 3] | In3:-289 In2:-290 In1:-276 In0:-276
+Shaaban[ 4] | In3:39 In2:39 In1:39 In0:39
+Shaaban[ 5] | In3:33 In2:34 In1:33 In0:34
+Shaaban[ 6] | In3:-41 In2:-40 In1:-40 In0:-41
+Shaaban[ 7] | In3:-12 In2:-13 In1:-12 In0:-11
+Shaaban[ 8] | In3:-57 In2:-57 In1:-57 In0:-57
+Shaaban[ 9] | In3:-14 In2:-14 In1:-13 In0:-13
+Shaaban[10] | In3:3 In2:4 In1:4 In0:4
+Shaaban[11] | In3:-27 In2:-27 In1:-26 In0:-26
+Shaaban[12] | In3:-3 In2:-3 In1:-2 In0:-2
+Shaaban[13] | In3:-48 In2:-48 In1:-49 In0:-48
+Shaaban[14] | In3:39 In2:39 In1:38 In0:39
+Shaaban[15] | In3:-43 In2:-43 In1:-43 In0:-41
+Shaaban[16] | In3:-5 In2:-4 In1:-5 In0:-5
+Shaaban[17] | In3:-79 In2:-79 In1:-78 In0:-79
+Shaaban[18] | In3:-8 In2:-8 In1:-8 In0:-7
+Shaaban[19] | In3:4 In2:4 In1:3 In0:3
+Shaaban[20] | In3:-155 In2:-155 In1:-149 In0:-150
+Shaaban[21] | In3:-16 In2:-16 In1:-14 In0:-13
+Shaaban[22] | In3:48 In2:49 In1:49 In0:48
+Shaaban[23] | In3:-416 In2:-415 In1:-398 In0:-398
+Shaaban[24] | In3:-4 In2:-5 In1:-5 In0:-5
+Shaaban[25] | In3:-27 In2:-26 In1:-27 In0:-26
+Shaaban[26] | In3:46 In2:45 In1:46 In0:46
+Shaaban[27] | In3:56 In2:56 In1:54 In0:53
+Shaaban[28] | In3:-43 In2:-43 In1:-44 In0:-44
+Shaaban[29] | In3:76 In2:75 In1:70 In0:70
+Shaaban[30] | In3:-23 In2:-23 In1:-23 In0:-24
+Shaaban[31] | In3:41 In2:42 In1:42 In0:42
+
+--- Cycle  99 ---
+Shaaban[ 0] | In3:11 In2:12 In1:11 In0:11
+Shaaban[ 1] | In3:75 In2:75 In1:70 In0:70
+Shaaban[ 2] | In3:121 In2:120 In1:117 In0:117
+Shaaban[ 3] | In3:-291 In2:-291 In1:-277 In0:-277
+Shaaban[ 4] | In3:39 In2:39 In1:38 In0:38
+Shaaban[ 5] | In3:33 In2:33 In1:34 In0:34
+Shaaban[ 6] | In3:-40 In2:-40 In1:-41 In0:-41
+Shaaban[ 7] | In3:-13 In2:-13 In1:-11 In0:-11
+Shaaban[ 8] | In3:-57 In2:-57 In1:-56 In0:-56
+Shaaban[ 9] | In3:-13 In2:-13 In1:-13 In0:-13
+Shaaban[10] | In3:3 In2:3 In1:3 In0:3
+Shaaban[11] | In3:-28 In2:-27 In1:-26 In0:-27
+Shaaban[12] | In3:-2 In2:-2 In1:-3 In0:-2
+Shaaban[13] | In3:-48 In2:-48 In1:-49 In0:-49
+Shaaban[14] | In3:39 In2:40 In1:38 In0:39
+Shaaban[15] | In3:-42 In2:-42 In1:-42 In0:-43
+Shaaban[16] | In3:-5 In2:-5 In1:-5 In0:-6
+Shaaban[17] | In3:-78 In2:-80 In1:-79 In0:-79
+Shaaban[18] | In3:-8 In2:-8 In1:-8 In0:-7
+Shaaban[19] | In3:3 In2:4 In1:4 In0:4
+Shaaban[20] | In3:-155 In2:-155 In1:-150 In0:-150
+Shaaban[21] | In3:-17 In2:-17 In1:-14 In0:-14
+Shaaban[22] | In3:48 In2:49 In1:49 In0:48
+Shaaban[23] | In3:-418 In2:-417 In1:-399 In0:-399
+Shaaban[24] | In3:-5 In2:-4 In1:-5 In0:-5
+Shaaban[25] | In3:-27 In2:-27 In1:-26 In0:-26
+Shaaban[26] | In3:46 In2:46 In1:46 In0:46
+Shaaban[27] | In3:56 In2:55 In1:53 In0:54
+Shaaban[28] | In3:-44 In2:-42 In1:-44 In0:-44
+Shaaban[29] | In3:76 In2:76 In1:70 In0:71
+Shaaban[30] | In3:-24 In2:-24 In1:-24 In0:-24
+Shaaban[31] | In3:42 In2:41 In1:41 In0:42
+

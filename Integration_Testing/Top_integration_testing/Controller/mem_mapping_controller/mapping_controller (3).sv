@@ -3,15 +3,8 @@
 // =============================================================================
 // Description:
 //   Reads a 24-row x 256-col pixel matrix from memory (72-bit words,
-//   4 pixels/word, 18 bits/pixel) and produces 5x5 sliding-window outputs
-//   over a 24x24 pixel buffer.
-//
-//   *** 4-WINDOW-PARALLEL EDIT ***
-//   Instead of outputting one 5x5 window per cycle (400 cycles per interior
-//   24x24 region), this version outputs WIN_GROUP=4 consecutive horizontal
-//   windows per cycle, reducing FETCH time by 4x (100 cycles interior).
-//   The output bus is widened from 450 bits (25x18) to 1800 bits (100x18).
-//   All LOAD, bank-rotation, and padding logic is UNCHANGED.
+//   4 pixels/word, 18 bits/pixel) and produces sequential 5x5 sliding-window
+//   outputs over a 24x24 pixel buffer.
 //
 // --------------------------------------------------------------------------
 // MEMORY LAYOUT
@@ -114,36 +107,6 @@
 //                [real_buf_col_start + output_col - pad_left]  otherwise
 //
 // --------------------------------------------------------------------------
-// 4-WINDOW PARALLEL FETCH  
-// --------------------------------------------------------------------------
-//   In the original design conv_col advanced by 1 each FETCH cycle.
-//   In this version conv_col advances by WIN_GROUP (=4) each cycle so that
-//   lanes g=0..WIN_GROUP-1 compute windows starting at columns
-//     out_col_lane[g] = conv_col + g
-//   simultaneously.  The output bus packs them side by side:
-//     bits [  449:   0] = lane 0 window  (leftmost  of the group)
-//     bits [  899: 450] = lane 1 window
-//     bits [ 1349: 900] = lane 2 window
-//     bits [ 1799:1350] = lane 3 window  (rightmost of the group)
-//   Within each 450-bit lane the pixel packing is identical to the original:
-//     top-left pixel at MSB (slot 24), bottom-right pixel at LSB (slot 0).
-//
-//   Cycle count comparison:
-//     Interior  (conv_slides_col=20): 20 cols / 4 =  5 groups x 20 rows = 100 cycles  (was 400)
-//     L/R border(conv_slides_col=14): ceil(14/4)=4 groups x 20 rows =  80 cycles  (was 280)
-//     T/B border(conv_slides_col=20): 5 groups x 14 rows =  70 cycles  (was 280)
-//     Corner    (conv_slides_col=14): 4 groups x 14 rows =  56 cycles  (was 196)
-//
-//   valid_mask_o (*** new output ***):
-//     conv_slides_col is not always a multiple of WIN_GROUP (border case = 14,
-//     14 % 4 = 2 remainder).  On the last group of such a row, only lanes 0
-//     and 1 hold real windows; lanes 2 and 3 are forced to zero.
-//     valid_mask_o[g] = 1  means lane g holds a real window this cycle.
-//     valid_mask_o[g] = 0  means lane g is padding — downstream conv25 block
-//                           g must gate its result.
-//     Interior case (conv_slides_col=20, 20%4=0): valid_mask_o is always 4'hF.
-//
-// --------------------------------------------------------------------------
 // LOAD/FETCH HANDSHAKE  (fetch_en_i / done_load_o)
 // --------------------------------------------------------------------------
 //   After a LOAD phase completes (full or partial), the controller does NOT
@@ -164,36 +127,30 @@ module mapping_controller #(
     parameter int BUF_SIZE     = 24,   // buffer dimension (24x24)
     parameter int BANK_COLS    = 8,    // pixel-columns per bank
     parameter int CONV_K       = 5,    // conv kernel size
-    parameter int WIN_GROUP    = 4,    // *** new *** windows output per cycle (4x speedup)
     parameter int NUM_H_WIN    = 30,   // horizontal windows per sweep (30)
     parameter int NUM_SWEEPS   = 30    // vertical sweeps per frame (30)
 )(
-    input  logic                                           clk,
-    input  logic                                           rst_n,         // active-low sync reset
+    input  logic                              clk,
+    input  logic                              rst_n,         // active-low sync reset
 
     // --- control ---
-    input  logic                                           start_i,       // begin full load (new sweep)
-    input  logic                                           next_i,        // begin partial load (next h-window)
-    input  logic                                           fetch_en_i,    // one-cycle pulse: permission to enter FETCH after a load
+    input  logic                              start_i,       // begin full load (new sweep)
+    input  logic                              next_i,        // begin partial load (next h-window)
+    input  logic                              fetch_en_i,    // one-cycle pulse: permission to enter FETCH after a load
 
     // --- memory interface ---
-    output logic [15:0]                                    mem_addr_o,    // word address
-    output logic                                           mem_rd_o,      // read enable
-    input  logic [WORD_W-1:0]                              mem_data_i,    // read data (1-cycle latency)
+    output logic [15:0]                       mem_addr_o,    // word address
+    output logic                              mem_rd_o,      // read enable
+    input  logic [WORD_W-1:0]                 mem_data_i,    // read data (1-cycle latency)
 
     // --- conv output ---
-    // *** widened from 450 bits (single window) to 1800 bits (4 windows) ***
-    // Each 450-bit lane holds one 5x5 window in the same packing as before.
-    //   lane g occupies bits [g*450+449 : g*450]  for g = 0..WIN_GROUP-1
-    //   within a lane: slot 24 (MSB) = top-left pixel, slot 0 (LSB) = bottom-right
-    output logic [WIN_GROUP*CONV_K*CONV_K*PIXEL_W-1:0]    conv_pixels_o, // 100 packed pixels (4 windows x 25)
-    output logic [WIN_GROUP-1:0]                           valid_mask_o,  // *** new *** bit g=1 when lane g is a real window
-    output logic                                           conv_valid_o,  // one cycle per window GROUP (was: per single window)
-    output logic                                           conv_done_o,   // pulse after last GROUP of active region
-    output logic                                           done_o,        // pulse after last h-window of a sweep
-    output logic                                           frame_done_o,  // pulse after all sweeps complete (full frame)
-    output logic                                           done_load_o,   // high while waiting in WAIT_FETCH for fetch_en_i
-    output logic [1:0]                                     state_o        // 00=IDLE 01=LOAD 10=FETCH 11=WAIT_FETCH (for TB)
+    output logic [CONV_K*CONV_K*PIXEL_W-1:0]  conv_pixels_o, // 25 packed pixels (zeros for pad positions)
+    output logic                              conv_valid_o,  // one cycle per window
+    output logic                              conv_done_o,   // pulse after last window of active region
+    output logic                              done_o,        // pulse after last h-window of a sweep
+    output logic                              frame_done_o,  // pulse after all sweeps complete (full frame)
+    output logic                              done_load_o,   // high while waiting in WAIT_FETCH for fetch_en_i
+    output logic [1:0]                        state_o        // 00=IDLE 01=LOAD 10=FETCH 11=WAIT_FETCH (for TB)
 );
 
     // =========================================================================
@@ -208,8 +165,6 @@ module mapping_controller #(
     localparam int PARTIAL_LOAD_WORDS = IMG_ROWS * WORDS_PER_BANK;
     // CONV_SLIDES and TOTAL_CONV are now dynamic (see mode decode block below).
     // Maximum: 24-5+1=20 slides/axis (interior), Minimum: 18-5+1=14 (border)
-    // *** new *** bits per single 5x5 window (unchanged from original)
-    localparam int WINDOW_BITS       = CONV_K * CONV_K * PIXEL_W;  // 450
 
     // =========================================================================
     // Pixel buffer: 3 col-banks x 24 rows x 8 cols
@@ -224,7 +179,7 @@ module mapping_controller #(
         IDLE       = 2'b00,
         LOAD       = 2'b01,
         FETCH      = 2'b10,
-        WAIT_FETCH = 2'b11   // gated handshake state between LOAD and FETCH
+        WAIT_FETCH = 2'b11   // new: gated handshake state between LOAD and FETCH
     } state_t;
 
     state_t state, next_state;
@@ -263,9 +218,8 @@ module mapping_controller #(
     // fetch_order[2] = bank for cols 16..23 (rightmost)
     logic [1:0] fetch_order [0:2];
 
-    // conv window GROUP top-left position within the ACTIVE region
+    // conv window top-left position within the ACTIVE region
     // Range: 0..13 (18-active axis) or 0..19 (24-active axis)
-    // *** conv_col now steps by WIN_GROUP (4) each cycle instead of 1 ***
     logic [4:0] conv_row;
     logic [4:0] conv_col;
 
@@ -473,26 +427,19 @@ module mapping_controller #(
             end
 
             // ------------------------------------------------------------------
-            // FETCH: advance window GROUP position each cycle
-            // *** changed from original ***
-            //   Original: conv_col advances by 1 each cycle
-            //   New:      conv_col advances by WIN_GROUP (4) each cycle
-            //   The row advances when the current group reaches or passes the
-            //   last valid column (conv_col + WIN_GROUP >= conv_slides_col).
-            //   This condition covers both the exact-multiple case (interior,
-            //   conv_slides_col=20: last group starts at col 16, 16+4=20>=20)
-            //   and the non-multiple border case (conv_slides_col=14: last
-            //   group starts at col 12, 12+4=16>=14, with lanes 2,3 masked).
+            // FETCH: advance 5x5 window position each cycle
+            // Uses dynamic conv_slides_row/col from mode decode block so the
+            // sweep stops at the correct boundary for each border/interior case.
             // ------------------------------------------------------------------
             if (state == FETCH && conv_valid_o) begin
-                if (conv_col + WIN_GROUP[4:0] >= conv_slides_col) begin
+                if (conv_col == conv_slides_col - 1) begin
                     conv_col <= '0;
                     if (conv_row == conv_slides_row - 1)
                         conv_row <= '0;  // wraps; FSM leaves FETCH this same cycle
                     else
                         conv_row <= conv_row + 1'b1;
                 end else begin
-                    conv_col <= conv_col + WIN_GROUP[4:0];  // step by 4 instead of 1
+                    conv_col <= conv_col + 1'b1;
                 end
             end
 
@@ -644,13 +591,6 @@ module mapping_controller #(
     //   pixel = 0  if in_pad
     //         = buf[real_buf_row_start + output_row - pad_top]
     //              [real_buf_col_start + output_col - pad_left]  otherwise
-    //
-    // *** 4-WINDOW PARALLEL EXTENSION ***
-    // The same logic above runs independently for each lane g = 0..WIN_GROUP-1.
-    // Lane g computes the window whose top-left column is (conv_col + g).
-    // All per-kernel-position signals gain a leading [g] dimension.
-    // Lanes where (conv_col + g) >= conv_slides_col are invalid (border partial
-    // group): their pixels are forced to zero and valid_mask_o[g] = 0.
     // =========================================================================
 
     function automatic logic [PIXEL_W-1:0] read_buf_pixel(
@@ -669,77 +609,54 @@ module mapping_controller #(
     endfunction
 
     // =========================================================================
-    // Conv window pixel assembly  (padding-aware, 4-lane parallel, QuestaSim-safe)
+    // Conv window pixel assembly  (padding-aware, QuestaSim-safe)
     // =========================================================================
     // All temporaries are declared at module level (no declarations inside
     // procedural blocks after statements).
     // Underflow guard: buf_row/col only computed when NOT in pad zone.
-    // *** g dimension added to every per-kernel array for the 4 parallel lanes ***
     // =========================================================================
 
-    // *** new *** per-lane starting column and validity signals
-    logic [4:0] g_out_col_lane [0:WIN_GROUP-1]; // conv_col + g, one per lane
-    logic       g_lane_valid   [0:WIN_GROUP-1]; // 1 when lane is a real window
-
-    // Per-lane, per-kernel-position temporaries (g dimension added vs original)
-    logic [4:0] g_out_row [0:WIN_GROUP-1][0:CONV_K-1][0:CONV_K-1];
-    logic [4:0] g_out_col [0:WIN_GROUP-1][0:CONV_K-1][0:CONV_K-1];
-    logic       g_in_pad  [0:WIN_GROUP-1][0:CONV_K-1][0:CONV_K-1];
-    logic [4:0] g_buf_row [0:WIN_GROUP-1][0:CONV_K-1][0:CONV_K-1];
-    logic [4:0] g_buf_col [0:WIN_GROUP-1][0:CONV_K-1][0:CONV_K-1];
+    // Declare loop temporaries at module level
+    logic [4:0] g_out_row [0:CONV_K-1][0:CONV_K-1];
+    logic [4:0] g_out_col [0:CONV_K-1][0:CONV_K-1];
+    logic       g_in_pad  [0:CONV_K-1][0:CONV_K-1];
+    logic [4:0] g_buf_row [0:CONV_K-1][0:CONV_K-1];
+    logic [4:0] g_buf_col [0:CONV_K-1][0:CONV_K-1];
 
     always_comb begin
         // Default outputs
         conv_pixels_o = '0;
-        valid_mask_o  = '0;
         conv_valid_o  = 1'b0;
         conv_done_o   = 1'b0;
 
-        // ------------------------------------------------------------------
-        // *** new *** Per-lane starting column and validity
-        // out_col_lane[g] is where lane g's window starts in the active region.
-        // A lane is invalid only on the last group of a row when conv_slides_col
-        // is not a multiple of WIN_GROUP (border case: 14 % 4 = 2 remainder,
-        // so lanes 2 and 3 of the last group are invalid).
-        // ------------------------------------------------------------------
-        for (int g = 0; g < WIN_GROUP; g++) begin
-            g_out_col_lane[g] = conv_col + 5'(g);
-            g_lane_valid[g]   = (g_out_col_lane[g] < conv_slides_col);
-        end
+        // Pre-compute all per-kernel-position signals
+        for (int r = 0; r < CONV_K; r++) begin
+            for (int c = 0; c < CONV_K; c++) begin
+                // Position within the active region
+                g_out_row[r][c] = conv_row + 5'(r);
+                g_out_col[r][c] = conv_col + 5'(c);
 
-        // ------------------------------------------------------------------
-        // Pre-compute all per-kernel-position signals for all WIN_GROUP lanes
-        // Same padding math as the original single-window version, replicated
-        // 4x with per-lane output column offset (out_col_lane[g] + kc).
-        // ------------------------------------------------------------------
-        for (int g = 0; g < WIN_GROUP; g++) begin
-            for (int r = 0; r < CONV_K; r++) begin
-                for (int c = 0; c < CONV_K; c++) begin
-                    // Position within the active region (*** g offset on col ***)
-                    g_out_row[g][r][c] = conv_row + 5'(r);
-                    g_out_col[g][r][c] = g_out_col_lane[g] + 5'(c);
+                // In-pad check: falls in any zero-padding zone?
+                g_in_pad[r][c] =
+                    (g_out_row[r][c] <  pad_top)
+                 || (g_out_row[r][c] >= active_rows - pad_bot)
+                 || (g_out_col[r][c] <  pad_left)
+                 || (g_out_col[r][c] >= active_cols - pad_right);
 
-                    // In-pad check: falls in any zero-padding zone?
-                    // (identical logic to original, applied per-lane)
-                    g_in_pad[g][r][c] =
-                        (g_out_row[g][r][c] <  pad_top)
-                     || (g_out_row[g][r][c] >= active_rows - pad_bot)
-                     || (g_out_col[g][r][c] <  pad_left)
-                     || (g_out_col[g][r][c] >= active_cols - pad_right);
-
-                    // Buffer coordinates — only valid when NOT in pad.
-                    // Guard against underflow: use conditional same as original.
-                    if (g_in_pad[g][r][c] || !g_lane_valid[g]) begin
-                        g_buf_row[g][r][c] = 5'd0;   // don't care, gated below
-                        g_buf_col[g][r][c] = 5'd0;
-                    end else begin
-                        g_buf_row[g][r][c] = 5'(real_buf_row_start)
-                                            + g_out_row[g][r][c]
-                                            - 5'(pad_top);
-                        g_buf_col[g][r][c] = 5'(real_buf_col_start)
-                                            + g_out_col[g][r][c]
-                                            - 5'(pad_left);
-                    end
+                // Buffer coordinates — only valid when NOT in pad.
+                // Guard against underflow: use max(0, ...) via conditional.
+                // real_buf_row_start + output_row - pad_top  (pad_top <= output_row here)
+                // real_buf_col_start + output_col - pad_left (pad_left <= output_col here)
+                if (g_in_pad[r][c]) begin
+                    g_buf_row[r][c] = 5'd0;   // don't care, gated below
+                    g_buf_col[r][c] = 5'd0;
+                end else begin
+                    g_buf_row[r][c] = 5'(real_buf_row_start)
+                                    + g_out_row[r][c]
+                                    - 5'(pad_top);
+                    g_buf_col[r][c] = 5'(real_buf_col_start)
+                                    + g_out_col[r][c]
+                                    - 5'(pad_left);
                 end
             end
         end
@@ -747,38 +664,21 @@ module mapping_controller #(
         if (state == FETCH) begin
             conv_valid_o = 1'b1;
 
-            // *** new *** outer loop over WIN_GROUP lanes
-            for (int g = 0; g < WIN_GROUP; g++) begin
-                valid_mask_o[g] = g_lane_valid[g];
-
-                for (int r = 0; r < CONV_K; r++) begin
-                    for (int c = 0; c < CONV_K; c++) begin
-                        // Pixel slot within this lane's 450-bit window:
-                        //   top-left = MSB (slot 24), bottom-right = LSB (slot 0)
-                        //   slot = (CONV_K*CONV_K-1) - (r*CONV_K+c) = 24 - r*5 - c
-                        // *** new *** base shifts by g*WINDOW_BITS to reach lane g's slot
-                        if (g_in_pad[g][r][c] || !g_lane_valid[g]) begin
-                            conv_pixels_o[g*WINDOW_BITS +
-                                ((CONV_K*CONV_K-1)-(r*CONV_K+c))*PIXEL_W +: PIXEL_W] = '0;
-                        end else begin
-                            conv_pixels_o[g*WINDOW_BITS +
-                                ((CONV_K*CONV_K-1)-(r*CONV_K+c))*PIXEL_W +: PIXEL_W]
-                                = read_buf_pixel(g_buf_row[g][r][c], g_buf_col[g][r][c]);
-                        end
+            for (int r = 0; r < CONV_K; r++) begin
+                for (int c = 0; c < CONV_K; c++) begin
+                    // Pixel slot: top-left = MSB (slot 24), bottom-right = LSB (slot 0)
+                    // slot = (CONV_K*CONV_K-1) - (r*CONV_K+c) = 24 - r*5 - c
+                    if (g_in_pad[r][c]) begin
+                        conv_pixels_o[((CONV_K*CONV_K-1)-(r*CONV_K+c))*PIXEL_W +: PIXEL_W] = '0;
+                    end else begin
+                        conv_pixels_o[((CONV_K*CONV_K-1)-(r*CONV_K+c))*PIXEL_W +: PIXEL_W]
+                            = read_buf_pixel(g_buf_row[r][c], g_buf_col[r][c]);
                     end
                 end
             end
 
-            // ------------------------------------------------------------------
-            // conv_done_o: last row AND last group of that row
-            // *** changed from original ***
-            //   Original: conv_col == conv_slides_col - 1      (single-window check)
-            //   New:      conv_col + WIN_GROUP >= conv_slides_col  (group-end check)
-            //   This fires on the same physical cycle as the last valid window
-            //   in both the exact-multiple and non-multiple border cases.
-            // ------------------------------------------------------------------
-            if ((conv_row == conv_slides_row - 1) &&
-                (conv_col + WIN_GROUP[4:0] >= conv_slides_col))
+            // conv_done_o: last position of active region
+            if (conv_row == conv_slides_row - 1 && conv_col == conv_slides_col - 1)
                 conv_done_o = 1'b1;
         end
     end

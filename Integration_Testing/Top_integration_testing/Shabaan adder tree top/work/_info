@@ -1,0 +1,724 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/questasim64_2021.1/examples
+T_opt
+!s110 1783845128
+V=Lz=>MdPz6fM845^7l7P02
+04 27 4 work shaaban_adder_tree_top_test fast 0
+=1-902e1627e8bc-6a535106-2e4-4008
+Z2 !s124 OEM100
+Z3 o-quiet -auto_acc_if_foreign -work work +acc
+Z4 tCvgOpt 0
+n@_opt
+Z5 OL;O;2021.1;73
+R1
+T_opt1
+!s110 1783862773
+VCZz5W_8UkETmzH7RYA`]G3
+04 27 4 work conv_adder_shaaban_top_test fast 0
+=1-902e1627e8bc-6a5395f4-22c-2d14
+R2
+R3
+R4
+n@_opt1
+R5
+vadder_layer1
+Z6 !s110 1783862761
+!i10b 1
+!s100 5R>`?W2IAZh98F2hMK03n3
+Il@?:@Z^Z^_60YJS;U`]?B0
+Z7 dD:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top
+Z8 w1783524952
+8adder_layer1.v
+Fadder_layer1.v
+!i122 624
+Z9 L0 9 109
+Z10 VDg1SIo80bB@j0V0VzS_@n1
+Z11 OL;L;2021.1;73
+r1
+!s85 0
+31
+Z12 !s108 1783862761.000000
+!s107 adder_layer1.v|
+!s90 -reportprogress|300|+define+SIM|adder_layer1.v|
+!i113 0
+Z13 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z14 !s92 +define+SIM -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
+vadder_layer2
+Z15 !s110 1783862762
+!i10b 1
+!s100 W0WQia?fjnnFSIY6FGV_i2
+ISQG];Z=S_zXYM;1gDzLd71
+R7
+R8
+8adder_layer2.v
+Fadder_layer2.v
+!i122 625
+R9
+R10
+R11
+r1
+!s85 0
+31
+Z16 !s108 1783862762.000000
+!s107 adder_layer2.v|
+!s90 -reportprogress|300|+define+SIM|adder_layer2.v|
+!i113 0
+R13
+R14
+R4
+vadder_layer3
+R15
+!i10b 1
+!s100 oHR_RPml@>EHM9mRg[H3T0
+IfPI5aWR416O43^YKI:lgV1
+R7
+R8
+8adder_layer3.v
+Fadder_layer3.v
+!i122 626
+R9
+R10
+R11
+r1
+!s85 0
+31
+R16
+!s107 adder_layer3.v|
+!s90 -reportprogress|300|+define+SIM|adder_layer3.v|
+!i113 0
+R13
+R14
+R4
+vadder_layer4
+R15
+!i10b 1
+!s100 5c4QL`;NY7B3YGP1E16Ll2
+IoQ66b<IdCK9<R7Ee[RP@Q1
+R7
+R8
+8adder_layer4.v
+Fadder_layer4.v
+!i122 627
+L0 9 105
+R10
+R11
+r1
+!s85 0
+31
+R16
+!s107 adder_layer4.v|
+!s90 -reportprogress|300|+define+SIM|adder_layer4.v|
+!i113 0
+R13
+R14
+R4
+vadder_tree_10_4_1_1
+R15
+!i10b 1
+!s100 iBY?oj=988JE?UbJ2_Geb2
+IXHc>@Mk4KnPZnE^TYlzlC3
+R7
+R8
+8adder_tree_10_4_1_1.v
+Fadder_tree_10_4_1_1.v
+!i122 628
+L0 15 104
+R10
+R11
+r1
+!s85 0
+31
+R16
+!s107 adder_tree_10_4_1_1.v|
+!s90 -reportprogress|300|+define+SIM|adder_tree_10_4_1_1.v|
+!i113 0
+R13
+R14
+R4
+vadder_tree_shaaban_connect
+Z17 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z18 !s110 1783862763
+!i10b 1
+!s100 W99A]3AEbZDARa;4L9I1=0
+IeH<aZW_?AIkgOaaUoN3SZ2
+S1
+R7
+w1783544169
+8adder_tree_shaaban_connect.sv
+Fadder_tree_shaaban_connect.sv
+!i122 634
+L0 41 153
+R10
+R11
+r1
+!s85 0
+31
+R16
+!s107 adder_tree_shaaban_connect.sv|
+!s90 -reportprogress|300|+define+SIM|adder_tree_shaaban_connect.sv|
+!i113 0
+R13
+R14
+R4
+vBatch_Norm
+R15
+!i10b 1
+!s100 Q<2I7PjiM7kY>OJeP^jV[0
+IDXkDd>10`>jW99iDKM01X0
+R7
+R8
+8Batch_Norm.v
+FBatch_Norm.v
+!i122 629
+L0 8 110
+R10
+R11
+r1
+!s85 0
+31
+R16
+!s107 Batch_Norm.v|
+!s90 -reportprogress|300|+define+SIM|Batch_Norm.v|
+!i113 0
+R13
+R14
+R4
+n@batch_@norm
+Xbn_parameters_pkg
+R17
+Z19 !s110 1783854084
+!i10b 1
+!s100 Z9:HWKkYLd0EZF1ilfd2A0
+Ig?2okhZYfImnZ6eP4M6=M1
+S1
+R7
+Z20 w1783548583
+Z21 8D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shaaban_adder_tree_top_test.sv
+Z22 FD:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shaaban_adder_tree_top_test.sv
+!i122 473
+Z23 L0 3 0
+Vg?2okhZYfImnZ6eP4M6=M1
+R11
+r1
+!s85 0
+31
+Z24 !s108 1783854084.000000
+Z25 !s107 D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shaaban_adder_tree_top_test.sv|
+Z26 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shaaban_adder_tree_top_test.sv|
+!i113 0
+Z27 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
+vconv9
+R17
+R6
+!i10b 1
+!s100 O<VK3NjESfDJaFX]JoSdB3
+I2BXH6ga]5DcG>m0R8TEJl0
+S1
+R7
+w1783196161
+8conv9.sv
+Fconv9.sv
+!i122 622
+L0 14 40
+R10
+R11
+r1
+!s85 0
+31
+R12
+!s107 conv9.sv|
+!s90 -reportprogress|300|+define+SIM|conv9.sv|
+!i113 0
+R13
+R14
+R4
+vconv_Adder_shaaban_top
+R17
+R18
+!i10b 1
+!s100 BeK7dOzi@O?C<0Aa:EiLP0
+IOjz@OP4S>9<TfQHUR;67X3
+S1
+R7
+w1783861433
+8conv_adder_shaaban_top.sv
+Fconv_adder_shaaban_top.sv
+!i122 637
+L0 1 54
+R10
+R11
+r1
+!s85 0
+31
+Z28 !s108 1783862763.000000
+!s107 conv_adder_shaaban_top.sv|
+!s90 -reportprogress|300|+define+SIM|conv_adder_shaaban_top.sv|
+!i113 0
+R13
+R14
+R4
+nconv_@adder_shaaban_top
+vconv_adder_shaaban_top_tb
+R17
+DXx4 work 17 bn_parameters_pkg 0 22 T>LXTMWKX2mLc;OB>eEh32
+DXx4 work 35 conv_adder_shaaban_top_test_sv_unit 0 22 L3FXeg<h2jm_m?mAZE]IX1
+!s110 1783849323
+R10
+r1
+!s85 0
+!i10b 1
+!s100 LA3NCU1kBnmW[?GhfiX=A3
+I<ZSY6QJe7G7<18G@8n<CP0
+Z29 !s105 conv_adder_shaaban_top_test_sv_unit
+S1
+R7
+w1783849199
+Z30 8conv_adder_shaaban_top_test.sv
+Z31 Fconv_adder_shaaban_top_test.sv
+!i122 312
+L0 5 321
+R11
+31
+!s108 1783849323.000000
+Z32 !s107 conv_adder_shaaban_top_test.sv|
+Z33 !s90 -reportprogress|300|+define+SIM|conv_adder_shaaban_top_test.sv|
+!i113 0
+R13
+R14
+R4
+vconv_adder_shaaban_top_test
+R17
+Z34 DXx4 work 17 bn_parameters_pkg 0 22 g?2okhZYfImnZ6eP4M6=M1
+DXx4 work 35 conv_adder_shaaban_top_test_sv_unit 0 22 5Ok?i:E8cE3:jSlN4_h^[1
+R18
+R10
+r1
+!s85 0
+!i10b 1
+!s100 UX]O>d7M:gc?hEBmWJ6@_3
+IMTf9iQ1zd3z@cG]k@2?3i2
+R29
+S1
+R7
+Z35 w1783862757
+R30
+R31
+!i122 638
+L0 5 340
+R11
+31
+R28
+R32
+R33
+!i113 0
+R13
+R14
+R4
+Xconv_adder_shaaban_top_test_sv_unit
+R17
+R34
+R18
+V5Ok?i:E8cE3:jSlN4_h^[1
+r1
+!s85 0
+!i10b 1
+!s100 ^TYLoBgTBfeFC:oaI`]ZP0
+I5Ok?i:E8cE3:jSlN4_h^[1
+!i103 1
+S1
+R7
+R35
+R30
+R31
+!i122 638
+R23
+R11
+31
+R28
+R32
+R33
+!i113 0
+R13
+R14
+R4
+vconv_bias_Relu
+R15
+!i10b 1
+!s100 hV:3R6^F6W;SSY<`NKK@13
+IjZJ`04[Ya14U8`X2De@FM3
+R7
+R8
+8conv_bias_Relu.v
+Fconv_bias_Relu.v
+!i122 630
+L0 1 23
+R10
+R11
+r1
+!s85 0
+31
+R16
+!s107 conv_bias_Relu.v|
+!s90 -reportprogress|300|+define+SIM|conv_bias_Relu.v|
+!i113 0
+R13
+R14
+R4
+nconv_bias_@relu
+vext_sum_correction
+R17
+!s110 1783854083
+!i10b 1
+!s100 l_Gd2<ahYEFhS<0?^lN`l1
+I9GTS37Y`O2OEB>c[<@:Fm3
+S1
+R7
+R8
+8D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/ext_sum_correction.sv
+FD:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/ext_sum_correction.sv
+!i122 469
+L0 40 49
+R10
+R11
+r1
+!s85 0
+31
+!s108 1783854083.000000
+!s107 D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/ext_sum_correction.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/ext_sum_correction.sv|
+!i113 0
+R27
+R4
+vLIF
+R17
+R15
+!i10b 1
+!s100 mGHFiBfPz?MeNaoWdnIBc1
+I0AKVU9KMVCJGI?IOFIO9L1
+S1
+R7
+w1783546423
+8LIF.sv
+FLIF.sv
+!i122 632
+L0 18 73
+R10
+R11
+r1
+!s85 0
+31
+R16
+!s107 LIF.sv|
+!s90 -reportprogress|300|+define+SIM|LIF.sv|
+!i113 0
+R13
+R14
+R4
+n@l@i@f
+vMax_pooling
+R15
+!i10b 1
+!s100 ]XWeFeG[`[zHWSkhGDnj<1
+IcVG;H48:g@NDkTEhROge00
+R7
+R8
+8Max_pooling.v
+FMax_pooling.v
+!i122 631
+L0 1 16
+R10
+R11
+r1
+!s85 0
+31
+R16
+!s107 Max_pooling.v|
+!s90 -reportprogress|300|+define+SIM|Max_pooling.v|
+!i113 0
+R13
+R14
+R4
+n@max_pooling
+vshaaban_adder_tree_top
+R17
+R18
+!i10b 1
+!s100 :0TLDW]_maNILKofl>ZJG0
+I;z_eb8O^>F<HBcSYd4_2^1
+S1
+R7
+w1783861427
+8shaaban_adder_tree_top.sv
+Fshaaban_adder_tree_top.sv
+!i122 636
+Z36 L0 38 64
+R10
+R11
+r1
+!s85 0
+31
+R28
+!s107 shaaban_adder_tree_top.sv|
+!s90 -reportprogress|300|+define+SIM|shaaban_adder_tree_top.sv|
+!i113 0
+R13
+R14
+R4
+vshaaban_adder_tree_top_test
+R17
+R34
+DXx4 work 35 shaaban_adder_tree_top_test_sv_unit 0 22 QVzh;knzCe3>dcGS>W3LE3
+R19
+R10
+r1
+!s85 0
+!i10b 1
+!s100 cmCnLkA[Yf^^GEDK5LXe_0
+ICYRhMRUXOiDGbUOKI=Fz@0
+!s105 shaaban_adder_tree_top_test_sv_unit
+S1
+R7
+R20
+R21
+R22
+!i122 473
+L0 82 185
+R11
+31
+R24
+R25
+R26
+!i113 0
+R27
+R4
+Xshaaban_adder_tree_top_test_sv_unit
+R17
+R34
+R19
+VQVzh;knzCe3>dcGS>W3LE3
+r1
+!s85 0
+!i10b 1
+!s100 z9Z@V5`e?G:h95564VR>N3
+IQVzh;knzCe3>dcGS>W3LE3
+!i103 1
+S1
+R7
+R20
+R21
+R22
+!i122 473
+Z37 L0 81 0
+R11
+31
+R24
+R25
+R26
+!i113 0
+R27
+R4
+vshabaan_adder_tree_top
+R17
+!s110 1783542908
+!i10b 1
+!s100 _fg7IlkGc8?dY3PG7M1[T3
+IS0AU7CagE9mTXP49PB3CB0
+S1
+R7
+w1783542285
+8D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv
+FD:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv
+!i122 26
+R36
+R10
+R11
+r1
+!s85 0
+31
+!s108 1783542908.000000
+!s107 D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv|
+!i113 0
+R27
+R4
+vshabaan_adder_tree_top_test
+R17
+Z38 DXx4 work 17 bn_parameters_pkg 0 22 fQ>N`ze4@1=VYgYeV3o0M0
+DXx4 work 35 shabaan_adder_tree_top_test_sv_unit 0 22 @Ad=18=T;0OmEOi[d2AiG2
+Z39 !s110 1783542945
+R10
+r1
+!s85 0
+!i10b 1
+!s100 68<S0Dan7J][15Nf]TOBo1
+I;4z:d]NR?5Lncg<GdkzcJ3
+!s105 shabaan_adder_tree_top_test_sv_unit
+S1
+R7
+Z40 w1783542940
+Z41 8D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top_test.sv
+Z42 FD:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top_test.sv
+!i122 30
+L0 82 183
+R11
+31
+Z43 !s108 1783542945.000000
+Z44 !s107 D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top_test.sv|
+Z45 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top_test.sv|
+!i113 0
+R27
+R4
+Xshabaan_adder_tree_top_test_sv_unit
+R17
+R38
+R39
+V@Ad=18=T;0OmEOi[d2AiG2
+r1
+!s85 0
+!i10b 1
+!s100 _RW6Of[[Jg]46GomOPBKP3
+I@Ad=18=T;0OmEOi[d2AiG2
+!i103 1
+S1
+R7
+R40
+R41
+R42
+!i122 30
+R37
+R11
+31
+R43
+R44
+R45
+!i113 0
+R27
+R4
+vshaban_unit_top
+R15
+!i10b 1
+!s100 JbQA38G<ndDMUU_`?MPNM1
+I3bf_oohaaORm`W:Y3jL1k1
+R7
+w1783546417
+8shaban_unit_top.v
+Fshaban_unit_top.v
+!i122 633
+L0 1 66
+R10
+R11
+r1
+!s85 0
+31
+R16
+!s107 shaban_unit_top.v|
+!s90 -reportprogress|300|+define+SIM|shaban_unit_top.v|
+!i113 0
+R13
+R14
+R4
+vtop_conv9_array
+R17
+R6
+!i10b 1
+!s100 S6ZS==fAC>I4m7PhXJdVj1
+IQPRU5zlJO]FZ?YXomFTmi2
+S1
+R7
+w1783196160
+8top_conv9_array.sv
+Ftop_conv9_array.sv
+!i122 623
+L0 3 43
+R10
+R11
+r1
+!s85 0
+31
+R12
+!s107 top_conv9_array.sv|
+!s90 -reportprogress|300|+define+SIM|top_conv9_array.sv|
+!i113 0
+R13
+R14
+R4
+vtop_shaaban_array
+R17
+R18
+!i10b 1
+!s100 bUziOJU;JB:XBX4NzRI5>0
+Im3PN1m7XTU=FY1iLB^fW=0
+S1
+R7
+R8
+8top_shaaban_array.sv
+Ftop_shaaban_array.sv
+!i122 635
+L0 3 38
+R10
+R11
+r1
+!s85 0
+31
+R28
+!s107 top_shaaban_array.sv|
+!s90 -reportprogress|300|+define+SIM|top_shaaban_array.sv|
+!i113 0
+R13
+R14
+R4
+vxbip_dsp48_macro_cascade
+R17
+R6
+!i10b 1
+!s100 OQeMgaQ7bGe?^STdnC?S00
+I4]cV]k`>oU>cUiO@m9a=E1
+S1
+R7
+w1783849556
+8convDspAddMult.sv
+FconvDspAddMult.sv
+!i122 621
+L0 11 114
+R10
+R11
+r1
+!s85 0
+31
+R12
+!s107 convDspAddMult.sv|
+!s90 -reportprogress|300|+define+SIM|convDspAddMult.sv|
+!i113 0
+R13
+R14
+R4

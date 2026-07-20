@@ -1,0 +1,118 @@
+{D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/top_shaaban_array.sv} {2 {vlog -work work -vopt -sv -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/top_shaaban_array.sv}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module top_shaaban_array
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/top_shaaban_array.sv(10): (vlog-13314) Defaulting port 'shb_bus' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/top_shaaban_array.sv(11): (vlog-13314) Defaulting port 'conv_bias_param' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/top_shaaban_array.sv(12): (vlog-13314) Defaulting port 'mult_weight_param' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/top_shaaban_array.sv(13): (vlog-13314) Defaulting port 'add_weight_param' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	top_shaaban_array
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv} {2 {vlog -work work -vopt -sv -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module shabaan_adder_tree_top
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv(56): (vlog-13314) Defaulting port 'mac_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv(59): (vlog-13314) Defaulting port 'conv_bias_param' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv(60): (vlog-13314) Defaulting port 'mult_weight_param' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shabaan_adder_tree_top.sv(61): (vlog-13314) Defaulting port 'add_weight_param' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	shabaan_adder_tree_top
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/conv_bias_Relu.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/conv_bias_Relu.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module conv_bias_Relu
+
+Top level modules:
+	conv_bias_Relu
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/LIF.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/LIF.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module LIF
+
+Top level modules:
+	LIF
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_layer1.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_layer1.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module adder_layer1
+
+Top level modules:
+	adder_layer1
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/Batch_Norm.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/Batch_Norm.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Batch_Norm
+
+Top level modules:
+	Batch_Norm
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/Max_pooling.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/Max_pooling.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Max_pooling
+
+Top level modules:
+	Max_pooling
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_layer2.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_layer2.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module adder_layer2
+
+Top level modules:
+	adder_layer2
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_layer3.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_layer3.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module adder_layer3
+
+Top level modules:
+	adder_layer3
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/ext_sum_correction.sv} {2 {vlog -work work -vopt -sv -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/ext_sum_correction.sv}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module ext_sum_correction
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/ext_sum_correction.sv(46): (vlog-13314) Defaulting port 'mac_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	ext_sum_correction
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_layer4.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_layer4.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module adder_layer4
+
+Top level modules:
+	adder_layer4
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv} {2 {vlog -work work -vopt -sv -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module adder_tree_shaaban_connect
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(58): (vlog-13314) Defaulting port 'mac_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(184): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(185): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(186): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(187): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(183): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(184): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(185): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(186): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_shaaban_connect.sv(187): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+
+Top level modules:
+	adder_tree_shaaban_connect
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_10_4_1_1.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/adder_tree_10_4_1_1.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module adder_tree_10_4_1_1
+
+Top level modules:
+	adder_tree_10_4_1_1
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shaban_unit_top.v} {1 {vlog -work work -vopt -stats=none {D:/Hard/DSP accelerator STM intern/Modified/MultiStage-DeepSNN-main/rtl/Shabaan adder tree top/shaban_unit_top.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module shaban_unit_top
+
+Top level modules:
+	shaban_unit_top
+
+} {} {}}
