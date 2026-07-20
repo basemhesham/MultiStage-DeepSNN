@@ -1,6 +1,6 @@
 module mem_maping_1_2 (
-    input  logic         stage_sel,
-    input  logic /*[0:31]*/  shaaban_out [0:31],
+    input  wire logic         stage_sel,
+    input  wire logic /*[0:31]*/  shaaban_out [0:31],
     output logic /*[0:31]*/  mem_mapped [0:3199]
 );
 
