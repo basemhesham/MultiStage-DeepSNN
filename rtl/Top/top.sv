@@ -466,7 +466,7 @@ module deep_snn_top #(
         .SAMPLE_COUNT (CTRL_FRAGMENTS_MAX)
     ) u_global_average_pool (
         .clk            (clk),
-        .rst            (rst),
+        .rst_n          (rst),
         .clear          (gap_clear),
         .sample_valid   ((src_sel == 2'b10) && gap_sample_enable &&
                           ctrl_mem_enable[conv3_filter]),
