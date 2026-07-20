@@ -1,25 +1,25 @@
 module mem_maping_1_2 (
     input  logic         stage_sel,
-    input  logic [0:31]  shaaban_out [0:31],
-    output logic [0:31]  mem_mapped [0:3199]
+    input  logic /*[0:31]*/  shaaban_out [0:31],
+    output logic /*[0:31]*/  mem_mapped [0:3199]
 );
 
-    integer i, j, n, k;
+    logic [11:0] i, j, n, k;
+    logic [11:0] idx;   // 12 bits covers 0..3199
 
     always_comb begin
-        for (i = 0; i < 3200; i = i + 1) begin
-            mem_mapped[i] = 32'b0;
-        end
+        mem_mapped = '{default: 0};
 
         case (stage_sel)
             // ==============================================================
             // STAGE 1
             // ==============================================================
             1'b0: begin
-                // Loops 100 times to map blocks of 32 words 
+                // Loops 100 times to map blocks of 32 words
                 for (i = 0; i < 100; i = i + 1) begin
                     for (j = 0; j < 32; j = j + 1) begin
-                        mem_mapped[(i * 32) + j] = shaaban_out[j];
+                        idx = (i * 32) + j;
+                        mem_mapped[idx] = shaaban_out[j];
                     end
                 end
             end
@@ -43,8 +43,6 @@ module mem_maping_1_2 (
                 end
             end
 
-            default: begin
-            end
         endcase
     end
 
