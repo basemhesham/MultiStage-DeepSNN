@@ -1,15 +1,39 @@
+//===========================================================
+// File        : mem_mapping.sv
+// Purpose     : Maps flat memory buffer (mem[]) to per-filter,
+//               per-window input slices (fil_in) based on the
+//               current frame offset, for CNN accelerator im2col-style
+//               windowing.
+// Used in     : CNN Accelerator top-level (frame/window mapping stage)
+//===========================================================
+// Written by  : <name>
+// Editor      : Manar Abdo
+// Last edit   : 2026-07-07
+//===========================================================
 module mem_mapping #(
   parameter FRAME_NO          = 6,
   parameter FRAME_NO_WIDTH    = $clog2(FRAME_NO),
   parameter MEM_WORD          = 3200 
 ) (
-  input clk,
-  input arst_n,
-  input [FRAME_NO_WIDTH-1 :0]frame,
-  input [MEM_WORD-1 :0] mem,
-  output logic fil_in[31:0][39:0]
+    //=======================================================
+   // Controls
+  //=======================================================
+  input wire logic                       clk,
+  input wire logic                       arst_n,
+  //=======================================================
+  // Inputs
+  //=======================================================
+  input wire logic [FRAME_NO_WIDTH-1 :0] frame,
+  input wire logic [MEM_WORD-1 :0]       mem,
+  //=======================================================
+ // Outputs
+ //=======================================================
+  output logic                           fil_in[31:0][39:0]
 );
-  
+
+ //=======================================================
+ // <combinational block name>
+//=======================================================
 always_comb begin
 
 // ========================================// ========================================

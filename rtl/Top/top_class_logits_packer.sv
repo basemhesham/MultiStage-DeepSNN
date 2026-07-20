@@ -4,8 +4,8 @@ module top_class_logits_packer #(
     parameter int DATA_WIDTH = 18,
     parameter int N_OUTPUTS  = 4
 )(
-    input  logic signed [DATA_WIDTH-1:0] fc_out [0:N_OUTPUTS-1],
-    output logic [(N_OUTPUTS*DATA_WIDTH)-1:0] class_logits
+    input wire logic signed [DATA_WIDTH-1:0] fc_out [0:N_OUTPUTS-1],
+    output wire logic [(N_OUTPUTS*DATA_WIDTH)-1:0] class_logits
 );
 
     genvar logit_idx;

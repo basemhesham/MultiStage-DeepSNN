@@ -1,6 +1,18 @@
+//===========================================================
+// File        : frame_input_mapping.sv
+// Purpose     : Extracts 4 overlapping 3x3 (im2col-style) patches from
+//               a 4x4 input block, repeated independently across 64
+//               channels/pixels (din indexed as i*16 + offset).
+//               Each 3x3 patch is flattened to 9 elements (dout[9][...]).
+//               Output layout: dout[patch_elem][window][channel]
+//               - dout[*][0][*] : window at rows 0-2, cols 0-2
+//               - dout[*][1][*] : window at rows 0-2, cols 1-3
+//               - dout[*][2][*] : window at rows 1-3, cols 0-2
+//               - dout[*][3][*] : window at rows 1-3, cols 1-3
+// Used in     : CNN Accelerator top-level (frame/window mapping stage)
 module bin_muxing_stage2 (
-  input  wire  din  [1024],
-  output logic dout [9][4][64]
+  input  wire logic  din  [1024],
+  output  logic dout [9][4][64]
 );
 
   always_comb begin

@@ -7,12 +7,12 @@ module top_shaaban_array #(
 )(
     input  logic                                      clk,
     input  logic                                      rst,
-    input  logic signed [(INPUTS_PER_SHB*DATA_WIDTH)-1:0] shb_bus [0:N_SHAABAN-1],
-    input  logic signed [DATA_WIDTH-1:0]              conv_bias_param   [0:N_SHAABAN-1],
-    input  logic signed [DATA_WIDTH-1:0]              mult_weight_param [0:N_SHAABAN-1],
-    input  logic signed [DATA_WIDTH-1:0]              add_weight_param  [0:N_SHAABAN-1],
-    output logic [N_SHAABAN-1:0]                      spike_out,
-    output logic [0:31]                               shaaban_spike_bus [0:N_SHAABAN-1]
+    input  wire logic signed [(INPUTS_PER_SHB*DATA_WIDTH)-1:0] shb_bus [0:N_SHAABAN-1],
+    input  wire logic signed [DATA_WIDTH-1:0]              conv_bias_param   [0:N_SHAABAN-1],
+    input  wire logic signed [DATA_WIDTH-1:0]              mult_weight_param [0:N_SHAABAN-1],
+    input  wire logic signed [DATA_WIDTH-1:0]              add_weight_param  [0:N_SHAABAN-1],
+    output wire logic        [N_SHAABAN-1:0]               spike_out,
+    output wire logic        /*[0:31]*/                        shaaban_spike_bus [0:N_SHAABAN-1]
 );
 
     genvar s;
@@ -33,7 +33,7 @@ module top_shaaban_array #(
                 .spike      (spike_out[s])
             );
 
-            assign shaaban_spike_bus[s] = {32{spike_out[s]}};
+            assign shaaban_spike_bus[s] = spike_out[s];
         end
     endgenerate
 

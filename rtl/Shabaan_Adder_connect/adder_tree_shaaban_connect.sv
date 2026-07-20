@@ -1,4 +1,14 @@
 `timescale 1ns / 1ps
+//===========================================================
+// File        : adder_tree_shaaban_connect.sv
+// Purpose     : <one line description of what the module does>
+// Used in     : <parent module / top level that instantiates this>
+//===========================================================
+// Written by  : <name>
+// Editor      : <Ahmed Essam, if reviewed / modified by someone else>
+// Last edit   : <2026-07-06>
+//===========================================================
+
 // =============================================================================
 // adder_tree_shaaban_connect.sv
 // -----------------------------------------------------------------------------
@@ -19,7 +29,7 @@
 //  ├──────────┼─────────┼──────────────────────────────────────────────────┤
 //  │  2'b00   │    1    │ 128 conv25 outputs → all 32 Shaabans (4 each)    │
 //  │  2'b01   │    2    │ 12 tree finals → Shaabans 0,1,2 only (4 each)    │
-//  │  2'b10   │    3    │ 4 accumulated sums → Shaaban 0 slots 0..3       │
+//  │  2'b10   │    3    │ 4 accumulated sums → Shaaban 0 slots 0..3        │
 //  └──────────┴─────────┴──────────────────────────────────────────────────┘
 //
 // STAGE 1 ASSEMBLY — WHY 120 TAPS ARE NOT ENOUGH
@@ -29,9 +39,9 @@
 //
 //   flat_s1 layout (128 entries):
 //   ┌──────────────────────────────────────────────────────────────────────┐
-//   │ Trees 0–7  (stride 11): flat_s1[t*11 .. t*11+9]  = taps[0..9]      │
-//   │                         flat_s1[t*11 + 10]        = corr_out[t]     │
-//   │ Trees 8–11 (stride 10): flat_s1[88+(t-8)*10 .. ] = taps[0..9]      │
+//   │ Trees 0–7  (stride 11): flat_s1[t*11 .. t*11+9]  = taps[0..9]        │
+//   │                         flat_s1[t*11 + 10]        = corr_out[t]      │
+//   │ Trees 8–11 (stride 10): flat_s1[88+(t-8)*10 .. ] = taps[0..9]        │
 //   └──────────────────────────────────────────────────────────────────────┘
 //   Shaaban s ← flat_s1[s*4 .. s*4+3]
 // =============================================================================
@@ -42,20 +52,21 @@ module adder_tree_shaaban_connect #(
     parameter int N_TREES        = 12,
     parameter int TAPS_PER_TREE  = 10,
     parameter int N_SHAABAN      = 32,
-    parameter int INPUTS_PER_SHB = 4,
+    parameter int INPUTS_PER_SHB = 4,       // For Pooling each input has MUX to determine the stage.
     parameter int DATA_WIDTH     = 18,
 
     // Derived parameters
     parameter int TOTAL_S1_INPUTS  = N_SHAABAN * INPUTS_PER_SHB,       // 128
     parameter int TOTAL_TAPS       = N_TREES * TAPS_PER_TREE,          // 120
+    //the needed number of adders for the last 2 conv in each tree (which is 24) each adder has 3 inputs
     parameter int N_CORRECTION     = TOTAL_S1_INPUTS - TOTAL_TAPS      // 8
 )(
-    input  logic        clk,
-    input  logic        rst,
-    input  logic [1:0]  src_sel,   // 00=Stage1  01=Stage2  10=Stage3
+    input  wire logic        clk,
+    input  wire logic        rst,
+    input  wire logic [1:0]  src_sel,   // 00=Stage1  01=Stage2  10=Stage3
 
     // 12 trees × 32 MAC products from Convolution Array
-    input  logic signed [DATA_WIDTH-1:0] mac_in [0:N_TREES-1][0:31],
+    input  wire logic signed [DATA_WIDTH-1:0] mac_in [0:N_TREES-1][0:31],
 
     // Output bus to the 32 Shaaban Units (each carries 4 inputs)
     output logic signed [(INPUTS_PER_SHB*DATA_WIDTH)-1:0] shb_conv_bus [0:N_SHAABAN-1]
@@ -64,9 +75,9 @@ module adder_tree_shaaban_connect #(
     // =========================================================================
     // 1. ADDER TREE & CORRECTION LOGIC
     // =========================================================================
-    logic signed [DATA_WIDTH-1:0] tree_tap   [0:N_TREES-1][0:TAPS_PER_TREE-1];
-    logic signed [DATA_WIDTH-1:0] tree_final [0:N_TREES-1];
-    logic signed [DATA_WIDTH-1:0] s3_results [0:3];
+    wire logic signed [DATA_WIDTH-1:0] tree_tap   [0:N_TREES-1][0:TAPS_PER_TREE-1];
+    wire logic signed [DATA_WIDTH-1:0] tree_final [0:N_TREES-1];
+    wire logic signed [DATA_WIDTH-1:0] s3_results [0:3];
 
     genvar t, i;
     generate
@@ -95,6 +106,7 @@ module adder_tree_shaaban_connect #(
         end
         
         // Stage 3 Pairwise Summation: four 64-channel 3x3 window sums.
+        // Add two trees to have 64-channel
         for (i = 0; i < 4; i++) begin : gen_s3_sums
             assign s3_results[i] = tree_final[2*i] + tree_final[2*i+1];
         end
@@ -108,22 +120,19 @@ module adder_tree_shaaban_connect #(
     // Tree Index = (global_index) / 2
     // Port Index = 30 + ((global_index) % 2)
     // =========================================================================
-    logic signed [19:0]           ext_sum_raw [0:N_CORRECTION-1]; 
-    logic signed [DATA_WIDTH-1:0] ext_sum_correction [0:N_CORRECTION-1]; 
+    wire logic signed [DATA_WIDTH-1:0] non_tap [0:(N_TREES*2)-1];   // the last 2 conv in each tree
+    wire logic signed [DATA_WIDTH-1:0] ext_sum_correction [0:N_CORRECTION-1]; 
 
     genvar c;
     generate
-        for (c = 0; c < N_CORRECTION; c++) begin : gen_ext_correction
-            adder_layer1 u_correction_adder (
-                .add_1    (mac_in[ (3*c)   / 2 ][ 30 + ((3*c)   % 2) ]),
-                .add_2    (mac_in[ (3*c+1) / 2 ][ 30 + ((3*c+1) % 2) ]),
-                .add_3    (mac_in[ (3*c+2) / 2 ][ 30 + ((3*c+2) % 2) ]),
-                .adder_out(ext_sum_raw[c])
-            );
-            
-            assign ext_sum_correction[c] = ext_sum_raw[c][DATA_WIDTH-1:0];
+        for (c = 0; c < N_TREES; c++) begin : gen_correction
+            assign non_tap[2*c]   = mac_in[c][30];
+            assign non_tap[2*c+1] = mac_in[c][31];
         end
     endgenerate
+
+    sum_correction #(.DATA_WIDTH(DATA_WIDTH), .N_TREES(N_TREES), .N_CORRECTION(N_CORRECTION))
+               sum_corr (.non_tap(non_tap), .corr_out(ext_sum_correction));
 
     // =========================================================================
     // 3. STAGE 1 DATA ASSEMBLY
@@ -132,62 +141,22 @@ module adder_tree_shaaban_connect #(
     //   tree 3g taps, correction 2g,
     //   tree 3g+1 taps, correction 2g+1,
     //   tree 3g+2 taps.
+    // For simplification to put the addition from different trees in its right order
+    // the special case for stage 1
     // =========================================================================
-    logic signed [DATA_WIDTH-1:0] flat_s1 [0:TOTAL_S1_INPUTS-1];
+    wire logic signed [DATA_WIDTH-1:0] flat_s1 [0:TOTAL_S1_INPUTS-1];
 
-    genvar group_index, k;
-    generate
-        for (group_index = 0; group_index < 4; group_index++) begin : gen_s1_group
-            for (k = 0; k < TAPS_PER_TREE; k++) begin : gen_s1_taps
-                assign flat_s1[(group_index * 32) + k] =
-                    tree_tap[(group_index * 3)][k];
-                assign flat_s1[(group_index * 32) + 11 + k] =
-                    tree_tap[(group_index * 3) + 1][k];
-                assign flat_s1[(group_index * 32) + 22 + k] =
-                    tree_tap[(group_index * 3) + 2][k];
-            end
-
-            assign flat_s1[(group_index * 32) + 10] =
-                ext_sum_correction[group_index * 2];
-            assign flat_s1[(group_index * 32) + 21] =
-                ext_sum_correction[(group_index * 2) + 1];
-        end
-    endgenerate
+    order_correction #(.DATA_WIDTH(DATA_WIDTH), .N_TREES(N_TREES), .INPUTS_PER_SHB(INPUTS_PER_SHB),
+                       .N_SHAABAN(N_SHAABAN), .TAPS_PER_TREE  (TAPS_PER_TREE))
+            order_corr(.tree_tap(tree_tap), .ext_sum_correction(ext_sum_correction), .flat_s1(flat_s1));
 
     // =========================================================================
-    // 2. BUS MAPPING & MUXING
+    // 4. BUS MAPPING & MUXING
     // =========================================================================
-    genvar s, p;
-    generate
-        for (s = 0; s < N_SHAABAN; s++) begin : gen_shb_bus
-            logic signed [(INPUTS_PER_SHB*DATA_WIDTH)-1:0] src_s1, src_s2, src_s3;
 
-            for (p = 0; p < INPUTS_PER_SHB; p++) begin : map_sources
-                // Stage 1: 10 Taps + Correction
-                assign src_s1[p*DATA_WIDTH +: DATA_WIDTH] = flat_s1[s * INPUTS_PER_SHB + p];
-                
-                // Stage 2: Tree Finals
-                if (s < 3) // 12 trees / 4 inputs = 3 units
-                    assign src_s2[p*DATA_WIDTH +: DATA_WIDTH] = tree_final[s * INPUTS_PER_SHB + p];
-                else 
-                    assign src_s2[p*DATA_WIDTH +: DATA_WIDTH] = '0;
-
-                // Stage 3: four pairwise sums feed Shaaban 0 only.
-                if (s == 0)
-                    assign src_s3[p*DATA_WIDTH +: DATA_WIDTH] = s3_results[p];
-                else
-                    assign src_s3[p*DATA_WIDTH +: DATA_WIDTH] = '0;
-            end
-
-            always_comb begin
-                unique case (src_sel)
-                    2'b00:   shb_conv_bus[s] = src_s1;
-                    2'b01:   shb_conv_bus[s] = src_s2;
-                    2'b10:   shb_conv_bus[s] = src_s3;
-                    default: shb_conv_bus[s] = '0;
-                endcase
-            end
-        end
-    endgenerate
+    mapping_muxing #(.DATA_WIDTH(DATA_WIDTH), .N_TREES(N_TREES),
+                     .INPUTS_PER_SHB(INPUTS_PER_SHB), .N_SHAABAN(N_SHAABAN))
+            map_mux( .flat_s1(flat_s1), .tree_final(tree_final), .s3_results(s3_results), .src_sel(src_sel),
+                     .shb_conv_bus(shb_conv_bus));
 
 endmodule

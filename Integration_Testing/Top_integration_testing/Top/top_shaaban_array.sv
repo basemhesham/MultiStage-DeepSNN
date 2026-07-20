@@ -33,7 +33,7 @@ module top_shaaban_array #(
                 .spike      (spike_out[s])
             );
 
-            assign shaaban_spike_bus[s] = {32{spike_out[s]}};
+            assign shaaban_spike_bus[s] = spike_out[s];
         end
     endgenerate
 
