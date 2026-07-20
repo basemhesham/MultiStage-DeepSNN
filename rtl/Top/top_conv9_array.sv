@@ -24,9 +24,9 @@ module top_conv9_array #(
 )
 (
     input  logic                         clk                                     , // Clock signal
-    input  wire logic signed [PIXEL_W-1:0]    pixels_mapped  [0:11][0:31][0:8]        , // Mapped 9-tap pixel windows, 12x32 array
-    input  wire logic signed [PIXEL_W-1:0]    weights_mapped [0:11][0:31][0:8]        , // Mapped 9-tap weight windows, 12x32 array
-    output wire logic signed [DATA_WIDTH-1:0] mac_to_connect [0:11][0:31]               // Rescaled MAC results, 12x32 array
+    input  logic signed [PIXEL_W-1:0]    pixels_mapped  [0:11][0:31][0:8]        , // Mapped 9-tap pixel windows, 12x32 array
+    input  logic signed [PIXEL_W-1:0]    weights_mapped [0:11][0:31][0:8]        , // Mapped 9-tap weight windows, 12x32 array
+    output logic signed [DATA_WIDTH-1:0] mac_to_connect [0:11][0:31]               // Rescaled MAC results, 12x32 array
 );
 
     //-------------------------------------------------------------------------

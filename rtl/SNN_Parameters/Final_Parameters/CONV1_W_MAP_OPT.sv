@@ -1,6 +1,6 @@
 import conv1_pkg::*;
  module CONV1_W_MAP_OPT (
- 	output logic [17:0] conv9_in [3456]
+ 	output logic signed [17:0] conv9_in [3456]
  );
 
  // Compiled Assignment Logic

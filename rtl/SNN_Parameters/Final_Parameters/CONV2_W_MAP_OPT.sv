@@ -1,9 +1,9 @@
 module CONV2_W_MAP_OPT (
   input  logic [5:0]  filter,
-  output logic [17:0] conv9_in [3456]
+  output logic signed [17:0] conv9_in [3456]
  );
 
-
+ 
 // Unique weights for CONV2 LUT mapping
 localparam logic signed [17:0] UNIQUE_CONV2_WEIGHTS [362] = '{
     18'b000000000000000000, 18'b000000000000000001, 18'b000000000000000010, 18'b000000000000000011, 18'b000000000000000100,
