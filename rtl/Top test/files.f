@@ -1,4 +1,4 @@
-../Controller/mem_mapping_controller/Mapping_Cntrl.sv
+../Controller/Mapping_Cntrl.sv
 ../Controller/top_controller.sv
 ../Top/pixel_mem.sv
 ../Top/spike_mem.sv
