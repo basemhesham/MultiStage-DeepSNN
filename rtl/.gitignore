@@ -2,4 +2,4 @@ Top test/*
 !Top test/*.do
 !Top test/files.f
 !Top test/*.sv
-!Top test/dummy_image_256x256.txt
+!Top test/dummy_image_256x256.hex
