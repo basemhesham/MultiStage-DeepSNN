@@ -13,4 +13,8 @@ vmap work work
 vlog -f files.f  +define+SIM
 
 
-vsim -voptargs=+acc work.deep_snn_top
+vsim -voptargs=+acc work.stage1_only_tb
+
+ do wave.do
+
+ run -all

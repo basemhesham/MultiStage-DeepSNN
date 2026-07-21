@@ -50,6 +50,8 @@
 ../Top/top_class_logits_packer.sv
 ../Top/top.sv
 ../Top/deep_snn_integration_tb.sv
+stage1_only_tb.sv
+
 
 
 
