@@ -1,3 +1,5 @@
 Top test/*
-!Top test/run.do
+!Top test/*.do
 !Top test/files.f
+!Top test/*.sv
+!Top test/dummy_image_256x256.txt
