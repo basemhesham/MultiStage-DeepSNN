@@ -1,0 +1,15 @@
+{D:/Hard/DSP accelerator STM intern/Modified/rtl/Shabaan_Unit/fetch_stage2_1/fetch_stage2_1_tb.sv} {1 {vlog -work work -vopt -sv -stats=none {D:/Hard/DSP accelerator STM intern/Modified/rtl/Shabaan_Unit/fetch_stage2_1/fetch_stage2_1_tb.sv}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module fetch_stage2_1_tb
+
+Top level modules:
+	fetch_stage2_1_tb
+
+} {} {}} {D:/Hard/DSP accelerator STM intern/Modified/rtl/Shabaan_Unit/fetch_stage2_1/fetch_stage2_1.sv} {1 {vlog -work work -vopt -sv -stats=none {D:/Hard/DSP accelerator STM intern/Modified/rtl/Shabaan_Unit/fetch_stage2_1/fetch_stage2_1.sv}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module fetch_stage2_1
+
+Top level modules:
+	fetch_stage2_1
+
+} {} {}}

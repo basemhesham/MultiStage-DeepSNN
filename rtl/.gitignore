@@ -1,0 +1,6 @@
+**/Shabaan_Unit/fetch_stage2_1/work
+**/Top_test/*
+!Top_test/*.do
+!Top_test/files.f
+!Top_test/*.sv
+!Top_test/dummy_image_256x256.hex

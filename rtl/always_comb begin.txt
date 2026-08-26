@@ -1,0 +1,61 @@
+always_comb begin
+			//top_left_corner
+			shb_mem_en = '0;
+			if (frag_col == 0 && frag_row == 0) begin
+				if (stage2_frame_idx == 0) begin
+					shb_mem_en [0] = 1;
+				end
+			end
+			//top_right_corner
+			else if (frag_col == 31 && frag_row == 0) begin
+				if (stage2_frame_idx == 0) begin
+					shb_mem_en  = 3'b111;
+				end
+			end
+			//bottom_left_corner
+			else if (frag_col == 0 && frag_row == 31) begin
+				shb_mem_en[0]  = 1;
+			end
+			//bottom_right_corner
+			else if (frag_col == 31 && frag_row == 31) begin
+				shb_mem_en  = 3'b111;
+			end
+			//top_side
+			else if (frag_row == 0) begin
+				if (stage2_frame_idx == 0) begin
+					shb_mem_en  = 3'b011;
+				end
+			end
+			//bottom_side
+			else if (frag_row == 31) begin
+				if (stage2_frame_idx == 0) begin
+					shb_mem_en  = 3'b011;
+				end else if(stage2_frame_idx == 1) begin
+					shb_mem_en  = 3'b110;
+				end else if (stage2_frame_idx == 2) begin
+					shb_mem_en  = 3'b100;
+				end else if (stage2_frame_idx == 3) begin
+					shb_mem_en  = 3'b001;
+				end
+			end
+			//left_side
+			else if (frag_col == 0) begin
+				if (stage2_frame_idx == 0 || stage2_frame_idx == 1) begin
+					shb_mem_en  = 3'b001;
+				end
+			end
+			//right_side
+			else if (frag_col == 31) begin
+				if (stage2_frame_idx == 0 || stage2_frame_idx == 1) begin
+					shb_mem_en  = 3'b111;
+				end
+			end
+			//normal_case
+			else begin
+				if (stage2_frame_idx == 0) begin
+					shb_mem_en  = 3'b011;
+				end else if (stage2_frame_idx == 1) begin
+					shb_mem_en  = 3'b110;
+				end
+			end
+		end
