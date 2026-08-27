@@ -567,22 +567,28 @@ module deep_snn_top #(
         else         s2_0_rd_bank_d1 <= s2_0_rd_bank;
     end
 
+    logic [S2_0_NUM_BANKS-1:0] s2_0_bank_wr_sel;  // per-bank write select (kept off the port connections below)
+    logic [S2_0_NUM_BANKS-1:0] s2_0_bank_rd_sel;  // per-bank read select (kept off the port connections below)
+
     genvar s2_0_b;
     generate
         for (s2_0_b = 0; s2_0_b < S2_0_NUM_BANKS; s2_0_b++) begin : gen_s2_0_bank
+            assign s2_0_bank_wr_sel[s2_0_b] = s2_0_wr_en && (s2_0_wr_bank == s2_0_b);
+            assign s2_0_bank_rd_sel[s2_0_b] = s2_0_rd_en && (s2_0_rd_bank == s2_0_b);
+
             BRAM_LIF_Mem_0 #(
                 .DATA_WIDTH (DATA_WIDTH),
                 .ADDR_WIDTH (S2_0_BANK_AW),
                 .DEPTH      (S2_0_BANK_DEPTH)
             ) u_bram (
                 .clka  (clk),
-                .ena   (s2_0_wr_en && (s2_0_wr_bank == s2_0_b)),
-                .wea   (s2_0_wr_en && (s2_0_wr_bank == s2_0_b)),
+                .ena   (s2_0_bank_wr_sel[s2_0_b]),
+                .wea   (s2_0_bank_wr_sel[s2_0_b]),
                 .addra (s2_0_wr_local),
                 .dina  (lif_hist_out_dbg[0]),
 
                 .clkb  (clk),
-                .enb   (s2_0_rd_en && (s2_0_rd_bank == s2_0_b)),
+                .enb   (s2_0_bank_rd_sel[s2_0_b]),
                 .web   (1'b0),
                 .addrb (s2_0_rd_local),
                 .dinb  ({DATA_WIDTH{1'b0}}),
@@ -640,22 +646,28 @@ module deep_snn_top #(
 
     logic [DATA_WIDTH-1:0] s2_1_bank_douta [0:S2_1_NUM_MEM_BANKS-1];
 
+    logic [S2_1_NUM_MEM_BANKS-1:0] s2_1_bank_wr_sel;  // per-bank write select (kept off the port connections below)
+    logic [S2_1_NUM_MEM_BANKS-1:0] s2_1_bank_rd_sel;  // per-bank read select (kept off the port connections below)
+
     genvar s2_1_b;
     generate
         for (s2_1_b = 0; s2_1_b < S2_1_NUM_MEM_BANKS; s2_1_b++) begin : gen_s2_1_bank
+            assign s2_1_bank_wr_sel[s2_1_b] = s2_1_mem_wr_en && (s2_1_mem_wr_bank == s2_1_b);
+            assign s2_1_bank_rd_sel[s2_1_b] = s2_1_mem_rd_en && (s2_1_mem_rd_bank == s2_1_b);
+
             BRAM_LIF_Mem_0 #(
                 .DATA_WIDTH (DATA_WIDTH),
                 .ADDR_WIDTH (S2_1_BANK_AW),
                 .DEPTH      (S2_1_BANK_DEPTH)
             ) u_bram (
                 .clka  (clk),
-                .ena   (s2_1_mem_wr_en && (s2_1_mem_wr_bank == s2_1_b)),
-                .wea   (s2_1_mem_wr_en && (s2_1_mem_wr_bank == s2_1_b)),
+                .ena   (s2_1_bank_wr_sel[s2_1_b]),
+                .wea   (s2_1_bank_wr_sel[s2_1_b]),
                 .addra (s2_1_mem_wr_local),
                 .dina  (lif_hist_out_dbg[1]),
 
                 .clkb  (clk),
-                .enb   (s2_1_mem_rd_en && (s2_1_mem_rd_bank == s2_1_b)),
+                .enb   (s2_1_bank_rd_sel[s2_1_b]),
                 .web   (1'b0),
                 .addrb (s2_1_mem_rd_local),
                 .dinb  ({DATA_WIDTH{1'b0}}),
@@ -742,22 +754,28 @@ module deep_snn_top #(
         else         s2_2_rd_bank_d1 <= s2_2_rd_bank;
     end
 
+    logic [S2_2_NUM_BANKS-1:0] s2_2_bank_wr_sel;  // per-bank write select (kept off the port connections below)
+    logic [S2_2_NUM_BANKS-1:0] s2_2_bank_rd_sel;  // per-bank read select (kept off the port connections below)
+
     genvar s2_2_b;
     generate
         for (s2_2_b = 0; s2_2_b < S2_2_NUM_BANKS; s2_2_b++) begin : gen_s2_2_bank
+            assign s2_2_bank_wr_sel[s2_2_b] = s2_2_wr_en && (s2_2_wr_bank == s2_2_b);
+            assign s2_2_bank_rd_sel[s2_2_b] = s2_2_rd_en && (s2_2_rd_bank == s2_2_b);
+
             BRAM_LIF_Mem_0 #(
                 .DATA_WIDTH (DATA_WIDTH),
                 .ADDR_WIDTH (S2_2_BANK_AW),
                 .DEPTH      (S2_2_BANK_DEPTH)
             ) u_bram (
                 .clka  (clk),
-                .ena   (s2_2_wr_en && (s2_2_wr_bank == s2_2_b)),
-                .wea   (s2_2_wr_en && (s2_2_wr_bank == s2_2_b)),
+                .ena   (s2_2_bank_wr_sel[s2_2_b]),
+                .wea   (s2_2_bank_wr_sel[s2_2_b]),
                 .addra (s2_2_wr_local),
                 .dina  (lif_hist_out_dbg[2]),
 
                 .clkb  (clk),
-                .enb   (s2_2_rd_en && (s2_2_rd_bank == s2_2_b)),
+                .enb   (s2_2_bank_rd_sel[s2_2_b]),
                 .web   (1'b0),
                 .addrb (s2_2_rd_local),
                 .dinb  ({DATA_WIDTH{1'b0}}),
@@ -848,22 +866,28 @@ module deep_snn_top #(
         else         s3_rd_bank_d1 <= s3_rd_bank;
     end
 
+    logic [S3_NUM_BANKS-1:0] s3_bank_wr_sel;  // per-bank write select (kept off the port connections below)
+    logic [S3_NUM_BANKS-1:0] s3_bank_rd_sel;  // per-bank read select (kept off the port connections below)
+
     genvar s3_b;
     generate
         for (s3_b = 0; s3_b < S3_NUM_BANKS; s3_b++) begin : gen_s3_bank
+            assign s3_bank_wr_sel[s3_b] = s3_wr_en && (s3_wr_bank == s3_b);
+            assign s3_bank_rd_sel[s3_b] = s3_rd_en && (s3_rd_bank == s3_b);
+
             BRAM_LIF_Mem_0 #(
                 .DATA_WIDTH (DATA_WIDTH),
                 .ADDR_WIDTH (S3_BANK_AW),
                 .DEPTH      (S3_BANK_DEPTH)
             ) u_bram (
                 .clka  (clk),
-                .ena   (s3_wr_en && (s3_wr_bank == s3_b)),
-                .wea   (s3_wr_en && (s3_wr_bank == s3_b)),
+                .ena   (s3_bank_wr_sel[s3_b]),
+                .wea   (s3_bank_wr_sel[s3_b]),
                 .addra (s3_wr_local),
                 .dina  (lif_hist_out_dbg[0]),
 
                 .clkb  (clk),
-                .enb   (s3_rd_en && (s3_rd_bank == s3_b)),
+                .enb   (s3_bank_rd_sel[s3_b]),
                 .web   (1'b0),
                 .addrb (s3_rd_local),
                 .dinb  ({DATA_WIDTH{1'b0}}),
