@@ -85,6 +85,6 @@ module conv9 #(
     //-------------------------------------------------------------------
     // Output Logic
     //-------------------------------------------------------------------
-    assign Pixel_Out = P_final[OUT_W-1:0]; // Truncate 48-bit accumulator to output width
+    assign Pixel_Out = P_final; // Truncate 48-bit accumulator to output width
 
 endmodule

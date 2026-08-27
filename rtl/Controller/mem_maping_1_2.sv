@@ -1,49 +1,34 @@
 module mem_maping_1_2 (
-    input  wire logic         stage_sel,
-    input  wire logic /*[0:31]*/  shaaban_out [0:31],
-    output logic /*[0:31]*/  mem_mapped [0:3199]
+    input  logic              stage_sel,
+    input  logic /*[0:31]*/  shaaban_out [0:31],
+    output logic /*[0:31]*/   mem_mapped  [0:3199]
 );
 
-    logic [11:0] i, j, n, k;
-    logic [11:0] idx;   // 12 bits covers 0..3199
+    genvar idx;
 
-    always_comb begin
-        mem_mapped = '{default: 0};
+    generate
+        for (idx = 0; idx < 3200; idx = idx + 1) begin : g_idx
 
-        case (stage_sel)
-            // ==============================================================
-            // STAGE 1
-            // ==============================================================
-            1'b0: begin
-                // Loops 100 times to map blocks of 32 words
-                for (i = 0; i < 100; i = i + 1) begin
-                    for (j = 0; j < 32; j = j + 1) begin
-                        idx = (i * 32) + j;
-                        mem_mapped[idx] = shaaban_out[j];
-                    end
+            // Precompute, at elaboration time, what Stage-1 source is for this idx
+            localparam int S1_SRC = idx % 32;
+
+            // Precompute whether idx falls in Stage-2's range, and what it maps to
+            localparam bit S2_VALID = (idx < 1024);
+            localparam int S2_MOD16 = idx % 16;
+            localparam int S2_SRC   = (S2_MOD16 == 15) ? 0 :
+                                       (S2_MOD16 % 3);   // 0,1,2 pattern
+
+            always_comb begin
+                if (stage_sel == 1'b0) begin
+                    mem_mapped[idx] = shaaban_out[S1_SRC];
+                end else begin
+                    if (S2_VALID)
+                        mem_mapped[idx] = shaaban_out[S2_SRC];
+                    else
+                        mem_mapped[idx] = '0;
                 end
             end
-
-            // ==============================================================
-            // STAGE 2: Implements the 16-location pattern, repeated 64 times
-            //          Total elements affected: 16 * 64 = 1024 memory cells.
-            // ==============================================================
-            1'b1: begin
-                for (n = 0; n < 64; n = n + 1) begin
-                    // 1. Loop 5 times to handle the 3-element sequences (Yellow, Green, Purple, Red, Blue)
-                    // Each iteration of k handles a group of 3 memory cells.
-                    for (k = 0; k < 5; k = k + 1) begin
-                        mem_mapped[(n * 16) + (k * 3) + 0] = shaaban_out[0]; // Location 1, 4, 7, 10, 13
-                        mem_mapped[(n * 16) + (k * 3) + 1] = shaaban_out[1]; // Location 2, 5, 8, 11, 14
-                        mem_mapped[(n * 16) + (k * 3) + 2] = shaaban_out[2]; // Location 3, 6, 9, 12, 15
-                    end
-
-                    // 2. Map the 16th memory location (Grey) using the 6th word from input array
-                    mem_mapped[(n * 16) + 15] = shaaban_out[0];
-                end
-            end
-
-        endcase
-    end
+        end
+    endgenerate
 
 endmodule

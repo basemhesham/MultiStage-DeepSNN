@@ -6169,27 +6169,35 @@ localparam logic signed [17:0] UNIQUE_CONV2_WEIGHTS [18432] = '{
 //============================
 //Always block that has a large case statement that defines the 64 filter values
 //============================
+generate
+  genvar g, j, k;
+  for (j = 0; j < 32; j++) begin : J_LOOP
+    for (k = 0; k < 3; k++) begin : K_LOOP
+      for (g = 0; g < 3; g++) begin : G_LOOP
 
+        // ordinary variable, not localparam — filter is a runtime input
+        logic [14:0] ARRAY_INDX;
 
-always_comb begin
-  for(int j =0; j<32; j++) begin
-      for(int k=0; k<3; k++) begin
-          for(int g=0; g<3; g++) begin
-              conv9_in[g+3*k+9*j]            =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[1*288+g+3*k+9*j]      =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[2*288+g+3*k+9*j]      =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[3*288+g+3*k+9*j]      =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[4*288+g+3*k+9*j]      =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[5*288+g+3*k+9*j]      =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[6*288+g+3*k+9*j]      =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[7*288+g+3*k+9*j]      =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[8*288+g+3*k+9*j]      =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[9*288+g+3*k+9*j]      =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[10*288+g+3*k+9*j]     =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-              conv9_in[11*288+g+3*k+9*j]     =UNIQUE_CONV2_WEIGHTS[(j*9+g*3+k)+288*filter];
-          end
+        always_comb begin
+          ARRAY_INDX = (j*9 + g*3 + k) + 288*filter;
+
+          conv9_in[g+3*k+9*j]        = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[1*288+g+3*k+9*j]  = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[2*288+g+3*k+9*j]  = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[3*288+g+3*k+9*j]  = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[4*288+g+3*k+9*j]  = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[5*288+g+3*k+9*j]  = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[6*288+g+3*k+9*j]  = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[7*288+g+3*k+9*j]  = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[8*288+g+3*k+9*j]  = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[9*288+g+3*k+9*j]  = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[10*288+g+3*k+9*j] = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+          conv9_in[11*288+g+3*k+9*j] = UNIQUE_CONV2_WEIGHTS[ARRAY_INDX];
+        end
+
       end
+    end
   end
-end
+endgenerate
 
 endmodule

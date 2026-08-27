@@ -7,37 +7,21 @@
 // The output is stored in fixed-point (Q9) format.
 //
 // NOTE ON DIVISION REMOVAL:
-// SAMPLE_COUNT (169) is not a power of two, so a plain '>>' cannot replace
-// the division exactly. Instead we use the standard "multiply by reciprocal"
-// trick: precompute RECIP_CONST = round(2^RECIP_SHIFT / SAMPLE_COUNT) at
-// elaboration time (constant-folded by the tool, NOT synthesized as a
-// divider), then replace the runtime division with a multiply + shift:
-//      average = (scaled_count * RECIP_CONST) >> RECIP_SHIFT
-// For SAMPLE_COUNT=169, FRAC_BITS=9, RECIP_SHIFT=24 this has been verified
-// to exactly match the original integer division for every possible
-// accum value (0..SAMPLE_COUNT).
-//
-// *** PORT-DECLARATION FIX ***: inputs are now declared `input wire logic`
-// instead of plain `input logic`, matching the convention used elsewhere in
-// this codebase (fc2_layer, mapping_controller, etc). `wire` makes explicit
-// that these ports are driven externally by continuous assignment/net
-// connections, never procedurally assigned from inside this module.
-// Outputs (`pool_out`, `done`, `busy`) are left as plain `output logic`
-// since they are driven with non-blocking assignments inside the
-// always_ff block below — declaring them `wire` would be incorrect, since
-// `wire` cannot be the target of a procedural (`<=`) assignment.
+// SAMPLE_COUNT is now required to be a power of two (default 1024 = 2^10),
+// so the division reduces exactly to a right-shift by SAMPLE_SHIFT =
+// log2(SAMPLE_COUNT) -- no reciprocal-multiply trick and no divider/multiplier
+// needed at all:
+//      average = (spike_count << FRAC_BITS) >> SAMPLE_SHIFT
+// SAMPLE_SHIFT is derived from SAMPLE_COUNT via $clog2 at elaboration time,
+// and a compile-time check below ensures SAMPLE_COUNT really is an exact
+// power of two (the shift is only exact in that case).
 //------------------------------------------------------------------------------
 module global_average_pool #(
     parameter int DATA_WIDTH   = 18,   // Width of output data
     parameter int FRAC_BITS    = 9,    // Fractional bits for fixed-point format
     parameter int CHANNELS     = 128,  // Number of feature map channels
-    parameter int SAMPLE_COUNT = 169,  // Number of samples per channel (13x13)
-    parameter int ACC_WIDTH    = (SAMPLE_COUNT <= 1) ? 1 : $clog2(SAMPLE_COUNT + 1),
-
-    // Reciprocal-multiply precision (bits). 24 gives exact results vs. true
-    // division for SAMPLE_COUNT=169 across the full accum range; increase if
-    // SAMPLE_COUNT changes and re-verify.
-    parameter int RECIP_SHIFT  = 24
+    parameter int SAMPLE_COUNT = 1024, // Number of samples per channel -- MUST be a power of two
+    parameter int ACC_WIDTH    = (SAMPLE_COUNT <= 1) ? 1 : $clog2(SAMPLE_COUNT + 1)
 )(
     input  wire logic                        clk,
     input  wire logic                        rst_n,
@@ -61,19 +45,13 @@ module global_average_pool #(
 
     // Width of channel index
     localparam int CHANNEL_W = (CHANNELS <= 1) ? 1 : $clog2(CHANNELS);
+    localparam int SAMPLE_SHIFT = $clog2(SAMPLE_COUNT);
 
-    // Width used during scaling
-    localparam int CALC_W    = DATA_WIDTH + ACC_WIDTH + FRAC_BITS;
+    // Width used during scaling: just wide enough to hold the shifted count.
+    localparam int CALC_W = ACC_WIDTH + FRAC_BITS;
 
-    // Precomputed reciprocal constant: round(2^RECIP_SHIFT / SAMPLE_COUNT).
-    // This division is on compile-time constants only -> constant-folded by
-    // the tool at elaboration, it does NOT synthesize into a hardware divider.
-    
-    localparam int unsigned RECIP_CONST =
-        (((1 << RECIP_SHIFT) + (SAMPLE_COUNT / 2)) / SAMPLE_COUNT);
-
-    // Width of the multiply-shift product
-    localparam int MULT_W = CALC_W + RECIP_SHIFT + 1;
+    // Spike counter for each channel
+    logic [ACC_WIDTH-1:0] accum [0:CHANNELS-1];
 
     //--------------------------------------------------------------------------
     // State Machine
@@ -90,29 +68,23 @@ module global_average_pool #(
     // Channel currently being processed
     logic [CHANNEL_W-1:0] out_channel;
 
-    // Spike counter for each channel
-    logic [ACC_WIDTH-1:0] accum [0:CHANNELS-1];
-
     // Intermediate calculation signals
     logic [CALC_W-1:0]  scaled_count;
-    logic [MULT_W-1:0]  recip_product;
     logic [CALC_W-1:0]  average_value;
 
     //--------------------------------------------------------------------------
-    // Compute fixed-point average using multiply + shift instead of division:
-    //   average = (spike_count << FRAC_BITS) * RECIP_CONST >> RECIP_SHIFT
-    //           ~= (spike_count << FRAC_BITS) / SAMPLE_COUNT
+    // Compute fixed-point average using a plain shift (SAMPLE_COUNT is a
+    // power of two, so no multiply/divide hardware is needed at all):
+    //   average = (spike_count << FRAC_BITS) >> SAMPLE_SHIFT
+    //           == (spike_count << FRAC_BITS) / SAMPLE_COUNT
     //--------------------------------------------------------------------------
     always_comb begin
         // Scale count to preserve fractional precision
         scaled_count = {{(CALC_W-ACC_WIDTH){1'b0}}, accum[out_channel]} << FRAC_BITS;
 
-        // Multiply by the precomputed reciprocal (single-cycle multiplier,
-        // no divider in hardware)
-        recip_product = 60'(scaled_count * RECIP_CONST);
-
-        // Shift back down to remove the reciprocal scaling
-        average_value = recip_product[CALC_W + RECIP_SHIFT - 1 -: CALC_W];
+        // Remove the SAMPLE_COUNT scaling with a right-shift -- exact
+        // because SAMPLE_COUNT is a power of two.
+        average_value = scaled_count >> SAMPLE_SHIFT;
     end
 
     //--------------------------------------------------------------------------

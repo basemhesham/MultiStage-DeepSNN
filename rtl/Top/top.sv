@@ -109,7 +109,7 @@ module deep_snn_top #(
     logic                          stage_sel;
     logic [5:0]                    conv2_filter;
     logic [6:0]                    conv3_filter;
-    logic [0:3199]                 ctrl_mem_enable;
+    logic [3199:0]                 ctrl_mem_enable;
     logic                          ctrl_rd_enable;        // FIX [9]: now used
     logic [5:0]                    ctrl_rd_mem_adderss;
     logic [5:0]                    ctrl_wr_mem_adderss;
@@ -189,6 +189,8 @@ module deep_snn_top #(
     logic signed [DATA_WIDTH-1:0]  lif_hist_in   [0:N_SHAABAN-1]; // H[t-1] per lane, from BRAM doutb
     logic signed [DATA_WIDTH-1:0]  lif_hist_out  [0:N_SHAABAN-1]; // H[t]   per lane, into BRAM dina
     logic signed [DATA_WIDTH-1:0]  lif_hist_out_dbg [0:N_SHAABAN-1];
+	logic [2:0] stage2_last_frame_idx_o;
+	logic special_row_col_ind;
 
     // =========================================================================
     // top_controller
@@ -211,7 +213,7 @@ module deep_snn_top #(
         .frame          (frame),
         .stage_sel      (stage_sel),
         .conv2_filter   (conv2_filter),
-        .conv3_filter   (conv3_filter),
+        .conv3_filter   ({5'b0,conv3_filter}),
         .rd_mem_adderss (ctrl_rd_mem_adderss),
         .wr_mem_adderss (ctrl_wr_mem_adderss),
         .zero           (ctrl_zero),
@@ -961,12 +963,6 @@ module deep_snn_top #(
             gap_done_d <= 1'b0;    // FIX [5]
             fc1_done_d <= 1'b0;    // FIX [6]
             done       <= 1'b0;    // FIX [7]
-        end else if (rst) begin
-            enable_d   <= 1'b0;
-            snn_done_d <= 1'b0;
-            gap_done_d <= 1'b0;
-            fc1_done_d <= 1'b0;
-            done       <= 1'b0;
         end else begin
             enable_d   <= enable;
             snn_done_d <= snn_done;
@@ -1002,7 +998,7 @@ module deep_snn_top #(
         .rst_n          (rst),
         .clear          (gap_clear),
         .sample_valid   ((src_sel == 2'b10) && gap_sample_enable &&
-                          ctrl_mem_enable[conv3_filter]),
+                          ctrl_mem_enable[{5'd0,conv3_filter}]),
         .sample_channel (conv3_filter),
         .sample_spike   (spike_out[0]),
         .start          (snn_done && !snn_done_d),

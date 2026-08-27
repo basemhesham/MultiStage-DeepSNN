@@ -22,17 +22,20 @@ import conv3_pkg::*;
 //============================
 //Always block that has a large case statement that defines the 128 filter values
 //============================
-
-always_comb begin
-  for (int i =0; i < 576; i++) begin      // 9*32*2
-    conv9_in[i]                   =UNIQUE_CONV3_WEIGHTS[i+576*filter];
-    conv9_in[i+ 1*576]            =UNIQUE_CONV3_WEIGHTS[i+576*filter];
-    conv9_in[i+ 2*576]            =UNIQUE_CONV3_WEIGHTS[i+576*filter];
-    conv9_in[i+ 3*576]            =UNIQUE_CONV3_WEIGHTS[i+576*filter];
+generate
+genvar i;
+  for (i =0; i < 576; i++) begin      // 9*32*2
+	logic [16:0] ARRAY_INDX;
+	always_comb begin
+	ARRAY_INDX= i+576*filter;
+    conv9_in[i]                   =UNIQUE_CONV3_WEIGHTS[ARRAY_INDX];
+    conv9_in[i+ 1*576]            =UNIQUE_CONV3_WEIGHTS[ARRAY_INDX];
+    conv9_in[i+ 2*576]            =UNIQUE_CONV3_WEIGHTS[ARRAY_INDX];
+    conv9_in[i+ 3*576]            =UNIQUE_CONV3_WEIGHTS[ARRAY_INDX];
     
     conv9_in[i+ 4*576]            ='0;
     conv9_in[i+ 5*576]            ='0;
   end
 end
-
+endgenerate
 endmodule

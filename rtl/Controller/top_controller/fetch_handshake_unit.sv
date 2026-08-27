@@ -27,11 +27,6 @@ module fetch_handshake_unit
 					fetch_en_i       <= 1'b0;
 					fetch_pulse_sent <= 1'b0;
 				end
-			else if (rst)
-				begin
-					fetch_en_i       <= 1'b0;
-					fetch_pulse_sent <= 1'b0;
-				end
 			else
 				begin
 					fetch_en_i <= 1'b0; // default: de-assert (single-cycle pulse)

@@ -98,58 +98,60 @@ module top_pixel_source_mapper #(
     // point-to-point wiring, nothing else.
     genvar gtree, gconv9, gin;
     generate
-        for (gtree = 0; gtree < 12; gtree++) begin : gen_s1_tree
-            for (gconv9 = 0; gconv9 < 32; gconv9++) begin : gen_s1_conv9
-                for (gin = 0; gin < 9; gin++) begin : gen_s1_tap
+        for (gtree = 0; gtree < 12; gtree++) begin 
+            for (gconv9 = 0; gconv9 < 32; gconv9++) begin 
+                for (gin = 0; gin < 9; gin++) begin 
                     localparam int GCONV_BI_9                = (gconv9)*9;
                     localparam int GCONV_MOD_12_BI_9         = (gconv9 % 12)*9 -(((gconv9/3)%4)*2);
                     localparam int GCONV_MOD_12_MINUS_3_BI_9 = ((gconv9-3) % 12)*9 -((((gconv9-3)/3)%4)*2);
                     localparam int GCONV_MOD_12_MINUS_6_BI_9 = ((gconv9-6) % 12)*9 -((((gconv9-6)/3)%4)*2);;
-                    if ((gtree % 3) == 0) begin : gen_t0
-                        if (((gconv9 % 3) == 2) && ((gin == 7) || (gin == 8))) begin : gen_zero
+					localparam int GTREE_MOD_3				 = (gtree % 3);
+					localparam int GCONV9_MOD_3				 = (gconv9 % 3);
+                    if (GTREE_MOD_3 == 0) begin 
+                        if ((((GCONV9_MOD_3)) == 2) && ((gin == 7) || (gin == 8))) begin
                             assign pixels_s1[gtree][gconv9][gin] = '0;
-                        end else begin : gen_wire
+                        end else begin 
                             assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + GCONV_MOD_12_BI_9];
                         end
                     end
 
-                    else if ((gtree % 3) == 1) begin : gen_t1
-                        if (gconv9 == 30) begin : gen_c30
-                            if ((gin == 7) || (gin == 8)) begin : gen_zero
+                    else if ((GTREE_MOD_3) == 1) begin 
+                        if (gconv9 == 30) begin 
+                            if ((gin == 7) || (gin == 8)) begin 
                                 assign pixels_s1[gtree][gconv9][gin] = '0;
-                            end else begin : gen_wire
+                            end else begin 
                                 assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + 68];
                             end
-                        end else if (gconv9 == 31) begin : gen_c31
+                        end else if (gconv9 == 31) begin 
                             assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + 25];
-                        end else begin : gen_other
-                            if ((gconv9 % 3 == 2) && ((gin == 7) || (gin == 8))) begin : gen_zero
+                        end else begin 
+                            if ((GCONV9_MOD_3 == 2) && ((gin == 7) || (gin == 8))) begin 
                                 assign pixels_s1[gtree][gconv9][gin] = '0;
-                            end else if (gconv9 < 3) begin : gen_lt3
+                            end else if (gconv9 < 3) begin
                                 assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + GCONV_BI_9 + 75];
-                            end else begin : gen_ge3
+                            end else begin 
                                 assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + GCONV_MOD_12_MINUS_3_BI_9];
                             end
                         end
                     end
 
-                    else begin : gen_t2 // (gtree % 3) == 2
-                        if (gconv9 == 30) begin : gen_c30
+                    else begin  // (gtree % 3) == 2
+                        if (gconv9 == 30) begin 
                             assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + 34];
-                        end else if (gconv9 == 31) begin : gen_c31
-                            if ((gin == 7) || (gin == 8)) begin : gen_zero
+                        end else if (gconv9 == 31) begin
+                            if ((gin == 7) || (gin == 8)) begin 
                                 assign pixels_s1[gtree][gconv9][gin] = '0;
-                            end else begin : gen_wire
+                            end else begin
                                 assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + 43];
                             end
-                        end else begin : gen_other
-                            if ((gconv9 % 3 == 2) && ((gin == 7) || (gin == 8))) begin : gen_zero
+                        end else begin 
+                            if ((GCONV9_MOD_3 == 2) && ((gin == 7) || (gin == 8))) begin 
                                 assign pixels_s1[gtree][gconv9][gin] = '0;
-                            end else if (gconv9 < 3) begin : gen_lt6
+                            end else if (gconv9 < 3) begin 
                                 assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + GCONV_BI_9 + 50];
-                            end else if (gconv9 < 6) begin : gen_lt6
+                            end else if (gconv9 < 6) begin 
                                 assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + GCONV_BI_9 + 50 -2];
-                            end else begin : gen_ge6
+                            end else begin
                                 assign pixels_s1[gtree][gconv9][gin] = in_mem[gin + GCONV_MOD_12_MINUS_6_BI_9];
                             end
                         end

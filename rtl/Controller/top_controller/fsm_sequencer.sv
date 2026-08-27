@@ -89,7 +89,7 @@ module fsm_sequencer
 	assign stage2_last   = (stage2_frame_idx == stage2_last_frame_idx) && (conv2_filter == STAGE2_FILTERS - 1); // final Stage-2 frame of the final Stage-2 filter
 	assign temporal_last = (temporal_counter == TEMPORAL_FRAMES - 1);                 // final temporal frame of the run
 
-	reg stage1_last_p;
+	//reg stage1_last_p;
 
 	//==========================================================================
 	// FSM Next-State Logic
@@ -112,9 +112,9 @@ module fsm_sequencer
 			endcase
 		end
 
-	always_ff @( posedge clk ) begin
-		stage1_last_p <= stage1_last;
-	end
+	//always_ff @( posedge clk ) begin
+		//stage1_last_p <= stage1_last;
+	//end
 	//==========================================================================
 	// FSM State Register and Counter Update Logic (sequential)
 	//==========================================================================
@@ -123,21 +123,6 @@ module fsm_sequencer
 			if (!arst_n)
 				begin
 					// Asynchronous hard reset: force everything to its initial state.
-					state_q              <= IDLE;
-					stage1_pos           <= '0;
-					stage1_local_row_cnt <= '0;
-					stage1_local_col_cnt <= '0;
-					stage2_frame_idx     <= '0;
-					conv2_filter         <= '0;
-					conv3_filter         <= '0;
-					fragment_counter     <= '0;
-					frag_row             <= '0;
-					frag_col             <= '0;
-					temporal_counter     <= '0;
-				end
-			else if (rst)
-				begin
-					// Synchronous soft reset: same effect as the async reset above.
 					state_q              <= IDLE;
 					stage1_pos           <= '0;
 					stage1_local_row_cnt <= '0;
@@ -174,7 +159,7 @@ module fsm_sequencer
 
 								STAGE1:
 									begin
-										if (stage1_last || stage1_last_p)
+										if (stage1_last)
 											begin
 												// Fragment's Stage-1 sweep is complete: reset the
 												// position and local row/col counters for the next
