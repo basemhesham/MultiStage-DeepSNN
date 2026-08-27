@@ -85,6 +85,15 @@ module fc2_layer
     //   Map-index BRAMs - one per output neuron (4 total), since all 4 output
     //   neurons are computed simultaneously in a single pass (no batching).
     //   Each BRAM: 256 entries x 9 bits - fits easily in a BRAM18/BRAM36.
+    //   NOTE: previously stored as one array-of-arrays (fc2_map_bram[0:3]
+    //   [0:255]) with a generate-for loop doing per-lane $readmemh into
+    //   fc2_map_bram[b]. Vivado's xsim does not reliably keep each
+    //   generate instance's $readmemh scoped to just its own slice of a
+    //   shared 2D unpacked array - all 4 lanes ended up reading back the
+    //   SAME weight sequence at runtime (verified: acc_mac identical
+    //   across all 4 lanes). Declaring 4 fully independent, separately
+    //   named memories below removes any array-slice aliasing for the
+    //   simulator to get wrong.
     (* ram_style = "block" *) logic [MAP_BITS-1:0] fc2_map_bram_0 [0:BRAM_DEPTH-1];
     (* ram_style = "block" *) logic [MAP_BITS-1:0] fc2_map_bram_1 [0:BRAM_DEPTH-1];
     (* ram_style = "block" *) logic [MAP_BITS-1:0] fc2_map_bram_2 [0:BRAM_DEPTH-1];
@@ -277,26 +286,48 @@ module fc2_layer
     // Asynchronous, active-LOW reset: checked FIRST in priority so that an
     // async reset always wins, even if `state`/`input_idx` haven't settled
     // to their post-reset values yet within the same simulation delta.
+    //
+    // NOTE: manually unrolled (not a generate-for over a shared 2D array
+    // slice) for the same reason the memories above are separate named
+    // signals - see the comment on fc2_map_bram_0..3 above.
     always_ff @(posedge clk or negedge arst_n)
     begin
-        //===================================================
-        // Reset / new run
-        //===================================================
-        if (!arst_n || (state == ST_IDLE && start))
-        begin
-            for (int m = 0; m < PARALLEL_MACS; m++)
-                map_idx[m] <= '0;
-        end
-        //===================================================
-        // Active read
-        //===================================================
+        if (!arst_n)
+            map_idx[0] <= '0;
+        else if (state == ST_IDLE && start)
+            map_idx[0] <= '0;
         else if (state == ST_COMPUTE && input_idx < N_INPUTS)
-        begin
             map_idx[0] <= fc2_map_bram_0[input_idx[INPUT_BITS-1:0]];
+    end
+
+    always_ff @(posedge clk or negedge arst_n)
+    begin
+        if (!arst_n)
+            map_idx[1] <= '0;
+        else if (state == ST_IDLE && start)
+            map_idx[1] <= '0;
+        else if (state == ST_COMPUTE && input_idx < N_INPUTS)
             map_idx[1] <= fc2_map_bram_1[input_idx[INPUT_BITS-1:0]];
+    end
+
+    always_ff @(posedge clk or negedge arst_n)
+    begin
+        if (!arst_n)
+            map_idx[2] <= '0;
+        else if (state == ST_IDLE && start)
+            map_idx[2] <= '0;
+        else if (state == ST_COMPUTE && input_idx < N_INPUTS)
             map_idx[2] <= fc2_map_bram_2[input_idx[INPUT_BITS-1:0]];
+    end
+
+    always_ff @(posedge clk or negedge arst_n)
+    begin
+        if (!arst_n)
+            map_idx[3] <= '0;
+        else if (state == ST_IDLE && start)
+            map_idx[3] <= '0;
+        else if (state == ST_COMPUTE && input_idx < N_INPUTS)
             map_idx[3] <= fc2_map_bram_3[input_idx[INPUT_BITS-1:0]];
-        end
     end
 
     //=======================================================
@@ -307,30 +338,30 @@ module fc2_layer
     //                        accumulator (implicit clear, no separate reset
     //                        needed since there is only ever one pass).
     // input_idx == 2..256  : normal accumulate: acc += product.
-    always_ff @(posedge clk or negedge arst_n)
-    begin
-        //===================================================
-        // Reset / new run
-        //===================================================
-        if (!arst_n)
-            for (int m = 0; m < PARALLEL_MACS; m++)
-                acc_mac[m] <= '0;
-        else if (state == ST_IDLE && start)
-            for (int m = 0; m < PARALLEL_MACS; m++)
-                acc_mac[m] <= '0;
-        //===================================================
-        // Accumulate
-        //===================================================
-        else if (state == ST_COMPUTE && input_idx >= 1)
-        begin
-            if (input_idx == 1)
-                for (int m = 0; m < PARALLEL_MACS; m++)
-                    acc_mac[m] <= $signed(product[m]);            
-            else
-                for (int m = 0; m < PARALLEL_MACS; m++)
-                    acc_mac[m] <= acc_mac[m] + $signed(product[m]);  
+    generate
+        for (genvar y = 0; y < PARALLEL_MACS; y++) begin : gen_mac_accumulate
+            always_ff @(posedge clk or negedge arst_n)
+            begin
+                //===========================================
+                // Reset / new run
+                //===========================================
+                if (!arst_n)
+                    acc_mac[y] <= '0;
+                else if (state == ST_IDLE && start)
+                    acc_mac[y] <= '0;
+                //===========================================
+                // Accumulate
+                //===========================================
+                else if (state == ST_COMPUTE && input_idx >= 1)
+                begin
+                    if (input_idx == 1)
+                        acc_mac[y] <= ACCUM_WIDTH'($signed(product[y]));
+                    else
+                        acc_mac[y] <= acc_mac[y] + $signed(ACCUM_WIDTH'(product[y]));
+                end
+            end
         end
-    end
+    endgenerate
 
     //=======================================================
     // completion_stage
@@ -345,44 +376,43 @@ module fc2_layer
     // shifted LEFT by FRAC_BITS first (bias_aligned) to match the
     // accumulator's larger scale. After adding, the sum is shifted RIGHT by
     // FRAC_BITS to bring the result back down to normal Q_.FRAC_BITS output.
-    always_ff @(posedge clk or negedge arst_n)
-    begin
-        //===================================================
-        // Reset
-        //===================================================
-        if (!arst_n)
-        begin
-            for (int o = 0; o < N_OUTPUTS; o++)
-                fc_out[o] <= '0;
-        end
-        //===================================================
-        // Bias + rescale + writeback (no ReLU)
-        //===================================================
-        else if (state == ST_COMPUTE && compute_done)
-        begin
-            logic signed [ACCUM_WIDTH-1:0] bias_wide, bias_aligned, total;
-            logic signed [DATA_WIDTH-1:0]  result;
-
-            for (int m = 0; m < PARALLEL_MACS; m++)
+    generate
+        for (genvar p = 0; p < N_OUTPUTS; p++) begin : gen_completion
+            always_ff @(posedge clk or negedge arst_n)
             begin
-                bias_wide    = $signed(FC2_BIAS[m]);       // sign-extend bias to ACCUM_WIDTH
-                bias_aligned = bias_wide <<< FRAC_BITS;    // rescale bias to match acc_mac's scale
-                total        = acc_mac[m] + bias_aligned;  // dot-product + bias
-                result       = total >>> FRAC_BITS;        // rescale back down to Q_.FRAC_BITS
-                fc_out[m] <= result;                       // no ReLU clamp - raw logit output
+                //===========================================
+                // Reset
+                //===========================================
+                if (!arst_n)
+                    fc_out[p] <= '0;
+                //===========================================
+                // Bias + rescale + writeback (no ReLU)
+                //===========================================
+                else if (state == ST_COMPUTE && compute_done)
+                begin
+                    logic signed [ACCUM_WIDTH-1:0] bias_wide, bias_aligned, total;
+                    logic signed [DATA_WIDTH-1:0]  result;
+
+                    bias_wide    <= ACCUM_WIDTH'($signed(FC2_BIAS[p]));  // sign-extend bias to ACCUM_WIDTH
+                    bias_aligned <= bias_wide <<< FRAC_BITS;             // rescale bias to match acc_mac's scale
+                    total        <= acc_mac[p] + bias_aligned;           // dot-product + bias
+                    result       <= DATA_WIDTH'(total >>> FRAC_BITS);    // rescale back down to Q_.FRAC_BITS
+                    fc_out[p]   <= result;                              // no ReLU clamp - raw logit output
+                end
             end
         end
-    end
+    endgenerate
 
     //=======================================================
     // weight_bram_init
     //=======================================================
-    initial begin
-        $readmemh("fc2_map_bram_0.mem", fc2_map_bram_0);
-        $readmemh("fc2_map_bram_1.mem", fc2_map_bram_1);
-        $readmemh("fc2_map_bram_2.mem", fc2_map_bram_2);
-        $readmemh("fc2_map_bram_3.mem", fc2_map_bram_3);
-    end
+    // Plain (non-generate) initial blocks loading the 4 independent,
+    // separately-named memories declared above - see the comment there
+    // for why this replaced the earlier generate-for + 2D-array version.
+    initial $readmemh("fc2_map_bram_0.mem", fc2_map_bram_0);
+    initial $readmemh("fc2_map_bram_1.mem", fc2_map_bram_1);
+    initial $readmemh("fc2_map_bram_2.mem", fc2_map_bram_2);
+    initial $readmemh("fc2_map_bram_3.mem", fc2_map_bram_3);
 
 endmodule
 

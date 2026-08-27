@@ -64,7 +64,7 @@ module fetch_stage2_1 #(
     input  logic                        arst_n,
 
     // Caller-facing side (mapping controller)
-    input  logic                        frame_count, // indicate which frame we are in as to write only in the first and read only in the last
+    input  logic  [3:0]                 frame_count, // indicate which frame we are in as to write only in the first and read only in the last
     input  logic                        frame_start, // 1-cycle pulse at each frame boundary (NOT before frame 1)
     input  logic                        in_valid,    // position valid this cycle (advances the position counter)
 
@@ -94,10 +94,14 @@ module fetch_stage2_1 #(
     // cur_bank/prev_bank decrement by one bank each frame_start, wrapping
     // mod BRAM_TOTAL_BANKS.
     // -----------------------------------------------------------------
+    localparam [BANK_IDX_WIDTH-1:0] BRAM_TOTAL_BANKS_M1 = BANK_IDX_WIDTH'(BRAM_TOTAL_BANKS - 1);
+
     reg [BANK_IDX_WIDTH-1:0] cur_bank;
     reg [BANK_IDX_WIDTH-1:0] prev_bank;
-    wire [BANK_IDX_WIDTH-1:0] cur_bank_next =
-        (cur_bank == '0) ? (BRAM_TOTAL_BANKS-1) : (cur_bank - 1'b1);
+    wire [BANK_IDX_WIDTH-1:0] cur_bank_dec;   // pre-computed decrement (kept out of the ternary below)
+    wire [BANK_IDX_WIDTH-1:0] cur_bank_next;
+    assign cur_bank_dec  = cur_bank - 1'b1;
+    assign cur_bank_next = (cur_bank == '0) ? BRAM_TOTAL_BANKS_M1 : cur_bank_dec;
 
     always_ff @(posedge clk or negedge arst_n) begin
         if (!arst_n) begin
@@ -120,9 +124,11 @@ module fetch_stage2_1 #(
     reg [REG_ADDR_WIDTH-1:0] reg_pos;
     reg                     in_reg_region;
 
+    localparam [ADV_WIDTH-1:0] BRAM_ACTIVE_BANKS_M1 = ADV_WIDTH'(BRAM_ACTIVE_BANKS - 1);
+
     wire local_pos_wraps = (local_pos == BANK_DEPTH-1);
     wire bram_region_done = in_valid && !in_reg_region &&
-                             (bank_adv == BRAM_ACTIVE_BANKS-1) && local_pos_wraps;
+                             (bank_adv == BRAM_ACTIVE_BANKS_M1) && local_pos_wraps;
 
     always_ff @(posedge clk or negedge arst_n) begin
         if (!arst_n) begin
@@ -162,9 +168,11 @@ module fetch_stage2_1 #(
         input [ADV_WIDTH-1:0]      adv
     );
         logic [BANK_IDX_WIDTH:0] sum;
+        logic [BANK_IDX_WIDTH:0] sum_wrapped;  // pre-computed wrap (kept out of the ternary below)
         begin
-            sum = {1'b0, base} + {{(BANK_IDX_WIDTH+1-ADV_WIDTH){1'b0}}, adv};
-            wrapped_bank = (sum >= BRAM_TOTAL_BANKS) ? (sum - BRAM_TOTAL_BANKS) : sum[BANK_IDX_WIDTH-1:0];
+            sum         = {1'b0, base} + {{(BANK_IDX_WIDTH+1-ADV_WIDTH){1'b0}}, adv};
+            sum_wrapped = sum - BRAM_TOTAL_BANKS;
+            wrapped_bank = (sum >= BRAM_TOTAL_BANKS) ? BANK_IDX_WIDTH'(sum_wrapped) : sum[BANK_IDX_WIDTH-1:0];
         end
     endfunction
 
@@ -177,7 +185,7 @@ module fetch_stage2_1 #(
     // -----------------------------------------------------------------
     wire [BANK_IDX_WIDTH-1:0] rd_bank = wrapped_bank(prev_bank, bank_adv);
 
-    assign mem_rd_en   = (in_valid && (&frame_count != 1) && !in_reg_region) ? 1 : 0;  // writing when it's not the last frame 
+    assign mem_rd_en   = (in_valid && (|frame_count != 0) && !in_reg_region) ? 1 : 0;  // read when it's not the first frame
     assign mem_rd_addr = MEM_ADDR_WIDTH'({rd_bank, local_pos});
 
     assign reg_rd_en   = (in_valid && (|frame_count != 0) && in_reg_region) ? 1 : 0;  // writing when it's not the last frame
@@ -219,7 +227,7 @@ module fetch_stage2_1 #(
     assign mem_wr_en   = (valid_d1 && (&frame_count != 1) && !in_reg_region_d1) ? 1 : 0;  // writing when it's not the last frame
     assign mem_wr_addr = MEM_ADDR_WIDTH'({wr_bank, local_pos_d1});
 
-    assign reg_wr_en   = (valid_d1 && (|frame_count != 0) && in_reg_region_d1) ? 1 : 0;  // writing when it's not the last frame
+    assign reg_wr_en   = (valid_d1 && (&frame_count != 1) && in_reg_region_d1) ? 1 : 0;  // writing when it's not the last frame
     assign reg_wr_addr = reg_pos_d1;
 
     // -----------------------------------------------------------------

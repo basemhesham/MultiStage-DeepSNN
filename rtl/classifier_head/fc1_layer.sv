@@ -10,7 +10,7 @@
 //===========================================================
 // Written by  : Ahmad Khattab
 // Revised by  : Eman Yasser
-// Last edit   : 2026-07-06
+// Last edit   : 2026-07-31
 //===========================================================
 
 `ifndef FC1_LAYER_SV
@@ -53,6 +53,8 @@ module fc1_layer
     //=======================================================
     // Local Parameters
     //=======================================================
+    localparam int EXT_BITS = ACCUM_WIDTH - (2 * DATA_WIDTH); // 48 - 36 = 12 bits
+
     // Biases - one per OUTPUT NEURON (256 total)
     localparam logic signed [DATA_WIDTH-1:0] FC1_BIAS [N_OUTPUTS] = '{
         18'h3FFE7, 18'h00000, 18'h0001F, 18'h0001B, 18'h00007, 18'h3FFFF, 18'h0001F,
@@ -94,18 +96,7 @@ module fc1_layer
         18'h00006, 18'h00005, 18'h00000, 18'h3FFF6
     };
 
-    //   BRAM / batching sizing.
-    //   MAP_BITS      : width of one map index (pointer into the 375-entry
-    //                   weight codebook). 9 bits because 2^9 = 512 >= 375.
-    //   BRAM_DEPTH    : map indices ONE lane's BRAM must hold = inputs x
-    //                   batches = 128 x 32 = 4096. Unrelated to the "375
-    //                   unique weights" figure - this is an access-pattern
-    //                   count, split evenly across all 8 lanes
-    //                   (8 x 4096 = 32768 = 128 x 256 total connections).
-    //   NUM_BATCHES   : outputs computed 8 at a time (1 per lane)
-    //                   -> 256 / 8 = 32 rounds.
-    //   BATCH_CYCLES  : 1 setup cycle (BRAM read only, no math yet)
-    //                   + 128 cycles (one per input, pipelined) = 129.
+    // BRAM / batching sizing.
     localparam int MAP_BITS      = 9;
     localparam int BRAM_DEPTH    = N_INPUTS * (N_OUTPUTS / PARALLEL_MACS);  // 4096
     localparam int NUM_BATCHES   = N_OUTPUTS / PARALLEL_MACS;               // 32
@@ -117,12 +108,6 @@ module fc1_layer
     //=======================================================
     // Internals
     //=======================================================
-    //   Map-index BRAMs - 8 separate memories, one per MAC lane.
-    //   Each BRAM: 4096 entries x 9 bits -> fits exactly into one Xilinx
-    //   BRAM36 tile, Simple-Dual-Port, 4K x 9 mode.
-    //   Lane m stores the map indices for neurons {m, m+8, m+16, ..., m+248}
-    //   (every 8th neuron, offset by lane number) across every input and batch.
-    //   Address = {batch_idx (5b), input_idx (7b)} = 12 bits -> 4096 addresses.
     (* ram_style = "block" *) logic [MAP_BITS-1:0] fc1_map_bram_0 [0:BRAM_DEPTH-1];
     (* ram_style = "block" *) logic [MAP_BITS-1:0] fc1_map_bram_1 [0:BRAM_DEPTH-1];
     (* ram_style = "block" *) logic [MAP_BITS-1:0] fc1_map_bram_2 [0:BRAM_DEPTH-1];
@@ -135,42 +120,37 @@ module fc1_layer
     //=======================================================
     // FSM
     //=======================================================
-    //   ST_IDLE    -> waits for start
-    //   ST_COMPUTE -> runs all 32 batches (128 inputs each), 32 x 129 = 4128 cycles
-    //   ST_DONE    -> exactly 1 cycle, pulses done, then returns to ST_IDLE
     typedef enum logic [1:0] {
         ST_IDLE, ST_COMPUTE, ST_DONE
     } state_t;
     state_t state, next_state;
 
     // Counters / control bits.
-    logic [BATCH_BITS-1:0]          batch_idx;             // which batch (0..31) is running now
-    logic [CYCLE_BITS-1:0]          input_idx;             // cycle-within-batch counter (0..128)
-    logic                           batch_done;            // 1-cycle pulse: a batch just finished
-    logic                           compute_active;        // 1 while batches are still running
-    logic [$clog2(N_OUTPUTS)-1:0]   completed_batch_base;  // neuron index base of the batch that just finished
+    logic [BATCH_BITS-1:0]          batch_idx;             
+    logic [CYCLE_BITS-1:0]          input_idx;             
+    logic                           batch_done;            
+    logic                           compute_active;        
+    logic [$clog2(N_OUTPUTS)-1:0]   completed_batch_base;  
 
     // Pipeline registers.
-    logic signed [DATA_WIDTH-1:0]   in_val_d1;                     // fc_in delayed 1 cycle to align with BRAM read latency
-    logic [MAP_BITS-1:0]            map_idx  [0:PARALLEL_MACS-1];  // registered BRAM output (per lane)
-    logic signed [ACCUM_WIDTH-1:0]  acc_mac  [0:PARALLEL_MACS-1];  // running dot-product sum (per lane)
+    logic signed [DATA_WIDTH-1:0]   in_val_d1;                     
+    logic [MAP_BITS-1:0]            map_idx  [0:PARALLEL_MACS-1];  
+    logic signed [ACCUM_WIDTH-1:0]  acc_mac  [0:PARALLEL_MACS-1];  
 
     // Continuous nets.
-    wire logic [11:0]                      bram_addr;     // 12-bit BRAM address {batch_idx, input_idx}
-    wire logic [$clog2(N_OUTPUTS)-1:0]     neuron_base;   // first neuron index of current batch
-    wire logic signed [DATA_WIDTH-1:0]     in_val;        // current (undelayed) input value
-    wire logic signed [DATA_WIDTH-1:0]     weight   [0:PARALLEL_MACS-1];  // weight looked up from codebook
-    wire logic signed [2*DATA_WIDTH-1:0]   product  [0:PARALLEL_MACS-1];  // in_val_d1 * weight (18b*18b=36b)
+    wire logic [11:0]                      bram_addr;     
+    wire logic [$clog2(N_OUTPUTS)-1:0]     neuron_base;   
+    wire logic signed [DATA_WIDTH-1:0]     in_val;        
+    wire logic signed [DATA_WIDTH-1:0]     weight   [0:PARALLEL_MACS-1];  
+    wire logic signed [2*DATA_WIDTH-1:0]   product  [0:PARALLEL_MACS-1];  
 
-    assign neuron_base = batch_idx * PARALLEL_MACS;                 // e.g. batch 3 -> neuron 24
-    assign bram_addr   = {batch_idx, input_idx[INPUT_BITS-1:0]};    // 12-bit BRAM address
-    assign in_val      = fc_in[input_idx[INPUT_BITS-1:0]];          // input value for this cycle
+    assign neuron_base = batch_idx * PARALLEL_MACS;                 
+    assign bram_addr   = {batch_idx, input_idx[INPUT_BITS-1:0]};    
+    assign in_val      = fc_in[input_idx[INPUT_BITS-1:0]];          
 
     //=======================================================
     // weight_lookup
     //=======================================================
-    // Turn each lane's 9-bit map index into the real weight value by looking
-    // it up in the shared 375-entry codebook (the "decompression" step).
     generate
         for (genvar m = 0; m < PARALLEL_MACS; m++) begin : gen_weight_lookup
             assign weight[m] = UNIQUE_FC1_W[map_idx[m]];
@@ -180,8 +160,6 @@ module fc1_layer
     //=======================================================
     // product_compute
     //=======================================================
-    // Multiply the (delayed) input by each lane's weight. Maps onto the
-    // FPGA's hardened DSP48E2 multiplier blocks.
     generate
         for (genvar m = 0; m < PARALLEL_MACS; m++) begin : gen_product
             assign product[m] = in_val_d1 * weight[m];
@@ -204,29 +182,17 @@ module fc1_layer
     //=======================================================
     always_comb
     begin
-        //===================================================
-        // Defaults
-        //===================================================
-        next_state = state;   // hold current state unless a transition fires below
+        next_state = state;   
 
-        //===================================================
-        // State transitions
-        //===================================================
         case (state)
-            // Leave IDLE the moment start is asserted.
             ST_IDLE:
                 if (start)
                     next_state = ST_COMPUTE;
 
-            // Leave COMPUTE only once the LAST batch has finished.
-            // pulses after every batch, but `compute_active` only drops to 0
-            // after batch 31 specifically, so this AND condition uniquely
-            // identifies "the whole layer pass is complete".
             ST_COMPUTE:
                 if (batch_done && !compute_active)
                     next_state = ST_DONE;
 
-            // DONE always lasts exactly one cycle, then back to IDLE.
             ST_DONE:
                 next_state = ST_IDLE;
 
@@ -238,13 +204,8 @@ module fc1_layer
     //=======================================================
     // datapath_control
     //=======================================================
-    // Walks input_idx 0 -> 128 within each batch, and batch_idx 0 -> 31
-    // across the pass.
     always_ff @(posedge clk or negedge arst_n)
     begin
-        //===================================================
-        // Reset
-        //===================================================
         if (~arst_n)
         begin
             batch_idx             <= '0;
@@ -256,27 +217,17 @@ module fc1_layer
             done                  <= 1'b0;
             in_val_d1             <= '0;
         end
-        //===================================================
-        // Running
-        //===================================================
         else
         begin
-            // Both are 1-cycle pulses: clear every cycle by default, then
-            // re-assert below only on the specific cycle where they should fire.
             done       <= 1'b0;
             batch_done <= 1'b0;
 
             case (state)
-
-                //===============================================
-                // ST_IDLE
-                //===============================================
                 ST_IDLE:
                 begin
                     busy <= 1'b0;
                     if (start)
                     begin
-                        // Kick off a fresh pass: reset counters, mark active/busy.
                         batch_idx      <= '0;
                         input_idx      <= '0;
                         compute_active <= 1'b1;
@@ -285,58 +236,42 @@ module fc1_layer
                     end
                 end
 
-                //===============================================
-                // ST_COMPUTE
-                //===============================================
                 ST_COMPUTE:
                 begin
                     busy <= 1'b1;
 
-                    // Latch the current input so it's available NEXT cycle,
-                    // aligned with the weight that the BRAM read (issued this
-                    // cycle) will produce.
                     if (compute_active && input_idx < N_INPUTS)
                         in_val_d1 <= fc_in[input_idx[INPUT_BITS-1:0]];
 
                     if (compute_active)
                     begin
-                        // input_idx == 128 means: all 128 MAC cycles for this
-                        // batch are done.
                         if (input_idx == BATCH_CYCLES - 1)
                         begin
-                            // Remember which neurons this finished batch
-                            // corresponds to, for the bias/ReLU/writeback stage.
                             completed_batch_base <= batch_idx * PARALLEL_MACS;
-                            input_idx            <= '0;   // restart per-batch counter
-                            in_val_d1             <= '0;
+                            input_idx            <= '0;   
+                            in_val_d1            <= '0;
 
                             if (batch_idx == NUM_BATCHES - 1)
                             begin
-                                // That was the LAST batch (31) -> pass complete.
                                 compute_active <= 1'b0;
                                 batch_done     <= 1'b1;
                             end
                             else
                             begin
-                                // More batches remain -> advance to the next one.
                                 batch_idx  <= batch_idx + 1'b1;
-                                batch_done <= 1'b1;
+                                batch_done <= 1'b1; // Fixed syntax error
                             end
                         end
                         else
                         begin
-                            // Still mid-batch -> just count up.
                             input_idx <= input_idx + 1'b1;
                         end
                     end
                 end
 
-                //===============================================
-                // ST_DONE
-                //===============================================
                 ST_DONE:
                 begin
-                    done <= 1'b1;   // tell the outside world the pass finished
+                    done <= 1'b1;   
                     busy <= 1'b0;
                 end
 
@@ -348,15 +283,31 @@ module fc1_layer
     //=======================================================
     // bram_read_stage
     //=======================================================
-    // Registered, 1-cycle latency, 8 lanes in parallel. Reads happen for
-    // input_idx 0..127 (the "setup" cycle input_idx==0 is included, since
-    // its result is needed by the time input_idx==1 arrives).
     always_ff @(posedge clk or negedge arst_n)
     begin
-        //===================================================
-        // Active read
-        //===================================================
-        if (state == ST_COMPUTE && compute_active && input_idx < N_INPUTS)
+        if (~arst_n)
+        begin
+            map_idx[0] <= '0;
+            map_idx[1] <= '0;
+            map_idx[2] <= '0;
+            map_idx[3] <= '0;
+            map_idx[4] <= '0;
+            map_idx[5] <= '0;
+            map_idx[6] <= '0;
+            map_idx[7] <= '0;
+        end
+        else if (state == ST_IDLE && start)
+        begin
+            map_idx[0] <= '0;
+            map_idx[1] <= '0;
+            map_idx[2] <= '0;
+            map_idx[3] <= '0;
+            map_idx[4] <= '0;
+            map_idx[5] <= '0;
+            map_idx[6] <= '0;
+            map_idx[7] <= '0;
+        end
+        else if (state == ST_COMPUTE && compute_active && input_idx < N_INPUTS)
         begin
             map_idx[0] <= fc1_map_bram_0[bram_addr];
             map_idx[1] <= fc1_map_bram_1[bram_addr];
@@ -367,99 +318,84 @@ module fc1_layer
             map_idx[6] <= fc1_map_bram_6[bram_addr];
             map_idx[7] <= fc1_map_bram_7[bram_addr];
         end
-        //===================================================
-        // Reset / new run
-        //===================================================
-        else if (~arst_n || (state == ST_IDLE && start))
-        begin
-            for (int m = 0; m < PARALLEL_MACS; m++)
-                map_idx[m] <= '0;
-        end
     end
 
     //=======================================================
-    // mac_accumulate_stage
+    // mac_accumulate_stage (Explicit Signed Extension)
     //=======================================================
-    // input_idx == 0      : setup cycle only (BRAM read in flight) -> no MAC.
-    // input_idx == 1      : first REAL product is ready -> OVERWRITE the
-    //                        accumulator (doubles as the "clear for a new
-    //                        batch" step, avoiding a separate explicit reset
-    //                        every batch).
-    // input_idx == 2..128  : normal accumulate: acc += product.
-    always_ff @(posedge clk or negedge arst_n)
-    begin
-        //===================================================
-        // Reset / new run
-        //===================================================
-        if (~arst_n)
-            for (int m = 0; m < PARALLEL_MACS; m++)
-                acc_mac[m] <= '0;
-        else if (state == ST_IDLE && start)
-            for (int m = 0; m < PARALLEL_MACS; m++)
-                acc_mac[m] <= '0;
-        //===================================================
-        // Accumulate
-        //===================================================
-        else if (state == ST_COMPUTE && compute_active && input_idx >= 1)
-        begin
-            if (input_idx == 1)
-                for (int m = 0; m < PARALLEL_MACS; m++)
-                    acc_mac[m] <= $signed(product[m]);            // overwrite = implicit clear
-            else
-                for (int m = 0; m < PARALLEL_MACS; m++)
-                    acc_mac[m] <= acc_mac[m] + $signed(product[m]);  // accumulate
-        end
-    end
+    generate
+        for (genvar lane = 0; lane < PARALLEL_MACS; lane++) begin : gen_mac_acc
+            // Explicitly sign-extend 36-bit product to 48-bit to eliminate operand mismatch warnings
+            wire logic signed [ACCUM_WIDTH-1:0] product_ext;
+            assign product_ext = $signed({{EXT_BITS{product[lane][2*DATA_WIDTH-1]}}, product[lane]});
 
-    //=======================================================
-    // batch_complete_stage
-    //=======================================================
-    // Add bias, rescale, apply ReLU, write final output. Fires once per
-    // batch (32 times per full pass) on the batch_done pulse.
-    //
-    // Fixed-point note: acc_mac is a sum of (Q_.FRAC_BITS x Q_.FRAC_BITS)
-    // products, so its "true" scale is Q_.(2*FRAC_BITS). The bias, however,
-    // is stored in plain Q_.FRAC_BITS. To add them correctly, the bias is
-    // shifted LEFT by FRAC_BITS first (bias_aligned) to match the
-    // accumulator's larger scale. After adding, the sum is shifted RIGHT by
-    // FRAC_BITS to bring the result back down to normal Q_.FRAC_BITS output.
-    always_ff @(posedge clk or negedge arst_n)
-    begin
-        //===================================================
-        // Reset
-        //===================================================
-        if (~arst_n)
-        begin
-            for (int o = 0; o < N_OUTPUTS; o++)
-                fc_out[o] <= '0;
-        end
-        //===================================================
-        // Bias + rescale + ReLU + writeback
-        //===================================================
-        else if ((state == ST_COMPUTE || state == ST_DONE) && batch_done)
-        begin
-            logic signed [ACCUM_WIDTH-1:0] bias_wide, bias_aligned, total;
-            logic signed [DATA_WIDTH-1:0]  result;
-            int unsigned neuron;
-
-            for (int m = 0; m < PARALLEL_MACS; m++)
-            begin
-                neuron       = completed_batch_base + m;       // actual neuron index (0..255)
-                bias_wide    = $signed(FC1_BIAS[neuron]);      // sign-extend bias to ACCUM_WIDTH
-                bias_aligned = bias_wide <<< FRAC_BITS;        // rescale bias to match acc_mac's scale
-                total        = acc_mac[m] + bias_aligned;      // dot-product + bias
-                result       = total >>> FRAC_BITS;            // rescale back down to Q_.FRAC_BITS
-                if (result < 0)
-                    result = '0;                               // ReLU: clamp negative to zero
-                fc_out[neuron] <= result;
+            always_ff @(posedge clk or negedge arst_n) begin
+                if (~arst_n) begin
+                    acc_mac[lane] <= '0;
+                end
+                else if (state == ST_IDLE && start) begin
+                    acc_mac[lane] <= '0;
+                end
+                else if (state == ST_COMPUTE && compute_active && input_idx >= 1) begin
+                    if (input_idx == 1)
+                        acc_mac[lane] <= product_ext;
+                    else
+                        acc_mac[lane] <= acc_mac[lane] + product_ext;
+                end
             end
         end
-    end
+    endgenerate
+
+    //=======================================================
+    // batch_complete_stage (Lint-Clean Bit Alignment)
+    //=======================================================
+    logic signed [ACCUM_WIDTH-1:0] bias_wide    [0:PARALLEL_MACS-1];
+    logic signed [ACCUM_WIDTH-1:0] bias_aligned [0:PARALLEL_MACS-1];
+    logic signed [ACCUM_WIDTH-1:0] total_val    [0:PARALLEL_MACS-1];
+    logic signed [DATA_WIDTH-1:0]  res_val      [0:PARALLEL_MACS-1];
+
+    generate
+        for (genvar lane = 0; lane < PARALLEL_MACS; lane++) begin : gen_lane_calc
+            wire [$clog2(N_OUTPUTS)-1:0] neuron_idx = completed_batch_base + lane;
+
+            // 1. Explicit type width cast (18-bit signed -> 48-bit signed)
+            assign bias_wide[lane]    = ACCUM_WIDTH'($signed(FC1_BIAS[neuron_idx]));
+            
+            // 2. Pure static bit-concatenation instead of shift operator <<< FRAC_BITS
+            assign bias_aligned[lane] = $signed({bias_wide[lane][ACCUM_WIDTH-1-FRAC_BITS:0], {FRAC_BITS{1'b0}}});
+            
+            // 3. 48-bit accumulator addition
+            assign total_val[lane]    = acc_mac[lane] + bias_aligned[lane];
+            
+            // 4. Exact bit-slicing (extracts exact 18-bit signed result window)
+            assign res_val[lane]      = $signed(total_val[lane][FRAC_BITS + DATA_WIDTH - 1 : FRAC_BITS]);
+        end
+    endgenerate
+
+    //=======================================================
+    // fc_out writeback with ReLU activation
+    //=======================================================
+    generate
+        for (genvar o = 0; o < N_OUTPUTS; o++) begin : gen_fc_out
+            localparam int LANE = o % PARALLEL_MACS;
+
+            always_ff @(posedge clk or negedge arst_n) begin
+                if (~arst_n) begin
+                    fc_out[o] <= '0;
+                end
+                else if ((state == ST_COMPUTE || state == ST_DONE) && batch_done && (completed_batch_base + LANE == o)) begin
+                    if (res_val[LANE] < 0)
+                        fc_out[o] <= '0;  // ReLU clamp
+                    else
+                        fc_out[o] <= res_val[LANE];
+                end
+            end
+        end
+    endgenerate
 
     //=======================================================
     // weight_bram_init
     //=======================================================
-    // Load each lane's map-index table from its own precomputed hex file
     initial begin
         $readmemh("fc1_map_bram_0.mem", fc1_map_bram_0);
         $readmemh("fc1_map_bram_1.mem", fc1_map_bram_1);

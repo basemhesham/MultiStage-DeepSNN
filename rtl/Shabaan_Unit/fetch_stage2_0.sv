@@ -57,7 +57,7 @@ module fetch_stage2_0 #(
     input  logic                     arst_n,
 
     // Caller-facing side (mapping controller)
-    input  logic                     frame_count, // indicate which frame we are in as to write only in the first and read only in the last
+    input  logic  [3:0]              frame_count, // indicate which frame we are in as to write only in the first and read only in the last
     input  logic                     frame_start, // 1-cycle pulse at each frame boundary (NOT before frame 1)
     input  logic                     in_valid,    // position valid this cycle (advances the position counter)
 
@@ -83,10 +83,14 @@ module fetch_stage2_0 #(
     // read window starts). Both DECREMENT by ONE bank each frame_start,
     // wrapping mod TOTAL_BANKS via a plain compare (no '%').
     // -----------------------------------------------------------------
+    localparam [BANK_IDX_WIDTH-1:0] TOTAL_BANKS_M1 = BANK_IDX_WIDTH'(TOTAL_BANKS - 1);
+
     reg [BANK_IDX_WIDTH-1:0] cur_bank;
     reg [BANK_IDX_WIDTH-1:0] prev_bank;
-    wire [BANK_IDX_WIDTH-1:0] cur_bank_next =
-        (cur_bank == '0) ? (TOTAL_BANKS-1) : (cur_bank - 1'b1);
+    wire [BANK_IDX_WIDTH-1:0] cur_bank_dec;   // pre-computed decrement (kept out of the ternary below)
+    wire [BANK_IDX_WIDTH-1:0] cur_bank_next;
+    assign cur_bank_dec  = cur_bank - 1'b1;
+    assign cur_bank_next = (cur_bank == '0) ? TOTAL_BANKS_M1 : cur_bank_dec;
 
     always_ff @(posedge clk or negedge arst_n) begin
         if (!arst_n) begin
@@ -106,10 +110,13 @@ module fetch_stage2_0 #(
     //     ACTIVE_BANKS (the window only ever walks ACTIVE_BANKS banks
     //     forward from the frame's start bank)
     // -----------------------------------------------------------------
+    localparam [ADV_WIDTH-1:0] ACTIVE_BANKS_M1 = ADV_WIDTH'(ACTIVE_BANKS - 1);
+
     reg [LOCAL_WIDTH-1:0] local_pos;
     reg [ADV_WIDTH-1:0]   bank_adv;
 
     wire local_pos_wraps = (local_pos == BANK_DEPTH-1);
+    wire [ADV_WIDTH-1:0] bank_adv_inc = bank_adv + 1'b1;  // pre-computed increment (kept out of the ternary below)
 
     always_ff @(posedge clk or negedge arst_n) begin
         if (!arst_n) begin
@@ -121,7 +128,7 @@ module fetch_stage2_0 #(
         end else if (in_valid) begin
             if (local_pos_wraps) begin
                 local_pos <= '0;
-                bank_adv  <= (bank_adv == ACTIVE_BANKS-1) ? '0 : (bank_adv + 1'b1);
+                bank_adv  <= (bank_adv == ACTIVE_BANKS_M1) ? '0 : bank_adv_inc;
             end else begin
                 local_pos <= local_pos + 1'b1;
             end
@@ -139,9 +146,11 @@ module fetch_stage2_0 #(
         input [ADV_WIDTH-1:0]      adv
     );
         logic [BANK_IDX_WIDTH:0] sum;
+        logic [BANK_IDX_WIDTH:0] sum_wrapped;  // pre-computed wrap (kept out of the ternary below)
         begin
-            sum = {1'b0, base} + {{(BANK_IDX_WIDTH+1-ADV_WIDTH){1'b0}}, adv};
-            wrapped_bank = (sum >= TOTAL_BANKS) ? (sum - TOTAL_BANKS) : sum[BANK_IDX_WIDTH-1:0];
+            sum         = {1'b0, base} + {{(BANK_IDX_WIDTH+1-ADV_WIDTH){1'b0}}, adv};
+            sum_wrapped = sum - TOTAL_BANKS;
+            wrapped_bank = (sum >= TOTAL_BANKS) ? BANK_IDX_WIDTH'(sum_wrapped) : sum[BANK_IDX_WIDTH-1:0];
         end
     endfunction
 
