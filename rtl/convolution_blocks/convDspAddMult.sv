@@ -22,8 +22,8 @@ module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18)
     input  logic                      CLK  , // Main clock
     input  logic signed [PIXEL_W-1:0] A    , // Operand A (signed)
     input  logic signed [PIXEL_W-1:0] B    , // Operand B (signed)
-    input  logic signed [17:0]        PCIN , // Cascade input from upstream DSP
-    output logic signed [17:0]        PCOUT, // Cascade output to downstream DSP
+    input  logic signed [47:0]        PCIN , // Cascade input from upstream DSP
+    output logic signed [47:0]        PCOUT, // Cascade output to downstream DSP
     output logic signed [17:0]        P_fab // Fabric-visible copy of P
 );
 
@@ -49,7 +49,7 @@ module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18)
     /* The top-level controller supplies one complete window per clock. Keep
        the simulation cascade combinational so all nine products belong to
        that same window. */
-    assign product_final = product_full[9 +: 18] + PCIN;
+    assign product_final = product_full[9 +: 18] + PCIN[17:0];
     assign PCOUT  = product_final[17:0];
     assign P_fab  = product_final[17:0];
 `else

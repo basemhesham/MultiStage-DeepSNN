@@ -36,7 +36,7 @@ module conv9 #(
     //-------------------------------------------------------------------
     // Internal Signals
     //-------------------------------------------------------------------
-    logic signed [17:0] chain   [0:7]; // DSP-to-DSP cascade wires (PCOUT -> PCIN only)
+    logic signed [47:0] chain   [0:7]; // DSP-to-DSP cascade wires (PCOUT -> PCIN only)
     logic signed [17:0] P_final;       // Final accumulator value from last DSP's P_fab
 
     //-------------------------------------------------------------------
