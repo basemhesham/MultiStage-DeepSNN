@@ -56,7 +56,7 @@ module top_controller
 	output wire logic [2:0]    frame         , // signal that defines which frame we are in (16 frames)
 	output wire logic          stage_sel     , // asserted when we are in a stage2,3
 	output wire logic [5:0]    conv2_filter  , // which filter in stage2 we are using
-	output wire logic [11:0]   conv3_filter  , // which filter in stage3 we are using
+	output wire logic [6:0]    conv3_filter  , // which filter in stage3 we are using
 	output wire logic [5:0]    rd_mem_adderss, // read address from pixel + spike memory
 	output wire logic [5:0]    wr_mem_adderss, // write address to spike memory
 	output wire logic          zero_sel      , // clears a stage before it is used (stage2 before use, etc.)

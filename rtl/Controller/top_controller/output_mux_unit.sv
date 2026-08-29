@@ -15,7 +15,7 @@ module output_mux_unit
 	input  wire logic [3199:0]              stage1_mask     , // Stage-1 write mask (from stage1_geometry_unit)
 	input  wire logic [3199:0]              stage2_mask     , // Stage-2 write mask (from stage2_geometry_unit)
 	input  wire logic [2:0]                 stage2_frame_idx, // current Stage-2 frame index (from fsm_sequencer)
-	input  wire logic [11:0]                conv3_filter    , // current Stage-3 filter index (from fsm_sequencer)
+	input  wire logic [6:0]                 conv3_filter    , // current Stage-3 filter index (from fsm_sequencer)
 	input  wire logic                       stage2_last     , // final Stage-2 frame of the final Stage-2 filter (from fsm_sequencer)
 	input  wire logic                       temporal_last   , // final temporal frame of the run (from fsm_sequencer)
 

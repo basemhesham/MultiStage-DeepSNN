@@ -213,7 +213,7 @@ module deep_snn_top #(
         .frame          (frame),
         .stage_sel      (stage_sel),
         .conv2_filter   (conv2_filter),
-        .conv3_filter   ({5'b0,conv3_filter}),
+        .conv3_filter   (conv3_filter),
         .rd_mem_adderss (ctrl_rd_mem_adderss),
         .wr_mem_adderss (ctrl_wr_mem_adderss),
         .zero           (ctrl_zero),
@@ -374,9 +374,10 @@ module deep_snn_top #(
         .frame          (frame),
         .pixel_mem_data (map_conv_pixels_o),
         .spike_mem_data (spike_mem_data),
-        .pixels_mapped  (pixels_mapped)
+        .pixels_mapped  (pixels_mapped),
+        .stage2_last_frame_idx_o (stage2_last_frame_idx_o),
+        .special_row_col_ind (special_row_col_ind)
     );
-
     // =========================================================================
     // top_weight_mapper
     // =========================================================================

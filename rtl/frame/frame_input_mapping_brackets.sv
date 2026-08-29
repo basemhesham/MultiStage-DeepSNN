@@ -16,7 +16,7 @@ module frame_input_mapping (
     // Inputs
     //=======================================================
     input wire logic [2:0] frame,
-    input wire logic /*[17:0]*/      in [40],
+    input wire logic /*[17:0]*/    in [40],
     input wire logic [2:0] last_frame_idx,
     input wire logic       special_special_row_col_ind,
     //=======================================================

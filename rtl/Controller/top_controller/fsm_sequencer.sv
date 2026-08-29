@@ -68,7 +68,7 @@ module fsm_sequencer
 	output logic [3:0]                stage1_local_col_cnt, // running Stage-1 col counter within the current fragment
 	output logic [STAGE2_FRAME_W-1:0] stage2_frame_idx    , // current Stage-2 frame (group of up to 3 positions) within the fragment
 	output logic [5:0]                conv2_filter        , // current Stage-2 filter index
-	output logic [11:0]               conv3_filter        , // current Stage-3 filter index
+	output logic [6:0]                conv3_filter        , // current Stage-3 filter index
 	output logic [FRAGMENT_W-1:0]     fragment_counter    , // counts fragments processed within the current temporal frame
 	output logic [7:0]                frag_row            , // fragment row index within the FRAGMENT_ROWS x FRAGMENT_COLS grid
 	output logic [7:0]                frag_col            , // fragment column index within the FRAGMENT_ROWS x FRAGMENT_COLS grid
