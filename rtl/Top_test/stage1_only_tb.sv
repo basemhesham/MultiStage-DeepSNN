@@ -96,6 +96,9 @@ module stage1_only_tb;
     integer f_shaaban;
     integer f_spike_writeback;
     integer f_controller;
+    integer f_spike_dump;   // spike_out, gated on (new_data_o && src_sel == 0)
+    integer f_spike_dump_s2; // spike_out, gated on (src_sel == 1), per shb_mem_en
+    integer f_spike_dump_s3; // spike_out, gated on (src_sel == 2), lif[0] only
 
     // =========================================================================
     // Clock
@@ -435,6 +438,9 @@ module stage1_only_tb;
         f_shaaban         = $fopen("shaaban_array.txt", "w");
         f_spike_writeback = $fopen("spike_writeback.txt", "w");
         f_controller      = $fopen("top_controller.txt", "w");
+        f_spike_dump      = $fopen("spike_out_new_data.txt", "w");
+        f_spike_dump_s2   = $fopen("spike_out_stage2.txt", "w");
+        f_spike_dump_s3   = $fopen("spike_out_stage3.txt", "w");
 
     end
 
@@ -573,6 +579,59 @@ module stage1_only_tb;
     //         $time,
     //         DUT.spike_mem_wr_data[63:0]);
     // end
+
+    // =========================================================================
+    // spike_out dump: only when mapping_controller's new_data_o is high AND
+    // src_sel == 0 (Stage 1 source selected). Both new_data_o and src_sel are
+    // internal to DUT (deep_snn_top), so they're reached hierarchically.
+    // =========================================================================
+    always @(posedge clk) begin
+        if (DUT.new_data_o && (DUT.src_sel == 2'b00)) begin
+            $fdisplay(f_spike_dump, "[%0t] spike_out=%b", $time, spike_out);
+        end
+    end
+
+    // =========================================================================
+    // Stage 2 spike_out dump: only while src_sel == 1 (Stage 2 selected).
+    // Only 3 shaaban/LIF lanes are active in Stage 2 (lanes 0..2), enabled via
+    // the shb_mem_en bitmask (shb_mem_en[0]->lif[0], [1]->lif[1], [2]->lif[2]):
+    //   shb_mem_en == 1 (3'b001) -> lif[0] only
+    //   shb_mem_en == 2 (3'b010) -> lif[1] only
+    //   shb_mem_en == 3 (3'b011) -> lif[0] and lif[1] together
+    //   shb_mem_en == 4 (3'b100) -> lif[2] only
+    // (and so on for any other bit combination of the 3-bit mask)
+    // =========================================================================
+    always @(posedge clk) begin
+        if (DUT.src_sel == 2'b01) begin
+            if (DUT.shb_mem_en[0])
+                $fdisplay(f_spike_dump_s2, "[%0t] shb_mem_en=%03b lif[0] spike_out[0]=%b",
+                          $time, DUT.shb_mem_en, spike_out[0]);
+            if (DUT.shb_mem_en[1])
+                $fdisplay(f_spike_dump_s2, "[%0t] shb_mem_en=%03b lif[1] spike_out[1]=%b",
+                          $time, DUT.shb_mem_en, spike_out[1]);
+            if (DUT.shb_mem_en[2])
+                $fdisplay(f_spike_dump_s2, "[%0t] shb_mem_en=%03b lif[2] spike_out[2]=%b",
+                          $time, DUT.shb_mem_en, spike_out[2]);
+        end
+    end
+
+    // =========================================================================
+    // Stage 3 spike_out dump: only while src_sel == 2 (Stage 3 selected).
+    // Only 1 shaaban/LIF lane is active in Stage 3 -> lif[0] only.
+    // =========================================================================
+    always @(posedge clk) begin
+        if (DUT.src_sel == 2'b10) begin
+            $fdisplay(f_spike_dump_s3, "[%0t] lif[0] spike_out[0]=%b", $time, spike_out[0]);
+        end
+    end
+
+    // Make sure the dump file is flushed/closed no matter which $finish path
+    // (safety-net timeout or normal stimulus end) ends the simulation.
+    final begin
+        $fclose(f_spike_dump);
+        $fclose(f_spike_dump_s2);
+        $fclose(f_spike_dump_s3);
+    end
 
     // // Controller state transitions (always printed, gives the overall picture)
     // always @(posedge clk) begin
