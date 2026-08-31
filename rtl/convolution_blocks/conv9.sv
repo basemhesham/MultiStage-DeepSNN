@@ -27,17 +27,17 @@ module conv9 #(
     //-------------------------------------------------------------------
     // Port Declarations
     //-------------------------------------------------------------------
-    input  wire logic                      CLK                , // Clock signal
-    input  wire logic signed [PIXEL_W-1:0] P         [0:8]    , // Pixel operand taps (9-wide)
-    input  wire logic signed [PIXEL_W-1:0] Q         [0:8]    , // Coefficient taps (9-wide)
-    output wire logic signed [PIXEL_W-1:0]   Pixel_Out            // Truncated convolution result
+    input  logic                      CLK                , // Clock signal
+    input  logic signed [PIXEL_W-1:0] P         [0:8]    , // Pixel operand taps (9-wide)
+    input  logic signed [PIXEL_W-1:0] Q         [0:8]    , // Coefficient taps (9-wide)
+    output logic signed [OUT_W-1:0]   Pixel_Out            // Truncated convolution result
 );
 
     //-------------------------------------------------------------------
     // Internal Signals
     //-------------------------------------------------------------------
     logic signed [47:0] chain   [0:7]; // DSP-to-DSP cascade wires (PCOUT -> PCIN only)
-    logic signed [17:0] P_final;       // Final accumulator value from last DSP's P_fab
+    logic signed [47:0] P_final;       // Final accumulator value from last DSP's P_fab
 
     //-------------------------------------------------------------------
     // DSP Cascade Instantiation
@@ -85,6 +85,6 @@ module conv9 #(
     //-------------------------------------------------------------------
     // Output Logic
     //-------------------------------------------------------------------
-    assign Pixel_Out = P_final; // Truncate 48-bit accumulator to output width
+    assign Pixel_Out = P_final[OUT_W-1:0]; // Truncate 48-bit accumulator to output width
 
 endmodule

@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module top_pixel_source_mapper #(
+(* DONT_TOUCH = "yes" *) module top_pixel_source_mapper #(
     parameter int PIXEL_W        = 18,
     parameter int FRAC_BITS      = 9,
     parameter int FRAME_NO       = 6,
@@ -21,7 +21,7 @@ module top_pixel_source_mapper #(
     // -------------------------------------------------------------------------
     // Unpack 100 inputs from flat bus
     // -------------------------------------------------------------------------
-    logic signed [PIXEL_W-1:0] in_mem [0:99];
+    (* DONT_TOUCH = "yes" *)logic signed [PIXEL_W-1:0] in_mem [0:99];
 
     // genvar m;
     // generate
@@ -43,7 +43,7 @@ module top_pixel_source_mapper #(
     // -------------------------------------------------------------------------
     // Stage 1 intermediate
     // -------------------------------------------------------------------------
-    logic signed [PIXEL_W-1:0] pixels_s1 [0:11][0:31][0:8];
+    (* DONT_TOUCH = "yes" *)logic signed [PIXEL_W-1:0] pixels_s1 [0:11][0:31][0:8];
 
     // -------------------------------------------------------------------------
     // Stage 1 mapping — PURE WIRING (no muxes / no priority logic)
@@ -165,9 +165,9 @@ module top_pixel_source_mapper #(
     // -------------------------------------------------------------------------
     // Stage 2 — spike frame windows (unchanged)
     // -------------------------------------------------------------------------
-    logic fil_in [0:31][0:39];
-    logic conv_windows [0:31][0:11][0:8];
-    logic signed [PIXEL_W-1:0] pixels_s2 [0:11][0:31][0:8];
+	logic fil_in [0:31][0:39];
+	logic conv_windows [0:31][0:11][0:8];
+	logic signed [PIXEL_W-1:0] pixels_s2 [0:11][0:31][0:8];
 
     mem_mapping #(
         .FRAME_NO       (FRAME_NO),
@@ -213,9 +213,9 @@ module top_pixel_source_mapper #(
     // -------------------------------------------------------------------------
     // Stage 3 — binary mux stage (unchanged)
     // -------------------------------------------------------------------------
-    logic stage3_mem [0:1023];
-    logic stage3_windows [0:8][0:3][0:63];
-    logic signed [PIXEL_W-1:0] pixels_s3 [0:11][0:31][0:8];
+    (* DONT_TOUCH = "yes" *)logic stage3_mem [0:1023];
+    (* DONT_TOUCH = "yes" *)logic stage3_windows [0:8][0:3][0:63];
+    (* DONT_TOUCH = "yes" *)logic signed [PIXEL_W-1:0] pixels_s3 [0:11][0:31][0:8];
 
     genvar sm;
     generate

@@ -233,7 +233,7 @@ module stage1_only_tb;
                   get_rbs_row(s), get_rbs_col(k));
 
         while (!DUT.map_conv_done_o) begin
-            if (DUT.map_conv_valid_o) begin
+            if (DUT.u_mapping_controller.conv_valid_o) begin
 
                 // Detailed probe every 10 cycles to keep transcript manageable
                 if (cycle_cnt % 10 == 0)
@@ -245,7 +245,7 @@ module stage1_only_tb;
             @(posedge clk);
         end
         // Capture the last group on conv_done_o cycle
-        if (DUT.map_conv_valid_o) begin
+        if (DUT.u_mapping_controller.conv_valid_o) begin
             cycle_cnt++;
         end
         @(posedge clk);
@@ -265,7 +265,7 @@ module stage1_only_tb;
 
         $display("  --- LOAD %s  s=%0d ---", is_full ? "FULL" : "PARTIAL", s);
 
-        while (DUT.map_state_o == 2'b01) begin  // LOAD state = 2'b01
+        while (DUT.u_mapping_controller.state_o == 2'b01) begin  // LOAD state = 2'b01
             if (mem_rd_o) begin
                 load_cycles++;
             end
@@ -275,7 +275,7 @@ module stage1_only_tb;
     task automatic wait_load_then_fetch();
         // Wait until WAIT_FETCH state
         wait(DUT.ctrl_done_load_o);
-        wait(DUT.map_conv_valid_o);
+        wait(DUT.u_mapping_controller.conv_valid_o);
     endtask
     // =========================================================================
     // TEST: run a single sweep/win pair from scratch
@@ -389,7 +389,7 @@ module stage1_only_tb;
             wait_load_then_fetch();
             wait(DUT.map_conv_done_o);
             for (int k = 1; k < 32; k++) begin
-                wait(DUT.ctrl_next_i);
+                wait(DUT.u_top_controller.next_i);
                 wait_load_then_fetch();
                 wait(DUT.map_conv_done_o);
             end

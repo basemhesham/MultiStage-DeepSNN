@@ -23,16 +23,16 @@ module top_conv9_array #(
     parameter int FRAC_BITS  = 9
 )
 (
-    input  wire logic                         clk                                     , // Clock signal
-    input  wire logic signed [PIXEL_W-1:0]    pixels_mapped  [0:11][0:31][0:8]        , // Mapped 9-tap pixel windows, 12x32 array
-    input  wire logic signed [PIXEL_W-1:0]    weights_mapped [0:11][0:31][0:8]        , // Mapped 9-tap weight windows, 12x32 array
-    output  logic signed [DATA_WIDTH-1:0] mac_to_connect [0:11][0:31]               // Rescaled MAC results, 12x32 array
+    input  logic                         clk                                     , // Clock signal
+    input  logic signed [PIXEL_W-1:0]    pixels_mapped  [0:11][0:31][0:8]        , // Mapped 9-tap pixel windows, 12x32 array
+    input  logic signed [PIXEL_W-1:0]    weights_mapped [0:11][0:31][0:8]        , // Mapped 9-tap weight windows, 12x32 array
+    output logic signed [DATA_WIDTH-1:0] mac_to_connect [0:11][0:31]               // Rescaled MAC results, 12x32 array
 );
 
     //-------------------------------------------------------------------------
     // internal signals
     //-------------------------------------------------------------------------
-    logic [PIXEL_W-1:0] mac_raw [0:11][0:31]; /* Raw (un-rescaled) MAC output from each conv9 instance */
+    logic [MAC_OUT_W-1:0] mac_raw [0:11][0:31]; /* Raw (un-rescaled) MAC output from each conv9 instance */
 
     //-------------------------------------------------------------------------
     // MAC Array Generation
@@ -70,7 +70,7 @@ module top_conv9_array #(
                         // range are discarded by the truncation anyway, so the slice below produces
                         // bit-identical results without an RHS/LHS width mismatch or a shifter.
                         // assign mac_to_connect[g2][c2] = $signed(mac_raw[g2][c2]) >>> FRAC_BITS;
-                        assign mac_to_connect[g2][c2] = mac_raw[g2][c2];
+                        assign mac_to_connect[g2][c2] = mac_raw[g2][c2][FRAC_BITS +: DATA_WIDTH];
                     end
             end
     endgenerate

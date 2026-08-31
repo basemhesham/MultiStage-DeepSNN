@@ -24,7 +24,7 @@ module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18)
     input  logic signed [PIXEL_W-1:0] B    , // Operand B (signed)
     input  logic signed [47:0]        PCIN , // Cascade input from upstream DSP
     output logic signed [47:0]        PCOUT, // Cascade output to downstream DSP
-    output logic signed [17:0]        P_fab // Fabric-visible copy of P
+    output logic signed [47:0]        P_fab  // Fabric-visible copy of P
 );
 
     //--------------------------------------------------------------------
@@ -32,7 +32,6 @@ module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18)
     //--------------------------------------------------------------------
     wire signed [29:0]            A_ext       ; /* A sign-extended to DSP48E2's 30-bit A port */
     wire signed [(2*PIXEL_W)-1:0] product_full; /* Raw A*B product at full precision */
-    wire signed [(PIXEL_W):0]   product_final; /* Raw A*B product at full precision */
     wire signed [47:0]            product_ext ; /* product_full sign-extended to 48-bit P width */
 
     //--------------------------------------------------------------------
@@ -49,9 +48,8 @@ module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18)
     /* The top-level controller supplies one complete window per clock. Keep
        the simulation cascade combinational so all nine products belong to
        that same window. */
-    assign product_final = product_full[9 +: 18] + PCIN[17:0];
-    assign PCOUT  = product_final[17:0];
-    assign P_fab  = product_final[17:0];
+    assign PCOUT  = product_ext + PCIN;
+    assign P_fab  = product_ext + PCIN;
 `else
     (* keep = "true" *)
     DSP48E2 #(

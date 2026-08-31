@@ -40,7 +40,7 @@ module top_weight_mapper
     // Reshaped weight cube: [block 0:11][lane 0:31][tap 0:8].
     // Driven combinationally (see gen_wmap_* generate block below),
     // so it is declared as plain "output logic", not "output reg".
-    output logic signed [PIXEL_W-1:0] weights_mapped [0:11][0:31][0:8]
+    (* DONT_TOUCH = "yes" *) output logic signed [PIXEL_W-1:0] weights_mapped [0:11][0:31][0:8]
 );
 
     //=======================================================
@@ -49,10 +49,10 @@ module top_weight_mapper
     // Flat (unshaped) weight streams as produced by each stage's
     // weight-map ROM. Each stream holds 12 blocks * 32 lanes * 9 taps
     // = 3456 entries, stored back-to-back.
-    logic signed [PIXEL_W-1:0] stage1_weights [3456];   // conv1 weight stream (needs lane reorder, see stage1_idx)
-    logic signed [PIXEL_W-1:0] stage2_weights [3456];   // conv2 weight stream (already in physical order)
-    logic signed [PIXEL_W-1:0] stage3_weights [3456];   // conv3 weight stream (already in physical order)
-    logic signed [PIXEL_W-1:0] active_weights [3456];   // mux output: whichever stream src_sel selects (used for stage2/stage3 path)
+    (* DONT_TOUCH = "yes" *) logic signed [PIXEL_W-1:0] stage1_weights [3456];   // conv1 weight stream (needs lane reorder, see stage1_idx)
+    (* DONT_TOUCH = "yes" *) logic signed [PIXEL_W-1:0] stage2_weights [3456];   // conv2 weight stream (already in physical order)
+    (* DONT_TOUCH = "yes" *) logic signed [PIXEL_W-1:0] stage3_weights [3456];   // conv3 weight stream (already in physical order)
+    (* DONT_TOUCH = "yes" *) logic signed [PIXEL_W-1:0] active_weights [3456];   // mux output: whichever stream src_sel selects (used for stage2/stage3 path)
 
     //=======================================================
     // Weight ROM instances
