@@ -378,6 +378,16 @@ module fc2_layer
     // FRAC_BITS to bring the result back down to normal Q_.FRAC_BITS output.
     generate
         for (genvar p = 0; p < N_OUTPUTS; p++) begin : gen_completion
+            // Combinational bias-align + rescale, per lane. Pulled out of the
+            // always_ff below so that block contains only a nonblocking
+            // register update (avoids mixed blocking/nonblocking assignments
+            // in the same always_ff, which lint flags even though the
+            // original local-variable version was functionally safe).
+            wire signed [ACCUM_WIDTH-1:0] bias_wide_c    = ACCUM_WIDTH'($signed(FC2_BIAS[p]));  // sign-extend bias to ACCUM_WIDTH
+            wire signed [ACCUM_WIDTH-1:0] bias_aligned_c = bias_wide_c <<< FRAC_BITS;            // rescale bias to match acc_mac's scale
+            wire signed [ACCUM_WIDTH-1:0] total_c        = acc_mac[p] + bias_aligned_c;          // dot-product + bias
+            wire signed [DATA_WIDTH-1:0]  result_c       = DATA_WIDTH'(total_c >>> FRAC_BITS);   // rescale back down to Q_.FRAC_BITS
+
             always_ff @(posedge clk or negedge arst_n)
             begin
                 //===========================================
@@ -389,16 +399,7 @@ module fc2_layer
                 // Bias + rescale + writeback (no ReLU)
                 //===========================================
                 else if (state == ST_COMPUTE && compute_done)
-                begin
-                    logic signed [ACCUM_WIDTH-1:0] bias_wide, bias_aligned, total;
-                    logic signed [DATA_WIDTH-1:0]  result;
-
-                    bias_wide    <= ACCUM_WIDTH'($signed(FC2_BIAS[p]));  // sign-extend bias to ACCUM_WIDTH
-                    bias_aligned <= bias_wide <<< FRAC_BITS;             // rescale bias to match acc_mac's scale
-                    total        <= acc_mac[p] + bias_aligned;           // dot-product + bias
-                    result       <= DATA_WIDTH'(total >>> FRAC_BITS);    // rescale back down to Q_.FRAC_BITS
-                    fc_out[p]   <= result;                              // no ReLU clamp - raw logit output
-                end
+                    fc_out[p] <= result_c;   // no ReLU clamp - raw logit output
             end
         end
     endgenerate
