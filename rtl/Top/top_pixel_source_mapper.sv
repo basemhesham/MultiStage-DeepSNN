@@ -21,7 +21,7 @@
     // -------------------------------------------------------------------------
     // Unpack 100 inputs from flat bus
     // -------------------------------------------------------------------------
-    (* DONT_TOUCH = "yes" *)logic signed [PIXEL_W-1:0] in_mem [0:99];
+   logic signed [PIXEL_W-1:0] in_mem [0:99];
 
     // genvar m;
     // generate
@@ -43,7 +43,7 @@
     // -------------------------------------------------------------------------
     // Stage 1 intermediate
     // -------------------------------------------------------------------------
-    (* DONT_TOUCH = "yes" *)logic signed [PIXEL_W-1:0] pixels_s1 [0:11][0:31][0:8];
+    logic signed [PIXEL_W-1:0] pixels_s1 [0:11][0:31][0:8];
 
     // -------------------------------------------------------------------------
     // Stage 1 mapping — PURE WIRING (no muxes / no priority logic)
@@ -213,9 +213,12 @@
     // -------------------------------------------------------------------------
     // Stage 3 — binary mux stage (unchanged)
     // -------------------------------------------------------------------------
-    (* DONT_TOUCH = "yes" *)logic stage3_mem [0:1023];
-    (* DONT_TOUCH = "yes" *)logic stage3_windows [0:8][0:3][0:63];
-    (* DONT_TOUCH = "yes" *)logic signed [PIXEL_W-1:0] pixels_s3 [0:11][0:31][0:8];
+    
+    logic stage3_mem [0:1023];
+    
+    logic stage3_windows [0:8][0:3][0:63];
+    
+    logic signed [PIXEL_W-1:0] pixels_s3 [0:11][0:31][0:8];
 
     genvar sm;
     generate
