@@ -61,86 +61,76 @@ module top_weight_mapper
     output logic signed [PIXEL_W-1:0] weights_mapped [0:11][0:31][0:8]
 );
 
-    //=======================================================
+  //=======================================================
     // Internals
     //=======================================================
-<<<<<<< HEAD
-    // Stage1: real 18-bit values, straight from CONV1_W_MAP_OPT (unchanged).
-    logic signed [PIXEL_W-1:0] stage1_weights [3456];
-
-    // Stage2 / Stage3: 9-bit indices into the shared value table,
-    // not real values -- must be looked up before use.
-    logic [8:0] stage2_idx [3456];
-    logic [8:0] stage3_idx [3456];
-
-    // Level 1 mux result: still just an index (9 bits), selecting
-    // which of stage2_idx/stage3_idx applies at each position.
-    logic [8:0] stage23_idx [3456];
-
-    // Real 18-bit value recovered from the shared table for whichever
-    // index stage23_idx selected -- one lookup per flat position.
-    logic signed [PIXEL_W-1:0] shared_val [3456];
-
-    // Level 2 mux result: final selected stream (stage1 direct value,
-    // or the shared-table lookup result for stage2/stage3).
-    logic signed [PIXEL_W-1:0] active_weights [3456];
-=======
     // Flat (unshaped) weight streams as produced by each stage's
     // weight-map ROM. Each stream holds 12 blocks * 32 lanes * 9 taps
     // = 3456 entries, stored back-to-back.
-     logic signed [PIXEL_W-1:0] stage1_weights [3456];   // conv1 weight stream (needs lane reorder, see stage1_idx)
-     logic signed [PIXEL_W-1:0] stage2_weights [3456];   // conv2 weight stream (already in physical order)
-     logic signed [PIXEL_W-1:0] stage3_weights [3456];   // conv3 weight stream (already in physical order)
-     logic signed [PIXEL_W-1:0] active_weights [3456];   // mux output: whichever stream src_sel selects (used for stage2/stage3 path)
->>>>>>> 277cc0f612cff256c67c8b6f9deb071cc7e0e9e8
+    logic signed [PIXEL_W-1:0] stage1_weights [3456];   // conv1 weight stream
+    logic signed [PIXEL_W-1:0] stage2_weights [3456];   // conv2 weight stream
+    logic signed [PIXEL_W-1:0] stage3_weights [3456];   // conv3 weight stream
+    logic signed [PIXEL_W-1:0] active_weights [3456];   // mux output: whichever stream src_sel selects
+
+    // NEW: Intermediate array signal for Level-1 MUX (stage2 vs stage3 selection)
+    logic signed [PIXEL_W-1:0] mux_lvl1 [3456];
+
 
     //=======================================================
-    // Weight sources
+    // Weight ROM instances
     //=======================================================
     CONV1_W_MAP_OPT u_w1 (
         .conv9_in (stage1_weights)
     );
 
-    CONV2_W_MAP_IDX u_w2 (
-        .filter    (conv2_filter),
-        .conv9_idx (stage2_idx)
+    CONV2_W_MAP_OPT u_w2 (
+        .filter   (conv2_filter),
+        .conv9_in (stage2_weights)
     );
 
-    CONV3_W_MAP_IDX u_w3 (
-        .filter    (conv3_filter),
-        .conv9_idx (stage3_idx)
+    CONV3_W_MAP_OPT u_w3 (
+        .filter   (conv3_filter),
+        .conv9_in (stage3_weights)
     );
 
-    //=======================================================
-    // Level 1 MUX (narrow, 9-bit): stage2 vs stage3 index select
-    //=======================================================
-    // src_sel[0]=1 -> stage2_idx, src_sel[0]=0 -> stage3_idx.
-    // Correct for all cases that need it: 01->stage2, 10->stage3,
-    // 11->stage2 (default). The 00 case doesn't need this result at
-    // all (Level 2 mux below bypasses it for stage1), so its value
-    // here is a don't-care when src_sel==00.
-    assign stage23_idx = src_sel[0] ? stage2_idx : stage3_idx;
 
     //=======================================================
-    // Shared-table lookup: index -> real 18-bit value
+    // OLD PART (COMMENTED OUT): Single Case-Based 3-to-1 MUX
     //=======================================================
-    genvar k;
-    generate
-        for (k = 0; k < 3456; k++) begin : g_shared_lookup
-            assign shared_val[k] = SHARED_STAGE23_WEIGHTS[stage23_idx[k]];
-        end
-    endgenerate
+    /*
+    always_comb
+    begin
+        case (src_sel)
+            2'b00:   active_weights = stage1_weights;  // conv1
+            2'b01:   active_weights = stage2_weights;  // conv2
+            2'b10:   active_weights = stage3_weights;  // conv3
+            default: active_weights = stage2_weights;  // 2'b11: undefined select, default to conv2
+        endcase
+    end
+    */
+
 
     //=======================================================
-    // Level 2 MUX (wide, 18-bit): stage1 direct value vs shared lookup
+    // NEW PART: Cascaded 2-to-1 MUX Tree Structure
     //=======================================================
-    // src_sel==2'b00 -> stage1_weights (direct, no lookup involved).
-    // Anything else (01/10/11) -> shared_val, which Level 1 already
-    // resolved to the correct stage2/stage3 value.
-    assign active_weights = (src_sel == 2'b00) ? stage1_weights : shared_val;
+    // WHY WE USE THIS APPROACH:
+    // 1. Vivado Optimization: A single multi-branch case statement on a massive 3,456-bit bus
+    //    causes the synthesizer to build a wide, unguided logic decode using scattered LUTs,
+    //    leading to severe routing congestion.
+    // 2. Dedicated Hardware Inferences: By explicitly writing two cascaded 2-to-1 selections,
+    //    we align directly with Xilinx dedicated multiplexer primitives (MUXF7/MUXF8).
+    // 3. No Logic or Latency Change: The truth table matches the original design 100% 
+    //    (00->stage1, 01->stage2, 10->stage3, 11->stage2) without introducing any clock delays.
+
+    // Level 1 MUX: Resolves selection between stage2 and stage3 based on src_sel[0]
+    assign mux_lvl1 = src_sel[0] ? stage2_weights : stage3_weights;
+
+    // Level 2 MUX: Selects stage1 vs the Level 1 result based on src_sel[1]
+    assign active_weights = src_sel[1] ? mux_lvl1 : (src_sel[0] ? stage2_weights : stage1_weights);
+
 
     //=======================================================
-    // Reshaping Logic (unchanged)
+    // Reshaping Logic (Unchanged)
     //=======================================================
     genvar tree, conv9, in;
     generate
