@@ -154,7 +154,7 @@
 //     A lane is valid only if BOTH its row position is within
 //     conv_slides_row AND its column position is within conv_slides_col.
 //
-//   new_data_o  (*** NEW_DATA SIGNAL EDIT ***):
+//   new_data_f0_o  (*** NEW_DATA SIGNAL EDIT ***):
 //     Flags which 6x6 (2x2-block) groups of the CURRENT window
 //     actually carry newly-loaded pixel data, as opposed to
 //     rows/columns re-used from the previous window position (the
@@ -167,7 +167,7 @@
 //       row axis: sweep_idx==0 -> new only at conv_row==0
 //                 sweep_idx >0 -> new at conv_row==0,2,4,6
 //     A true corner (win_idx==0 && sweep_idx==0) therefore pulses
-//     new_data_o exactly once per window, at (conv_row,conv_col)==(0,0).
+//     new_data_f0_o exactly once per window, at (conv_row,conv_col)==(0,0).
 //     Border tiles (14 slides on one or both axes) can now invalidate a
 //     lane because of a row overflow, a column overflow, or both (corner
 //     remainder case) -- not just a column overflow as in the row-major
@@ -257,7 +257,7 @@ module mapping_controller
     output logic     [WIN_GROUP-1:0]                    valid_mask_o,   // bit g=1 when lane g is a real window (procedural)
     output logic                                        conv_valid_o,   // one cycle per window GROUP (procedural)
     output logic                                        conv_done_o,    // pulse after last GROUP of active region (procedural)
-    output logic                                        new_data_o,     // high when the current 6x6 (2x2-block) group carries newly-loaded pixel data for THIS 24x24/border window (procedural)
+    output logic                                        new_data_general_o, // high when non overlapping data but one clock earlier 
     output logic       [3:0]                            frame_counter_o,     // top-left row of the 2x2 block of windows (procedural)
     output wire  logic                                  done_o,         // pulse after last h-window of a sweep (assign, fed from done_r)
     output wire  logic                                  frame_done_o,   // pulse after all sweeps complete (assign, fed from frame_done_r)
@@ -287,8 +287,9 @@ module mapping_controller
     //=======================================================
     // Pixel buffer: 3 col-banks x 24 rows x 8 cols. buf[bank][row][col_in_bank]
     logic [PIXEL_W-1:0] buff [0:2][0:IMG_ROWS-1][0:BANK_COLS-1];
+    logic new_data_f0_o;    // high when non overlapping data but one clock earlier 
 
-    // FSM.
+    // FSM. ---> package out
     typedef enum logic [2:0] {
         IDLE       = 3'b000,
         LOAD       = 3'b001,
@@ -337,39 +338,42 @@ module mapping_controller
     logic [2:0] col_base_c;      // first col_in_bank index for this word // 6 words per window
     logic [2:0] col_idx0_c, col_idx1_c, col_idx2_c, col_idx3_c; // resolved indices
     logic [7:0] load_max_comb;
+
+
+    logic done_special;   //done_special for special case sweeps doesn't need start_i
+
+
     //=======================================================
     // mode_decode
     //=======================================================
     // Generates mode_r, padding amounts, active region, and real buffer
     // offsets purely from win_idx and sweep_idx (both stable throughout
     // FETCH). No external mode input required.
-    always_comb begin
-        // --- mode_r: row border when sweep is first or last ---
-        mode_r[1] = (sweep_idx == 5'd0) || (sweep_idx == NUM_SWEEPS - 1);
-        // --- mode_r: col border when window is first or last ---
-        mode_r[0] = (win_idx  == 5'd0) || (win_idx  == NUM_H_WIN  - 1);
+    // --- mode_r: row border when sweep is first or last ---
+    assign mode_r[1] = (sweep_idx == 5'd0) || (sweep_idx == NUM_SWEEPS - 1);
+    // --- mode_r: col border when window is first or last ---
+    assign mode_r[0] = (win_idx  == 5'd0) || (win_idx  == NUM_H_WIN  - 1);
 
-        // --- padding: only on the image-border side, 2 pixels ---
-        // row axis: top padding for first sweep, bottom for last sweep
-        pad_top = (sweep_idx == 5'd0)           ? 2'd2 : 2'd0;
-        pad_bot = (sweep_idx == NUM_SWEEPS - 1) ? 2'd2 : 2'd0;
-        // col axis: left padding for first window, right for last window
-        pad_left  = (win_idx == 5'd0)          ? 2'd2 : 2'd0;
-        pad_right = (win_idx == NUM_H_WIN - 1) ? 2'd2 : 2'd0;
+    // --- padding: only on the image-border side, 2 pixels ---
+    // row axis: top padding for first sweep, bottom for last sweep
+    assign pad_top = (sweep_idx == 5'd0)           ? 2'd2 : 2'd0;
+    assign pad_bot = (sweep_idx == NUM_SWEEPS - 1) ? 2'd2 : 2'd0;
+    // col axis: left padding for first window, right for last window
+    assign pad_left  = (win_idx == 5'd0)          ? 2'd2 : 2'd0;
+    assign pad_right = (win_idx == NUM_H_WIN - 1) ? 2'd2 : 2'd0;
 
-        // --- active region: 18 on border axes, 24 on interior ---
-        active_rows = mode_r[1] ? 5'd18 : 5'd24;
-        active_cols = mode_r[0] ? 5'd18 : 5'd24;
+    // --- active region: 18 on border axes, 24 on interior ---
+    assign active_rows = mode_r[1] ? 5'd18 : 5'd24;
+    assign active_cols = mode_r[0] ? 5'd18 : 5'd24;
 
-        // --- real buffer start: 0 when pad is on top/left,
-        //                        8 when pad is on bot/right (real data is in lower half) ---
-        real_buf_row_start = (pad_bot == 2'd2) ? 4'd8 : 4'd0;
-        real_buf_col_start = (pad_right == 2'd2) ? 4'd8 : 4'd0;
+    // --- real buffer start: 0 when pad is on top/left,
+    //                        8 when pad is on bot/right (real data is in lower half) ---
+    assign real_buf_row_start = 4'd0 /*(pad_bot == 2'd2) ? 4'd8 : 4'd0*/;
+    assign real_buf_col_start = 4'd0 /*(pad_right == 2'd2) ? 4'd8 : 4'd0*/;
 
-        // --- conv slides per axis ---
-        conv_slides_row = active_rows - CONV_K + 1;  // 14 or 20
-        conv_slides_col = active_cols - CONV_K + 1;  // 14 or 20
-    end
+    // --- conv slides per axis ---
+    assign conv_slides_row = active_rows - CONV_K + 1;  // 14 or 20
+    assign conv_slides_col = active_cols - CONV_K + 1;  // 14 or 20
 
     //=======================================================
     // buffer_write_decode
@@ -382,26 +386,20 @@ module mapping_controller
     // physical_row_c comes directly from the WRAP_ROW macro (no '%'
     // operator, no locally-declared sum/wrapped pair -- see macro definition
     // above for the underlying compare-and-subtract).
-    always_comb begin
-        col_base_c      = {2'b00, word_cnt_d[0]} << 2;   // 0 or 4
+    assign col_base_c = {2'b00, word_cnt_d[0]} << 2;   // 0 or 4
 
-        if (full_load) begin
-            // bank = word_in_row / 2  (pairs of words per bank)
-            tgt_bank_c      = word_cnt_d[2:1];               // 0,1,2
-            // col base within bank: word_in_row even->0, odd->4
-        end else begin
-            tgt_bank_c      = write_bank;
-        end
+    // bank = word_in_row / 2 (pairs of words per bank) during a full load,
+    // else the currently-targeted partial-load bank.
+    assign tgt_bank_c = full_load ? word_cnt_d[2:1] : write_bank;
 
-        physical_row_c = 5'(`WRAP_ROW(row_cnt_d));
+    assign physical_row_c = 5'(`WRAP_ROW(row_cnt_d));
 
-        // Resolved buffer column indices (no arithmetic left inline at the
-        // array-index position -- each index is now a plain signal)
-        col_idx0_c = col_base_c + 3'd0;
-        col_idx1_c = col_base_c + 3'd1;
-        col_idx2_c = col_base_c + 3'd2;
-        col_idx3_c = col_base_c + 3'd3;
-    end
+    // Resolved buffer column indices (no arithmetic left inline at the
+    // array-index position -- each index is now a plain signal)
+    assign col_idx0_c = col_base_c + 3'd0;
+    assign col_idx1_c = col_base_c + 3'd1;
+    assign col_idx2_c = col_base_c + 3'd2;
+    assign col_idx3_c = col_base_c + 3'd3;
 
     //=======================================================
     // fsm_sequential
@@ -642,7 +640,7 @@ module mapping_controller
             //===============================================
             IDLE: begin
                 // start_i triggers a full load (first window of any sweep)
-                if (start_i)
+                if (start_i || (done_special&&((sweep_idx==1)||(sweep_idx==31))))
                     next_state = LOAD;
                 // next_i triggers a partial load (windows 1..29 within a sweep)
                 else if (next_i && !full_load && (win_idx == 1))
@@ -720,48 +718,32 @@ module mapping_controller
     logic [4:0] cur_physical_row;
     logic [2:0] cur_word_in_row;
     logic [5:0] cur_row_word_offset;  // word offset within the row for this read
+    logic [5:0] cur_row_offset_inter;
 
-    always_comb begin
-        if (mode_r[1]) begin
-            if (full_load) begin
-                load_max_comb = 96;         // 16 rows x 6 word columns (row-border tile)
-            end else begin
-                load_max_comb = 32;         // 16 rows x 2 word columns (row-border tile)
-            end
-        end else begin
-            if (full_load) begin
-                load_max_comb = 144;        // 24 rows x 6 word columns (interior rows)
-            end else begin
-                load_max_comb = 48;         // 24 rows x 2 word columns (interior rows)
-            end
-        end
+    // load_max_comb: 4-way selection (row-border x full/partial) resolved
+    // directly as a nested-ternary assign instead of an if/else mux.
+    assign load_max_comb = mode_r[1] ?
+                                (full_load ? 8'd96  : 8'd32)  :   // row-border tile
+                                (full_load ? 8'd144 : 8'd48);     // interior rows
 
-        //===================================================
-        // Full load
-        //===================================================
-        if (full_load) begin
-            cur_logical_row  = 5'(row_cnt);     // 0..23
-            cur_word_in_row  = word_cnt;        // 0..5
-            // full load reads all 6 words of the window starting at word_col_offset
-            cur_row_word_offset = word_col_offset + 6'(cur_word_in_row);
-        //===================================================
-        // Partial load
-        //===================================================
-        end else begin
-            cur_logical_row  = 5'(row_cnt);     // 0..23
-            cur_word_in_row  = word_cnt;        // 0..1
-            // partial load reads the 2 rightmost new words of the window
-            // word_col_offset already points to new window; new cols are at +2,+3
-            cur_row_word_offset = word_col_offset + 6'd2 + 6'(cur_word_in_row);
-        end
+    //===================================================
+    // Full load
+    //===================================================
+    assign cur_logical_row      = 5'(row_cnt);     // 0..23
+    assign cur_word_in_row      = word_cnt;        // 0..5
+    assign cur_row_offset_inter = word_col_offset + 6'(cur_word_in_row);
 
-        // Apply row_origin rotation via the shared WRAP_ROW macro -- no
-        // locally-declared sum/wrapped pair needed here any more.
-        cur_physical_row = 5'(`WRAP_ROW(cur_logical_row));
+    // Full load reads all 6 words of the window starting at word_col_offset;
+    // partial load reads the 2 rightmost new words of the window
+    // (word_col_offset already points to the new window; new cols are at +2,+3).
+    assign cur_row_word_offset = full_load ? cur_row_offset_inter : (cur_row_offset_inter + 6'd2);
 
-        mem_addr_o = 16'((cur_physical_row * WORDS_PER_ROW) + 11'(cur_row_word_offset));
-        mem_rd_o   = (state == LOAD) && (load_cnt < load_max_comb);
-    end
+    // Apply row_origin rotation via the shared WRAP_ROW macro -- no
+    // locally-declared sum/wrapped pair needed here any more.
+    assign cur_physical_row = 5'(`WRAP_ROW(cur_logical_row));
+
+    assign mem_addr_o = 16'((cur_physical_row * WORDS_PER_ROW) + 11'(cur_row_word_offset));
+    assign mem_rd_o   = (state == LOAD) && (load_cnt < load_max_comb);
 
     //=======================================================
     // conv_window_assembly -- precompute arrays
@@ -832,18 +814,22 @@ module mapping_controller
     //=======================================================
     // Row-only terms, one copy per row-half (rh=0 -> conv_row, rh=1 -> conv_row+1),
     // reused by the lanes that share that row.
+    // Flattened to a single generate-for over the combined (rh,r) index
+    // instead of two nested loops -- same ROW_GROUP*CONV_K instances,
+    // rh/r are simply recovered from idx via / and % by CONV_K.
     generate
-        for (genvar rh = 0; rh < ROW_GROUP; rh++) begin : gen_row_half
-            for (genvar r = 0; r < CONV_K; r++) begin : gen_row_terms
-                assign row_out[rh][r]    = conv_row + 5'(rh) + 5'(r);
-                assign row_in_pad[rh][r] = (row_out[rh][r] <  5'(pad_top))
-                                         || (row_out[rh][r] >= active_rows - 5'(pad_bot));
-                // WRAP_ROW is evaluated unconditionally; if row_in_pad[rh][r]
-                // is true the result may be a "don't care" underflowed
-                // value, but it is never used to index buff[] in that case
-                // (see gen_pixel_* below).
-                assign row_phys[rh][r] = 5'(`WRAP_ROW(5'(real_buf_row_start) + row_out[rh][r] - 5'(pad_top)));
-            end
+        for (genvar idx = 0; idx < ROW_GROUP*CONV_K; idx++) begin : gen_row_terms
+            localparam int RH = idx / CONV_K;   // row-half: 0 or 1
+            localparam int R  = idx % CONV_K;   // kernel row offset: 0..CONV_K-1
+
+            assign row_out[RH][R]    = conv_row + 5'(RH) + 5'(R);
+            assign row_in_pad[RH][R] = (row_out[RH][R] <  5'(pad_top))
+                                     || (row_out[RH][R] >= active_rows - 5'(pad_bot));
+            // WRAP_ROW is evaluated unconditionally; if row_in_pad[RH][R]
+            // is true the result may be a "don't care" underflowed
+            // value, but it is never used to index buff[] in that case
+            // (see gen_pixel below).
+            assign row_phys[RH][R] = 5'(`WRAP_ROW(5'(real_buf_row_start) + row_out[RH][R] - 5'(pad_top)));
         end
     endgenerate
 
@@ -852,16 +838,20 @@ module mapping_controller
     //=======================================================
     // Column-only terms, one copy per col-half (ch=0 -> conv_col, ch=1 -> conv_col+1),
     // reused by the lanes that share that column.
+    // Flattened to a single generate-for over the combined (ch,c) index
+    // instead of two nested loops -- same COL_GROUP*CONV_K instances,
+    // ch/c are simply recovered from idx via / and % by CONV_K.
     generate
-        for (genvar ch = 0; ch < COL_GROUP; ch++) begin : gen_col_half
-            for (genvar c = 0; c < CONV_K; c++) begin : gen_col_terms
-                assign col_out[ch][c]    = conv_col + 5'(ch) + 5'(c);
-                assign col_in_pad[ch][c] = (col_out[ch][c] <  5'(pad_left))
-                                         || (col_out[ch][c] >= active_cols - 5'(pad_right));
-                assign col_buf_idx[ch][c]  = 5'(real_buf_col_start) + col_out[ch][c] - 5'(pad_left);
-                assign col_bank_sel[ch][c] = fetch_order[col_buf_idx[ch][c][4:3]];
-                assign col_in_bank[ch][c]  = col_buf_idx[ch][c][2:0];
-            end
+        for (genvar idx = 0; idx < COL_GROUP*CONV_K; idx++) begin : gen_col_terms
+            localparam int CH = idx / CONV_K;   // col-half: 0 or 1
+            localparam int C  = idx % CONV_K;   // kernel col offset: 0..CONV_K-1
+
+            assign col_out[CH][C]    = conv_col + 5'(CH) + 5'(C);
+            assign col_in_pad[CH][C] = (col_out[CH][C] <  5'(pad_left))
+                                     || (col_out[CH][C] >= active_cols - 5'(pad_right));
+            assign col_buf_idx[CH][C]  = 5'(real_buf_col_start) + col_out[CH][C] - 5'(pad_left);
+            assign col_bank_sel[CH][C] = fetch_order[col_buf_idx[CH][C][4:3]];
+            assign col_in_bank[CH][C]  = col_buf_idx[CH][C][2:0];
         end
     endgenerate
 
@@ -888,28 +878,60 @@ module mapping_controller
     // position in the 2x2 block:
     //   lane 0 -> RH=0, CH=0   lane 1 -> RH=0, CH=1
     //   lane 2 -> RH=1, CH=0   lane 3 -> RH=1, CH=1
+    // Flattened to a single generate-for over the combined (g,r,c) index
+    // instead of three nested loops -- same WIN_GROUP*CONV_K*CONV_K (100)
+    // instances; g/r/c and RH/CH/PIXEL_BIT_OFFSET are recovered from idx
+    // via / and % exactly as the nested loop indices would have been.
     generate
-        for (genvar g = 0; g < WIN_GROUP; g++) begin : gen_pixel_lane
-            localparam int RH = g / COL_GROUP;   // this lane's row-half (0 or 1)
-            localparam int CH = g % COL_GROUP;   // this lane's col-half (0 or 1)
-            for (genvar r = 0; r < CONV_K; r++) begin : gen_pixel_row
-                for (genvar c = 0; c < CONV_K; c++) begin : gen_pixel_col
-                    // Pixel slot within this lane's 450-bit window:
-                    //   top-left = MSB (slot 24), bottom-right = LSB (slot 0)
-                    localparam int PIXEL_BIT_OFFSET =
-                        (g * WINDOW_BITS) +
-                        (((CONV_K*CONV_K-1)-(r*CONV_K+c)) * PIXEL_W);
+        for (genvar idx = 0; idx < WIN_GROUP*CONV_K*CONV_K; idx++) begin : gen_pixel
+            localparam int G  = idx / (CONV_K*CONV_K);   // lane index
+            localparam int RC = idx % (CONV_K*CONV_K);   // combined row*col index within the lane
+            localparam int R  = RC / CONV_K;              // kernel row: 0..CONV_K-1
+            localparam int C  = RC % CONV_K;              // kernel col: 0..CONV_K-1
 
-                    // Direct buff[] index -- no function call.
-                    assign conv_pixels_o[PIXEL_BIT_OFFSET +: PIXEL_W] =
-                        (state == FETCH &&
-                         !(row_in_pad[RH][r] || col_in_pad[CH][c] || !g_lane_valid[g]))
-                            ? buff[col_bank_sel[CH][c]][row_phys[RH][r]][col_in_bank[CH][c]]
-                            : '0;
-                end
-            end
+            localparam int RH = G / COL_GROUP;   // this lane's row-half (0 or 1)
+            localparam int CH = G % COL_GROUP;   // this lane's col-half (0 or 1)
+
+            // Pixel slot within this lane's 450-bit window:
+            //   top-left = MSB (slot 24), bottom-right = LSB (slot 0)
+            localparam int PIXEL_BIT_OFFSET =
+                (G * WINDOW_BITS) +
+                (((CONV_K*CONV_K-1)-(R*CONV_K+C)) * PIXEL_W);
+
+            // Direct buff[] index -- no function call.
+            assign conv_pixels_o[PIXEL_BIT_OFFSET +: PIXEL_W] =
+                (state == FETCH &&
+                 !(row_in_pad[RH][R] || col_in_pad[CH][C] || !g_lane_valid[G]))
+                    ? buff[col_bank_sel[CH][C]][row_phys[RH][R]][col_in_bank[CH][C]]
+                    : '0;
         end
     endgenerate
+
+    //-----------------------------------------------
+    // new_data_f0_o region decode
+    //-----------------------------------------------
+    // region_sel: encodes which of the 9 structural cases (4 corners,
+    // 4 edges, interior) the current (win_idx,sweep_idx) falls into.
+    // Priority order matches the original if/else-if chain exactly:
+    // corners are checked first, then single-axis edges (win_idx==0/
+    // NUM_H_WIN-1 or sweep_idx==0/NUM_SWEEPS-1 alone, since the corner
+    // cases above already consumed the combinations of both), then the
+    // interior default.
+    logic [3:0] region_sel;
+
+    always_comb begin
+        unique case (1'b1)
+            (win_idx == 5'd0        && sweep_idx == 5'd0)                                  : region_sel = 4'd0; // top-left corner
+            (win_idx == NUM_H_WIN-1 && sweep_idx == 5'd0)                                  : region_sel = 4'd1; // top-right corner
+            (win_idx == 5'd0        && sweep_idx == NUM_SWEEPS-1)                          : region_sel = 4'd2; // bottom-left corner
+            (win_idx == NUM_H_WIN-1 && sweep_idx == NUM_SWEEPS-1)                          : region_sel = 4'd3; // bottom-right corner
+            (win_idx == 5'd0        && sweep_idx != 5'd0 && sweep_idx != NUM_SWEEPS-1)     : region_sel = 4'd4; // left edge (mid-sweep)
+            (win_idx == NUM_H_WIN-1 && sweep_idx != 5'd0 && sweep_idx != NUM_SWEEPS-1)     : region_sel = 4'd5; // right edge (mid-sweep)
+            (win_idx != 5'd0        && win_idx != NUM_H_WIN-1 && sweep_idx == 5'd0)        : region_sel = 4'd6; // top edge (mid-window)
+            (win_idx != 5'd0        && win_idx != NUM_H_WIN-1 && sweep_idx == NUM_SWEEPS-1): region_sel = 4'd7; // bottom edge (mid-window)
+            default                                                                        : region_sel = 4'd8; // interior
+        endcase
+    end
 
     //=======================================================
     // conv_window_assembly (control-only: conv_valid_o / conv_done_o)
@@ -921,78 +943,32 @@ module mapping_controller
     always_comb begin
         conv_valid_o = 1'b0;
         conv_done_o  = 1'b0;
-        new_data_o   = 1'b0;
+        new_data_f0_o   = 1'b0;
 
         if (state == FETCH) begin
             conv_valid_o = 1'b1;
 
             //-----------------------------------------------
-            // new_data_o: flags which 6x6 (2x2-block) groups of THIS
+            // new_data_f0_o: flags which 6x6 (2x2-block) groups of THIS
             // window actually contain newly-loaded pixel data, as
             // opposed to pixels re-used from the previous window
-            // position. Built as the AND of two independent per-axis
-            // conditions -- sweep_idx is the vertical (row) analog of
-            // win_idx (column):
-            //
-            //   col axis (win_idx)   == 0 : first, 2-pixel-stride
-            //                              horizontal window (Top-Left,
-            //                              Left, Bottom-Left) -- only
-            //                              conv_col == 0 is new.
-            //                        >  0 : regular stride-8 window --
-            //                              conv_col == 0,2,4,6 (first
-            //                              four column groups) are new.
-            //
-            //   row axis (sweep_idx) == 0 : first, 2-pixel-stride
-            //                              vertical sweep (Top-Left,
-            //                              Top, Top-Right) -- only
-            //                              conv_row == 0 is new.
-            //                         >  0 : regular stride-8 sweep --
-            //                              conv_row == 0,2,4,6 (first
-            //                              four row bands) are new.
-            //
-            // So a true corner (win_idx==0 && sweep_idx==0) pulses
-            // new_data_o exactly once, at (conv_row,conv_col)==(0,0);
-            // a fully regular window pulses it for all 4x4=16
-            // (row-band, col-group) combinations.
+            // position. Decoded via region_sel above (a true corner
+            // pulses new_data_f0_o exactly once, at
+            // (conv_row,conv_col)==(0,0); a fully regular window
+            // pulses it for all 4x4=16 (row-band, col-group)
+            // combinations).
             //-----------------------------------------------
-
-            // top-left corner window (win_idx==0 && sweep_idx==0) -- only the first 6x6 group of the window is new (conv_row==0 && conv_col==
-            if (win_idx == 5'd0 && sweep_idx == 5'd0)
-                new_data_o = (conv_row == 5'd0) && (conv_col == 5'd0);
-                
-            // top-right corner window (win_idx==31 && sweep_idx==0) -- only the first 6x6 group of the window is new (conv_row==0 && conv_col<=12)
-            else if (win_idx == 5'd31 && sweep_idx == 5'd0)
-                new_data_o = (conv_row == 5'd0) && (conv_col <= 5'd12);
-
-            // bottom-left corner window (win_idx==0 && sweep_idx==31) -- only the first 6x6 group of the window is new (conv_row>=6 && conv_col==0)
-            else if (win_idx == 5'd0 && sweep_idx == 5'd31)
-                new_data_o = (conv_row <= 5'd12) && (conv_col == 5'd0);
-
-            // bottom-right corner window (win_idx==31 && sweep_idx==31) -- only the first 6x6 group of the window is new (conv_row>=6 && conv_col>=6)
-            else if (win_idx == 5'd31 && sweep_idx == 5'd31)
-                new_data_o = (conv_row <= 5'd12) && (conv_col <= 5'd12);
-
-            // left-edge windows (win_idx==0) in the middle of a sweep (sweep_idx>0 && sweep_idx<31)
-            else if (win_idx == 5'd0 && (sweep_idx > 5'd0 && sweep_idx < 5'd31))
-                new_data_o = (conv_row <= 5'd6) && (conv_col == 5'd0);
-            
-            // top-edge windows (sweep_idx==0) in the middle of a sweep (win_idx>0 && win_idx<31)
-            else if (win_idx > 0 && win_idx < 5'd31 && sweep_idx == 5'd0)
-                new_data_o = (conv_row == 5'd0) && (conv_col <= 5'd6);
-
-            // right-edge windows (win_idx==31) in the middle of a sweep (sweep_idx>0 && sweep_idx<31)
-            else if (win_idx == 5'd31 && (sweep_idx > 5'd0 && sweep_idx < 5'd31))
-                new_data_o = (conv_row <= 5'd6) && (conv_col <= 5'd12);
-
-            // bottom-edge windows (sweep_idx==31) in the middle of a sweep (win_idx>0 && win_idx<31)
-            else if (win_idx > 0 && win_idx < 5'd31 && sweep_idx == 5'd31)
-                new_data_o = (conv_row <= 5'd12) && (conv_col <= 5'd6);
-                
-            // interior windows (win_idx>0 && win_idx<31 && sweep_idx>0 && sweep_idx<31) -- all 4x4=16 6x6 groups of the window are new
-            // (win_idx > 0 && win_idx < 5'd31 && sweep_idx > 0 && sweep_idx < 5'd31)
-            else 
-                new_data_o = (conv_row <= 5'd6) && (conv_col <= 5'd6);
-
+            case (region_sel)
+                4'd0:    new_data_f0_o = (conv_row == 5'd0)  && (conv_col == 5'd0);   // top-left corner
+                4'd1:    new_data_f0_o = (conv_row == 5'd0)  && (conv_col <= 5'd12);  // top-right corner
+                4'd2:    new_data_f0_o = (conv_row <= 5'd12) && (conv_col == 5'd0);   // bottom-left corner
+                4'd3:    new_data_f0_o = (conv_row <= 5'd12) && (conv_col <= 5'd12);  // bottom-right corner
+                4'd4:    new_data_f0_o = (conv_row <= 5'd6)  && (conv_col == 5'd0);   // left edge
+                4'd5:    new_data_f0_o = (conv_row <= 5'd6)  && (conv_col <= 5'd12);  // right edge
+                4'd6:    new_data_f0_o = (conv_row == 5'd0)  && (conv_col <= 5'd6);   // top edge
+                4'd7:    new_data_f0_o = (conv_row <= 5'd12) && (conv_col <= 5'd6);   // bottom edge
+                default: new_data_f0_o = (conv_row <= 5'd6)  && (conv_col <= 5'd6);   // interior
+            endcase
 
             //-----------------------------------------------
             // conv_done_o: last row-pair AND last col-pair of the block sweep
@@ -1000,6 +976,57 @@ module mapping_controller
             if ((conv_row + ROW_GROUP[4:0] >= conv_slides_row) &&
                 (conv_col + COL_GROUP[4:0] >= conv_slides_col))
                 conv_done_o = 1'b1;
+        end
+    end
+
+    always_comb begin
+        
+        new_data_general_o = 1'b0; // default
+        if (next_state ==FETCH || state == FETCH) begin
+            if (win_idx == 5'd0 && sweep_idx == 5'd0) begin
+                // top left
+                new_data_general_o = fetch_en_i;
+            end
+            else if (win_idx > 5'd0 && win_idx < 5'd31 && sweep_idx == 5'd0) begin
+                // top edge
+                new_data_general_o = fetch_en_i || ((conv_row == 0) && (conv_col <= 5'd4));
+            end
+            else if (win_idx == 5'd31 && sweep_idx == 5'd0) begin
+                // top right
+                new_data_general_o = fetch_en_i || ((conv_row == 0) && (conv_col <= 5'd10));
+            end
+            else if (win_idx == 5'd0 && sweep_idx > 5'd0 && sweep_idx < 5'd31) begin
+                // left edge
+                new_data_general_o = fetch_en_i || ((conv_col == 5'd12) && (conv_row <= 5'd4));
+            end
+            else if (win_idx == 5'd0 && sweep_idx == 5'd31) begin
+                // bottom left
+                new_data_general_o = fetch_en_i || ((conv_col == 5'd12) && (conv_row <= 5'd10));
+            end
+            else if (win_idx > 5'd0 && win_idx < 5'd31 && sweep_idx == 5'd31) begin
+                // bottom
+                new_data_general_o = fetch_en_i ||
+                                      ((conv_col == 5'd18) && (conv_row <= 5'd10)) ||
+                                      (conv_col <= 5'd4);
+            end
+            else if (win_idx == 5'd31 && sweep_idx == 5'd31) begin
+                // bottom right
+                new_data_general_o = fetch_en_i || !((conv_col == 5'd12) && (conv_row == 5'd12));
+            end
+            else if (win_idx == 5'd31 && sweep_idx > 5'd0 && sweep_idx < 5'd31) begin
+                // right edge
+                new_data_general_o = fetch_en_i ||
+                                      ((conv_row <= 5'd6) && !((conv_row == 5'd6) && (conv_col == 5'd12)));
+            end
+            else if (win_idx > 5'd0 && win_idx < 5'd31 && sweep_idx > 5'd0 && sweep_idx < 5'd31) begin
+                // normal (interior)
+                new_data_general_o = fetch_en_i ||
+                                      ((conv_col <= 5'd4) && (conv_row <= 5'd6) ) ||
+                                      (conv_col == 5'd18 && conv_row <= 5'd4);
+            end
+            else begin
+                new_data_general_o = 1'b0;
+            end
         end
     end
 
@@ -1021,21 +1048,27 @@ module mapping_controller
         //===================================================
         if (!rst_n) begin
             done_r       <= 1'b0;
+            done_special <= 1'b0;
             frame_done_r <= 1'b0;
         //===================================================
         // Running
         //===================================================
         end else begin
-            done_r       <= 1'b0;  // default: deassert each cycle
-            frame_done_r <= 1'b0;
-
             // Fires when the 30th horizontal window's conv pass completes.
             if (state == FETCH && next_state == IDLE && conv_done_o) begin
                 if (win_idx == NUM_H_WIN - 1) begin
-                    done_r <= 1'b1;
+                    if (sweep_idx != 0 && sweep_idx != 30) begin    //the special cases of sweep 1 and 31
+                        done_r <= 1'b1;
+                    end
+                    done_special <= 1'b1;
                     if (sweep_idx == NUM_SWEEPS - 1)
                         frame_done_r <= 1'b1;  // full 256x256 frame complete
                 end
+            end
+            else begin
+                done_r       <= 1'b0;  // default: deassert each cycle
+                done_special    <= 1'b0;  // default: deassert each cycle
+                frame_done_r <= 1'b0;
             end
         end
     end

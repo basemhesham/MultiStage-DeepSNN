@@ -221,7 +221,7 @@ module fetch_stage2_1 #(
         end
     end
 
-    wire [BANK_IDX_WIDTH-1:0] wr_bank = wrapped_bank(cur_bank_d1, bank_adv_d1);
+    wire [BANK_IDX_WIDTH-1:0] wr_bank = wrapped_bank(cur_bank, bank_adv);
 
     // We ALWAYS write, even on frame 1, to populate the history for frame 2.
     assign mem_wr_en   = (valid_d1 && (&frame_count != 1) && !in_reg_region_d1) ? 1 : 0;  // writing when it's not the last frame

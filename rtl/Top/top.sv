@@ -35,8 +35,9 @@
 //      (placeholder port added; team must confirm interface).
 // =============================================================================
 
-`timescale 1ns/1ps
 
+`timescale 1ns/1ps
+import top_controller_pkg::*;
 module deep_snn_top #(
     parameter int PIXEL_W              = 18,
     parameter int MAC_OUT_W            = 40,
@@ -121,7 +122,7 @@ module deep_snn_top #(
     logic                          ctrl_fetch_en_i;
     logic                          ctrl_next_i;
 
-    logic[2:0]                     shb_mem_en;
+    logic[2:0]                     shb_mem_en_o;
 
     // =========================================================================
     // Internal signals — mapping controller outputs
@@ -191,6 +192,7 @@ module deep_snn_top #(
     logic signed [DATA_WIDTH-1:0]  lif_hist_out_dbg [0:N_SHAABAN-1];
 	logic [2:0] stage2_last_frame_idx_o;
 	logic special_row_col_ind;
+    state_t state_d;
 
     // =========================================================================
     // top_controller
@@ -210,6 +212,7 @@ module deep_snn_top #(
         .mem_enable     (ctrl_mem_enable),
         .rd_enable      (ctrl_rd_enable),
         .stage          (src_sel),
+        .state_d        (state_d),
         .frame          (frame),
         .stage_sel      (stage_sel),
         .conv2_filter   (conv2_filter),
@@ -224,7 +227,7 @@ module deep_snn_top #(
         .next_i         (ctrl_next_i),
         .done           (snn_done),
         .stage2_last_frame_idx_o(stage2_last_frame_idx_o),
-        .shb_mem_en     (shb_mem_en),
+        .shb_mem_en_o   (shb_mem_en_o),
         .special_row_col_ind(special_row_col_ind)
     );
 
@@ -233,6 +236,7 @@ module deep_snn_top #(
     logic new_data_o;
     logic [3:0] frame_counter;
     logic frame_start_stg2_3_o; 
+    logic new_data_general_o;
 
     // =========================================================================
     // mapping_controller
@@ -263,7 +267,7 @@ module deep_snn_top #(
         .done_o       (map_ctrl_done_o),
         .frame_done_o (map_frame_done_o),    // FIX [4]: Not used
         .done_load_o  (ctrl_done_load_o),
-        .new_data_o   (new_data_o),
+        .new_data_general_o (new_data_general_o),
         .frame_counter_o(frame_counter),
         .frame_start_o  (frame_start_o),
         .frame_start_stg2_3_o(frame_start_stg2_3_o)
@@ -462,7 +466,7 @@ module deep_snn_top #(
                 .arst_n      (arst_n),
                 .frame_count (frame_counter), // only lane 0 sees first frame
                 .frame_start (frame_start_pulse),
-                .in_valid    (new_data_o),
+                .in_valid    (new_data_general_o),
                 .rd_en       (lif_rd_en[lif_l]),
                 .rd_addr     (lif_rd_addr[lif_l]),
                 .wr_en       (lif_wr_en[lif_l]),
@@ -547,7 +551,7 @@ module deep_snn_top #(
         .arst_n      (arst_n),
         .frame_count (frame_counter),
         .frame_start (frame_start_pulse_stg2),
-        .in_valid    (shb_mem_en[0]),
+        .in_valid    (shb_mem_en_o[0]),
         .rd_en       (s2_0_rd_en),
         .rd_addr     (s2_0_rd_addr),
         .wr_en       (s2_0_wr_en),
@@ -628,7 +632,7 @@ module deep_snn_top #(
         .arst_n       (arst_n),
         .frame_count  (frame_counter),
         .frame_start  (frame_start_pulse_stg2),
-        .in_valid     (shb_mem_en[1]),
+        .in_valid     (shb_mem_en_o[1]),
         .mem_rd_en    (s2_1_mem_rd_en),
         .mem_rd_addr  (s2_1_mem_rd_addr),
         .mem_wr_en    (s2_1_mem_wr_en),
@@ -734,7 +738,7 @@ module deep_snn_top #(
         .arst_n      (arst_n),
         .frame_count (frame_counter),
         .frame_start (frame_start_pulse_stg2),
-        .in_valid    (shb_mem_en[2]),
+        .in_valid    (shb_mem_en_o[2]),
         .rd_en       (s2_2_rd_en),
         .rd_addr     (s2_2_rd_addr),
         .wr_en       (s2_2_wr_en),
@@ -810,7 +814,7 @@ module deep_snn_top #(
     //
     // Single flat-addressed memory group (one fetch instance, one bank array),
     // same shape as the Stage-2 groups above. Unlike Stage 2 (which is enabled
-    // per-group off top_controller's shb_mem_en bus), Stage 3 has exactly ONE
+    // per-group off top_controller's shb_mem_en_o bus), Stage 3 has exactly ONE
     // enable straight from top_controller: it is active whenever "stage"
     // (src_sel) == 2.
     //
@@ -834,7 +838,7 @@ module deep_snn_top #(
     localparam int S3_BANK_IDX_W    = S3_ADDR_WIDTH - S3_BANK_AW;   // 7
 
     // Single enable from top_controller: active only during stage == 2.
-    wire s3_in_valid = (src_sel == 2'b10);
+    wire s3_in_valid = (state_d == 3'b100);
 
     logic                          s3_rd_en, s3_wr_en;
     logic [S3_ADDR_WIDTH-1:0]      s3_rd_addr, s3_wr_addr;
@@ -914,7 +918,7 @@ module deep_snn_top #(
                 lif_hist_in = s1_hist_in;   // Stage 1 (per-lane)
                 // valid in
                 for (int i = 0; i < N_SHAABAN; i++) begin
-                    lif_valid_in[i] = new_data_o;
+                    lif_valid_in[i] = new_data_general_o;
                 end
             end
             2'b01: begin 
@@ -924,9 +928,9 @@ module deep_snn_top #(
                 lif_hist_in[2] = s2_2_hist_in; // Stage 2, Group 2
 
                 // valid in
-                lif_valid_in[0] = shb_mem_en[0]; // Stage 2, Group 0
-                lif_valid_in[1] = shb_mem_en[1]; // Stage 2, Group 1
-                lif_valid_in[2] = shb_mem_en[2]; // Stage 2, Group 2
+                lif_valid_in[0] = shb_mem_en_o[0]; // Stage 2, Group 0
+                lif_valid_in[1] = shb_mem_en_o[1]; // Stage 2, Group 1
+                lif_valid_in[2] = shb_mem_en_o[2]; // Stage 2, Group 2
             end
             2'b10: begin
                 // hist in
