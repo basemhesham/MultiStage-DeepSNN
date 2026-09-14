@@ -68,7 +68,7 @@ module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18)
         .INMODEREG     (0)         ,
         .MREG          (0)         ,
         .OPMODEREG     (0)         ,
-        .PREG          (1)         , /* Register P/PCOUT to keep the cascade clocked */
+        .PREG          (0)         , /* Register P/PCOUT to keep the cascade clocked */
         .PREADDINSEL   ("A")       ,
         .USE_MULT      ("MULTIPLY"),
         .USE_SIMD      ("ONE48")
