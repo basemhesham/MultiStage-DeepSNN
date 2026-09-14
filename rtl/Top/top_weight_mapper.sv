@@ -64,6 +64,7 @@ module top_weight_mapper
     //=======================================================
     // Internals
     //=======================================================
+<<<<<<< HEAD
     // Stage1: real 18-bit values, straight from CONV1_W_MAP_OPT (unchanged).
     logic signed [PIXEL_W-1:0] stage1_weights [3456];
 
@@ -83,6 +84,15 @@ module top_weight_mapper
     // Level 2 mux result: final selected stream (stage1 direct value,
     // or the shared-table lookup result for stage2/stage3).
     logic signed [PIXEL_W-1:0] active_weights [3456];
+=======
+    // Flat (unshaped) weight streams as produced by each stage's
+    // weight-map ROM. Each stream holds 12 blocks * 32 lanes * 9 taps
+    // = 3456 entries, stored back-to-back.
+     logic signed [PIXEL_W-1:0] stage1_weights [3456];   // conv1 weight stream (needs lane reorder, see stage1_idx)
+     logic signed [PIXEL_W-1:0] stage2_weights [3456];   // conv2 weight stream (already in physical order)
+     logic signed [PIXEL_W-1:0] stage3_weights [3456];   // conv3 weight stream (already in physical order)
+     logic signed [PIXEL_W-1:0] active_weights [3456];   // mux output: whichever stream src_sel selects (used for stage2/stage3 path)
+>>>>>>> 277cc0f612cff256c67c8b6f9deb071cc7e0e9e8
 
     //=======================================================
     // Weight sources

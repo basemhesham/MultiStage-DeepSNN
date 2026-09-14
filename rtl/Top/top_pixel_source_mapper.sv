@@ -21,7 +21,11 @@ module top_pixel_source_mapper #(
     // -------------------------------------------------------------------------
     // Unpack 100 inputs from flat bus
     // -------------------------------------------------------------------------
+<<<<<<< HEAD
     logic signed [PIXEL_W-1:0] in_mem [0:99];
+=======
+   logic signed [PIXEL_W-1:0] in_mem [0:99];
+>>>>>>> 277cc0f612cff256c67c8b6f9deb071cc7e0e9e8
 
     // genvar m;
     // generate
@@ -213,8 +217,16 @@ module top_pixel_source_mapper #(
     // -------------------------------------------------------------------------
     // Stage 3 — binary mux stage (unchanged)
     // -------------------------------------------------------------------------
+<<<<<<< HEAD
     logic stage3_mem [0:1023];
     logic stage3_windows [0:8][0:3][0:63];
+=======
+    
+    logic stage3_mem [0:1023];
+    
+    logic stage3_windows [0:8][0:3][0:63];
+    
+>>>>>>> 277cc0f612cff256c67c8b6f9deb071cc7e0e9e8
     logic signed [PIXEL_W-1:0] pixels_s3 [0:11][0:31][0:8];
 
     genvar sm;
