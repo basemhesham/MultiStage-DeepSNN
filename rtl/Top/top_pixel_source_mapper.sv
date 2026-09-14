@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-(* DONT_TOUCH = "yes" *) module top_pixel_source_mapper #(
+module top_pixel_source_mapper #(
     parameter int PIXEL_W        = 18,
     parameter int FRAC_BITS      = 9,
     parameter int FRAME_NO       = 6,
@@ -21,7 +21,7 @@
     // -------------------------------------------------------------------------
     // Unpack 100 inputs from flat bus
     // -------------------------------------------------------------------------
-    (* DONT_TOUCH = "yes" *)logic signed [PIXEL_W-1:0] in_mem [0:99];
+    logic signed [PIXEL_W-1:0] in_mem [0:99];
 
     // genvar m;
     // generate
@@ -43,7 +43,7 @@
     // -------------------------------------------------------------------------
     // Stage 1 intermediate
     // -------------------------------------------------------------------------
-    (* DONT_TOUCH = "yes" *)logic signed [PIXEL_W-1:0] pixels_s1 [0:11][0:31][0:8];
+    logic signed [PIXEL_W-1:0] pixels_s1 [0:11][0:31][0:8];
 
     // -------------------------------------------------------------------------
     // Stage 1 mapping — PURE WIRING (no muxes / no priority logic)
@@ -213,9 +213,9 @@
     // -------------------------------------------------------------------------
     // Stage 3 — binary mux stage (unchanged)
     // -------------------------------------------------------------------------
-    (* DONT_TOUCH = "yes" *)logic stage3_mem [0:1023];
-    (* DONT_TOUCH = "yes" *)logic stage3_windows [0:8][0:3][0:63];
-    (* DONT_TOUCH = "yes" *)logic signed [PIXEL_W-1:0] pixels_s3 [0:11][0:31][0:8];
+    logic stage3_mem [0:1023];
+    logic stage3_windows [0:8][0:3][0:63];
+    logic signed [PIXEL_W-1:0] pixels_s3 [0:11][0:31][0:8];
 
     genvar sm;
     generate
@@ -260,21 +260,65 @@
     endgenerate
 
     // -------------------------------------------------------------------------
-    // Output mux — select active stage
+    // Output mux — Cascaded 2-to-1 MUX Tree Structure
     // -------------------------------------------------------------------------
+    // WHY WE USE THIS APPROACH:
+    // 1. Vivado Optimization: A single 3-branch case statement on a massive
+    //    3,456-element x 18-bit bus causes the synthesizer to build a wide,
+    //    unguided logic decode using scattered LUTs, leading to severe
+    //    routing congestion (this is the mux flagged in the earlier
+    //    congestion analysis: 3,456 replicated instances, each converging
+    //    all three stage trees before selecting one).
+    // 2. Dedicated Hardware Inference: By explicitly writing two cascaded
+    //    2-to-1 selections, we align directly with Xilinx dedicated
+    //    multiplexer primitives (MUXF7/MUXF8) instead of letting the
+    //    synthesizer infer an arbitrary decode structure.
+    // 3. Bit-width reduction for Level 1: pixels_s2 and pixels_s3 are BOTH
+    //    constructed as {zeros, single_bit, zeros} -- the only bit that
+    //    ever varies is at position FRAC_BITS; every other bit is a
+    //    compile-time-constant 0 on both inputs. Muxing the full 18-bit
+    //    buses would force Vivado to re-derive "this bit is always 0 on
+    //    both sides" 17 times per tap; instead we select the single real
+    //    bit directly (a 1-bit MUXF7) and re-pad the result, which is pure
+    //    zero-cost wiring, not logic.
+    // 4. No Logic or Latency Change: The truth table matches the original
+    //    design 100% (00->stage1, 01->stage2, 10->stage3, 11->stage1)
+    //    without introducing any clock delays.
     genvar gm, cm, tm;
     generate
         for (gm = 0; gm < 12; gm++) begin : gen_pmux_group
             for (cm = 0; cm < 32; cm++) begin : gen_pmux_channel
                 for (tm = 0; tm < 9; tm++) begin : gen_pmux_tap
-                    always_comb begin
-                        case (src_sel)
-                            2'b00:   pixels_mapped[gm][cm][tm] = pixels_s1[gm][cm][tm];
-                            2'b01:   pixels_mapped[gm][cm][tm] = pixels_s2[gm][cm][tm];
-                            2'b10:   pixels_mapped[gm][cm][tm] = pixels_s3[gm][cm][tm];
-                            default: pixels_mapped[gm][cm][tm] = pixels_s1[gm][cm][tm];
-                        endcase
-                    end
+
+                    // Level 1 MUX (1-bit wide): resolves selection between
+                    // stage2's and stage3's single real bit, based on
+                    // src_sel[0]. The surrounding zero padding is identical
+                    // on both inputs, so only this one bit needs a real mux.
+                    logic mux_lvl1_bit;
+                    assign mux_lvl1_bit = src_sel[0] ? pixels_s2[gm][cm][tm][FRAC_BITS]
+                                                      : pixels_s3[gm][cm][tm][FRAC_BITS];
+
+                    // Re-pad the Level 1 result back to the full PIXEL_W width,
+                    // in the same {zeros, bit, zeros} shape as pixels_s2/pixels_s3.
+                    logic signed [PIXEL_W-1:0] mux_lvl1_padded;
+                    assign mux_lvl1_padded = {{(PIXEL_W-FRAC_BITS-1){1'b0}},
+                                               mux_lvl1_bit,
+                                               {FRAC_BITS{1'b0}}};
+
+                    // Level 2 MUX (full PIXEL_W wide): selects stage1 vs the
+                    // Level 1 result. The select here is src_sel[0]^src_sel[1]
+                    // rather than a single raw bit, because the required
+                    // truth table needs "pick Level 1" to be true for EXACTLY
+                    // src_sel==01 or src_sel==10 (the two cases that must
+                    // reach stage2/stage3), and "pick stage1" for both 00 and
+                    // 11 -- i.e. an XOR of the select bits, not either bit
+                    // alone.
+                    logic lvl2_sel;
+                    assign lvl2_sel = src_sel[0] ^ src_sel[1];
+
+                    assign pixels_mapped[gm][cm][tm] = lvl2_sel ? mux_lvl1_padded
+                                                                 : pixels_s1[gm][cm][tm];
+
                 end
             end
         end
