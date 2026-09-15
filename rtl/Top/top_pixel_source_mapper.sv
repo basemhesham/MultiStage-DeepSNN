@@ -284,6 +284,9 @@ module top_pixel_source_mapper #(
     // 4. No Logic or Latency Change: The truth table matches the original
     //    design 100% (00->stage1, 01->stage2, 10->stage3, 11->stage1)
     //    without introducing any clock delays.
+    logic lvl2_sel;
+    assign lvl2_sel = src_sel[0] ^ src_sel[1];
+    
     genvar gm, cm, tm;
     generate
         for (gm = 0; gm < 12; gm++) begin : gen_pmux_group
@@ -313,8 +316,6 @@ module top_pixel_source_mapper #(
                     // reach stage2/stage3), and "pick stage1" for both 00 and
                     // 11 -- i.e. an XOR of the select bits, not either bit
                     // alone.
-                    logic lvl2_sel;
-                    assign lvl2_sel = src_sel[0] ^ src_sel[1];
 
                     assign pixels_mapped[gm][cm][tm] = lvl2_sel ? mux_lvl1_padded
                                                                  : pixels_s1[gm][cm][tm];

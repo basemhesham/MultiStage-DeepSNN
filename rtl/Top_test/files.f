@@ -9,25 +9,23 @@
 ../Top/pixel_mem.sv
 ../Top/spike_mem.sv
 ../Top/Pulse_generator.sv
-
 ../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN1_BIAS.sv
 ../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN1_WEIGHTS.sv
 ../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN2_BIAS.sv
 ../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN2_WEIGHTS.sv
 ../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN3_BIAS.sv
 ../SNN_Parameters/Values_For_LUTS_Before_Optimization/BN3_WEIGHTS.sv
-
 ../convolution_blocks/convDspAddMult.sv
 ../convolution_blocks/conv9.sv
-
 ../Top/bias_bn_params.sv
 ../Controller/mem_maping_1_2.sv
 ../frame/bin_muxing_stage2.sv
-../frame/frame_mapping_iterations_filters.sv
-../frame/frame_input_mapping_brackets.sv
+../frame/frame_mapping_iterations_filters_new.sv
+../frame/frame_input_mapping_brackets_new.sv
 ../SNN_Parameters/Final_Parameters/UNIQUE_CONV1_WEIGHTS.sv
 ../SNN_Parameters/Final_Parameters/UNIQUE_CONV2_WEIGHTS.sv
 ../SNN_Parameters/Final_Parameters/UNIQUE_CONV3_WEIGHTS.sv
+#../SNN_Parameters/Final_Parameters/SHARED_STAGE23_WEIGHTS_pkg.sv
 ../SNN_Parameters/Final_Parameters/CONV1_W_MAP_OPT.sv
 ../SNN_Parameters/Final_Parameters/CONV2_W_MAP_OPT.sv
 ../SNN_Parameters/Final_Parameters/CONV3_W_MAP_OPT.sv
@@ -36,7 +34,6 @@
 ../adder_tree/adder_layer3.sv
 ../adder_tree/adder_layer4.sv
 ../adder_tree/adder_tree_10_4_1_1.sv
-# ../Shabaan_Adder_connect/ext_sum_correction.sv
 ../Shabaan_Adder_connect/order_correction.sv
 ../Shabaan_Adder_connect/sum_correction.sv
 ../Shabaan_Adder_connect/mapping_muxing.sv
@@ -64,7 +61,6 @@
 ../classifier_head/fc2_layer.sv
 ../Top/top_class_logits_packer.sv
 ../Top/top.sv
-../Top/deep_snn_integration_tb.sv
 stage1_only_tb.sv
 
 

@@ -1,41 +1,24 @@
 //===========================================================
 // File        : top_weight_mapper.sv
 // Purpose     : Selects the active convolution stage (conv1/conv2/conv3)
-//               weight output and reshapes its flat 3456-entry stream
-//               into a 3D array [block][lane][tap] = [12][32][9] for
-//               consumption by the DSP48E2-based conv9 datapath.
-//
-// Architecture (post shared-index optimization for stage2/stage3):
-//   - Stage1 (conv1) is unchanged: CONV1_W_MAP_OPT outputs real
-//     18-bit weight values directly, no index/lookup involved.
-//   - Stage2 (conv2) and Stage3 (conv3) now come from CONV2_W_MAP_IDX /
-//     CONV3_W_MAP_IDX, which output 9-bit INDICES into a single
-//     shared table (conv23_shared_pkg::SHARED_STAGE23_WEIGHTS, 378
-//     entries merged from the two stages' original value tables).
-//   - Level 1 mux selects between the two 9-bit index streams
-//     (narrow mux, src_sel[0]) instead of two full 18-bit value
-//     streams -- this is the actual congestion win: half the bits
-//     passing through the mux compared to the old value-based mux.
-//   - A single shared-table lookup (one per flat position) then
-//     converts the selected index back to its real 18-bit value.
-//   - Level 2 mux picks between stage1's direct value and the
-//     shared-lookup result, based on whether src_sel selects stage1
-//     at all (src_sel == 2'b00) or one of stage2/stage3 (everything
-//     else, including the 2'b11 default case, which still correctly
-//     resolves to stage2 through the Level 1 mux's src_sel[0]==1 path).
-//   - Truth table is identical to the original single case-based mux:
-//       00 -> stage1, 01 -> stage2, 10 -> stage3, 11 -> stage2 (default)
-//     Verified by hand for all four src_sel values before this file
-//     was written.
-//
+//               weight ROM output and reshapes its flat 3456-entry
+//               stream into a 3D array [block][lane][tap] = [12][32][9]
+//               for consumption by the DSP48E2-based conv9 datapath.
+//               Stage-1 weights require an extra per-block lane
+//               reordering step (stage1_idx lookup) to undo the
+//               interleaved packing used when the stage-1 weight ROM
+//               was generated. Reorder logic was refactored from an
+//               automatic function into a combinational always_comb
+//               lookup table (see stage1_idx below).
 // Used in     : Top-level convolution engine (instantiates the three
-//               weight-map sources and feeds weights_mapped into conv9.sv)
+//               weight-map ROMs and feeds weights_mapped into conv9.sv)
 //===========================================================
-// Editor      : congestion-optimized rewrite (shared stage2/stage3 index table)
+// Written by  : 
+// Editor      : Boutros George Sabri
+// Last edit   : 2026-7-8
 //===========================================================
 
 `timescale 1ns / 1ps
-
 
 module top_weight_mapper
 #(
@@ -49,18 +32,18 @@ module top_weight_mapper
     //=======================================================
     // Inputs
     //=======================================================
-    input  logic [5:0]                conv2_filter,    // filter/kernel select index fed into the conv2 weight source
-    input  logic [6:0]                conv3_filter,    // filter/kernel select index fed into the conv3 weight source
+    input  logic [5:0]                conv2_filter,    // filter/kernel select index fed into the conv2 weight ROM
+    input  logic [6:0]                conv3_filter,    // filter/kernel select index fed into the conv3 weight ROM
     //=======================================================
     // Outputs
     //=======================================================
     // Reshaped weight cube: [block 0:11][lane 0:31][tap 0:8].
     // Driven combinationally (see gen_wmap_* generate block below),
     // so it is declared as plain "output logic", not "output reg".
-    output logic signed [PIXEL_W-1:0] weights_mapped [0:11][0:31][0:8]
+     output logic signed [PIXEL_W-1:0] weights_mapped [0:11][0:31][0:8]
 );
 
-  //=======================================================
+    //=======================================================
     // Internals
     //=======================================================
     // Flat (unshaped) weight streams as produced by each stage's

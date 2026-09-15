@@ -15,6 +15,6 @@ vlog -f files.f  +define+SIM
 
 vsim -voptargs=+acc work.stage1_only_tb
 
- do wave.do
+do wave_rtl.do
 
- run -all
+run -all

@@ -43,13 +43,17 @@ module conv9 #(
     // DSP Cascade Instantiation
     //-------------------------------------------------------------------
 
-    // DSP 0 - first tap, seeds the cascade with PCIN = 0
-    xbip_dsp48_macro_cascade #(.PIXEL_W (PIXEL_W)) dsp0 
+    // DSP 0 - first tap, seeds the cascade. FIRST_STAGE=1 makes its OPMODE
+    // select Z=0 instead of Z=PCIN, so PCIN is never read by the primitive --
+    // tying it to 48'sb0 is now legal (previously this violated Vivado's
+    // DSPS-2 DRC, since OPMODE selected PCIN but nothing drove it from an
+    // upstream DSP48E2's PCOUT).
+    xbip_dsp48_macro_cascade #(.PIXEL_W (PIXEL_W), .FIRST_STAGE (1'b1)) dsp0 
     (
         .CLK   (CLK)      ,
         .A     (P[0])     ,
         .B     (Q[0])     ,
-        .PCIN  (48'sb0)   ,
+        .PCIN  (48'sb0)   , // unused: FIRST_STAGE OPMODE selects Z=0, not PCIN
         .PCOUT (chain[0]) ,
         .P_fab ()
     );

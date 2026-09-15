@@ -27,10 +27,12 @@ add wave -noupdate -expand -group FSM_States /stage1_only_tb/DUT/u_mapping_contr
 add wave -noupdate -expand -group FSM_States /stage1_only_tb/DUT/u_mapping_controller/next_state
 add wave -noupdate -expand -group FSM_States /stage1_only_tb/DUT/u_mapping_controller/buff
 add wave -noupdate -divider <NULL>
-add wave -noupdate -group {Window & Sweep} /stage1_only_tb/DUT/u_mapping_controller/win_idx
-add wave -noupdate -group {Window & Sweep} /stage1_only_tb/DUT/u_mapping_controller/sweep_idx
-add wave -noupdate -group {Window & Sweep} /stage1_only_tb/DUT/u_mapping_controller/word_col_offset
-add wave -noupdate -group {Window & Sweep} /stage1_only_tb/DUT/u_mapping_controller/row_origin
+add wave -noupdate -expand -group {Window & Sweep} /stage1_only_tb/DUT/u_mapping_controller/win_idx
+add wave -noupdate -expand -group {Window & Sweep} /stage1_only_tb/DUT/u_mapping_controller/sweep_idx
+add wave -noupdate -expand -group {Window & Sweep} /stage1_only_tb/DUT/u_mapping_controller/word_col_offset
+add wave -noupdate -expand -group {Window & Sweep} /stage1_only_tb/DUT/u_mapping_controller/row_origin
+add wave -noupdate /stage1_only_tb/DUT/u_mapping_controller/new_data_general_o
+add wave -noupdate /stage1_only_tb/DUT/u_mapping_controller/new_data_f0_o
 add wave -noupdate -divider <NULL>
 add wave -noupdate -group {Load Control} /stage1_only_tb/DUT/u_mapping_controller/load_cnt
 add wave -noupdate -group {Load Control} /stage1_only_tb/DUT/u_mapping_controller/load_cnt_d
@@ -41,10 +43,10 @@ add wave -noupdate -group {Load Control} -divider <NULL>
 add wave -noupdate -group {Load Control} /stage1_only_tb/DUT/u_mapping_controller/write_bank
 add wave -noupdate -group {Load Control} /stage1_only_tb/DUT/u_mapping_controller/fetch_order
 add wave -noupdate -divider <NULL>
-add wave -noupdate -group {Conv Position} /stage1_only_tb/DUT/u_mapping_controller/conv_row
-add wave -noupdate -group {Conv Position} /stage1_only_tb/DUT/u_mapping_controller/conv_col
-add wave -noupdate -group {Conv Position} /stage1_only_tb/DUT/u_mapping_controller/conv_slides_row
-add wave -noupdate -group {Conv Position} /stage1_only_tb/DUT/u_mapping_controller/conv_slides_col
+add wave -noupdate -expand -group {Conv Position} /stage1_only_tb/DUT/u_mapping_controller/conv_row
+add wave -noupdate -expand -group {Conv Position} /stage1_only_tb/DUT/u_mapping_controller/conv_col
+add wave -noupdate -expand -group {Conv Position} /stage1_only_tb/DUT/u_mapping_controller/conv_slides_row
+add wave -noupdate -expand -group {Conv Position} /stage1_only_tb/DUT/u_mapping_controller/conv_slides_col
 add wave -noupdate -divider <NULL>
 add wave -noupdate -group {Mode & Padding} /stage1_only_tb/DUT/u_mapping_controller/mode_r
 add wave -noupdate -group {Mode & Padding} /stage1_only_tb/DUT/u_mapping_controller/pad_top
@@ -106,32 +108,15 @@ add wave -noupdate /stage1_only_tb/DUT/pixels_mapped
 add wave -noupdate /stage1_only_tb/DUT/shb_bus
 add wave -noupdate {/stage1_only_tb/DUT/u_shaaban_array/gen_shaaban_array[0]/u_shb/batch_norm_out}
 add wave -noupdate {/stage1_only_tb/DUT/u_shaaban_array/gen_shaaban_array[0]/u_shb/final_pool_out}
-
-add wave -position insertpoint  \
-sim:/stage1_only_tb/DUT/stage2_last_frame_idx_o
-add wave -position insertpoint  \
-sim:/stage1_only_tb/DUT/special_row_col_ind
-
-add wave -position insertpoint  \
-{sim:/stage1_only_tb/DUT/u_pixel_source_mapper/gen_frame_mapping[0]/u_frame_map/conv_test}
-
-add wave -position insertpoint  \
-sim:/stage1_only_tb/DUT/u_spike_mem/bit_enable
-
-add wave -position insertpoint  \
-sim:/stage1_only_tb/DUT/u_pixel_source_mapper/u_mem_mapping/fil_in
-
-add wave -position insertpoint  \
-sim:/stage1_only_tb/DUT/u_pixel_source_mapper/pixels_s3
-
-add wave -position insertpoint  \
-sim:/stage1_only_tb/DUT/u_top_controller/conv3_filter
-
-add wave -position insertpoint  \
-sim:/stage1_only_tb/DUT/u_top_controller/frame
-
+add wave -noupdate /stage1_only_tb/DUT/stage2_last_frame_idx_o
+add wave -noupdate /stage1_only_tb/DUT/special_row_col_ind
+add wave -noupdate /stage1_only_tb/DUT/u_spike_mem/bit_enable
+add wave -noupdate /stage1_only_tb/DUT/u_pixel_source_mapper/u_mem_mapping/fil_in
+add wave -noupdate /stage1_only_tb/DUT/u_pixel_source_mapper/pixels_s3
+add wave -noupdate /stage1_only_tb/DUT/u_top_controller/conv3_filter
+add wave -noupdate /stage1_only_tb/DUT/u_top_controller/frame
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {4853416 ps} 0}
+WaveRestoreCursors {{Cursor 1} {142415000 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 185
 configure wave -valuecolwidth 100
@@ -147,4 +132,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {4931492 ps} {5309260 ps}
+WaveRestoreZoom {143056121 ps} {143433889 ps}

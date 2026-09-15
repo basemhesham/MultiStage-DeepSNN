@@ -14,8 +14,9 @@
 // Version     : 1.0
 //===========================================================
 
-module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18)
-(
+module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18,     
+                                   parameter bit FIRST_STAGE = 0   // 1 = seed DSP of a cascade (Z=0, ignores PCIN)
+)(
     //--------------------------------------------------------------------
     // Port Declarations
     //--------------------------------------------------------------------
@@ -48,8 +49,8 @@ module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18)
     /* The top-level controller supplies one complete window per clock. Keep
        the simulation cascade combinational so all nine products belong to
        that same window. */
-    assign PCOUT  = product_ext + PCIN;
-    assign P_fab  = product_ext + PCIN;
+    assign PCOUT  = FIRST_STAGE ? product_ext : (product_ext + PCIN);
+    assign P_fab  = FIRST_STAGE ? product_ext : (product_ext + PCIN);
 `else
     (* keep = "true" *)
     DSP48E2 #(
@@ -80,12 +81,12 @@ module xbip_dsp48_macro_cascade #( parameter int PIXEL_W = 18)
         .D              (27'b0), /* 27-bit in DSP48E2 */
         .PCIN           (PCIN),
 
-        /* OPMODE 9'b000010101:
-             W mux  = 00   -> 0
-             Z mux  = 001  -> PCIN
-             XY mux = 0101 -> M (A*B)
-           Result: P = A*B + PCIN */
-        .OPMODE         (9'b000010101),
+        /* OPMODE, Z-mux bits [6:4] select between PCIN (FIRST_STAGE=0) and 0
+           (FIRST_STAGE=1); W/XY muxes are unchanged in both cases:
+             FIRST_STAGE=0 -> 9'b000010101: W=00, Z=001(PCIN), XY=0101(M) -> P = A*B + PCIN
+             FIRST_STAGE=1 -> 9'b000000101: W=00, Z=000(0),    XY=0101(M) -> P = A*B         */
+             
+        .OPMODE         (FIRST_STAGE ? 9'b000000101 : 9'b000010101), /* Z=0 if FIRST_STAGE, else Z=PCIN */
         .ALUMODE        (4'b0000),
         .INMODE         (5'b00000),
         .CARRYINSEL     (3'b000),

@@ -131,7 +131,6 @@ module stage1_only_tb;
         $readmemb("full_image.mem", full_image);
         $display("[TB] image loaded: full_image[0]=%h full_image[64]=%h full_image[16383]=%h",
                   full_image[0], full_image[64], full_image[16383]);
-
     endtask
 
     // Rebuild word_mem for a given sweep (mimics what the outer system loads)
@@ -383,7 +382,7 @@ module stage1_only_tb;
         //     end
         // end
 
-        for (int s = 0; s < 2; s++) begin
+        for (int s = 0; s < 3; s++) begin
             rebuild_outmem(s);
             pulse_start();
             wait_load_then_fetch();
