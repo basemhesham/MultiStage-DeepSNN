@@ -53,6 +53,7 @@ module top_controller
 
 	output wire logic [3199:0] mem_enable    , // shaaban unit output into spike memory stage1 (32 shaaban x 10 x 10)
 	output wire logic [1:0]    stage         , // signal that defines which stage we are in
+	output state_t    		   state_d       , // combinational next FSM state (for accessing stage 3 memory)
 	output wire logic [2:0]    frame         , // signal that defines which frame we are in (16 frames)
 	output wire logic          stage_sel     , // asserted when we are in a stage2,3
 	output wire logic [5:0]    conv2_filter  , // which filter in stage2 we are using
@@ -68,7 +69,7 @@ module top_controller
 	output wire logic          next_i        , // control signal for state transition in mapping controller
 	output wire logic          done          , // done signal for global average pooling
 	output wire logic[2:0]     stage2_last_frame_idx_o,
-	output wire logic[2:0]	   shb_mem_en    ,
+	output wire logic[2:0]	   shb_mem_en_o  ,
 	output wire logic 		   special_row_col_ind
 );
 
@@ -136,6 +137,7 @@ module top_controller
 		.STAGE2_SIDE     (STAGE2_SIDE    ),
 		.STAGE2_POSITIONS(STAGE2_POSITIONS)
 	) u_stage2_geometry (
+		.clk 				  (clk					),
 		.frag_row             (frag_row             ),
 		.frag_col             (frag_col             ),
 		.stage2_frame_idx     (stage2_frame_idx     ),
@@ -143,7 +145,7 @@ module top_controller
 		.stage                (stage   				),
 		.stage2_last_frame_idx(stage2_last_frame_idx),
 		.stage2_mask          (stage2_mask          ),
-		.shb_mem_en           (shb_mem_en           ),
+		.shb_mem_en_o         (shb_mem_en_o         ),
 		.special_row_col_ind  (special_row_col_ind  )
 	);
 
@@ -168,6 +170,7 @@ module top_controller
 		.stage1_col_count      (stage1_col_count      ),
 		.stage2_last_frame_idx (stage2_last_frame_idx ),
 		.state_q               (state_q               ),
+		.state_d 			   (state_d               ),
 		.stage1_pos            (stage1_pos            ),
 		.stage1_local_row_cnt  (stage1_local_row_cnt  ),
 		.stage1_local_col_cnt  (stage1_local_col_cnt  ),

@@ -36,7 +36,6 @@
 
 `timescale 1ns / 1ps
 
-import conv23_shared_pkg::*;
 
 module top_weight_mapper
 #(

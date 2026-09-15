@@ -62,6 +62,7 @@ module fsm_sequencer
 	input  wire logic [2:0] stage2_last_frame_idx  , // index of the last active Stage-2 frame for the current fragment (from stage2_geometry_unit)
 
 	output      state_t state_q, // registered (current) FSM state
+	output      state_t state_d, // combinational next FSM state (for debug)
 
 	output logic [STAGE1_CNT_W-1:0]   stage1_pos          , // linear position counter within the current fragment's Stage-1 sweep
 	output logic [3:0]                stage1_local_row_cnt, // running Stage-1 row counter within the current fragment
@@ -94,7 +95,6 @@ module fsm_sequencer
 	//==========================================================================
 	// FSM Next-State Logic
 	//==========================================================================
-	state_t state_d; // combinational next FSM state
 
 	always_comb
 		begin
@@ -102,7 +102,7 @@ module fsm_sequencer
 
 			unique case (state_q)
 				IDLE:              state_d = enable ? CLEAR_STAGE2_WORD : IDLE;                                    // start a run once 'enable' is asserted
-				CLEAR_STAGE2_WORD: state_d = (done_load_o&&fetch_en_i) ? STAGE1 : CLEAR_STAGE2_WORD;                              // wait for the fragment to be loaded before starting Stage1
+				CLEAR_STAGE2_WORD: state_d = (done_load_o&&fetch_en_i) ? STAGE1 : CLEAR_STAGE2_WORD;               // wait for the fragment to be loaded before starting Stage1
 				STAGE1:            state_d = (stage1_last && conv_done_o) ? CLEAR_STAGE3_WORD : STAGE1;             // advance once the final position is processed and conv is done
 				CLEAR_STAGE3_WORD: state_d = STAGE2;                                                                // single-cycle clear, always advances to Stage2
 				STAGE2:            state_d = stage2_last ? STAGE3 : STAGE2;                                         // advance once the final frame of the final filter is done

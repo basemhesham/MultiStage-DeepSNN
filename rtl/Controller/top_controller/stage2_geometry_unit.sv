@@ -33,13 +33,14 @@ module stage2_geometry_unit #(
 	parameter int STAGE2_POSITIONS = 16  // Stage-2 positions per fragment (STAGE2_SIDE * STAGE2_SIDE)
 )
 (
+	input  wire logic 		clk				,
 	input  wire logic [7:0] frag_row        , // fragment row index within the FRAGMENT_ROWS x FRAGMENT_COLS grid
 	input  wire logic [7:0] frag_col        , // fragment column index within the FRAGMENT_ROWS x FRAGMENT_COLS grid
 	input  wire logic [2:0] stage2_frame_idx, // current Stage-2 frame (group of up to 3 positions) within the fragment (from fsm_sequencer)
 	input  wire logic [5:0] conv2_filter    , // current Stage-2 filter index (from fsm_sequencer)
 	input  wire logic [1:0] stage           , // signal that defines which stage we are in
 
-	output logic [2:0]		shb_mem_en      ,
+	output logic [2:0]		shb_mem_en_o      ,
 	output logic [2:0]      stage2_last_frame_idx, // index of the last active stage2_frame_idx for this fragment
 	output logic [3199:0]   stage2_mask          , // combined write mask for the current Stage-2 cycle (OR of all 3 slots)
 	output logic 			special_row_col_ind    // indicates the specai case is in columns or not
@@ -64,7 +65,7 @@ module stage2_geometry_unit #(
 	logic       stage2_col_start         ; // 1 if the valid sub-grid starts at col 1 (left-border fragment), else 0
 	logic [4:0] stage2_valid_positions   ; // total valid Stage-2 positions for this fragment (9, 12, or 16)
 	logic [1:0] stage2_positions_in_frame; // number of valid positions within the current stage2_frame_idx (1..3)
-
+	logic [2:0]		shb_mem_en; 
 	// Shift-and-subtract (restoring division) helpers used to compute
 	// stage2_last_frame_idx = (stage2_valid_positions - 1) / 3 without a
 	// hardware '/' operator (up to 6 groups of up to 3 positions each).
@@ -76,6 +77,11 @@ module stage2_geometry_unit #(
 	// subtraction and arithmetic-inside-conditional lint warnings).
 	logic [4:0] stage2_pif_offset; // stage2_frame_idx * 3 (first position index of the current frame), width-matched to stage2_valid_positions
 	logic [4:0] stage2_pif_diff  ; // stage2_valid_positions - stage2_pif_offset (positions remaining from the current frame to the end of the fragment)
+	logic [1:0] stage_d 		 ; // delayed version of the stage
+
+	always @(posedge clk) begin
+		stage_d <= stage;
+	end
 
 	always_comb
 		begin
@@ -138,7 +144,6 @@ module stage2_geometry_unit #(
 
 			stage2_positions_in_frame = (stage2_frame_idx == stage2_last_frame_idx) ? 2'(stage2_pif_diff) : 2'd3;
 		end
-
 
 
 		always_comb begin
@@ -204,6 +209,113 @@ module stage2_geometry_unit #(
 				end
 			end
 			
+		end
+		
+		always_comb begin
+			if ((stage == 3 && stage_d == 0)) begin
+				//top_left_corner
+				if (frag_col == 0 && frag_row == 0) begin
+					shb_mem_en_o [0] = 1;
+				end
+				//top_right_corner
+				else if (frag_col == 31 && frag_row == 0) begin
+					shb_mem_en_o  = 3'b111;
+				end
+				//bottom_left_corner
+				else if (frag_col == 0 && frag_row == 31) begin
+					shb_mem_en_o[0]  = 1;
+				end
+				//bottom_right_corner
+				else if (frag_col == 31 && frag_row == 31) begin
+					shb_mem_en_o  = 3'b111;
+				end
+				//top_side
+				else if (frag_row == 0) begin
+					shb_mem_en_o  = 3'b011;
+				end
+				//bottom_side
+				else if (frag_row == 31) begin
+					shb_mem_en_o  = 3'b011;
+				end
+				//left_side
+				else if (frag_col == 0) begin
+					shb_mem_en_o  = 3'b001;
+				end
+				//right_side
+				else if (frag_col == 31) begin
+					shb_mem_en_o  = 3'b111;
+				end
+				//normal_case
+				else begin
+					shb_mem_en_o  = 3'b011;
+				end
+			end else if (stage == 1) begin
+				shb_mem_en_o = '0;
+				//top_left_corner
+				if (frag_col == 0 && frag_row == 0) begin
+					if (stage2_frame_idx == 2 && conv2_filter != 63) begin
+						shb_mem_en_o [0] = 1;
+					end
+				end
+				//top_right_corner
+				else if (frag_col == 31 && frag_row == 0) begin
+					if (stage2_frame_idx == 2 && conv2_filter != 63) begin
+						shb_mem_en_o  = 3'b111;
+					end
+				end 
+				//bottom_left_corner
+				else if (frag_col == 0 && frag_row == 31) begin
+					if (conv2_filter != 63) begin
+						shb_mem_en_o[0]  = 1;
+					end
+				end
+				//bottom_right_corner
+				else if (frag_col == 31 && frag_row == 31) begin
+					if (conv2_filter != 63) begin
+						shb_mem_en_o  = 3'b111;
+					end
+				end
+				//top_side
+				else if (frag_row == 0) begin
+					if (stage2_frame_idx == 3 && conv2_filter != 63) begin
+						shb_mem_en_o  = 3'b011;
+					end
+				end
+				//bottom_side
+				else if (frag_row == 31 ) begin
+					if (stage2_frame_idx == 3 && conv2_filter != 63) begin
+						shb_mem_en_o  = 3'b011;
+					end else if(stage2_frame_idx == 0 ) begin
+						shb_mem_en_o  = 3'b110;
+					end else if (stage2_frame_idx == 1 ) begin
+						shb_mem_en_o  = 3'b100;
+					end else if (stage2_frame_idx == 2 ) begin
+						shb_mem_en_o  = 3'b001;
+					end
+				end
+				//left_side
+				else if (frag_col == 0) begin
+					if ((stage2_frame_idx == 3 && conv2_filter != 63) || stage2_frame_idx == 0 ) begin
+						shb_mem_en_o  = 3'b001;
+					end
+				end
+				//right_side
+				else if (frag_col == 31) begin
+					if ((stage2_frame_idx == 3 && conv2_filter != 63 ) || stage2_frame_idx == 0) begin
+						shb_mem_en_o  = 3'b111;
+					end
+				end
+				//normal_case
+				else begin
+					if (stage2_frame_idx == 5  && conv2_filter != 63) begin
+						shb_mem_en_o  = 3'b011;
+					end else if (stage2_frame_idx == 0) begin
+						shb_mem_en_o  = 3'b110;
+					end
+				end
+			end else begin
+				shb_mem_en_o = '0;
+			end
 		end
 
 	//==========================================================================
